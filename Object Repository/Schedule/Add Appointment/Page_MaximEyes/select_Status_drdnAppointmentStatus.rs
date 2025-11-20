@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>select_Status_drdnAppointmentStatus</name>
+   <tag></tag>
+   <elementGuidId>b6845bee-95db-459b-96df-d57babd1ce90</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#drdnAppointmentStatus</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//select[@id='drdnAppointmentStatus']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>#drdnAppointmentStatus</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>select</value>
+      <webElementGuid>40d39b62-9758-4258-9fb0-824059064c7a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>drdnAppointmentStatus</value>
+      <webElementGuid>68623c37-8b30-4326-85f3-5847576af658</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>select select-default</value>
+      <webElementGuid>0404d01d-707b-4ee2-94b0-b5b3047b4aeb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-actualname</name>
+      <type>Main</type>
+      <value>AppointmentStatusTemp</value>
+      <webElementGuid>1fe5f396-93b9-4327-8efb-5b84487459ce</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-elementname</name>
+      <type>Main</type>
+      <value>APPOINTMENTDETAILS</value>
+      <webElementGuid>9e12b613-7860-401d-99d9-406e5eb2dbf6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>AppointmentStatusTemp</value>
+      <webElementGuid>1b8d1bdd-1433-4ef6-b088-4341d9ca3305</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Confirmed
+Pend. Conf.
+Pre-Appt
+No Show
+Left Message
+Checked_Out
+Rsrv
+Here
+PreA
+Avail
+Reg
+Gone
+</value>
+      <webElementGuid>8b900de0-cee1-41c2-8af7-e6a4e987958c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;drdnAppointmentStatus&quot;)</value>
+      <webElementGuid>21d5da59-e987-487b-a572-960c741d4222</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//select[@id='drdnAppointmentStatus']</value>
+      <webElementGuid>a87d0b14-f057-424c-99f1-ca2e8bdb3627</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='CreateAppt']/div/div[2]/div/div/div/div/div/div/div/div[2]/div/span/select</value>
+      <webElementGuid>97355fe7-6754-4c6f-917b-60f1a6f464d0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Status'])[2]/following::select[1]</value>
+      <webElementGuid>f730fd03-f7d6-4747-8cd9-47b0c8fdba83</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Reason'])[3]/following::select[2]</value>
+      <webElementGuid>cdbd3e80-fe6a-4f23-b5a9-eed1d1cda299</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Online Appt Reviewed &amp; Approved'])[1]/preceding::select[1]</value>
+      <webElementGuid>d16371a0-dcc6-4df9-9f56-38c1567b42fd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Start Time'])[1]/preceding::select[1]</value>
+      <webElementGuid>e5825508-88a4-4ba5-b1a8-0804a61f3d1a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/span/select</value>
+      <webElementGuid>4fcb2c08-121b-4607-a812-fbb8c6a3305d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//select[@id = 'drdnAppointmentStatus' and @name = 'AppointmentStatusTemp' and (text() = 'Confirmed
+Pend. Conf.
+Pre-Appt
+No Show
+Left Message
+Checked_Out
+Rsrv
+Here
+PreA
+Avail
+Reg
+Gone
+' or . = 'Confirmed
+Pend. Conf.
+Pre-Appt
+No Show
+Left Message
+Checked_Out
+Rsrv
+Here
+PreA
+Avail
+Reg
+Gone
+')]</value>
+      <webElementGuid>1f530bdd-0af5-4fa8-8e20-6c66465987db</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

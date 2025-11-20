@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Add Appointment Type (Double Book)_dx-vam</name>
+   <tag></tag>
+   <elementGuidId>53d57857-aea5-4eeb-8db4-f4d2a9923da7</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='scheduler_aptMenuBlock_SMAPT_DXI7_T']/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#scheduler_aptMenuBlock_SMAPT_DXI7_T > span.dx-vam</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Delete Appointment Type&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>533b110a-8304-4e6f-9ad3-03cb72a1c1a2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>dx-vam</value>
+      <webElementGuid>c4df0ea2-18f2-4035-97f0-4877fb631994</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Delete Appointment Type</value>
+      <webElementGuid>ed9e2af6-7023-4bf1-b41d-569404d08cfc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;scheduler_aptMenuBlock_SMAPT_DXI7_T&quot;)/span[@class=&quot;dx-vam&quot;]</value>
+      <webElementGuid>4efde171-c6a9-477c-91ec-47b7251979f9</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='scheduler_aptMenuBlock_SMAPT_DXI7_T']/span</value>
+      <webElementGuid>950a19ea-d37b-4c74-ac42-ed228d0d71d8</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Add Appointment Type (Double Book)'])[1]/following::span[1]</value>
+      <webElementGuid>8daf6df9-2e73-4945-8b4d-add6d97d2a41</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Select This Patient'])[1]/following::span[2]</value>
+      <webElementGuid>fc8f4cea-5136-4441-910b-cb9835b04215</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Clear / Block Schedule'])[1]/preceding::span[1]</value>
+      <webElementGuid>9c7010cc-9cd8-4ea8-aab7-e41889937848</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Schedule Interval'])[1]/preceding::span[2]</value>
+      <webElementGuid>d1ac2062-ce4c-43ec-8878-63b763667343</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Delete Appointment Type']/parent::*</value>
+      <webElementGuid>43098a4f-6e8d-4d48-9ddc-c171b9e8b790</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[15]/div/span</value>
+      <webElementGuid>9f027270-a912-4515-8348-ec30ab4d30bd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Delete Appointment Type' or . = 'Delete Appointment Type')]</value>
+      <webElementGuid>acb2dc4e-5cdd-4b8e-b816-70a4ce69ee9a</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

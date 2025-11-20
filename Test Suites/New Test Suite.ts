@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>New Test Suite</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>3</numberOfRerun>
+   <pageLoadTimeout>10</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>true</rerunImmediately>
+   <testSuiteGuid>0c384129-8cf2-45d1-aa41-46196a39553a</testSuiteGuid>
+   <testCaseLink>
+      <guid>95861225-e720-4fc2-b80c-9d6e2167d123</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/Schedule/Drag and Drop Appointment</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>ec228eb3-1465-40a5-979d-388bc0f89593</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/ENVData</testDataId>
+      </testDataLink>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>9a6d1b2f-c3d8-4326-853c-66a2665634d2</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/PatientData</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>SIteURL</value>
+         <variableId>71e9b255-74d5-4ecf-a4f2-1f7ab8b0bd00</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UserName</value>
+         <variableId>5c2fd276-fe8b-44ae-8a24-ee640a8632b1</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Password</value>
+         <variableId>d9f28b43-d254-4e96-9cce-0a4b16ca3a76</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DB_HOST</value>
+         <variableId>1eb10309-8acc-456e-9af6-b03da4b8f995</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DB_USER</value>
+         <variableId>4d5a6193-fe64-4366-b9dd-3679f615e758</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DB_PASSWORD</value>
+         <variableId>2de2b668-a5cd-4467-8de8-50458790e29e</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DB_PORT</value>
+         <variableId>66fa7f97-eb04-4ab1-8334-8597dc0127d6</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>ec228eb3-1465-40a5-979d-388bc0f89593</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DB_DATABASE</value>
+         <variableId>ec6b0949-11d6-4f76-9c91-c1f0cd825657</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

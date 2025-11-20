@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_HOLD_dx-vam</name>
+   <tag></tag>
+   <elementGuidId>f20a8c8a-d2b9-434a-8952-3e3f6fea4386</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='scheduler_viewMenuBlock_SMVIEW_DXI0i22_T']/span</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#scheduler_viewMenuBlock_SMVIEW_DXI0i22_T > span.dx-vam</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>#scheduler_viewMenuBlock_SMVIEW_DXI0i22_T >> internal:text=&quot;HOLD Test1&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>cbc1b5f9-d45c-43e4-873c-c1bd6d74f87f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>dx-vam</value>
+      <webElementGuid>22d50717-7658-4b0f-a8cb-1823b038a48f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>HOLD Test1</value>
+      <webElementGuid>40249d07-1e5b-4d63-befa-a5e7da2f3169</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;scheduler_viewMenuBlock_SMVIEW_DXI0i22_T&quot;)/span[@class=&quot;dx-vam&quot;]</value>
+      <webElementGuid>5a75c7c2-88cd-4c05-8a9b-92076cf5362a</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='scheduler_viewMenuBlock_SMVIEW_DXI0i22_T']/span</value>
+      <webElementGuid>e339a132-1b8c-4267-bb8f-823d7405c6c2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='HOLD'])[4]/following::span[1]</value>
+      <webElementGuid>ae23a1d1-2449-4e35-9d99-b14ed5af464d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='FULL'])[4]/following::span[2]</value>
+      <webElementGuid>7c44334b-404c-4d58-8762-7081d972ec71</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='JanuaryFebruaryMarchAprilMayJuneJulyAugustSeptemberOctoberNovemberDecember'])[4]/preceding::span[1]</value>
+      <webElementGuid>92bd8bf4-efe0-4f61-9f36-e27fba67c9b3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Laser'])[4]/preceding::span[2]</value>
+      <webElementGuid>e2fd6ffb-589e-4cca-a06b-d07eb8250e1d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[5]/div/div[2]/div/ul/li[45]/div/span</value>
+      <webElementGuid>a91410a2-7b4d-4e44-8d7b-8cb21274f654</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'HOLD Test1' or . = 'HOLD Test1')]</value>
+      <webElementGuid>a3eeded5-8f07-4d4e-a3c3-9a4a147388ac</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

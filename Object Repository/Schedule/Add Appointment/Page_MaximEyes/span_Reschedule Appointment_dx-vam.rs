@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Reschedule Appointment_dx-vam</name>
+   <tag></tag>
+   <elementGuidId>57629fcf-f8b6-42dd-8c4b-43dc7fd848be</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>#scheduler_aptMenuBlock_SMAPT_DXI3_T > span.dx-vam</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[@id='scheduler_aptMenuBlock_SMAPT_DXI3_T']/span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>#scheduler_aptMenuBlock_SMAPT_DXI3_T >> internal:text=&quot;Cancel Appointment&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>84b52f30-b563-4bb3-aad9-f4e233c48a19</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>dx-vam</value>
+      <webElementGuid>2bc6a5ea-976c-47f0-9f97-7a1f5ca1da2f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Cancel Appointment</value>
+      <webElementGuid>9c906920-8d98-4666-b311-50190b9f15c5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;scheduler_aptMenuBlock_SMAPT_DXI3_T&quot;)/span[@class=&quot;dx-vam&quot;]</value>
+      <webElementGuid>0c28f5ff-a292-4658-b24e-cfedbb841045</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='scheduler_aptMenuBlock_SMAPT_DXI3_T']/span</value>
+      <webElementGuid>a8d0e5be-343f-4c2f-a582-199871e402c0</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Reschedule Appointment'])[1]/following::span[1]</value>
+      <webElementGuid>f6937740-5d83-491d-b80a-2aa4d32c18ce</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Edit This Appointment'])[1]/following::span[2]</value>
+      <webElementGuid>4219fbca-2be7-4397-aee9-3e89db147ddb</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Mark as No Show'])[1]/preceding::span[1]</value>
+      <webElementGuid>d73d3368-31ee-4701-b23a-b4ba69aa2c9e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Select This Patient'])[1]/preceding::span[2]</value>
+      <webElementGuid>2b904ccf-5d53-4a52-9bcc-f5fc5a813170</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Cancel Appointment']/parent::*</value>
+      <webElementGuid>45c9da6a-10ae-43fe-9b35-06526eb64d39</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//li[7]/div/span</value>
+      <webElementGuid>305d54e5-5647-47fe-a658-a9ef1111364d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Cancel Appointment' or . = 'Cancel Appointment')]</value>
+      <webElementGuid>001956e6-2e81-4578-ac71-0bf5bdd45644</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
