@@ -9,46 +9,23 @@
    <dataFileGUID>4194a490-1b31-4c50-a2db-9eb073595e88</dataFileGUID>
    <dataSourceUrl></dataSourceUrl>
    <driver>InternalData</driver>
-   <data>https%3A%2F%2Fqa8.maximeyes.com%2F QA_User Automation%402024 20.98.160.42 sampleuser %21Q%40W%23E4r5t6y 3306 test</data>
+   <data>https%3A%2F%2Fqa8.maximeyes.com%2F QA_User Automation%402025</data>
+   <data>https%3A%2F%2Fdemoscribe278.maximeyes.com%2F PankajP Pathade%4099</data>
+   <data>https%3A%2F%2Fhheyeqainternalmysql.eyeclinic.ai%2F null null</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
       <name>SIteURL</name>
-      <size>1</size>
+      <size>3</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>1</columnIndex>
       <name>UserName</name>
-      <size>1</size>
+      <size>3</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>2</columnIndex>
       <name>Password</name>
-      <size>1</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>3</columnIndex>
-      <name>DB_HOST</name>
-      <size>1</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>4</columnIndex>
-      <name>DB_USER</name>
-      <size>1</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>5</columnIndex>
-      <name>DB_PASSWORD</name>
-      <size>1</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>6</columnIndex>
-      <name>DB_PORT</name>
-      <size>1</size>
-   </internalDataColumns>
-   <internalDataColumns>
-      <columnIndex>7</columnIndex>
-      <name>DB_DATABASE</name>
-      <size>1</size>
+      <size>3</size>
    </internalDataColumns>
    <isInternalPath>false</isInternalPath>
    <query></query>

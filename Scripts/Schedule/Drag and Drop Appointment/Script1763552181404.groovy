@@ -22,134 +22,63 @@ import java.sql.ResultSet as ResultSet
 
 WebUI.openBrowser('')
 
-'Maximize the window'
+WebUI.callTestCase(findTestCase('Common/Maximeyes Login'), [('SiteURL') : SiteURL, ('UserName') : UserName, ('Password') : Password], 
+    FailureHandling.STOP_ON_FAILURE)
+
 WebUI.maximizeWindow()
 
+WebUI.callTestCase(findTestCase('Common/Find Patient'), [('DB_HOST') : DB_HOST, ('DB_USER') : DB_USER, ('DB_PASSWORD') : DB_PASSWORD
+        , ('DB_PORT') : DB_PORT, ('DB_DATABASE') : DB_DATABASE, ('Index') : Index], FailureHandling.STOP_ON_FAILURE)
 
-    WebUI.navigateToUrl(SiteURL)
+WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_Schedule_dropdown-toggle menu-large recentmodule'))
 
-    WebUI.setText(findTestObject('Object Repository/FindPatients/UserName'), UserName)
+WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_concat(Ralph, , S)_Schedule  Schedule'))
 
-    WebUI.setText(findTestObject('Object Repository/FindPatients/Password'), Password)
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Loc_PatientScheduleLocationId'), 
+    '31', true)
 
-    WebUI.click(findTestObject('Object Repository/FindPatients/LoginBtn'))
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Resource_PatientScheduleResourceId'), 
+    '25', true)
 
-    WebUI.waitForElementNotVisible(findTestObject('FindPatients/busyIndicator'), 0)
+WebUI.doubleClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1'))
 
-    WebUI.waitForElementVisible(findTestObject('FindPatients/WorkQueue'), 0)
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
+    '1034', true)
 
-    // ---------------------------
-    // 1. Connection String
-    // ---------------------------
-    String url = "jdbc:mysql://$DB_HOST:$DB_PORT/$DB_DATABASE"
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
+    '1035', true)
 
-    String user = "$DB_USER"
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Reason_ReasonId'), 
+    '45', true)
 
-    String pass = "$DB_PASSWORD"
+WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Status_drdnAppointmentStatus'), 
+    'CONFIRMED', true)
 
-    // ---------------------------
-    // 2. Make connection
-    // ---------------------------
-    Connection conn = DriverManager.getConnection(url, user, pass)
+WebUI.click(findTestObject('Schedule/Add Appointment/Page_MaximEyes/span_Delete_dx-vam'))
 
-    // ---------------------------
-    // 3. Your query (Top 2 Active)
-    // ---------------------------
-    String query = 'SELECT * from patients where isActive = 1 LIMIT 1'
+WebUI.delay(5)
 
-    // ---------------------------
-    // 4. Execute query
-    // ---------------------------
-    ResultSet rs = conn.createStatement().executeQuery(query)
+TestObject source = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1')
 
-    // ---------------------------
-    // 5. Fetch data
-    // ---------------------------
-    while (rs.next()) {
-        println('LastName : ' + rs.getString('LastName'))
+TestObject target = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2')
 
-        println('FirstName : ' + rs.getString('FirstName'))
+WebUI.dragAndDropToObject(source, target)
 
-        println('IsActive  : ' + rs.getInt('IsActive'))
+WebUI.delay(5)
 
-        println('----------------------------')
+WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/btnOfficeApptRechedule'))
 
-        WebUI.click(findTestObject('Object Repository/FindPatients/FindPatient'))
+WebUI.rightClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2'))
 
-        String LastName = rs.getString('LastName')
+WebUI.delay(5)
 
-        String FirstName = rs.getString('FirstName')
+WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/span_Reschedule Appointment_dx-vam'))
 
-        WebUI.setText(findTestObject('Object Repository/FindPatients/input_Find Patient_LastName'), LastName)
+WebUI.delay(5)
 
-        WebUI.setText(findTestObject('FindPatients/input_Find Patient_FirstName'), FirstName)
+WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/input_Confirmation_btnOffice'))
 
-        WebUI.click(findTestObject('Object Repository/FindPatients/input_Active_btnSearchPatient'))
+WebUI.delay(5)
 
-        WebUI.waitForElementNotVisible(findTestObject('FindPatients/busyIndicator'), 0)
-
-        WebUI.waitForElementVisible(findTestObject('FindPatients/Header Patient Name'), 0)
-
-        String PatientName = WebUI.getText(findTestObject('FindPatients/Header Patient Name'))
-
-        String expected = "$FirstName $LastName"
-
-        WebUI.verifyMatch(PatientName, expected, true)
-    }
-    
-    // ---------------------------
-    // 6. Close connection
-    // ---------------------------
-    conn.close()
-
-    WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_Schedule_dropdown-toggle menu-large recentmodule'))
-
-    WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_concat(Ralph, , S)_Schedule  Schedule'))
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Loc_PatientScheduleLocationId'), 
-        '31', true)
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Resource_PatientScheduleResourceId'), 
-        '25', true)
-
-    WebUI.doubleClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1'))
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
-        '1034', true)
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
-        '1035', true)
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Reason_ReasonId'), 
-        '45', true)
-
-    WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Status_drdnAppointmentStatus'), 
-        'CONFIRMED', true)
-	
-	WebUI.click(findTestObject('Schedule/Add Appointment/Page_MaximEyes/span_Delete_dx-vam'))
-
-    WebUI.delay(5)
-	
-	TestObject source = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1')
-	TestObject target = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2')
-	
-	WebUI.dragAndDropToObject(source, target)
-
-    WebUI.delay(5)
-
-    WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/btnOfficeApptRechedule'))
-
-    WebUI.rightClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2'))
-	
-	WebUI.delay(5)
-
-    WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/span_Reschedule Appointment_dx-vam'))
-	
-	WebUI.delay(5)
-
-    WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/input_Confirmation_btnOffice'))
-
-    WebUI.delay(5)
-
-    WebUI.closeBrowser()
+WebUI.closeBrowser()
 

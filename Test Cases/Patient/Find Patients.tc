@@ -8,16 +8,25 @@
    <testCaseGuid>c8357c05-4d8c-4a30-82f2-83d018764b43</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>80046bf2-2e63-459f-8a51-b45fed6827ac</id>
+      <id>209852d4-5cb1-40b7-a9a6-e7084810e34d</id>
       <iterationEntity>
-         <iterationType>ALL</iterationType>
-         <value></value>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
       </iterationEntity>
       <testDataId>Data Files/ENVData</testDataId>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>06b97e03-a557-4789-a6dd-c32fc41fb1d0</id>
+      <id>56569d4e-e1ea-43c9-a247-a421f5d74992</id>
+      <iterationEntity>
+         <iterationType>ALL</iterationType>
+         <value></value>
+      </iterationEntity>
+      <testDataId>Data Files/MySQL</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>79154f66-608f-4ffb-a7bc-4946fbcd0feb</id>
       <iterationEntity>
          <iterationType>ALL</iterationType>
          <value></value>
@@ -25,39 +34,39 @@
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>80046bf2-2e63-459f-8a51-b45fed6827ac</testDataLinkId>
+      <testDataLinkId>209852d4-5cb1-40b7-a9a6-e7084810e34d</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>SIteURL</value>
       <variableId>d54e0834-44c4-4b1c-8380-dc7b57137138</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>80046bf2-2e63-459f-8a51-b45fed6827ac</testDataLinkId>
+      <testDataLinkId>209852d4-5cb1-40b7-a9a6-e7084810e34d</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>UserName</value>
       <variableId>c930d016-dfe4-42b7-8b65-0ac223892d15</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>80046bf2-2e63-459f-8a51-b45fed6827ac</testDataLinkId>
+      <testDataLinkId>209852d4-5cb1-40b7-a9a6-e7084810e34d</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Password</value>
       <variableId>7564d372-8dab-40ae-9fa9-83aa110488bd</variableId>
    </variableLinks>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>findTestData('ENVData').getValue('SiteURL', 1)</defaultValue>
       <description></description>
       <id>d54e0834-44c4-4b1c-8380-dc7b57137138</id>
       <masked>false</masked>
       <name>SiteURL</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>findTestData('ENVData').getValue('UserName', 1)</defaultValue>
       <description></description>
       <id>c930d016-dfe4-42b7-8b65-0ac223892d15</id>
       <masked>false</masked>
       <name>UserName</name>
    </variable>
    <variable>
-      <defaultValue>''</defaultValue>
+      <defaultValue>findTestData('ENVData').getValue('Password', 1)</defaultValue>
       <description></description>
       <id>7564d372-8dab-40ae-9fa9-83aa110488bd</id>
       <masked>false</masked>
