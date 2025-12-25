@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_Resume</name>
+   <tag></tag>
+   <elementGuidId>5c9f4042-9ae7-49fb-af05-ba261a2f1538</elementGuidId>
+   <imagePath></imagePath>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//button[*[local-name()='svg' and contains(@class,'lucide-play')]]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//button[*[local-name()='svg' and contains(@class,'lucide-play')]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>9111b200-b5d7-44dc-aae2-619ac9d7f5b1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:text-accent-foreground w-10 h-10 p-0 bg-[#b80e74] border border-gray-300 rounded-lg transition-all duration-200 shadow-sm hover:bg-primary/10 hover:border-primary/40</value>
+      <webElementGuid>d861caa9-b70b-45dd-b324-b13a28e138ab</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-a36fa5269ef8dd67840177aa898da548</value>
+      <webElementGuid>4d63d114-1727-4a86-a616-4c55881acdec</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//button[*[local-name()='svg' and contains(@class,'lucide-play')]]</value>
+      <webElementGuid>aef2dc39-9ca2-4ec2-aa0a-2bdd2b2a9acd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>a0da7e51-c95b-4789-a3f7-6152d4e0f152</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//button[*[local-name()='svg' and contains(@class,'lucide-play')]]</value>
+      <webElementGuid>1bb99ce5-c6c8-4994-9989-285c3501039c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

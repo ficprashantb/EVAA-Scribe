@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span_Search</name>
+   <tag></tag>
+   <elementGuidId>b623f9f4-f561-4a4a-b8c6-20b834e8e905</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}'][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>3832c2eb-8a74-4f5c-ae6b-9b746366428d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>highlight-mark text-[#0000ff] font-bold</value>
+      <webElementGuid>df08c9a2-8c5b-436a-955a-d2400399475e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>-1</value>
+      <webElementGuid>e4472686-462d-471f-9412-aee1456c09a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>${search}</value>
+      <webElementGuid>6fafacfa-7458-4e4f-b255-231b3f00499e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-ddaaf67b2fcaf307011affcbd37bf46e</value>
+      <webElementGuid>286b9152-02f6-4954-a59b-bdc09740c298</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
+      <webElementGuid>e87ae43d-3063-4968-a34f-7bf3ecc17422</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
+      <webElementGuid>7b5c8126-2044-41f2-8013-19545a938b4a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
+      <webElementGuid>ca8e8b66-a7ff-4d9d-9850-b1b8522ada24</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

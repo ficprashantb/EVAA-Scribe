@@ -16,5 +16,5 @@
    <secureUserAccount>true</secureUserAccount>
    <sheetName></sheetName>
    <user>sampleuser</user>
-   <usingGlobalDBSetting>false</usingGlobalDBSetting>
+   <usingGlobalDBSetting>true</usingGlobalDBSetting>
 </DataFileEntity>

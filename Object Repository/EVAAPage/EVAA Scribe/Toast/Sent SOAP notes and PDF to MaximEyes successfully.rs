@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Sent SOAP notes and PDF to MaximEyes successfully</name>
+   <tag></tag>
+   <elementGuidId>8898b263-e2ed-41dd-9da3-e7130ab555e2</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>.Toastify__toast--success</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[text()[normalize-space() = &quot;Sent SOAP notes and PDF to MaximEyes successfully.&quot;]]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Sent SOAP notes and PDF to MaximEyes successfully.&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>40afb438-acac-401a-a0a4-03dfaec234d0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>2</value>
+      <webElementGuid>a80377f9-dbe1-4d8c-8ef1-1aa1c892f74f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>7692733e-8b8e-458c-822a-6f4e4588e818</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-in</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>58819195-1314-4d14-9eab-88f361da78c7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>Toastify__toast Toastify__toast-theme--colored Toastify__toast--success Toastify__toast--close-on-click Toastify--animate Toastify__bounce-enter--top-right</value>
+      <webElementGuid>60b710e1-785c-42d3-ac1f-de2429b2a77a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>alert</value>
+      <webElementGuid>5d213b6a-e216-49d2-aeb5-774617f6d6de</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Sent SOAP notes and PDF to MaximEyes successfully.</value>
+      <webElementGuid>88d5c126-8802-43bb-8276-1eb252d4b979</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-897ae478c6f1eaf7fda06696685c49bc</value>
+      <webElementGuid>35bc3acb-22ed-4825-8c50-27eecdf72963</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' Toastify__toast--success ')]</value>
+      <webElementGuid>f9f2cd8d-800b-4cee-be4d-3b3c58b93fa0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>c98d0e5a-433b-4ee8-b025-4df92abb854c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' Toastify__toast--success ')]</value>
+      <webElementGuid>33daf945-6abe-43a7-9bda-65ebdf61e028</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[@id = '2' and (text() = 'Sent SOAP notes and PDF to MaximEyes successfully.' or . = 'Sent SOAP notes and PDF to MaximEyes successfully.')]</value>
+      <webElementGuid>40e6809e-76d1-451e-a599-399e11e04c86</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

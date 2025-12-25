@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>input_RadioButton</name>
+   <tag></tag>
+   <elementGuidId>8bf5d309-314a-4a67-96d8-b9e1997b6c8d</elementGuidId>
+   <imagePath></imagePath>
+   <selectorCollection>
+      <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//input[contains(@name , '${id}')][@data-actualname='${id}'][@value='${value}']/following-sibling::span[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//input[contains(@name , '${id}')][@data-actualname='${id}'][@value='${value}']/following-sibling::span[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>611d50d4-8ea9-4c19-a888-ce14bae86023</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>icons</value>
+      <webElementGuid>5502b778-ba4d-48b7-b02f-e966ee282222</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-658659e463b1482727dee4656d28b7ba</value>
+      <webElementGuid>65711c03-f8ba-4e36-b5ad-4a13ac8c4add</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//input[contains(@name , '${id}')][@data-actualname='${id}'][@value='${value}']/following-sibling::span[1]</value>
+      <webElementGuid>4af3ab07-b07d-4db7-b97f-7485b9cb765f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//input[contains(@name , '${id}')][@data-actualname='${id}'][@value='${value}']/following-sibling::span[1]</value>
+      <webElementGuid>5dce9b6c-2bfd-4e91-aff4-79f012992bff</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

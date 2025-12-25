@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span User</name>
+   <tag></tag>
+   <elementGuidId>558a5fc0-5673-4203-b818-2d6b1d8ad5d1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//div[label[text()='Tech:']]/div/span[contains(@class,&quot;auxiliaryLabTestTech&quot;)]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[label[text()='Tech:']]/div/span[contains(@class,&quot;auxiliaryLabTestTech&quot;)]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>.auxiliaryLabTestTech</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:attr=[title=&quot;QA User&quot;i] >> internal:text=&quot;QA User&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>d968e379-b35e-4d07-a6d1-28be547a4c4c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>semi-bold truncateElementNameAuxiliaryLabTest auxiliaryLabTestTech</value>
+      <webElementGuid>763870b2-085b-4259-a636-9a415acce7d9</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>QA User</value>
+      <webElementGuid>0e87da78-9499-45e9-b7cc-0b75514fd7bc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-16d557d459f0a51e1cc68dcd7a9905c5</value>
+      <webElementGuid>7ed6cc4e-6df6-4cbf-a5e7-97de7d2ece23</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[label[text()='Tech:']]/div/span[contains(@class,&quot;auxiliaryLabTestTech&quot;)]</value>
+      <webElementGuid>694463eb-1131-40b7-a134-f42b5c855fbb</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[label[text()='Tech:']]/div/span[contains(@class,&quot;auxiliaryLabTestTech&quot;)]</value>
+      <webElementGuid>3f2ae3c3-3158-4678-9981-815be8d03b81</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'QA User' or . = 'QA User')]</value>
+      <webElementGuid>b165fc1b-0fb5-44dc-89dc-8aa12039e304</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

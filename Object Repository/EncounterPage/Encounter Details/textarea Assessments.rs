@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>textarea Assessments</name>
+   <tag></tag>
+   <elementGuidId>57415ad6-1f9b-4de5-8f53-9c80ab9a9843</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>[name=&quot;\32 234\.Final_Diagnoses\.ASSESSMENT&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=textbox[name=&quot;Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.;Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>textarea</value>
+      <webElementGuid>1daf5aef-8707-4c15-b294-c0bb2b77182d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-sysdef</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>096ec796-5b21-4fa2-80b7-2a05b8706247</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-reffield</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>d584d3b4-0787-4738-8873-6bd332094dcd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-isrefered</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>e99d569a-d23b-4e65-a8f2-1c0100e15e4d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>maxlength</name>
+      <type>Main</type>
+      <value>-1</value>
+      <webElementGuid>f1a4a25c-9198-46d5-be22-c194ce4749d7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-defaultdatatype</name>
+      <type>Main</type>
+      <value>string</value>
+      <webElementGuid>e7c80049-8553-4397-881e-5371ba089315</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>name</name>
+      <type>Main</type>
+      <value>2234.Final_Diagnoses.ASSESSMENT</value>
+      <webElementGuid>befbdc33-515c-4b0f-b2d7-55dd8ebf5301</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>7011</value>
+      <webElementGuid>2dc23a80-6c76-46ae-bfa8-5d8ecd36a7e2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-ec_ctrldispname</name>
+      <type>Main</type>
+      <value>Assessment</value>
+      <webElementGuid>5987f089-f366-434e-a08a-51819afe50ca</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-canbehidden</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>2c863884-92ff-41e0-a20c-e4294355ca70</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-cid</name>
+      <type>Main</type>
+      <value>1706</value>
+      <webElementGuid>f3f5e761-162c-4173-995a-2e03ed8dd306</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-isreadonly</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>86c3f9e2-26fa-4e93-a8ee-0df00b280b23</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-eyetype</name>
+      <type>Main</type>
+      <value>null</value>
+      <webElementGuid>3247ec66-f7c4-42c1-930d-21e84f02b1c7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-elementid</name>
+      <type>Main</type>
+      <value>2121</value>
+      <webElementGuid>046e0fe0-1e24-4e04-a0d9-4dadc7b0069c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-oldvalue</name>
+      <type>Main</type>
+      <value>Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.,Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.</value>
+      <webElementGuid>8ad3aa04-290a-4a43-9af9-fbfce6e14c0f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-supportclearbtn</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>63b0272c-fa22-4acc-b988-af74239c0b37</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-enc_elementpagerelid</name>
+      <type>Main</type>
+      <value>2234</value>
+      <webElementGuid>8895fa87-28ef-40e8-b4f4-a29163a8a423</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onfocus</name>
+      <type>Main</type>
+      <value>expandTextarea(this)</value>
+      <webElementGuid>866e0d62-a2c0-4834-bf88-2e84072dce21</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>oninput</name>
+      <type>Main</type>
+      <value>expandTextarea(this)</value>
+      <webElementGuid>aad3a053-25b7-459d-8edf-c5024858aba7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onfocusout</name>
+      <type>Main</type>
+      <value>restoreOriginalSize(this)</value>
+      <webElementGuid>6fae858e-e0e4-4f52-8dc5-73c4acd52372</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>title</name>
+      <type>Main</type>
+      <value>Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.;Patient's vision has been slightly off, potentially related to blood sugar levels.
+Visual field testing showed a couple of missed spots, which were not considered significant.
+Patient is currently using Pataday daily for allergies.</value>
+      <webElementGuid>04282926-f218-407d-b8cf-850a08231a8a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-refelmid</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>399127cc-fe9e-4531-bb85-bfa23989f634</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-askey</name>
+      <type>Main</type>
+      <value>~F_F~Final_Diagnoses.ASSESSMENT</value>
+      <webElementGuid>d8b21686-f312-4ac1-9db3-e23a985517d5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-actualname</name>
+      <type>Main</type>
+      <value>ASSESSMENT</value>
+      <webElementGuid>e4d0f522-881b-42cd-8be6-ec3721a9626b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-elementname</name>
+      <type>Main</type>
+      <value>Final_Diagnoses</value>
+      <webElementGuid>29f560a4-f50d-47ce-88b5-4824b09351a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>autocomplete</name>
+      <type>Main</type>
+      <value>off</value>
+      <webElementGuid>78ce1e04-a3ba-40b3-8d65-cf02fea35f14</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-0dd371eb9327cb66cc7bb761deb343fd</value>
+      <webElementGuid>22ca3697-cbb3-4cc5-9b3d-7d5e644479f7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+      <webElementGuid>5f97c573-55d5-431d-af1f-749506a0fe9c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+      <webElementGuid>6f6c7729-092a-4bb6-a087-0ab6711a6a4a</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//textarea[@name = '2234.Final_Diagnoses.ASSESSMENT' and @title = concat(&quot;Patient&quot; , &quot;'&quot; , &quot;s vision has been slightly off, potentially related to blood sugar levels.&#xd;
+Visual field testing showed a couple of missed spots, which were not considered significant.&#xd;
+Patient is currently using Pataday daily for allergies.;Patient&quot; , &quot;'&quot; , &quot;s vision has been slightly off, potentially related to blood sugar levels.&#xd;
+Visual field testing showed a couple of missed spots, which were not considered significant.&#xd;
+Patient is currently using Pataday daily for allergies.&quot;)]</value>
+      <webElementGuid>99c6c56f-d18a-4e4d-97be-8a62051d5541</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

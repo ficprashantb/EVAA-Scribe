@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span ORDERED DATE</name>
+   <tag></tag>
+   <elementGuidId>4f917433-f469-4068-8a4e-e02663bb343d</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'TEST_ORDERED_DATE' and (text() = '  12/10/2025' or . = '  12/10/2025')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#TEST_ORDERED_DATE</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id = 'TEST_ORDERED_DATE']</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>#TEST_ORDERED_DATE</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>336a6ab6-a594-4c7c-a774-59767b669632</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>semi-bold</value>
+      <webElementGuid>7d95049c-87cc-4ae2-8653-f90c6c9a818f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>TEST_ORDERED_DATE</value>
+      <webElementGuid>b10c620f-9a89-44b2-baf5-decede548802</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data_actualname</name>
+      <type>Main</type>
+      <value>Test ordered date</value>
+      <webElementGuid>8b2227fc-89dd-4e8a-b41a-b063be86dcba</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>  12/10/2025</value>
+      <webElementGuid>7eb204bd-13e6-433d-8c36-7e52de610fa1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-56874c76a1b47f3c0979ed9e6fd53e1d</value>
+      <webElementGuid>3d73913e-f74e-49a2-bae5-030ad9771f42</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@id = 'TEST_ORDERED_DATE']</value>
+      <webElementGuid>967460a7-9b8a-4476-9bde-d142b757cad4</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'TEST_ORDERED_DATE']</value>
+      <webElementGuid>e68ee054-07fd-4c35-a557-2bdaf6b38ad5</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'TEST_ORDERED_DATE' and (text() = '  12/10/2025' or . = '  12/10/2025')]</value>
+      <webElementGuid>6d1586f3-00b2-406b-9a40-10d8035052f6</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_grey_mic-status</name>
+   <tag></tag>
+   <elementGuidId>8a5db2b6-f633-4ec4-a968-f79e9e39349a</elementGuidId>
+   <imagePath></imagePath>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' border-b ') and contains(concat(' ', normalize-space(@class), ' '), ' cursor-pointer ') and (position() = 1)]//*[@src = '/Grey-Mike.svg']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' border-b ') and contains(concat(' ', normalize-space(@class), ' '), ' cursor-pointer ') and (position() = 1)]//*[@src = '/Grey-Mike.svg'][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+      </entry>
+      <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>9fc73e2b-3b0e-4ad8-ba9c-85c52c49ff1e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/Grey-Mike.svg</value>
+      <webElementGuid>03e160aa-25fd-41f4-a0ff-d8c35d00ee1f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>mic-status</value>
+      <webElementGuid>729d752a-1e95-4dfe-85a4-679b59a2a956</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>w-4 h-4</value>
+      <webElementGuid>359d776e-bda4-4ff6-9a13-652ef74eed4d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-state</name>
+      <type>Main</type>
+      <value>closed</value>
+      <webElementGuid>c40ea70d-3b40-4f0c-9613-d60d2ebfd1d1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-64aec782ae1b26222fe63216778fef94</value>
+      <webElementGuid>d526b67b-f5fd-4b05-866a-ab7a2b2ad61e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' border-b ') and contains(concat(' ', normalize-space(@class), ' '), ' cursor-pointer ') and (position() = 1)]//*[@src = '/Grey-Mike.svg']</value>
+      <webElementGuid>bb59a1fb-bdf8-4ca2-ab7a-ef93dbe8ba37</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>8251e708-2760-4df1-9859-a50d04e3273c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' border-b ') and contains(concat(' ', normalize-space(@class), ' '), ' cursor-pointer ') and (position() = 1)]//*[@src = '/Grey-Mike.svg']</value>
+      <webElementGuid>d96c46d0-e6e6-4cbd-b230-048b92b40c7d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

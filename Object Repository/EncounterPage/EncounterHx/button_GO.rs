@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>button_GO</name>
+   <tag></tag>
+   <elementGuidId>7ddf458a-bae3-437c-8829-98d977312301</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' primary ') and contains(concat(' ', normalize-space(@class), ' '), ' test-button ')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>.primary.test-button</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=button[name=&quot;GO&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>button</value>
+      <webElementGuid>0f9d1c40-d317-4ca3-b120-6d8707824508</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>button primary mini-button test-button</value>
+      <webElementGuid>aa582171-758b-4964-b373-29d82a0a8089</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>EncounterGridSearch('','ENCOUNTER_HX','')</value>
+      <webElementGuid>b4c5266a-bb3d-47ca-b842-dee280e1ac04</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>GO</value>
+      <webElementGuid>ea28605f-a5da-4ea4-9840-326ddc9a6589</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-37121b8b0eb1dff93ee30693b4007e10</value>
+      <webElementGuid>92252390-f5bb-483c-945e-10828e479121</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' primary ') and contains(concat(' ', normalize-space(@class), ' '), ' test-button ')]</value>
+      <webElementGuid>eec89bc1-b67d-4f98-9f20-734e30fb2e7e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' primary ') and contains(concat(' ', normalize-space(@class), ' '), ' test-button ')]</value>
+      <webElementGuid>a6730ef3-43bf-498d-961f-1501f1e3439b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//button[(text() = 'GO' or . = 'GO')]</value>
+      <webElementGuid>b9691484-bb9e-4629-8bf0-dec7162840c0</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

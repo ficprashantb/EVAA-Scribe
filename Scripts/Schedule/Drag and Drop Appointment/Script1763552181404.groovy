@@ -22,61 +22,61 @@ import java.sql.ResultSet as ResultSet
 
 WebUI.openBrowser('')
 
-WebUI.callTestCase(findTestCase('Common/Maximeyes Login'), [('SiteURL') : SiteURL, ('UserName') : UserName, ('Password') : Password], 
+WebUI.callTestCase(findTestCase('null'), [('SiteURL') : SiteURL, ('UserName') : UserName, ('Password') : Password], 
     FailureHandling.STOP_ON_FAILURE)
 
 WebUI.maximizeWindow()
 
-WebUI.callTestCase(findTestCase('Common/Find Patient'), [('DB_HOST') : DB_HOST, ('DB_USER') : DB_USER, ('DB_PASSWORD') : DB_PASSWORD
+WebUI.callTestCase(findTestCase('null'), [('DB_HOST') : DB_HOST, ('DB_USER') : DB_USER, ('DB_PASSWORD') : DB_PASSWORD
         , ('DB_PORT') : DB_PORT, ('DB_DATABASE') : DB_DATABASE, ('Index') : Index], FailureHandling.STOP_ON_FAILURE)
 
-WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_Schedule_dropdown-toggle menu-large recentmodule'))
+WebUI.click(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/a_Schedule_dropdown-toggle menu-large recentmodule'))
 
-WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/a_concat(Ralph, , S)_Schedule  Schedule'))
+WebUI.click(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/a_concat(Ralph, , S)_Schedule  Schedule'))
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Loc_PatientScheduleLocationId'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Loc_PatientScheduleLocationId'), 
     '31', true)
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Resource_PatientScheduleResourceId'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Resource_PatientScheduleResourceId'), 
     '25', true)
 
-WebUI.doubleClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1'))
+WebUI.doubleClick(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1'))
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
     '1034', true)
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Type_TypeID'), 
     '1035', true)
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Reason_ReasonId'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Reason_ReasonId'), 
     '45', true)
 
-WebUI.selectOptionByValue(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/select_Status_drdnAppointmentStatus'), 
+WebUI.selectOptionByValue(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/select_Status_drdnAppointmentStatus'), 
     'CONFIRMED', true)
 
-WebUI.click(findTestObject('Schedule/Add Appointment/Page_MaximEyes/span_Delete_dx-vam'))
+WebUI.click(findTestObject('OLD/Schedule/Add Appointment/Page_MaximEyes/span_Delete_dx-vam'))
 
 WebUI.delay(5)
 
-TestObject source = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1')
+TestObject source = findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_1')
 
-TestObject target = findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2')
+TestObject target = findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2')
 
 WebUI.dragAndDropToObject(source, target)
 
 WebUI.delay(5)
 
-WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/btnOfficeApptRechedule'))
+WebUI.click(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/btnOfficeApptRechedule'))
 
-WebUI.rightClick(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2'))
-
-WebUI.delay(5)
-
-WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/span_Reschedule Appointment_dx-vam'))
+WebUI.rightClick(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/div_PM_scheduler_commonControlsBlock_select_2'))
 
 WebUI.delay(5)
 
-WebUI.click(findTestObject('Object Repository/Schedule/Add Appointment/Page_MaximEyes/input_Confirmation_btnOffice'))
+WebUI.click(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/span_Reschedule Appointment_dx-vam'))
+
+WebUI.delay(5)
+
+WebUI.click(findTestObject('Object Repository/OLD/Schedule/Add Appointment/Page_MaximEyes/input_Confirmation_btnOffice'))
 
 WebUI.delay(5)
 

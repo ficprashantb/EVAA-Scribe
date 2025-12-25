@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_PAUSED_txt</name>
+   <tag></tag>
+   <elementGuidId>8fe322d2-d7b0-4e0e-a26d-6cf145b7ac30</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[(text() = 'PAUSED' or . = 'PAUSED')]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[(text() = 'PAUSED' or . = 'PAUSED') and @ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>7ef70778-901b-4a37-86d7-211ee86ac027</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-[10px] text-orange-600 mt-0.5 font-semibold</value>
+      <webElementGuid>8562f4bf-dd82-4864-a4ae-a6c20da63d9f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>PAUSED</value>
+      <webElementGuid>affc0531-2b64-4402-9ac2-0da0cd64f1f4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-9a5443e26840310c2d20c99d7918c89f</value>
+      <webElementGuid>1227a6eb-da0f-429e-bf0f-f712908a71bd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[(text() = 'PAUSED' or . = 'PAUSED')]</value>
+      <webElementGuid>cae57e0e-d2b0-4b80-82c7-1e6d9de16d04</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>7c6750b1-c446-4b41-9c12-9f2df74f7830</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[(text() = 'PAUSED' or . = 'PAUSED')]</value>
+      <webElementGuid>0516908d-fa5e-4171-95e2-a768d6ce0d1c</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

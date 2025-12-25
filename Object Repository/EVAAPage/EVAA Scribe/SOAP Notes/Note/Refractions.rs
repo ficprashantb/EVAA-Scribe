@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Refractions</name>
+   <tag></tag>
+   <elementGuidId>84eff50a-2771-41b4-b504-7b0157ad43bb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>ca40f547-616d-4034-a956-0c48e5ed3329</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-sm text-black</value>
+      <webElementGuid>81442c4f-c381-46af-9276-847d7bdaf433</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-e841ce33537bcd0ea05caf1c32619e6a</value>
+      <webElementGuid>ca3cb2a7-7872-4710-b151-38adc21af557</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>e31be9e5-05fb-4d75-a31f-46d9ee5cd8b0</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>159ebf07-c956-4128-82ee-9007f9bc5914</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

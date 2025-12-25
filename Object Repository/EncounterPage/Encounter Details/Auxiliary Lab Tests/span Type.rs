@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span Type</name>
+   <tag></tag>
+   <elementGuidId>6b5e9871-c0c6-4b34-8467-ec2c2bb94244</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='ORDER_TYPE']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#ORDER_TYPE</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Visual Field&quot;s</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>f518032c-98c1-4c62-8fb6-00eba364dbf7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>semi-bold truncateElementNameAuxiliaryLabTest auxiliaryLabTestCommon</value>
+      <webElementGuid>59d42b4a-029b-458a-81a7-49774a4f956a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>ORDER_TYPE</value>
+      <webElementGuid>c699f6cb-237c-4969-a49e-82f05b275a0b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data_actualname</name>
+      <type>Main</type>
+      <value>Type</value>
+      <webElementGuid>03cc9a1d-7ab9-4929-b7ff-71ef49821236</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Visual Field</value>
+      <webElementGuid>da69d863-f067-44b3-8767-a7944d819573</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;ORDER_TYPE&quot;)</value>
+      <webElementGuid>df401a5b-3583-4b12-a82f-38c1b4acac28</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='ORDER_TYPE']</value>
+      <webElementGuid>43880889-9c5f-47b6-b507-099e584884d3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='AuxLabOrdersData_b23b0382-1f80-42fa-b162-0ae3874f9edb']/div/div/div/div/div/div[2]/div/span</value>
+      <webElementGuid>d22a30a8-599c-48eb-b9a5-98c121e04c99</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Type:'])[1]/following::span[1]</value>
+      <webElementGuid>9546cea2-2685-4470-9164-04ac7f2548eb</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Screening VF'])[1]/following::span[1]</value>
+      <webElementGuid>3e7c4265-81aa-4f1e-8abd-421dd21cbde3</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Location:'])[1]/preceding::span[1]</value>
+      <webElementGuid>e58844be-2043-4883-a3b8-e49946b1a6bc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='OD'])[7]/preceding::span[1]</value>
+      <webElementGuid>2244a7ec-3ee3-47a2-a55b-da4e52c5034d</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='Visual Field']/parent::*</value>
+      <webElementGuid>40687ab0-60d1-4b1f-98fc-b6b575bd3707</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/div/div/div/div/div/div/div/div[2]/div/span</value>
+      <webElementGuid>82bd27c2-bdf8-419c-ada2-3246a6015625</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'ORDER_TYPE' and (text() = 'Visual Field' or . = 'Visual Field')]</value>
+      <webElementGuid>7540eee6-adf5-4123-bb9e-ad548eb6e36e</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

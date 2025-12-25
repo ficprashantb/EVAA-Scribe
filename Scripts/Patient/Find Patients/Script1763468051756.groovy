@@ -25,36 +25,36 @@ WebUI.maximizeWindow()
 
 WebUI.navigateToUrl(SiteURL)
 
-WebUI.setText(findTestObject('Object Repository/FindPatients/UserName'), UserName)
+WebUI.setText(findTestObject('Object Repository/OLD/FindPatients/UserName'), UserName)
 
-WebUI.setText(findTestObject('Object Repository/FindPatients/Password'), Password)
+WebUI.setText(findTestObject('Object Repository/OLD/FindPatients/Password'), Password)
 
-WebUI.click(findTestObject('Object Repository/FindPatients/LoginBtn'))
+WebUI.click(findTestObject('Object Repository/OLD/FindPatients/LoginBtn'))
 
-WebUI.waitForElementNotVisible(findTestObject('FindPatients/busyIndicator'), 0)
+WebUI.waitForElementNotVisible(findTestObject('OLD/FindPatients/busyIndicator'), 0)
 
-WebUI.waitForElementVisible(findTestObject('FindPatients/WorkQueue'), 0)
+WebUI.waitForElementVisible(findTestObject('OLD/FindPatients/WorkQueue'), 0)
 
 TestData data = TestDataFactory.findTestData('PatientData')
 
 for (int row = 1; row <= 2; row++) {
-    WebUI.click(findTestObject('Object Repository/FindPatients/FindPatient'))
+    WebUI.click(findTestObject('Object Repository/OLD/FindPatients/FindPatient'))
 
     String LastName = data.getValue('LastName', row)
 
     String FirstName = data.getValue('FirstName', row)
 
-    WebUI.setText(findTestObject('Object Repository/FindPatients/input_Find Patient_LastName'), LastName)
+    WebUI.setText(findTestObject('Object Repository/OLD/FindPatients/input_Find Patient_LastName'), LastName)
 
-    WebUI.setText(findTestObject('FindPatients/input_Find Patient_FirstName'), FirstName)
+    WebUI.setText(findTestObject('OLD/FindPatients/input_Find Patient_FirstName'), FirstName)
 
-    WebUI.click(findTestObject('Object Repository/FindPatients/input_Active_btnSearchPatient'))
+    WebUI.click(findTestObject('Object Repository/OLD/FindPatients/input_Active_btnSearchPatient'))
 
-    WebUI.waitForElementNotVisible(findTestObject('FindPatients/busyIndicator'), 0)
+    WebUI.waitForElementNotVisible(findTestObject('OLD/FindPatients/busyIndicator'), 0)
 
-    WebUI.waitForElementVisible(findTestObject('FindPatients/Header Patient Name'), 0)
+    WebUI.waitForElementVisible(findTestObject('OLD/FindPatients/Header Patient Name'), 0)
 
-    String PatientName = WebUI.getText(findTestObject('FindPatients/Header Patient Name'))
+    String PatientName = WebUI.getText(findTestObject('OLD/FindPatients/Header Patient Name'))
 
     String expected = "$FirstName $LastName"
 

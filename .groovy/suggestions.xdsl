@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<projectSuggestions>
+    <declaringtype type="WebDriver">
+        <method isActive="true" isStatic="false" name="findElements" type="java.lang.Object">
+            <parameters useNamedArguments="false"/>
+            <doc/>
+        </method>
+    </declaringtype>
+    <declaringtype type="com.kms.katalon.core.checkpoint.CheckpointFactory">
+        <property isActive="true" isStatic="false" name="findCheckpoint" type="com.kms.katalon.core.checkpoint.Checkpoint">
+            <doc/>
+        </property>
+    </declaringtype>
+</projectSuggestions>

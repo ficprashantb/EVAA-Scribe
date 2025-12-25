@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
    <description></description>
-   <name>Test</name>
+   <name>EVAA Project</name>
    <tag></tag>
    <UUID>f3816eea-558f-4b5b-ab1f-be310b98ee3c</UUID>
    <createdEdition>ENTERPRISE</createdEdition>
@@ -9,9 +9,9 @@
    <freeLicense>false</freeLicense>
    <migratedVersion>5.9.0</migratedVersion>
    <modifiedEdition>ENTERPRISE</modifiedEdition>
-   <modifiedVersion>10.4.1</modifiedVersion>
+   <modifiedVersion>10.4.2</modifiedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
-   <projectFileLocation>C:\Users\Prashant_B\Katalon Studio\Test\Test.prj</projectFileLocation>
+   <projectFileLocation>D:\Katalon Studio\EVAA Project\Test.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

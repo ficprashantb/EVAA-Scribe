@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Medications</name>
+   <tag></tag>
+   <elementGuidId>63e3bffa-71da-460a-a80b-d31233473231</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>span[contenteditable=&quot;true&quot;] span</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Brand Name: Pat a day&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>01bbe096-5086-41a2-8006-2185330553ce</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Brand Name: Pat a day</value>
+      <webElementGuid>9307746f-d0b7-4302-8095-aa11da4936f3</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-d919c45cdb61e1dfdd5df8e916ac87bf</value>
+      <webElementGuid>5a26a530-3bd4-470a-aa9b-d1e4c2e506bf</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//span[@contenteditable = 'true']//span</value>
+      <webElementGuid>f0842e1c-8833-4955-b83c-f7480360ae4c</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li</value>
+      <webElementGuid>a4b5e91f-c50d-48be-9787-f0543ae0bcdb</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

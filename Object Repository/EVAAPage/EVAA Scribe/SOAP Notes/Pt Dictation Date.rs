@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Pt Dictation Date</name>
+   <tag></tag>
+   <elementGuidId>53c750fe-7704-47e2-85f5-fbae65e230a5</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>span.text-md</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-md ')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;12/10/2025&quot;s</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>2869f6a3-1e02-4d96-861d-abf10c963ede</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-md text-white fs-10</value>
+      <webElementGuid>9d3ab874-c112-4e09-9ee9-6220af0dcabe</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>12/10/2025</value>
+      <webElementGuid>5cc4b713-f6aa-4cb3-a29b-c3ef7285d9cf</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-52c9d731a87686734ad19efe1e84ab0a</value>
+      <webElementGuid>85afded9-e73b-45a8-8122-1d979810fdd4</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-md ')]</value>
+      <webElementGuid>23afb451-40ec-4a21-8b94-c8b6e95be30c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>7194fc94-71da-4724-91bc-38a453c24ee8</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-md ')]</value>
+      <webElementGuid>a8260bcc-633c-44e5-8dc0-55bb28d65ee5</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

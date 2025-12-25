@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>ChiefComplaint</name>
+   <tag></tag>
+   <elementGuidId>8d6c2aca-4364-4e74-82b6-99069a4af3d8</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,'.note.Complaint')])[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div:nth-child(1) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Vision has been kind of slightly off for a while now.&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>0c36025e-82b5-4bf5-a919-795df03b85ac</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-sm text-black</value>
+      <webElementGuid>1d4e7d41-441e-4952-a4b1-84869b05f0d5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>contenteditable</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>c17adbb6-990e-4679-8a9e-1b32a79b829d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-path</name>
+      <type>Main</type>
+      <value>Subjective[0].note.Complaint</value>
+      <webElementGuid>0fe0b7ed-2882-410b-ae83-5fd173fe886b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-d78abe65dcd700428b444e3bd58d2498</value>
+      <webElementGuid>e5ac32cd-4aa7-403b-ad9b-aebe92611d05</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[(name() = 'div') and (position() = 1)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' justify-between ') and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ')]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and (@contenteditable = 'true')]</value>
+      <webElementGuid>2a9a8bb9-d874-4be2-856d-7756d42a8a1f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
+      <webElementGuid>c5f1fcab-b15e-4d12-a8e4-086f9147076d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

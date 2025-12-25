@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Provider</name>
+   <tag></tag>
+   <elementGuidId>a9b9ff82-3376-462d-bc3e-d769f55d1dd1</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>IMAGE</key>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@ref_element = 'Object Repository/EVAA Scribe/iFrame']</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(//span[contains(text(),'Prov:')]/following-sibling::span)[1]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>false</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>c6e359ab-aa47-4f4a-8447-32ae8b5afc18</webElementGuid>
+   </webElementProperties>
+</WebElementEntity>

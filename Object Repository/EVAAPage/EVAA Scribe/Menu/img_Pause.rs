@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_Pause</name>
+   <tag></tag>
+   <elementGuidId>cbc320d0-7b93-4ab0-bd89-6c6e873cde55</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-lg ') and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and (position() = 4)]//*[@title = '']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>.rounded-lg.shadow-sm.whitespace-nowrap:nth-child(4) [title=&quot;&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>button:nth-child(4)</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>bfeaa605-71c8-496b-bc25-f11867961a93</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/Group7.svg</value>
+      <webElementGuid>09473117-2c75-494f-9a39-334e9f74f95f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-be5b1db01ff579b155061707b1eabae6</value>
+      <webElementGuid>4fa29d40-2714-497f-9b4f-458511f2b7c1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-lg ') and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and (position() = 4)]//*[@title = '']</value>
+      <webElementGuid>9d76101f-26f3-421b-8053-85ce1ad9f27d</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>5d949837-8eb9-4355-bb52-28f6af6fedb0</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-lg ') and contains(concat(' ', normalize-space(@class), ' '), ' shadow-sm ') and contains(concat(' ', normalize-space(@class), ' '), ' whitespace-nowrap ') and (position() = 4)]//*[@title = '']</value>
+      <webElementGuid>9cad4f6d-1db6-4798-98b4-68133c93ba31</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//img[@src = '/Group7.svg']</value>
+      <webElementGuid>f28f9c6e-fa60-48a7-aee4-e7fb1fec28f1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span Provider</name>
+   <tag></tag>
+   <elementGuidId>41cca626-5f41-4e6c-85eb-0151185cf201</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//div[label[text()='Provider:']]/div/span[contains(@class,&quot;auxiliaryLabTestCommon&quot;)]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[label[text()='Provider:']]/div/span[contains(@class,&quot;auxiliaryLabTestCommon&quot;)]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>[title=&quot;Jack\ Jay&quot;] .auxiliaryLabTestCommon</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:attr=[title=&quot;Jack Jay&quot;i] >> internal:text=&quot;Jack Jay&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>2539db58-b057-42d8-965a-cc2d89404720</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>semi-bold truncateElementNameAuxiliaryLabTest auxiliaryLabTestCommon</value>
+      <webElementGuid>ba415f27-7650-410a-ae85-daa639641465</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Jack Jay</value>
+      <webElementGuid>f700a4a1-abd3-43dd-bb73-887ce12bfc8b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-436aa5bdfc8f9981bdc078a13be4025d</value>
+      <webElementGuid>946c32d9-e79b-4003-8db5-60e1e116081e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[label[text()='Provider:']]/div/span[contains(@class,&quot;auxiliaryLabTestCommon&quot;)]</value>
+      <webElementGuid>67140c4d-8374-4c53-8a3f-b6aaec3c69ac</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[label[text()='Provider:']]/div/span[contains(@class,&quot;auxiliaryLabTestCommon&quot;)]</value>
+      <webElementGuid>0572cebb-0158-4e04-9128-27893da3e5e2</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[(text() = 'Jack Jay' or . = 'Jack Jay')]</value>
+      <webElementGuid>b2df253d-23b8-4859-9b1c-a079641d1e8d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

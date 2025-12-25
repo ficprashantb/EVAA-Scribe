@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>span Test Notes</name>
+   <tag></tag>
+   <elementGuidId>4cc77fdb-f7c4-4922-8aef-e0fa49ad5390</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//span[@id='TEST_NOTES']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#TEST_NOTES</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;missed a couple spots in the visual field, but nothing like significant signific&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>34ea707b-5cdb-44a4-9697-bbeedbb056f0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>semi-bold truncateElementNameAuxiliaryLabTest auxiliaryLabTestNotes</value>
+      <webElementGuid>625b6bb3-1e34-4061-a52c-e396c9ab5c08</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>TEST_NOTES</value>
+      <webElementGuid>f4007750-1fba-437b-ae85-8cd6f3e9c2b2</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>missed a couple spots in the visual field, but nothing like significant significant</value>
+      <webElementGuid>0cc796c9-7e5d-446e-b6ef-c0a710e696df</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>id(&quot;TEST_NOTES&quot;)</value>
+      <webElementGuid>ccbc429d-b19e-4ca8-94ef-4875c6b306a2</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//span[@id='TEST_NOTES']</value>
+      <webElementGuid>ee1f5e0b-61ae-49c6-bf1b-d811c967398b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:idRelative</name>
+      <type>Main</type>
+      <value>//div[@id='AuxLabOrdersData_fbc0da03-3220-4d84-b02c-304e8079586e']/div/div/div[3]/div/div/span</value>
+      <webElementGuid>dd425df4-39c9-4790-9045-7d323a6cd798</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Notes:'])[1]/following::span[1]</value>
+      <webElementGuid>ed6728e4-9a7d-4873-abe8-9c1a61d4a9cd</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Due:'])[1]/following::span[2]</value>
+      <webElementGuid>d6ba02ea-73ad-438a-b41f-c87bd73b03b1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Provider:'])[1]/preceding::span[1]</value>
+      <webElementGuid>b1f80098-29a0-4347-97a7-6f6f4822b090</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>(.//*[normalize-space(text()) and normalize-space(.)='Jack Jay'])[9]/preceding::span[1]</value>
+      <webElementGuid>fda5aa62-105c-4dcf-a7b7-df51241c4afa</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:neighbor</name>
+      <type>Main</type>
+      <value>//*/text()[normalize-space(.)='missed a couple spots in the visual field, but nothing like significant significant']/parent::*</value>
+      <webElementGuid>20885cc6-8f06-4c85-b668-155b8ce90bef</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:position</name>
+      <type>Main</type>
+      <value>//div[2]/div/div/div/div/div/div[3]/div/div/span</value>
+      <webElementGuid>0d1d1a4f-6460-4fb9-90d6-f534ca6a5b1b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//span[@id = 'TEST_NOTES' and (text() = 'missed a couple spots in the visual field, but nothing like significant significant' or . = 'missed a couple spots in the visual field, but nothing like significant significant')]</value>
+      <webElementGuid>deee4e11-612d-4cbe-9318-e45d9d9392fb</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
