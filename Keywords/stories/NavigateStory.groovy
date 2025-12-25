@@ -19,6 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import com.kms.katalon.core.util.KeywordUtil
 import internal.GlobalVariable
+import org.openqa.selenium.WebElement
 import stories.VariableStories as VariableStories
 import com.kms.katalon.core.testobject.ConditionType
 
@@ -400,57 +401,105 @@ public class NavigateStory {
 				)
 	}
 
-	boolean isElementClickable(TestObject to) {
+	//	boolean isElementClickable(TestObject to) {
+	//		try {
+	//			WebUI.verifyElementClickable(to, FailureHandling.STOP_ON_FAILURE)
+	//			return true
+	//		} catch (Exception e) {
+	//			return false
+	//		}
+	//	}
+	//
+	//	void clickElementWithJS(TestObject to) {
+	//		WebUI.executeJavaScript('arguments[0].click();', Arrays.asList(WebUI.findWebElement(to, 20)))
+	//	}
+	//
+	//	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
+	//
+	//		retryAction({
+	//			String pageTitle = props.pElementPage
+	//			String element = props.pElement
+	//			TestObject tabExpandedTO = makeTO( "//a[@title='${pageTitle}']/following-sibling::ul" )
+	//
+	//			if (WebUI.verifyElementVisible(tabExpandedTO, FailureHandling.OPTIONAL)) {
+	//				KeywordUtil.logInfo("${pageTitle} Tab already open")
+	//			} else {
+	//				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span"), 30 )
+	//				WebUI.click( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span") )
+	//				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
+	//				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]"), 30 )
+	//			}
+	//
+	//			TestObject subElementTO = makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]" )
+	//			WebUI.waitForElementVisible(subElementTO, 30)
+	//
+	//			if (isElementClickable(subElementTO)) {
+	//				WebUI.click(subElementTO)
+	//			} else {
+	//				KeywordUtil.logInfo("Element not clickable by WebUI.click, trying with JavaScript click")
+	//				clickElementWithJS(subElementTO)
+	//			}
+	//
+	//			WebUI.waitForElementVisible( makeTO("//div/span[contains(text(), '${element}')]"), 30 )
+	//			WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
+	//			WebUI.delay(5)
+	//
+	//			KeywordUtil.logInfo("Clicked on Element ${element}")
+	//		})
+	//	}
+
+	boolean isPresent(TestObject to, int timeout = 3) {
+		return WebUI.findWebElements(to, timeout).size() > 0
+	}
+
+	static void safeClick(TestObject to) {
+		WebElement el = WebUI.findWebElement(to, 10)
 		try {
-			WebUI.verifyElementClickable(to, FailureHandling.STOP_ON_FAILURE)
-			return true
+			el.click()
 		} catch (Exception e) {
-			return false
+			WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(el))
 		}
 	}
 
-	void clickElementWithJS(TestObject to) {
-		WebUI.executeJavaScript('arguments[0].click();', Arrays.asList(WebUI.findWebElement(to, 20)))
-	}
-
+	@Keyword
 	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
 
 		retryAction({
+
 			String pageTitle = props.pElementPage
-			String element = props.pElement
-			TestObject tabExpandedTO = makeTO( "//a[@title='${pageTitle}']/following-sibling::ul" )
+			String element   = props.pElement
 
-			if (WebUI.verifyElementVisible(tabExpandedTO, FailureHandling.OPTIONAL)) {
-				KeywordUtil.logInfo("${pageTitle} Tab already open")
-			} else {
-				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span"), 30 )
-				WebUI.click( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span") )
-				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
-				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]"), 30 )
+			assert pageTitle?.trim()
+			assert element?.trim()
+
+			TestObject tabTO     = makeTO("//a[@title='${pageTitle}']")
+			TestObject listTO    = makeTO("//a[@title='${pageTitle}']/following-sibling::ul")
+			TestObject childTO   = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
+
+			// Expand tab if collapsed
+			if (!isPresent(listTO)) {
+				safeClick(tabTO)
+				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 			}
 
-			TestObject subElementTO = makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]" )
-			WebUI.waitForElementVisible(subElementTO, 30)
+			// Click child safely
+			assert isPresent(childTO, 10) : "Element '${element}' not found under '${pageTitle}'"
+			safeClick(childTO)
 
-			if (isElementClickable(subElementTO)) {
-				WebUI.click(subElementTO)
-			} else {
-				KeywordUtil.logInfo("Element not clickable by WebUI.click, trying with JavaScript click")
-				clickElementWithJS(subElementTO)
-			}
+			// Validate page
+			WebUI.waitForElementVisible(
+					makeTO("//span[contains(normalize-space(.),'${element}')]"),
+					20
+					)
 
-			WebUI.waitForElementVisible( makeTO("//div/span[contains(text(), '${element}')]"), 30 )
-			WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
-			WebUI.delay(5)
-
-			KeywordUtil.logInfo("Clicked on Element ${element}")
+			KeywordUtil.logInfo("Navigated to ${pageTitle} → ${element}")
 		})
 	}
 
 	/* ---------------- HELPER ---------------- */
 	TestObject makeTO(String xpath) {
-		TestObject to = new TestObject()
-		to.addProperty("xpath", ConditionType.EQUALS, xpath)
-		return to
-	}
+			TestObject to = new TestObject()
+			to.addProperty("xpath", ConditionType.EQUALS, xpath)
+			return to
+		}
 }

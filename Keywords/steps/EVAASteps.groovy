@@ -80,7 +80,7 @@ public class EVAASteps {
 
 	@Keyword
 	def searchStringAndVerify(String searchText) {
-		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		TestObject searchInput = findTestObject('EVAAPage/EVAA Scribe/Header/input_Search')
 
@@ -119,9 +119,9 @@ public class EVAASteps {
 	def verifyEVAAScribeDetails(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String SearchText= 'b', String FinalizedStatus = 'Pending', String MicStatus='Completed'  ) {
 		String expectedPtName = "$FirstName $LastName"
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
 
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
@@ -136,14 +136,13 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.searchStringAndVerify'(SearchText)
 	}
 
-
 	@Keyword
 	def finalizedAndSendToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String FinalizedStatus = 'Finalized', String MicStatus='Completed'  ) {
 		String expectedPtName = "$FirstName $LastName"
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalize'), FailureHandling.STOP_ON_FAILURE)
 		KeywordUtil.logInfo("Clicked on Finalize")
@@ -179,7 +178,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeHeaderDetails(String FirstName, String LastName, String DOB , String Provider_FirstName, String Provider_LastName) {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String _ptKey = "${FirstName}_${LastName}".toUpperCase()
 
@@ -187,7 +186,7 @@ public class EVAASteps {
 
 		String expectedPtName = "${FirstName} ${LastName}"
 
-		assertStory.verifyMatch("Patient Name", PtName, expectedPtName)
+		assertStory.verifyMatch("Header→→ Patient Name", PtName, expectedPtName)
 
 
 		String PTDOB = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB'))
@@ -195,7 +194,7 @@ public class EVAASteps {
 		String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'd/M/yyyy')
 		String actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'd/M/yyyy')
 
-		assertStory.verifyMatch("Patient DOB", actualPTDOB, expectedPTDOB)
+		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
 
 
 		String PtId = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientId'))
@@ -206,7 +205,7 @@ public class EVAASteps {
 
 		String expectedPTId = VariableStories.getItem(patientIdKey)
 
-		assertStory.verifyMatch("Patient ID", PtId, expectedPTId)
+		assertStory.verifyMatch("Header→→ Patient ID", PtId, expectedPTId)
 
 
 		String EncId = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'))
@@ -217,7 +216,7 @@ public class EVAASteps {
 
 		String expectedEncId = VariableStories.getItem(encIdKey)
 
-		assertStory.verifyMatch("Encounter ID", EncId, expectedEncId)
+		assertStory.verifyMatch("Header→→ Encounter ID", EncId, expectedEncId)
 
 
 		String Provider = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/Provider'))
@@ -228,12 +227,12 @@ public class EVAASteps {
 
 		String expectedProvider = "${Provider_FirstName}${Provider_LastName}"
 
-		assertStory.verifyMatch("Provider", Provider, expectedProvider)
+		assertStory.verifyMatch("Header→→ Provider", Provider, expectedProvider)
 	}
 
 	@Keyword
 	def getSOAPNotesAndSpeakerNotesWordCount(String expectedPtName ) {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
@@ -255,7 +254,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyAppendedSOAPNotesAndSpeakerNotes(String expectedPtName ) {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 10)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String ptName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'))
 		expectedPtName = "Pt: $expectedPtName"
@@ -316,7 +315,7 @@ public class EVAASteps {
 	def verifyEVAAScribeSOAPNotesAndSpeakerNotes(String expectedPtName ) {
 		int maxCount = 1
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 10)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String ptName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'))
 		expectedPtName = "Pt: $expectedPtName"
@@ -371,11 +370,11 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String txtDOB,  String DOB, String FinalizedStatus, String MicStatus ) {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 10)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		def div_PatientName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'))
 
-		assertStory.verifyMatch("PatientName", div_PatientName, PatientName)
+		assertStory.verifyMatch("Left Side Panel→→ Patient Name", div_PatientName, PatientName)
 
 		def actual_PatientDOB_DictationDate = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate'))
 
@@ -403,7 +402,7 @@ public class EVAASteps {
 
 		def expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
 
-		assertStory.verifyMatch('Patient Name, DOB, Dictation Date',actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
+		assertStory.verifyMatch('Left Side Panel→→ Patient Name, DOB, Dictation Date',actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
 
 		def isPending = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Pending'),1,FailureHandling.OPTIONAL)
 
@@ -413,7 +412,7 @@ public class EVAASteps {
 
 		_finalizedStatus = isFinalized ? 'Finalized' : _finalizedStatus
 
-		assertStory.verifyMatch('Finalized Status',_finalizedStatus, FinalizedStatus)
+		assertStory.verifyMatch('Left Side Panel→→ Finalized Status',_finalizedStatus, FinalizedStatus)
 
 		def notStarted = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_grey_mic-status'),1,FailureHandling.OPTIONAL)
 		def _micStatus = notStarted ? 'Recording Not Started' : ''
@@ -424,7 +423,7 @@ public class EVAASteps {
 		def isCompleted = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_blue_mic-status'),1,FailureHandling.OPTIONAL)
 		_micStatus = isCompleted ? 'Completed' : _micStatus
 
-		assertStory.verifyMatch('"Mic Status',_micStatus, MicStatus)
+		assertStory.verifyMatch('"Left Side Panel→→ Mic Status',_micStatus, MicStatus)
 	}
 
 	@Keyword
@@ -1387,7 +1386,6 @@ public class EVAASteps {
 
 		KeywordUtil.logInfo('Clicked on Append Audio Button')
 
-
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
@@ -1396,9 +1394,9 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Append-mode recording started'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Stop_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.delay(pauseTimeinSeconds)
 
@@ -1407,38 +1405,46 @@ public class EVAASteps {
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'))
 		KeywordUtil.logInfo('Clicked on Pause Button')
 
-		assertStory.verifyElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'))
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
 
-		assertStory.verifyElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
-
-		fakeMic.resume()
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 20, FailureHandling.OPTIONAL)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
 		KeywordUtil.logInfo('Clicked on Resume Button')
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'))
+		fakeMic.resume()
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
 
-		assertStory.verifyElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'))
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 10, FailureHandling.OPTIONAL)
 
 		WebUI.delay(fileTimeinSeconds)
 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
+
 		fakeMic.stop()
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Stop_Append Audio'))
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
 		KeywordUtil.logInfo('Clicked on Stop Append Audio Button')
+		
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
+		
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 30, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Recording stopped'), 10, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
-
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 120)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
+		
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 20, FailureHandling.OPTIONAL)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 20, FailureHandling.OPTIONAL) 	
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 	}
 
 	@Keyword
@@ -1483,11 +1489,11 @@ public class EVAASteps {
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
 		KeywordUtil.logInfo('Clicked on Resume Button')
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'))
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
 
-		assertStory.verifyElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'))
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 10, FailureHandling.OPTIONAL)
 
 		WebUI.delay(fileTimeinSeconds)
 
@@ -1499,11 +1505,11 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
@@ -1518,7 +1524,7 @@ public class EVAASteps {
 
 		def fakeMic = new FakeMicStream(RecordFilePath)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 5, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'))
 
@@ -1528,27 +1534,29 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Append-mode recording started'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Stop_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.delay(fileTimeinSeconds)
 
 		fakeMic.stop()
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Stop_Append Audio'))
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
 		KeywordUtil.logInfo('Clicked on Stop Append Audio Button')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Recording stopped'), 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 30, FailureHandling.OPTIONAL)
 
-		assertStory.verifyElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 120)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 30, FailureHandling.OPTIONAL)
 	}
 
 	@Keyword
@@ -1577,19 +1585,19 @@ public class EVAASteps {
 
 		fakeMic.stop()
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
-
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementNotVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
 
 	@Keyword

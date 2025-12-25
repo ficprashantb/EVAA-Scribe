@@ -18,7 +18,7 @@
          <value>//*[@title = 'Append Audio' and @ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>BASIC</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>button</value>
-      <webElementGuid>c35bf69e-f65f-4099-bc30-7765582213be</webElementGuid>
+      <webElementGuid>f8d22639-a911-49eb-bd8c-dcac43b62c20</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 hover:bg-accent hover:text-accent-foreground h-5 w-5 text-gray-600</value>
-      <webElementGuid>ade07ae1-e0af-4711-bbc2-99eb3d2b5416</webElementGuid>
+      <webElementGuid>3a2ce4cd-144f-4064-9bdf-51ccebac97bf</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -49,7 +49,7 @@
       <name>title</name>
       <type>Main</type>
       <value>Append Audio</value>
-      <webElementGuid>4d2d331e-1472-4bde-8375-e58d37d860af</webElementGuid>
+      <webElementGuid>75f6b607-f9b6-4005-9b58-4256afdd29a2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>data-state</name>
       <type>Main</type>
       <value>closed</value>
-      <webElementGuid>c7dd071b-8c2a-4d1f-9910-5a5577ae035f</webElementGuid>
+      <webElementGuid>8dcfde82-e764-436e-b768-27edf4917d60</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-045f1185b71d6753e0be5092947ba041</value>
-      <webElementGuid>5c6b7803-fd36-4720-926c-2df866d464e7</webElementGuid>
+      <webElementGuid>a6fea4e9-31c8-442d-a00c-8fe5d4a6cca5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*[@title = 'Append Audio']</value>
-      <webElementGuid>67b774f7-6f9e-444a-a462-a03f08fc501f</webElementGuid>
+      <webElementGuid>804dfd0a-9ae0-4fc1-9418-bd1b04a1d310</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -81,7 +81,7 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>acabd852-2245-4fc2-94a2-9083c93d692e</webElementGuid>
+      <webElementGuid>37cf0ef3-b745-4b59-b14b-1f5891baa4d5</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -89,7 +89,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[@title = 'Append Audio']</value>
-      <webElementGuid>73a61701-3353-43a4-8f8a-73ce6723c532</webElementGuid>
+      <webElementGuid>880750d4-c7ad-4cf4-af8c-c5c041625544</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -97,6 +97,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//button[@title = 'Append Audio']</value>
-      <webElementGuid>5196c20a-f793-4915-8419-3476dab388a7</webElementGuid>
+      <webElementGuid>e65a6834-5dfa-47ad-ad1b-d65963fffc03</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

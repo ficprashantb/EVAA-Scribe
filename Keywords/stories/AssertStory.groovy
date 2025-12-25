@@ -25,11 +25,12 @@ public class AssertStory {
 
 
 	def verifyElementVisible(TestObject testObject, int timeOut = 5) {
-
+		def result = Math.round(timeOut / 2)
+		
 		def xpath = testObject.findPropertyValue('xpath')
 
 		// 1️⃣ Wait for presence first
-		boolean present = WebUI.waitForElementPresent(testObject, timeOut, FailureHandling.OPTIONAL)
+		boolean present = WebUI.waitForElementPresent(testObject, result, FailureHandling.OPTIONAL)
 
 		if (!present) {
 			KeywordUtil.markFailed("$xpath → Element NOT PRESENT in DOM")
@@ -37,7 +38,7 @@ public class AssertStory {
 		}
 
 		// 2️⃣ Wait for visibility
-		boolean visible = WebUI.waitForElementVisible(testObject, timeOut, FailureHandling.OPTIONAL)
+		boolean visible = WebUI.waitForElementVisible(testObject, result, FailureHandling.OPTIONAL)
 
 		if (visible) {
 			KeywordUtil.markPassed("$xpath → Element is VISIBLE ✔")
@@ -50,12 +51,14 @@ public class AssertStory {
 
 	def verifyElementNotVisible(TestObject testObject, int timeOut = 5) {
 
+		def result = Math.round(timeOut / 2)
+		
 		def xpath = testObject.findPropertyValue('xpath')
 
 		try {
 
-			boolean invisible = WebUI.waitForElementNotVisible(testObject, timeOut, FailureHandling.OPTIONAL)
-			boolean notPresent = WebUI.waitForElementNotPresent(testObject, timeOut, FailureHandling.OPTIONAL)
+			boolean invisible = WebUI.waitForElementNotVisible(testObject, result, FailureHandling.OPTIONAL)
+			boolean notPresent = WebUI.waitForElementNotPresent(testObject, result, FailureHandling.OPTIONAL)
 
 			if (invisible || notPresent) {
 				KeywordUtil.markPassed("$xpath → Element is not visible / not present")
