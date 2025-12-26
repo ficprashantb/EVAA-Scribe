@@ -31,7 +31,7 @@
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
       </iterationEntity>
-      <testDataId>Data Files/FilesData</testDataId>
+      <testDataId>Data Files/Local DB/FilesData</testDataId>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>

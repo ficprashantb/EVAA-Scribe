@@ -463,43 +463,54 @@ public class NavigateStory {
 
 	@Keyword
 	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
+		String pageTitle = props.pElementPage
+		String element   = props.pElement
 
-		retryAction({
+		assert pageTitle?.trim()
+		assert element?.trim()
 
-			String pageTitle = props.pElementPage
-			String element   = props.pElement
+		TestObject mainTo  = makeTO("//li[a[@title='${pageTitle}']]")
 
-			assert pageTitle?.trim()
-			assert element?.trim()
+		TestObject tabPlus  = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
+		TestObject tabMinus = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
 
-			TestObject tabTO     = makeTO("//a[@title='${pageTitle}']")
-			TestObject listTO    = makeTO("//a[@title='${pageTitle}']/following-sibling::ul")
-			TestObject childTO   = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
+		TestObject childTO = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
 
-			// Expand tab if collapsed
-			if (!isPresent(listTO)) {
-				safeClick(tabTO)
-				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
+		try {
+			// ✅ Expand tab ONLY if collapsed
+			if (!isPresent(tabMinus, 10)) {
+				KeywordUtil.logInfo("${pageTitle} tab is collapsed → expanding")
+				safeClick(tabPlus)
+				
+				KeywordUtil.logInfo("${pageTitle} tab is expanding")
+
+				WebUI.waitForElementVisible(childTO, 30)
+			} else {
+				KeywordUtil.logInfo("${pageTitle} tab already expanded")
 			}
 
-			// Click child safely
-			assert isPresent(childTO, 10) : "Element '${element}' not found under '${pageTitle}'"
+			// ✅ Ensure clickable (not just visible)
+			WebUI.waitForElementClickable(childTO, 30)
 			safeClick(childTO)
 
-			// Validate page
-			WebUI.waitForElementVisible(
-					makeTO("//span[contains(normalize-space(.),'${element}')]"),
-					20
-					)
+			KeywordUtil.logInfo("Clicked on Element ${element}")
+		} catch (e) {
+			safeClick(mainTo)
+			KeywordUtil.logInfo("Clicked on Page ${pageTitle}")
+		}
 
-			KeywordUtil.logInfo("Navigated to ${pageTitle} → ${element}")
-		})
+		// ✅ Validate navigation
+		WebUI.waitForElementVisible(makeTO("//div/span[contains(normalize-space(),'${element}')]"),30)
+
+		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'),60)
+
+		KeywordUtil.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
 
 	/* ---------------- HELPER ---------------- */
 	TestObject makeTO(String xpath) {
-			TestObject to = new TestObject()
-			to.addProperty("xpath", ConditionType.EQUALS, xpath)
-			return to
-		}
+		TestObject to = new TestObject()
+		to.addProperty("xpath", ConditionType.EQUALS, xpath)
+		return to
+	}
 }

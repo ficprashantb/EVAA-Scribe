@@ -31,7 +31,7 @@ import stories.TestObjectStory
 import stories.CommonStory as CommonStory
 import org.openqa.selenium.Keys
 import com.kms.katalon.core.webui.driver.DriverFactory
-
+import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 
 
@@ -313,6 +313,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeSOAPNotesAndSpeakerNotes(String expectedPtName ) {
+		int wordMaxCount = 1
 		int maxCount = 1
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -344,7 +345,7 @@ public class EVAASteps {
 
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
-		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, maxCount)
+		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, wordMaxCount)
 
 		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
 
@@ -353,17 +354,17 @@ public class EVAASteps {
 		//		//Speaker A
 		//		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
 		//
-		//		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, 1)
+		//		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, maxCount)
 		//
 		//		//Speaker B
 		//		int countSpeakerB = speakerNotes.findAll('Speaker B').size()
 		//
-		//		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, 1)
+		//		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, maxCount)
 
 		//Speaker Dictation Word Count
 		int wordCount = speakerNotes.trim().split('\\s+').length
 
-		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCount, maxCount)
+		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCount, wordMaxCount)
 
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 	}
@@ -430,6 +431,10 @@ public class EVAASteps {
 	def getAndStoreEVAAScribeSOAPNote() {
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
+		if (!VariableStories.elementStorage.isEmpty()) {
+			VariableStories.elementStorage.clear()
+		}
+
 		try {
 			def isPresentChiefComplaint = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),1,FailureHandling.OPTIONAL)
 			if(isPresentChiefComplaint) {
@@ -442,6 +447,8 @@ public class EVAASteps {
 				VariableStories.setItem('CHIEF_COMPLAINT', _ChiefComplaint)
 
 				KeywordUtil.logInfo('Chief Complaint element found')
+
+				VariableStories.elementStorage << 'CC'
 			}
 			else {
 				KeywordUtil.markWarning('Chief Complaint element not found')
@@ -462,6 +469,8 @@ public class EVAASteps {
 				VariableStories.setItem('HPI', _HPI)
 
 				KeywordUtil.logInfo('HPI element found')
+
+				VariableStories.elementStorage << 'HPI'
 			}
 			else {
 				KeywordUtil.markWarning('HPI element not found')
@@ -484,6 +493,8 @@ public class EVAASteps {
 				VariableStories.setItem('CURRENT_EYE_SYMPTOMS', allCurrentEyeSymptoms)
 
 				KeywordUtil.logInfo('Current Eye Symptoms element found')
+
+				VariableStories.elementStorage << 'CES'
 			}
 			else {
 				KeywordUtil.markWarning('Current Eye Symptoms element not found')
@@ -507,6 +518,8 @@ public class EVAASteps {
 				VariableStories.setItem('ALLERGIES', allAllergies)
 
 				KeywordUtil.logInfo('Allergies found')
+
+				VariableStories.elementStorage << 'ALG'
 			}
 			else {
 				KeywordUtil.markWarning('Allergies not found')
@@ -530,6 +543,8 @@ public class EVAASteps {
 				VariableStories.setItem('MEDICATION', allMedications)
 
 				KeywordUtil.logInfo('Medications found')
+
+				VariableStories.elementStorage << 'MED'
 			}
 			else {
 				KeywordUtil.markWarning('Medications not found')
@@ -553,6 +568,8 @@ public class EVAASteps {
 				VariableStories.setItem('REVIEW_OF_SYSTEMS', allReviewOfSystems)
 
 				KeywordUtil.logInfo('Review Of Systems found')
+
+				VariableStories.elementStorage << 'ROS'
 			}
 			else {
 				KeywordUtil.markWarning('Review Of Systems not found')
@@ -576,6 +593,8 @@ public class EVAASteps {
 				VariableStories.setItem('PROBLEMS', allProblems)
 
 				KeywordUtil.logInfo('Problems found')
+
+				VariableStories.elementStorage << 'PBL'
 			}
 			else {
 				KeywordUtil.markWarning('Problems not found')
@@ -599,6 +618,8 @@ public class EVAASteps {
 				VariableStories.setItem('REFRACTIONS', allRefractions)
 
 				KeywordUtil.logInfo('Refractions found')
+
+				VariableStories.elementStorage << 'RFN'
 			}
 			else {
 				KeywordUtil.markWarning('Refractions not found')
@@ -622,6 +643,8 @@ public class EVAASteps {
 				VariableStories.setItem('AUX_LAB_TESTS', allAuxiliaryLabTests)
 
 				KeywordUtil.logInfo('Auxiliary Lab Tests found')
+
+				VariableStories.elementStorage << 'ALT'
 			}
 			else {
 				KeywordUtil.markWarning('Auxiliary Lab Tests not found')
@@ -645,6 +668,8 @@ public class EVAASteps {
 				VariableStories.setItem('DIFF_DIAGNOSIS', allDifferentialDiagnosis)
 
 				KeywordUtil.logInfo('Differential Diagnosis found')
+
+				VariableStories.elementStorage << 'DD'
 			}
 			else {
 				KeywordUtil.markWarning('Differential Diagnosis not found')
@@ -668,6 +693,8 @@ public class EVAASteps {
 				VariableStories.setItem('ASSESSMENT', allAssessment)
 
 				KeywordUtil.logInfo('Assessment found')
+
+				VariableStories.elementStorage << 'ASMT'
 			}
 			else {
 				KeywordUtil.markWarning('Assessment not found')
@@ -691,6 +718,8 @@ public class EVAASteps {
 				VariableStories.setItem('PLANS', allPlans)
 
 				KeywordUtil.logInfo('Plans found')
+
+				VariableStories.elementStorage << 'PLN'
 			}
 			else {
 				KeywordUtil.markWarning('Plans not found')
@@ -714,6 +743,8 @@ public class EVAASteps {
 				VariableStories.setItem('EYE_DISEASES', allEyeDiseases)
 
 				KeywordUtil.logInfo('Eye Diseases found')
+
+				VariableStories.elementStorage << 'ED'
 			}
 			else {
 				KeywordUtil.markWarning('Eye Diseases not found')
@@ -737,6 +768,8 @@ public class EVAASteps {
 				VariableStories.setItem('MENTAL_AND_FUNCTIONAL_STATUS', allMentalStatus)
 
 				KeywordUtil.logInfo('Mental and Functional Status found')
+
+				VariableStories.elementStorage << 'MFS'
 			}
 			else {
 				KeywordUtil.markWarning('Mental and Functional Status not found')
@@ -1429,9 +1462,9 @@ public class EVAASteps {
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
 		KeywordUtil.logInfo('Clicked on Stop Append Audio Button')
-		
+
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
-		
+
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 30, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
@@ -1439,11 +1472,11 @@ public class EVAASteps {
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
-		
+
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 20, FailureHandling.OPTIONAL)
-		
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 20, FailureHandling.OPTIONAL) 	
-		
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 20, FailureHandling.OPTIONAL)
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 	}
 
@@ -1590,13 +1623,13 @@ public class EVAASteps {
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
 
@@ -1615,5 +1648,17 @@ public class EVAASteps {
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
+	}
+
+	@Keyword
+	def keyword_DirectDictationByTypingOnElements(String UploadFilePath) {
+		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+
+		def elementStorageList = VariableStories.elementStorage
+		if (elementStorageList) {
+			elementStorageList.each { name ->
+				KeywordUtil.logInfo(name)
+			}
+		}
 	}
 }
