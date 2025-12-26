@@ -37,16 +37,21 @@ KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName,LastName)
 
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByUploadingFile'(uploadFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 //Direct Dictation By Typing on Elements
 
+CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
+CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'(1)
 
+CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 //NavigateStory navigateStory = new NavigateStory()
 //

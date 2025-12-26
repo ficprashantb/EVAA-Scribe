@@ -87,9 +87,9 @@ public class VariableStories {
 
 
 	/* ---------------- IN-MEMORY STORAGE ---------------- */
- 
+
 	public static List<String> elementStorage = []
-	
+
 	private static Map<String, String> storage = [:]
 
 	static void setItemToLocal(String key = 'EVAA', Object value) {

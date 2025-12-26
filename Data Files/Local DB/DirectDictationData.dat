@@ -9,75 +9,76 @@
    <dataFileGUID>58add279-b9e2-4145-b6bf-a5c84ea8b904</dataFileGUID>
    <dataSourceUrl></dataSourceUrl>
    <driver>InternalData</driver>
+   <data>Test+ChiefComplaint Test+HPI Test+CurrentEyeSymptoms Test+Allergies Test+Medications Test+ReviewOfSystems Test+Problems Test+DifferentialDiagnosis Test+Assessment Test+Plan Test+Refractions Test+AuxiliaryLabTests Test+EyeDiseases Test+MentalAndFunctionalStatus</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
       <name>ChiefComplaint</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>1</columnIndex>
       <name>HPI</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>2</columnIndex>
       <name>CurrentEyeSymptoms</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>3</columnIndex>
       <name>Allergies</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>4</columnIndex>
       <name>Medications</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>5</columnIndex>
       <name>ReviewOfSystems</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>6</columnIndex>
       <name>Problems</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>7</columnIndex>
       <name>DifferentialDiagnosis</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>8</columnIndex>
       <name>Assessment</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>9</columnIndex>
       <name>Plan</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>10</columnIndex>
       <name>Refractions</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>11</columnIndex>
       <name>AuxiliaryLabTests</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>12</columnIndex>
       <name>EyeDiseases</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>13</columnIndex>
       <name>MentalAndFunctionalStatus</name>
-      <size>0</size>
+      <size>1</size>
    </internalDataColumns>
    <isInternalPath>false</isInternalPath>
    <query></query>

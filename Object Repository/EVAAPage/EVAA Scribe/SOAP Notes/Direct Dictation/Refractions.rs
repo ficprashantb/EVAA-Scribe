@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Eye Diseases</name>
+   <name>Refractions</name>
    <tag></tag>
-   <elementGuidId>91b8e5db-7d10-4290-88d5-509e752c5107</elementGuidId>
+   <elementGuidId>76b80dfd-49a5-4f02-b00c-c6109b7ce6b9</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -15,7 +15,7 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -32,47 +32,39 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>li</value>
-      <webElementGuid>0aad77aa-cdee-47c7-a89d-7f306b85ad84</webElementGuid>
+      <value>div</value>
+      <webElementGuid>b68f71b0-a85c-4c0d-99b5-b77f0eb74ca5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>8f971074-72b7-465b-9854-8f5a25ed598d</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>text</name>
-      <type>Main</type>
-      <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>dc28c4ff-06b7-4e33-901d-5e370a406987</webElementGuid>
+      <value>text-sm text-black</value>
+      <webElementGuid>3e2a8109-5a30-406f-b63e-fcad65f6debe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>10131b96-3050-4026-ae83-84648ca62229</webElementGuid>
+      <value>md5.v1-e841ce33537bcd0ea05caf1c32619e6a</value>
+      <webElementGuid>974a2e95-f95f-43ab-80c0-15f3270600d1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
-      <webElementGuid>608c60bd-756c-4785-9eec-a1bfba728dbc</webElementGuid>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>abf85257-216c-4e74-b423-93fbbf4924e6</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
-      <webElementGuid>1884731e-50ce-4997-820d-0ceb30bf0519</webElementGuid>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>2fa839e9-8618-4530-b5a5-24e7d6452880</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -19,17 +19,53 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-
+import org.openqa.selenium.WebElement
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 
 import groovy.json.JsonOutput as JsonOutput
 import groovy.json.JsonSlurper as JsonSlurper
-
+import stories.AssertStory
 
 public class CommonStory {
+	AssertStory assertStory = new AssertStory();
+
+	TestData dictationData
+	int row
+
+	public CommonStory(TestData _dictationData, int _row) {
+		dictationData = _dictationData
+		row = _row
+	}
 
 	static boolean isNullOrEmpty(def val) {
 		return val == null || val == '' || val == 'null'
+	}
+
+	private void verifySection(
+			String label,
+			TestObject to,
+			String variableKey,
+			String dataColumn
+	) {
+		if (!WebUI.verifyElementPresent(to, 1, FailureHandling.OPTIONAL)) {
+			KeywordUtil.markWarning("Direct Dictation ${label} not found")
+			return
+		}
+
+		List<WebElement> elements = WebUI.findWebElements(to, 10)
+		List<String> actualTexts = elements.collect { it.text.trim() }
+
+		def storedValue = VariableStories.getItem(variableKey)
+		if (CommonStory.isNullOrEmpty(storedValue)) return
+
+			List expectedList = CommonStory.getListObject(storedValue)
+
+		expectedList.eachWithIndex { expected, i ->
+			String appendText = dictationData.getValue(dataColumn, row)
+			String expectedText = "${expected} ${appendText}"
+
+			assertStory.verifyMatch("Direct Dictation→→ ${label}",actualTexts[i],expectedText					)
+		}
 	}
 
 	static def getListObject(def expectedObj) {
@@ -61,7 +97,7 @@ public class CommonStory {
 				reviewList= []
 			}
 		} catch (e) {
-			reviewList= []
+			reviewList << expectedObj 
 		}
 
 		return reviewList;
@@ -239,5 +275,56 @@ public class CommonStory {
 
 		map.find { k, v -> txt.containsIgnoreCase(k) }?.value
 	}
+
+	static Map<String, TestObject> sectionMapForDirectDictation = [
+		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint'),
+		HPI: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI'),
+		CurrentEyeSymptoms: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Current Eye Symptoms'),
+		Allergies: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Allergies'),
+		Medications: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications'),
+		ReviewOfSystems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems'),
+		Problems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems'),
+		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions'),
+		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests'),
+		DifferentialDiagnosis: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis'),
+		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment'),
+		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans'),
+		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
+		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
+	]
+
+	static Map<String, TestObject> sectionMapForSOAPNote = [
+		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),
+		HPI: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'),
+		CurrentEyeSymptoms: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),
+		Allergies: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Allergies'),
+		Medications: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Medications'),
+		ReviewOfSystems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Review Of Systems'),
+		Problems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),
+		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Refractions'),
+		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Auxiliary Lab Tests'),
+		DifferentialDiagnosis: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Differential Diagnosis'),
+		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),
+		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),
+		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases'),
+		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
+	]
+
+	static Map<String, String> sectionMapForStorageKey = [
+		ChiefComplaint: 'SOAP_NOTE_CHIEF_COMPLAINT',
+		HPI: 'SOAP_NOTE_HPI',
+		CurrentEyeSymptoms: 'SOAP_NOTE_CURRENT_EYE_SYMPTOMS',
+		Allergies:'SOAP_NOTE_ALLERGIES',
+		Medications:'SOAP_NOTE_MEDICATION',
+		ReviewOfSystems:'SOAP_NOTE_REVIEW_OF_SYSTEMS',
+		Problems: 'SOAP_NOTE_PROBLEMS',
+		Refractions: 'SOAP_NOTE_REFRACTIONS',
+		AuxiliaryLabTests:'SOAP_NOTE_AUX_LAB_TESTS',
+		DifferentialDiagnosis:'SOAP_NOTE_DIFF_DIAGNOSIS',
+		Assessment: 'SOAP_NOTE_ASSESSMENT',
+		Plan:'SOAP_NOTE_PLANS',
+		EyeDiseases:'SOAP_NOTE_EYE_DISEASES',
+		MentalAndFunctionalStatus: 'SOAP_NOTE_MENTAL_AND_FUNCTIONAL_STATUS'
+	]
 }
 

@@ -481,7 +481,7 @@ public class NavigateStory {
 			if (!isPresent(tabMinus, 10)) {
 				KeywordUtil.logInfo("${pageTitle} tab is collapsed → expanding")
 				safeClick(tabPlus)
-				
+
 				KeywordUtil.logInfo("${pageTitle} tab is expanding")
 
 				WebUI.waitForElementVisible(childTO, 30)

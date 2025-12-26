@@ -3,11 +3,11 @@
    <description></description>
    <name>Eye Diseases</name>
    <tag></tag>
-   <elementGuidId>91b8e5db-7d10-4290-88d5-509e752c5107</elementGuidId>
+   <elementGuidId>e281be11-6418-4d26-9cd5-a95138a3ee7c</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
+         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -15,7 +15,7 @@
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
+         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>li</value>
-      <webElementGuid>0aad77aa-cdee-47c7-a89d-7f306b85ad84</webElementGuid>
+      <webElementGuid>1ca918de-7f3e-4108-a0e1-b27a5ca566e3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>8f971074-72b7-465b-9854-8f5a25ed598d</webElementGuid>
+      <webElementGuid>329d59db-44de-4955-bb3a-501b40b6c759</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>dc28c4ff-06b7-4e33-901d-5e370a406987</webElementGuid>
+      <webElementGuid>f355f7ec-6c67-4317-a793-56ba7f4c2b21</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,22 +57,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>10131b96-3050-4026-ae83-84648ca62229</webElementGuid>
+      <webElementGuid>5f863c1f-310c-4fa6-b3bf-931c499f1af5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
-      <webElementGuid>608c60bd-756c-4785-9eec-a1bfba728dbc</webElementGuid>
+      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>e189d397-699a-46f4-b418-af1bd7a90575</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li</value>
-      <webElementGuid>1884731e-50ce-4997-820d-0ceb30bf0519</webElementGuid>
+      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>b5f3af42-d749-420a-8604-bfeec1f20351</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

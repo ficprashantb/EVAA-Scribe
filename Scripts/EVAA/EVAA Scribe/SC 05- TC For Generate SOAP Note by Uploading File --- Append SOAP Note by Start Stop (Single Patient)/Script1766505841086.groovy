@@ -37,7 +37,7 @@ KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName,LastName)
 
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByUploadingFile'(uploadFilePath) 
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath) 
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
@@ -47,7 +47,7 @@ def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByAppendStartStop'(FileTime, recordFilePath) 
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendStartStop'(FileTime, recordFilePath) 
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 

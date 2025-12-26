@@ -37,7 +37,7 @@ KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 

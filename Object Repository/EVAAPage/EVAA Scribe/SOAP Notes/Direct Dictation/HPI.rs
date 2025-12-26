@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>HPI</name>
+   <tag></tag>
+   <elementGuidId>47ab1741-d6fc-4f2b-91d6-6c90fbc8e783</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value>div:nth-child(2) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(//*[span[text()='HPI:']]/following-sibling::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:text=&quot;Patient reports vision has been slightly off for a while, which she attributes t&quot;i</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>span</value>
+      <webElementGuid>c00c4280-9ec8-4084-bb7b-52342da2d0a0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-sm text-black</value>
+      <webElementGuid>55896201-9a24-4557-a00a-a596555a0cdf</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>contenteditable</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>2a44c525-9e43-40ea-91e3-b8d93174eb5e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-path</name>
+      <type>Main</type>
+      <value>Subjective[1].note.History</value>
+      <webElementGuid>18d8187c-07ed-4d37-83f5-65938f326b56</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-9b818a6e64288051c0072884a1b7340c</value>
+      <webElementGuid>b7fb9644-a94e-4411-acb5-56934c0d6e83</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[(name() = 'div') and (position() = 2)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' justify-between ') and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ')]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and (@contenteditable = 'true')]</value>
+      <webElementGuid>e96d5812-b0c4-48e9-ada4-cd245113614f</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//*[span[text()='HPI:']]/following-sibling::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+      <webElementGuid>987b2c3b-0818-4095-972c-eea1e6e405df</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

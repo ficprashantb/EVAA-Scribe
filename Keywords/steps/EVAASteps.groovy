@@ -40,17 +40,16 @@ public class EVAASteps {
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory();
 
-
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
 		//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
 		//				'aria-checked')
 		//
 		//		if(chk_PatientConsentReceived == isReceived) {
-		//			KeywordUtil.markPassed("Patient Consent Received?=> $chk_PatientConsentReceived")
+		//			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
 		//		}
 		//		else {
-		//			KeywordUtil.markFailed("Patient Consent Received?=> $chk_PatientConsentReceived")
+		//			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
 		//		}
 		//
 		//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
@@ -236,7 +235,7 @@ public class EVAASteps {
 
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
-		KeywordUtil.logInfo("SOAP Notes=> $soapNotes")
+		KeywordUtil.logInfo("SOAP Notes→ $soapNotes")
 
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
@@ -244,7 +243,7 @@ public class EVAASteps {
 
 		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
 
-		KeywordUtil.logInfo("Speaker Notes=> $speakerNotes")
+		KeywordUtil.logInfo("Speaker Notes→ $speakerNotes")
 
 		//Speaker Dictation Word Count
 		int wordCount = speakerNotes.trim().split('\\s+').length
@@ -275,11 +274,11 @@ public class EVAASteps {
 
 		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
 
-		KeywordUtil.markPassed("Speaker Patient Dictation Date=> $ptDictationDt")
+		KeywordUtil.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
-		KeywordUtil.logInfo("SOAP Notes=> $soapNotes")
+		KeywordUtil.logInfo("SOAP Notes→ $soapNotes")
 
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
@@ -289,7 +288,7 @@ public class EVAASteps {
 
 		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
 
-		KeywordUtil.logInfo("Speaker Notes=> $speakerNotes")
+		KeywordUtil.logInfo("Speaker Notes→ $speakerNotes")
 
 		//Speaker A
 		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
@@ -337,11 +336,11 @@ public class EVAASteps {
 
 		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
 
-		KeywordUtil.markPassed("Speaker Patient Dictation Date=> $ptDictationDt")
+		KeywordUtil.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
-		KeywordUtil.logInfo("SOAP Notes=> $soapNotes")
+		KeywordUtil.logInfo("SOAP Notes→ $soapNotes")
 
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
@@ -349,7 +348,7 @@ public class EVAASteps {
 
 		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
 
-		KeywordUtil.logInfo("Speaker Notes=> $speakerNotes")
+		KeywordUtil.logInfo("Speaker Notes→ $speakerNotes")
 
 		//		//Speaker A
 		//		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
@@ -427,8 +426,153 @@ public class EVAASteps {
 		assertStory.verifyMatch('"Left Side Panel→→ Mic Status',_micStatus, MicStatus)
 	}
 
+	private void captureSection(
+			String sectionName,
+			String testObjectPath,
+			boolean isList = true
+	) {
+		try {
+			def isPresent = WebUI.verifyElementPresent(
+					findTestObject(testObjectPath),
+					1,
+					FailureHandling.OPTIONAL
+					)
+
+			if (!isPresent) {
+				KeywordUtil.markWarning("${sectionName} not found")
+				return
+			}
+
+			def variableKey = CommonStory.sectionMapForStorageKey.get(sectionName)
+
+			if (isList) {
+				List<WebElement> elements =
+						WebUI.findWebElements(findTestObject(testObjectPath), 10)
+
+				List<String> values = elements.collect {
+					it.getText().trim()
+				}
+
+				VariableStories.setItem(variableKey, values)
+			} else {
+				String value = WebUI.getText(findTestObject(testObjectPath)).trim()
+				VariableStories.setItem(variableKey, value)
+			}
+
+			VariableStories.elementStorage << sectionName
+			KeywordUtil.logInfo("${sectionName} captured successfully")
+		} catch (Exception e) {
+			KeywordUtil.markWarning("Error capturing ${sectionName}: ${e.message}")
+		}
+	}
+
+	@Keyword
+	def getAndStoreEVAAScribeDirectDictationNote() {
+
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+		VariableStories.elementStorage.clear()
+
+		captureSection('ChiefComplaint',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint', false)
+
+		captureSection('HPI',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI', false)
+
+		captureSection('CurrentEyeSymptoms',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Current Eye Symptoms')
+
+		captureSection('Allergies',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Allergies')
+
+		captureSection('Medications',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications')
+
+		captureSection('ReviewOfSystems',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems')
+
+		captureSection('Problems',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems')
+
+		captureSection('Refractions',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions')
+
+		captureSection('AuxiliaryLabTests',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests')
+
+		captureSection('DifferentialDiagnosis',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis')
+
+		captureSection('Assessment',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment')
+
+		captureSection('Plan',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans')
+
+		captureSection('EyeDiseases',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
+
+		captureSection('MentalAndFunctionalStatus',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
+
+		WebUI.switchToDefaultContent()
+	}
+
 	@Keyword
 	def getAndStoreEVAAScribeSOAPNote() {
+
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+		VariableStories.elementStorage.clear()
+
+		captureSection('ChiefComplaint',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint', false)
+
+		captureSection('HPI',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI', false)
+
+		captureSection('CurrentEyeSymptoms',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms')
+
+		captureSection('Allergies',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Allergies')
+
+		captureSection('Medications',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Medications')
+
+		captureSection('ReviewOfSystems',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Review Of Systems')
+
+		captureSection('Problems',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems')
+
+		captureSection('Refractions',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Refractions')
+
+		captureSection('AuxiliaryLabTests',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Auxiliary Lab Tests')
+
+		captureSection('DifferentialDiagnosis',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Differential Diagnosis')
+
+		captureSection('Assessment',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment')
+
+		captureSection('Plan',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans')
+
+		captureSection('EyeDiseases',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases')
+
+		captureSection('MentalAndFunctionalStatus',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
+
+		WebUI.switchToDefaultContent()
+	}
+
+
+	@Keyword
+	def getAndStoreEVAAScribeSOAPNoteOLD() {
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
 		if (!VariableStories.elementStorage.isEmpty()) {
@@ -442,13 +586,14 @@ public class EVAASteps {
 
 				def _ChiefComplaint = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'))
 
-				KeywordUtil.logInfo("Chief Complaint=> $_ChiefComplaint")
+				KeywordUtil.logInfo("Chief Complaint→ $_ChiefComplaint")
 
-				VariableStories.setItem('CHIEF_COMPLAINT', _ChiefComplaint)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
+				VariableStories.setItem(variableKey, _ChiefComplaint)
 
 				KeywordUtil.logInfo('Chief Complaint element found')
 
-				VariableStories.elementStorage << 'CC'
+				VariableStories.elementStorage << 'ChiefComplaint'
 			}
 			else {
 				KeywordUtil.markWarning('Chief Complaint element not found')
@@ -464,9 +609,10 @@ public class EVAASteps {
 
 				def _HPI = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'))
 
-				KeywordUtil.logInfo("HPI=> $_HPI")
+				KeywordUtil.logInfo("HPI→ $_HPI")
 
-				VariableStories.setItem('HPI', _HPI)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('HPI')
+				VariableStories.setItem(variableKey, _HPI)
 
 				KeywordUtil.logInfo('HPI element found')
 
@@ -490,11 +636,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('CURRENT_EYE_SYMPTOMS', allCurrentEyeSymptoms)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('CurrentEyeSymptoms')
+				VariableStories.setItem(variableKey, allCurrentEyeSymptoms)
 
 				KeywordUtil.logInfo('Current Eye Symptoms element found')
 
-				VariableStories.elementStorage << 'CES'
+				VariableStories.elementStorage << 'CurrentEyeSymptoms'
 			}
 			else {
 				KeywordUtil.markWarning('Current Eye Symptoms element not found')
@@ -515,11 +662,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('ALLERGIES', allAllergies)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Allergies')
+				VariableStories.setItem(variableKey, allAllergies)
 
 				KeywordUtil.logInfo('Allergies found')
 
-				VariableStories.elementStorage << 'ALG'
+				VariableStories.elementStorage << 'Allergies'
 			}
 			else {
 				KeywordUtil.markWarning('Allergies not found')
@@ -540,11 +688,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('MEDICATION', allMedications)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Medications')
+				VariableStories.setItem(variableKey, allMedications)
 
 				KeywordUtil.logInfo('Medications found')
 
-				VariableStories.elementStorage << 'MED'
+				VariableStories.elementStorage << 'Medications'
 			}
 			else {
 				KeywordUtil.markWarning('Medications not found')
@@ -565,11 +714,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('REVIEW_OF_SYSTEMS', allReviewOfSystems)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('ReviewOfSystems')
+				VariableStories.setItem(variableKey, allReviewOfSystems)
 
 				KeywordUtil.logInfo('Review Of Systems found')
 
-				VariableStories.elementStorage << 'ROS'
+				VariableStories.elementStorage << 'ReviewOfSystems'
 			}
 			else {
 				KeywordUtil.markWarning('Review Of Systems not found')
@@ -590,11 +740,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('PROBLEMS', allProblems)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Problems')
+				VariableStories.setItem(variableKey, allProblems)
 
 				KeywordUtil.logInfo('Problems found')
 
-				VariableStories.elementStorage << 'PBL'
+				VariableStories.elementStorage << 'Problems'
 			}
 			else {
 				KeywordUtil.markWarning('Problems not found')
@@ -615,11 +766,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('REFRACTIONS', allRefractions)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Refractions')
+				VariableStories.setItem(variableKey, allRefractions)
 
 				KeywordUtil.logInfo('Refractions found')
 
-				VariableStories.elementStorage << 'RFN'
+				VariableStories.elementStorage << 'Refractions'
 			}
 			else {
 				KeywordUtil.markWarning('Refractions not found')
@@ -640,11 +792,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('AUX_LAB_TESTS', allAuxiliaryLabTests)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('AuxiliaryLabTests')
+				VariableStories.setItem(variableKey, allAuxiliaryLabTests)
 
 				KeywordUtil.logInfo('Auxiliary Lab Tests found')
 
-				VariableStories.elementStorage << 'ALT'
+				VariableStories.elementStorage << 'AuxiliaryLabTests'
 			}
 			else {
 				KeywordUtil.markWarning('Auxiliary Lab Tests not found')
@@ -665,11 +818,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('DIFF_DIAGNOSIS', allDifferentialDiagnosis)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('DifferentialDiagnosis')
+				VariableStories.setItem(variableKey, allDifferentialDiagnosis)
 
 				KeywordUtil.logInfo('Differential Diagnosis found')
 
-				VariableStories.elementStorage << 'DD'
+				VariableStories.elementStorage << 'DifferentialDiagnosis'
 			}
 			else {
 				KeywordUtil.markWarning('Differential Diagnosis not found')
@@ -690,11 +844,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('ASSESSMENT', allAssessment)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Assessment')
+				VariableStories.setItem(variableKey, allAssessment)
 
 				KeywordUtil.logInfo('Assessment found')
 
-				VariableStories.elementStorage << 'ASMT'
+				VariableStories.elementStorage << 'Assessment'
 			}
 			else {
 				KeywordUtil.markWarning('Assessment not found')
@@ -715,11 +870,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('PLANS', allPlans)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('Plan')
+				VariableStories.setItem(variableKey, allPlans)
 
 				KeywordUtil.logInfo('Plans found')
 
-				VariableStories.elementStorage << 'PLN'
+				VariableStories.elementStorage << 'Plan'
 			}
 			else {
 				KeywordUtil.markWarning('Plans not found')
@@ -740,11 +896,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('EYE_DISEASES', allEyeDiseases)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('EyeDiseases')
+				VariableStories.setItem(variableKey, allEyeDiseases)
 
 				KeywordUtil.logInfo('Eye Diseases found')
 
-				VariableStories.elementStorage << 'ED'
+				VariableStories.elementStorage << 'EyeDiseases'
 			}
 			else {
 				KeywordUtil.markWarning('Eye Diseases not found')
@@ -765,11 +922,12 @@ public class EVAASteps {
 					it.getText().trim()
 				})
 
-				VariableStories.setItem('MENTAL_AND_FUNCTIONAL_STATUS', allMentalStatus)
+				def variableKey = CommonStory.sectionMapForStorageKey.get('MentalAndFunctionalStatus')
+				VariableStories.setItem(variableKey, allMentalStatus)
 
 				KeywordUtil.logInfo('Mental and Functional Status found')
 
-				VariableStories.elementStorage << 'MFS'
+				VariableStories.elementStorage << 'MentalAndFunctionalStatus'
 			}
 			else {
 				KeywordUtil.markWarning('Mental and Functional Status not found')
@@ -784,33 +942,47 @@ public class EVAASteps {
 
 	@Keyword
 	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
+		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
 		def expectedChiefComplaint = VariableStories.getItem('CHIEF_COMPLAINT')
 
-		def expectedHPI = VariableStories.getItem('HPI')
+		def variableKeyHPI = CommonStory.sectionMapForStorageKey.get('HPI')
+		def expectedHPI = VariableStories.getItem(variableKeyHPI)
 
-		def expectedCurrentEyeSymptoms = VariableStories.getItem('CURRENT_EYE_SYMPTOMS')
+		def variableKeyCES = CommonStory.sectionMapForStorageKey.get('CurrentEyeSymptoms')
+		def expectedCurrentEyeSymptoms = VariableStories.getItem(variableKeyCES)
 
-		def expectedAllergies = VariableStories.getItem('ALLERGIES')
+		def variableKeyALG = CommonStory.sectionMapForStorageKey.get('Allergies')
+		def expectedAllergies = VariableStories.getItem(variableKeyALG)
 
-		def expectedMedications = VariableStories.getItem('MEDICATION')
+		def variableKeyMED = CommonStory.sectionMapForStorageKey.get('Medications')
+		def expectedMedications = VariableStories.getItem(variableKeyMED)
 
-		def expectedReviewOfSystems = VariableStories.getItem('REVIEW_OF_SYSTEMS')
+		def variableKeyROS = CommonStory.sectionMapForStorageKey.get('ReviewOfSystems')
+		def expectedReviewOfSystems = VariableStories.getItem(variableKeyROS)
 
-		def expectedProblems = VariableStories.getItem('PROBLEMS')
+		def variableKeyPRL = CommonStory.sectionMapForStorageKey.get('Problems')
+		def expectedProblems = VariableStories.getItem(variableKeyPRL)
 
-		def expectedRefractions = VariableStories.getItem('REFRACTIONS')
+		def variableKeyREF = CommonStory.sectionMapForStorageKey.get('Refractions')
+		def expectedRefractions = VariableStories.getItem(variableKeyREF)
 
-		def expectedAuxiliaryLabTests = VariableStories.getItem('AUX_LAB_TESTS')
+		def variableKeyALT = CommonStory.sectionMapForStorageKey.get('AuxiliaryLabTests')
+		def expectedAuxiliaryLabTests = VariableStories.getItem(variableKeyALT)
 
-		def expectedDifferentialDiagnosis = VariableStories.getItem('DIFF_DIAGNOSIS')
+		def variableKeyDD = CommonStory.sectionMapForStorageKey.get('DifferentialDiagnosis')
+		def expectedDifferentialDiagnosis = VariableStories.getItem(variableKeyDD)
 
-		def expectedAssessment = VariableStories.getItem('ASSESSMENT')
+		def variableKeyASMT = CommonStory.sectionMapForStorageKey.get('Assessment')
+		def expectedAssessment = VariableStories.getItem(variableKeyASMT)
 
-		def expectedPlans = VariableStories.getItem('PLANS')
+		def variableKeyPLN = CommonStory.sectionMapForStorageKey.get('Plan')
+		def expectedPlans = VariableStories.getItem(variableKeyPLN)
 
-		def expectedEyeDiseases = VariableStories.getItem('EYE_DISEASES')
+		def variableKeyED = CommonStory.sectionMapForStorageKey.get('EyeDiseases')
+		def expectedEyeDiseases = VariableStories.getItem(variableKeyED)
 
-		def expectedMentalAndFunctionalStatus = VariableStories.getItem('MENTAL_AND_FUNCTIONAL_STATUS')
+		def variableKeyMFS = CommonStory.sectionMapForStorageKey.get('MentalAndFunctionalStatus')
+		def expectedMentalAndFunctionalStatus = VariableStories.getItem(variableKeyMFS)
 
 		if (CommonStory.isNullOrEmpty(expectedChiefComplaint) == false) {
 			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
@@ -838,7 +1010,7 @@ public class EVAASteps {
 				for (int i = 0; i < allergiesList.size(); i++) {
 					def allergies = allergiesList.get(i)
 
-					KeywordUtil.logInfo("Allergies=> $allergies")
+					KeywordUtil.logInfo("Allergies→ $allergies")
 
 					TestObject tableAllergies = testObjectStory.tableAllergies(allergies)
 
@@ -864,7 +1036,7 @@ public class EVAASteps {
 				for (int i = 0; i < medicationsList.size(); i++) {
 					def medications = medicationsList.get(i)
 
-					KeywordUtil.logInfo("Medications=> $medications")
+					KeywordUtil.logInfo("Medications→ $medications")
 
 					def result = CommonStory.getKeyValueDetails(medications, 'MED')
 
@@ -906,7 +1078,7 @@ public class EVAASteps {
 				for (int i = 0; i < problemsList.size(); i++) {
 					def expected = problemsList.get(i)
 
-					KeywordUtil.logInfo("Problems=> $expected")
+					KeywordUtil.logInfo("Problems→ $expected")
 
 					KeywordUtil.logInfo("Result Expected: $expected")
 
@@ -934,7 +1106,7 @@ public class EVAASteps {
 				for (int i = 0; i < currentEyeSymptomsList.size(); i++) {
 					def currentEyeSymptoms = currentEyeSymptomsList.get(i)
 
-					KeywordUtil.logInfo("Current Eye Symptoms=> $currentEyeSymptoms")
+					KeywordUtil.logInfo("Current Eye Symptoms→ $currentEyeSymptoms")
 
 					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
 
@@ -992,7 +1164,7 @@ public class EVAASteps {
 				for (int i = 0; i < reviewList.size(); i++) {
 					def review = reviewList.get(i)
 
-					KeywordUtil.logInfo("Review Of Systems=> $review")
+					KeywordUtil.logInfo("Review Of Systems→ $review")
 
 					def result = CommonStory.getKeyValueDetails(review, 'ROS')
 
@@ -1049,7 +1221,7 @@ public class EVAASteps {
 				for (int i = 0; i < eyeDiseaseList.size(); i++) {
 					def eyeDisease = eyeDiseaseList.get(i)
 
-					KeywordUtil.logInfo("Eye Diseasess=> $eyeDisease")
+					KeywordUtil.logInfo("Eye Diseasess→ $eyeDisease")
 
 					def result = CommonStory.getKeyValueDetails(eyeDisease, 'ED')
 
@@ -1105,7 +1277,7 @@ public class EVAASteps {
 		//				for (int i = 0; i < mentalAndFunctionalStatusList.size(); i++) {
 		//					def mentalAndFunctionalStatus = mentalAndFunctionalStatusList.get(i)
 		//
-		//					KeywordUtil.logInfo("Mental and Functional Status=> $mentalAndFunctionalStatus")
+		//					KeywordUtil.logInfo("Mental and Functional Status→ $mentalAndFunctionalStatus")
 		//
 		//					def result = CommonStory.getKeyValueDetails(mentalAndFunctionalStatus, 'MFS')
 		//
@@ -1180,7 +1352,7 @@ public class EVAASteps {
 		//				for (int i = 0; i < auxiliaryLabTestsList.size(); i++) {
 		//					def auxiliaryLabTests = auxiliaryLabTestsList.get(i)
 		//
-		//					KeywordUtil.logInfo("Auxiliary Lab Tests=> $auxiliaryLabTests")
+		//					KeywordUtil.logInfo("Auxiliary Lab Tests→ $auxiliaryLabTests")
 		//
 		//					def result = CommonStory.getKeyValueDetails(auxiliaryLabTests, 'ALT')
 		//
@@ -1260,7 +1432,7 @@ public class EVAASteps {
 				for (int i = 0; i < diffDiagnosisList.size(); i++) {
 					def diffDiagnosis = diffDiagnosisList.get(i)
 
-					KeywordUtil.logInfo("Differential Diagnosis=> $diffDiagnosis")
+					KeywordUtil.logInfo("Differential Diagnosis→ $diffDiagnosis")
 
 					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
 
@@ -1297,7 +1469,7 @@ public class EVAASteps {
 
 				def _expectedAssessment = assessmentList.join('\n')
 
-				KeywordUtil.logInfo("Assessment=> $_expectedAssessment")
+				KeywordUtil.logInfo("Assessment→ $_expectedAssessment")
 
 				def actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value',FailureHandling.OPTIONAL)
 
@@ -1319,7 +1491,7 @@ public class EVAASteps {
 
 				def _expectedPlans = plansList.join('\n')
 
-				KeywordUtil.logInfo("Plans=> $_expectedPlans")
+				KeywordUtil.logInfo("Plans→ $_expectedPlans")
 
 				def actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value',FailureHandling.OPTIONAL)
 
@@ -1402,7 +1574,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_GenerateSOAPNoteByAppendPauseResumeStop(String FileTime, String RecordFilePath) {
+	def generateSOAPNoteByAppendPauseResumeStop(String FileTime, String RecordFilePath) {
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
 		int pauseTimeinSeconds = 10
@@ -1481,7 +1653,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_GenerateSOAPNoteByRecordPauseResumeStop(String FileTime, String RecordFilePath) {
+	def generateSOAPNoteByRecordPauseResumeStop(String FileTime, String RecordFilePath) {
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
 		int pauseTimeinSeconds = 10
@@ -1550,7 +1722,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_GenerateSOAPNoteByAppendStartStop(String FileTime, String RecordFilePath) {
+	def generateSOAPNoteByAppendStartStop(String FileTime, String RecordFilePath) {
 		def fileTimeinSeconds = Integer.valueOf(FileTime)
 
 		KeywordUtil.logInfo("File Path $RecordFilePath")
@@ -1593,7 +1765,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_GenerateSOAPNoteByRecordStartStop(String FileTime, String UploadFilePath) {
+	def generateSOAPNoteByRecordStartStop(String FileTime, String UploadFilePath) {
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
 		KeywordUtil.logInfo("File Path $UploadFilePath")
@@ -1634,7 +1806,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_GenerateSOAPNoteByUploadingFile(String UploadFilePath) {
+	def generateSOAPNoteByUploadingFile(String UploadFilePath) {
 		KeywordUtil.logInfo("File Path $UploadFilePath")
 
 		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
@@ -1651,14 +1823,344 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def keyword_DirectDictationByTypingOnElements(String UploadFilePath) {
+	def directDictationByTypingOnElements(int index = 1) {
 		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
 
-		def elementStorageList = VariableStories.elementStorage
-		if (elementStorageList) {
-			elementStorageList.each { name ->
-				KeywordUtil.logInfo(name)
+		int rowCount = dictationData.getRowNumbers()
+
+		if (rowCount == 0) {
+			KeywordUtil.markFailed("❌ DirectDictationData has NO rows")
+			return
+		}
+
+		int row = 1   // first row
+
+		if (!VariableStories.elementStorage.isEmpty()) {
+			def elementStorageList = VariableStories.elementStorage
+
+			try {
+				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+				for (String name : elementStorageList) {
+					KeywordUtil.logInfo("Element from Storage → ${name}")
+
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
+
+					if (!sectionTO) {
+						KeywordUtil.markWarning("No TestObject mapped for → ${name}")
+						return
+					}
+
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+
+					elements.each { WebElement el ->
+						KeywordUtil.logInfo("${name} value → ${el.text}")
+
+						String textToAppend = dictationData.getValue(name, row)
+
+						el.click()
+						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
+						el.sendKeys(" ${textToAppend}")
+					}
+				}
+			} catch (e) {
+				e.printStackTrace()
+			}finally		{
+				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+
+				// Switch back
+				WebUI.switchToDefaultContent()
 			}
 		}
+	}
+
+	@Keyword
+	def verifyStoredDirectDictationOnEVAAScribe(int index = 1) {
+
+		if (VariableStories.elementStorage.isEmpty()) {
+			KeywordUtil.markWarning("No stored elements for verification")
+			return
+		}
+
+		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+
+		int row = 1   // first row
+
+		int rowCount = dictationData.getRowNumbers()
+		if (index < 1 || index > rowCount) {
+			KeywordUtil.markFailed("Invalid row index ${index}")
+			return
+		}
+
+		CommonStory commonStory = new CommonStory(dictationData,index);
+
+		if (!VariableStories.elementStorage.isEmpty()) {
+			WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+			try {
+				def elementStorageList = VariableStories.elementStorage
+				for (String name : elementStorageList) {
+					KeywordUtil.logInfo("Element from Storage → ${name}")
+
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
+
+					if (!sectionTO) {
+						KeywordUtil.markWarning("No TestObject mapped for → ${name}")
+						return
+					}
+
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+					List<String> actualTexts = elements.collect { it.text.trim() }
+
+					def variableKey = CommonStory.sectionMapForStorageKey.get(name)
+
+					def storedValue = VariableStories.getItem(variableKey)
+					if (CommonStory.isNullOrEmpty(storedValue)) return
+
+						List expectedList = CommonStory.getListObject(storedValue)
+
+					expectedList.eachWithIndex { expected, i ->
+						String appendText = dictationData.getValue(name, row)
+						String expectedText = "${expected} ${appendText}"
+
+						assertStory.verifyMatch("Direct Dictation→→ ${name}",actualTexts[i],expectedText)
+					}
+				}
+			} catch (e) {
+				e.printStackTrace()
+			}finally		{
+				// Switch back
+				WebUI.switchToDefaultContent()
+			}
+		}
+	}
+
+	@Keyword
+	def OLDverifyStoredDirectDictationOnEVAAScribe(int index = 1) {
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+		if (!VariableStories.elementStorage.isEmpty()) {
+			return
+		}
+
+		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+
+		int row = index   // first row
+
+		try {
+			def isPresentChiefComplaint = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),1,FailureHandling.OPTIONAL)
+			if(isPresentChiefComplaint) {
+				// ChiefComplaint
+
+				KeywordUtil.logInfo('Chief Complaint element found')
+
+				def _ChiefComplaint = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'))
+
+				KeywordUtil.logInfo("Direct Dictation→→ Chief Complaint→ $_ChiefComplaint")
+
+				def chiefComplaint = VariableStories.getItem('CHIEF_COMPLAINT')
+
+				String textToAppend = dictationData.getValue('ChiefComplaint', row)
+
+				String expectedText = "${chiefComplaint} ${textToAppend}"
+
+				assertStory.verifyMatch("Direct Dictation→→ Chief Complaint", _ChiefComplaint, expectedText)
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation Chief Complaint element not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+		try {
+			def isPresentHPI =	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'),1,FailureHandling.OPTIONAL)
+			if(isPresentHPI) {
+				// HPI
+
+				KeywordUtil.logInfo('HPI element found')
+
+				def _HPI = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'))
+
+				KeywordUtil.logInfo("Direct Dictation→→ HPI→ $_HPI")
+
+				def hpi =  VariableStories.getItem('HPI')
+
+				String textToAppend = dictationData.getValue('HPI', row)
+
+				String expectedText = "${hpi} ${textToAppend}"
+
+				assertStory.verifyMatch("Direct Dictation→→ Chief Complaint", hpi, expectedText)
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation HPI element not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+		try {
+			def isPresentCurrentEyeSymptoms=	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),1,FailureHandling.OPTIONAL)
+			if(isPresentCurrentEyeSymptoms) {
+				// Current Eye Symptoms
+
+				KeywordUtil.logInfo('Current Eye Symptoms element found')
+
+				List<WebElement> _CurrentEyeSymptoms = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),
+						10)
+
+				List<String> allCurrentEyeSymptoms = _CurrentEyeSymptoms.collect({
+					it.getText().trim()
+				})
+
+				def expectedCurrentEyeSymptoms = VariableStories.getItem('CURRENT_EYE_SYMPTOMS')
+
+				if (CommonStory.isNullOrEmpty(expectedCurrentEyeSymptoms) == false) {
+
+					List currentEyeSymptomsList = CommonStory.getListObject(expectedCurrentEyeSymptoms)
+
+					if (currentEyeSymptomsList.size() > 0) {
+						for (int i = 0; i < currentEyeSymptomsList.size(); i++) {
+							def currentEyeSymptoms = currentEyeSymptomsList.get(i)
+
+							String textToAppend = dictationData.getValue('CurrentEyeSymptoms', row)
+
+							String exprectedText = "${currentEyeSymptoms} ${textToAppend}"
+
+							assertStory.verifyMatch("Direct Dictation→→ Current Eye Symptoms", allCurrentEyeSymptoms[i], exprectedText)
+						}
+					}
+				}
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation Current Eye Symptoms element not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+
+		try {
+			def isPresentProblems =	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),1,FailureHandling.OPTIONAL)
+			if(isPresentProblems) {
+				// Problems
+
+				KeywordUtil.logInfo('Problems found')
+
+				List<WebElement> _Problems = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),
+						10)
+
+				List<String> allProblems = _Problems.collect({
+					it.getText().trim()
+				})
+
+				def expectedProblems = VariableStories.getItem('PROBLEMS')
+
+				if (CommonStory.isNullOrEmpty(expectedProblems) == false) {
+
+					List problemsList = CommonStory.getListObject(expectedProblems)
+
+					if (problemsList.size() > 0) {
+						for (int i = 0; i < problemsList.size(); i++) {
+							def problem = problemsList.get(i)
+
+							String textToAppend = dictationData.getValue('Problems', row)
+
+							String exprectedText = "${problem} ${textToAppend}"
+
+							assertStory.verifyMatch("Direct Dictation→→ Problems", allProblems[i], exprectedText)
+						}
+					}
+				}
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation Problems not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+		try {
+			def isPresentAssessment = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),1,FailureHandling.OPTIONAL)
+			if(isPresentAssessment) {
+				// Assessment
+
+				KeywordUtil.logInfo('Assessment found')
+
+				List<WebElement> _Assessment = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),
+						10)
+
+				List<String> allAssessment = _Assessment.collect({
+					it.getText().trim()
+				})
+
+				def expectedAssessment = VariableStories.setItem('ASSESSMENT')
+
+				if (CommonStory.isNullOrEmpty(expectedAssessment) == false) {
+
+					List assessmentList = CommonStory.getListObject(expectedAssessment)
+
+					if (assessmentList.size() > 0) {
+						for (int i = 0; i < assessmentList.size(); i++) {
+							def assessment = assessmentList.get(i)
+
+							String textToAppend = dictationData.getValue('Assessment', row)
+
+							String exprectedText = "${assessment} ${textToAppend}"
+
+							assertStory.verifyMatch("Direct Dictation→→ Assessment", allAssessment[i], exprectedText)
+						}
+					}
+				}
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation Assessment not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+		try {
+			def isPresentPlans = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),1,FailureHandling.OPTIONAL)
+			if(isPresentPlans) {
+				// Plans
+
+				KeywordUtil.logInfo('Plans found')
+
+				List<WebElement> _Plans = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),
+						10)
+
+				List<String> allPlans = _Plans.collect({
+					it.getText().trim()
+				})
+
+				def expectedPlans = VariableStories.getItem('PLANS')
+
+				if (CommonStory.isNullOrEmpty(expectedPlans) == false) {
+
+					List plansList = CommonStory.getListObject(expectedPlans)
+
+					if (plansList.size() > 0) {
+						for (int i = 0; i < plansList.size(); i++) {
+							def plan = plansList.get(i)
+
+							String textToAppend = dictationData.getValue('Plan', row)
+
+							String exprectedText = "${plan} ${textToAppend}"
+
+							assertStory.verifyMatch("Direct Dictation→→ Plans", allPlans[i], exprectedText)
+						}
+					}
+				}
+			}
+			else {
+				KeywordUtil.markWarning('Direct Dictation Plans not found')
+			}
+		} catch (e) {
+			e.printStackTrace()
+		}
+
+		// Switch back
+		WebUI.switchToDefaultContent()
 	}
 }

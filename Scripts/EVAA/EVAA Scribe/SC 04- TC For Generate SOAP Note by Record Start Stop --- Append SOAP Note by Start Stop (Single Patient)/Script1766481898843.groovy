@@ -41,12 +41,12 @@ KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
  
 //*********************************** Append Audio **************************************************************//
-CustomKeywords.'steps.EVAASteps.keyword_GenerateSOAPNoteByAppendStartStop'(FileTime, recordFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendStartStop'(FileTime, recordFilePath)
   
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
