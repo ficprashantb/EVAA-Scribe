@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>SC 02- TC For Generate SOAP Note by Record Stop (Single Patient)</name>
+   <name>SC 08- TC For Generate SOAP Note by Uploading File --- Direct Dictation By Typing (Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>26be9c45-b9a2-425d-9d35-999b102d6e8d</testCaseGuid>
+   <testCaseGuid>86afe525-3c81-441c-a93d-bce97b626ba3</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>b497e13a-fe10-4516-98ef-da8c957d72ce</id>
+      <id>552021ab-011a-4c56-8969-314255a80fa4</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -17,7 +17,7 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>4e619970-b5c5-4938-85ff-5abc7a6df5aa</id>
+      <id>a25bfbd0-4df1-4b43-a2db-574815673f04</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -26,7 +26,7 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>cf5fb19a-ccf1-4ad9-b728-82513c2a87fd</id>
+      <id>c731ff1e-b16c-4d39-bc07-43907086593f</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -35,7 +35,16 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>7f159663-b76e-4311-b1e9-05da068b46c9</id>
+      <id>7e29b842-acc6-4ad4-82fc-866723293cf5</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/Local DB/DirectDictationData</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>75e1b2ef-7a69-499b-885b-ecc33ece9717</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -43,145 +52,132 @@
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>cf5fb19a-ccf1-4ad9-b728-82513c2a87fd</testDataLinkId>
+      <testDataLinkId>c731ff1e-b16c-4d39-bc07-43907086593f</testDataLinkId>
       <type>DATA_COLUMN</type>
-      <value>RecordFilePath</value>
-      <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
+      <value>UploadFilePath</value>
+      <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>cf5fb19a-ccf1-4ad9-b728-82513c2a87fd</testDataLinkId>
-      <type>DATA_COLUMN</type>
-      <value>FileTime</value>
-      <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId>7f159663-b76e-4311-b1e9-05da068b46c9</testDataLinkId>
+      <testDataLinkId>75e1b2ef-7a69-499b-885b-ecc33ece9717</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
-      <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+      <variableId>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>7f159663-b76e-4311-b1e9-05da068b46c9</testDataLinkId>
+      <testDataLinkId>75e1b2ef-7a69-499b-885b-ecc33ece9717</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
-      <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+      <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b497e13a-fe10-4516-98ef-da8c957d72ce</testDataLinkId>
+      <testDataLinkId>552021ab-011a-4c56-8969-314255a80fa4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
-      <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
+      <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b497e13a-fe10-4516-98ef-da8c957d72ce</testDataLinkId>
+      <testDataLinkId>552021ab-011a-4c56-8969-314255a80fa4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
-      <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
+      <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b497e13a-fe10-4516-98ef-da8c957d72ce</testDataLinkId>
+      <testDataLinkId>552021ab-011a-4c56-8969-314255a80fa4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
-      <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
+      <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b497e13a-fe10-4516-98ef-da8c957d72ce</testDataLinkId>
+      <testDataLinkId>552021ab-011a-4c56-8969-314255a80fa4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
-      <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
+      <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>7f159663-b76e-4311-b1e9-05da068b46c9</testDataLinkId>
+      <testDataLinkId>75e1b2ef-7a69-499b-885b-ecc33ece9717</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
-      <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+      <variableId>c9dcceed-7893-4236-9a43-38f17b657049</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>7f159663-b76e-4311-b1e9-05da068b46c9</testDataLinkId>
+      <testDataLinkId>75e1b2ef-7a69-499b-885b-ecc33ece9717</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
-      <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+      <variableId>fd026829-ec0e-4055-aa8d-3e1b62c87895</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>7f159663-b76e-4311-b1e9-05da068b46c9</testDataLinkId>
+      <testDataLinkId>75e1b2ef-7a69-499b-885b-ecc33ece9717</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
-      <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
+      <variableId>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</variableId>
    </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</id>
+      <id>5de35d73-1e8e-401f-b428-8165348cf514</id>
       <masked>false</masked>
-      <name>RecordFilePath</name>
-   </variable>
-   <variable>
-      <defaultValue>35</defaultValue>
-      <description></description>
-      <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
-      <masked>false</masked>
-      <name>FileTime</name>
+      <name>UploadFilePath</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</id>
+      <id>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</id>
       <masked>false</masked>
       <name>FirstName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</id>
+      <id>23208bb3-cc4f-4f78-aec2-78a02b69e679</id>
       <masked>false</masked>
       <name>LastName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>37f750fe-f9dd-47de-8602-430d2f335856</id>
+      <id>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</id>
       <masked>false</masked>
       <name>EncounterType</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>8206d901-ab87-4be2-9861-b05e82cf9a45</id>
+      <id>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</id>
       <masked>false</masked>
       <name>ExamLocation</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>cbff29aa-5450-4b44-a625-e56ff906be47</id>
+      <id>e0a099d3-98b6-4f01-a48e-10755da98696</id>
       <masked>false</masked>
       <name>Provider</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>3f2d0945-f85a-4246-b528-10e8ed9c420e</id>
+      <id>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</id>
       <masked>false</masked>
       <name>Technician</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>2d22202a-9b4f-48d0-82cb-40becb36f1f2</id>
+      <id>c9dcceed-7893-4236-9a43-38f17b657049</id>
       <masked>false</masked>
       <name>Provider_FirstName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>68f21ce3-24d1-410f-a076-50b606bc5ea5</id>
+      <id>fd026829-ec0e-4055-aa8d-3e1b62c87895</id>
       <masked>false</masked>
       <name>Provider_LastName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
-      <id>a803f8ed-a09e-4d91-8fa4-df2db6f11855</id>
+      <id>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</id>
       <masked>false</masked>
       <name>DOB</name>
    </variable>

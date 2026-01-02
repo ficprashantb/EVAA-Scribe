@@ -7,11 +7,15 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,'.note.Complaint')])[1]</value>
+         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,'.note.Complaint')])[1]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>div:nth-child(1) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,'.note.Complaint')])[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>0c36025e-82b5-4bf5-a919-795df03b85ac</webElementGuid>
+      <webElementGuid>1a27898b-2c32-4d01-8c29-25d66613b57f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>1d4e7d41-441e-4952-a4b1-84869b05f0d5</webElementGuid>
+      <webElementGuid>3e21e26c-bf75-4aa5-aaae-4224fbb9602e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>c17adbb6-990e-4679-8a9e-1b32a79b829d</webElementGuid>
+      <webElementGuid>1dc6a4d7-bad1-42a7-b685-1a4335d3f6b9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +57,7 @@
       <name>data-path</name>
       <type>Main</type>
       <value>Subjective[0].note.Complaint</value>
-      <webElementGuid>0fe0b7ed-2882-410b-ae83-5fd173fe886b</webElementGuid>
+      <webElementGuid>a6187274-f801-4390-9e5a-e0e84282f305</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,22 +65,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-d78abe65dcd700428b444e3bd58d2498</value>
-      <webElementGuid>e5ac32cd-4aa7-403b-ad9b-aebe92611d05</webElementGuid>
+      <webElementGuid>e06f91f1-591f-46dc-a600-e34bf92dd4fd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[(name() = 'div') and (position() = 1)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' justify-between ') and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ')]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and (@contenteditable = 'true')]</value>
-      <webElementGuid>2a9a8bb9-d874-4be2-856d-7756d42a8a1f</webElementGuid>
+      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,'.note.Complaint')])[1]</value>
+      <webElementGuid>1213e0c8-045e-455b-8b32-ecefc0d0ca69</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
-      <webElementGuid>c5f1fcab-b15e-4d12-a8e4-086f9147076d</webElementGuid>
+      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,'.note.Complaint')])[1]</value>
+      <webElementGuid>38241f3d-c789-4730-99b9-0d13dfe338f8</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

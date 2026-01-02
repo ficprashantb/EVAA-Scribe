@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_Start_Dictation</name>
+   <tag></tag>
+   <elementGuidId>20d403d9-ca5a-410d-a329-77ed473b6c8a</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Start Dictation&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Start Dictation&quot;]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>acb9cad5-9d46-434c-b791-87432ea65a29</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/Evaa-Mike.svg</value>
+      <webElementGuid>f15578d7-9b55-4570-b00c-1a8fe8b05c61</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>maximeyes-logo</value>
+      <webElementGuid>22add269-744c-45f7-bf0c-799bd2c307c0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>w-4 h-4</value>
+      <webElementGuid>fa65d740-3e8e-4d16-89b5-057e95140542</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-c8f53b12b9608ce24f3f03b1a319280e</value>
+      <webElementGuid>d18c2476-39d9-43fb-ab8b-3f3d5e40840e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Start Dictation&quot;]</value>
+      <webElementGuid>ead21aaa-31bc-4d5d-bdce-2527b30966f7</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Start Dictation&quot;]</value>
+      <webElementGuid>fabd850d-af56-40a8-85ff-62f9fd83265e</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Start Dictation&quot;]</value>
+      <webElementGuid>730543c3-b285-4548-ac18-b6b2727a9d22</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

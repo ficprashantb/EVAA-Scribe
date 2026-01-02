@@ -97,7 +97,7 @@ public class CommonStory {
 				reviewList= []
 			}
 		} catch (e) {
-			reviewList << expectedObj 
+			reviewList << expectedObj
 		}
 
 		return reviewList;
@@ -325,6 +325,23 @@ public class CommonStory {
 		Plan:'SOAP_NOTE_PLANS',
 		EyeDiseases:'SOAP_NOTE_EYE_DISEASES',
 		MentalAndFunctionalStatus: 'SOAP_NOTE_MENTAL_AND_FUNCTIONAL_STATUS'
+	]
+
+	static Map<String, String> moduleMapForDirectDictation = [
+		ChiefComplaint: 'ChiefComplaint:',
+		HPI: 'HPI:',
+		CurrentEyeSymptoms: 'Current Eye Symptoms:',
+		Allergies: 'Allergies:',
+		Medications: 'Medications:',
+		ReviewOfSystems: 'Review Of Systems - Brief:',
+		Problems: 'Problems:',
+		Refractions: 'Refractions:',
+		AuxiliaryLabTests: 'Auxiliary/Lab Tests:',
+		DifferentialDiagnosis: 'Differential Diagnosis:',
+		Assessment: 'Assessment:',
+		Plan: 'Plan:',
+		EyeDiseases: 'Eye Diseases:',
+		MentalAndFunctionalStatus: 'Mental and Functional Status:',
 	]
 }
 

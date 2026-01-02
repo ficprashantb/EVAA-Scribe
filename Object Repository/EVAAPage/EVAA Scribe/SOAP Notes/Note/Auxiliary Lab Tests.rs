@@ -7,7 +7,7 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]//div[span[@contenteditable]]</value>
+         <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div/descendant-or-self::div[contains(@class,&quot;text-sm text-black&quot;)]//div[span[@contenteditable]]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -15,7 +15,7 @@
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]//div[span[@contenteditable]]</value>
+         <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div/descendant-or-self::div[contains(@class,&quot;text-sm text-black&quot;)]//div[span[@contenteditable]]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>cef8328e-9fac-460c-92ea-f26aa00bf86c</webElementGuid>
+      <webElementGuid>1c47ae8f-80dd-41ac-92ed-4d678fd89a95</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>5e8104e1-0c71-4413-8438-883940f377d0</webElementGuid>
+      <webElementGuid>74ec0ab7-f8a2-4442-be43-4774f171929e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>text</name>
       <type>Main</type>
       <value> Test  Info:  Category: Screening VF</value>
-      <webElementGuid>3a4aab2c-5a8f-4540-8875-48d6938cfc3d</webElementGuid>
+      <webElementGuid>76c9c5dc-ef8c-42eb-9246-42e9ec3e247f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,22 +57,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-35880378e49bb2ddb718c21a7cf9a5f9</value>
-      <webElementGuid>ee9d4cad-6473-4f9e-b242-6deb6d280de6</webElementGuid>
+      <webElementGuid>796db1e6-f3ba-4ef2-ac4d-c38126985a6d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]//div[span[@contenteditable]]</value>
-      <webElementGuid>37be319e-c6d8-43c2-8e42-4805e2a1a6e3</webElementGuid>
+      <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div/descendant-or-self::div[contains(@class,&quot;text-sm text-black&quot;)]//div[span[@contenteditable]]</value>
+      <webElementGuid>53c3062a-8ea6-43e4-a01e-e645db3ce7c1</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]//div[span[@contenteditable]]</value>
-      <webElementGuid>1db050f4-58f4-4422-b3c7-9e69a0318ed9</webElementGuid>
+      <value>//div[*/span[text()='Auxiliary/Lab Tests:']]/following-sibling::div/descendant-or-self::div[contains(@class,&quot;text-sm text-black&quot;)]//div[span[@contenteditable]]</value>
+      <webElementGuid>2760f61f-8341-4b80-afea-916d7ac5386b</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

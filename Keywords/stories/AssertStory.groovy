@@ -26,7 +26,7 @@ public class AssertStory {
 
 	def verifyElementVisible(TestObject testObject, int timeOut = 5) {
 		def result = Math.round(timeOut / 2)
-		
+
 		def xpath = testObject.findPropertyValue('xpath')
 
 		// 1️⃣ Wait for presence first
@@ -52,7 +52,7 @@ public class AssertStory {
 	def verifyElementNotVisible(TestObject testObject, int timeOut = 5) {
 
 		def result = Math.round(timeOut / 2)
-		
+
 		def xpath = testObject.findPropertyValue('xpath')
 
 		try {
@@ -109,6 +109,23 @@ public class AssertStory {
 		try {
 			WebUI.verifyGreaterThanOrEqual(a, e,FailureHandling.CONTINUE_ON_FAILURE)
 			KeywordUtil.markPassed("${text} → Passed: ${a} >= ${e}")
+		} catch (Exception err) {
+			KeywordUtil.markFailed("${text} → FAILED: ${a} < ${e}")
+			throw err
+		}
+	}
+
+	def verifyGreaterThan(String text, def actual, def expected) {
+
+		// normalise values to numbers
+		def a = actual instanceof Number ? actual : actual.toString().toBigDecimal()
+		def e = expected instanceof Number ? expected : expected.toString().toBigDecimal()
+
+		KeywordUtil.logInfo("${text} → Actual: ${a} | Expected >= ${e}")
+
+		try {
+			WebUI.verifyGreaterThan(a, e,FailureHandling.CONTINUE_ON_FAILURE)
+			KeywordUtil.markPassed("${text} → Passed: ${a} > ${e}")
 		} catch (Exception err) {
 			KeywordUtil.markFailed("${text} → FAILED: ${a} < ${e}")
 			throw err

@@ -21,7 +21,7 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_07'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_08'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -35,27 +35,27 @@ def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName,LastName)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-//*********************************** Append Audio **************************************************************//
+//Direct Dictation By Record Start Stop
+CustomKeywords.'steps.EVAASteps.directDictationByRecordStartStopOnElements'(uploadFilePath)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
+CustomKeywords.'steps.EVAASteps.verifyRecordedDirectDictationAddedOnEVAAScribe'() 
 
-KeywordUtil.logInfo("Record File Path=> $recordFilePath")
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendPauseResumeStop'(FileTime, recordFilePath)
- 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
-
-
-
-
-
+//NavigateStory navigateStory = new NavigateStory()
+//
+//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
+//
+//String encounterId = VariableStories.getItemFromDB("ENCOUNTER_ID")
+//KeywordUtil.logInfo("Encounter Id=> $encounterId")
+//
+//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
+//CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

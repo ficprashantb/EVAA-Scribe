@@ -6,12 +6,16 @@
    <elementGuidId>6af12d2f-0dbc-4633-a84c-f82eb419d725</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>XPATH</key>
+         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>div:nth-child(1) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,'.note.Complaint')])[1]</value>
+         <key>BASIC</key>
+         <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>b64a2b06-15bf-46d2-8a73-6be45621fe8e</webElementGuid>
+      <webElementGuid>d22f7187-0468-4071-9d23-2bc6a1873674</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>4d5b0ef8-6726-4089-b402-b4716f730095</webElementGuid>
+      <webElementGuid>24daea74-b94b-4fa7-818d-deb90f46772f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>4162a19d-18e7-4a23-85e6-11f19f0eb1d9</webElementGuid>
+      <webElementGuid>eb0f712c-f60f-4de4-a49a-ee3654db7d0e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +57,7 @@
       <name>data-path</name>
       <type>Main</type>
       <value>Subjective[0].note.Complaint</value>
-      <webElementGuid>b7679b9b-efd8-487a-a0e7-3dc708c00e56</webElementGuid>
+      <webElementGuid>19db53cd-ff40-4a5d-8114-2a778df490e4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,22 +65,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-d78abe65dcd700428b444e3bd58d2498</value>
-      <webElementGuid>670b0885-49f6-42b7-b8e4-2595a5c3d83b</webElementGuid>
+      <webElementGuid>82640c29-6046-41ea-af33-fd9c32f1ad96</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[(name() = 'div') and (position() = 1)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' justify-between ') and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ')]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and (@contenteditable = 'true')]</value>
-      <webElementGuid>948e224f-a4be-46d7-ae50-379725a10b48</webElementGuid>
+      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
+      <webElementGuid>349b7c5d-e556-4a47-bcb1-85fa657fa384</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
-      <webElementGuid>32be83e8-faee-4b08-9cba-a614deaa3074</webElementGuid>
+      <value>(//*[span[text()='ChiefComplaint:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.Complaint&quot;)])[1]</value>
+      <webElementGuid>476cba12-ff13-458d-8240-9a2a8fb6a8c6</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_Copy_Note</name>
+   <tag></tag>
+   <elementGuidId>65b2a9e4-5a32-4336-80b1-57ca04245ca0</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>395a1fa2-47c6-4eaf-a22a-c6382499f583</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/Evaa-Mike.svg</value>
+      <webElementGuid>711ed07e-137c-41e6-86c4-359214865dc0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>maximeyes-logo</value>
+      <webElementGuid>cae8ddb1-36d7-42df-aee8-1553198cff8e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>w-4 h-4</value>
+      <webElementGuid>0cb8fe87-d948-4c49-a6c4-f27c94539636</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-c8f53b12b9608ce24f3f03b1a319280e</value>
+      <webElementGuid>89a79a76-8f31-406a-add0-9880be72af34</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>cfd67599-9047-40fd-9729-5b5fbd076919</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>c3e541cd-b675-4e68-9315-85ca77b14e19</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>6761378a-3d59-467e-92fb-f260c460c70e</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

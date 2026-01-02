@@ -6,16 +6,16 @@
    <elementGuidId>ebe9eadd-b8b5-47bc-a131-a48215f08c5b</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2][normalize-space(text())='${allergies}']</value>
-      </entry>
-      <entry>
          <key>XPATH</key>
-         <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2][normalize-space(text())='${allergies}']</value>
+         <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>.allergyWhiteSpace .dxgvCSD</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>eacab35c-e243-4def-b81d-372be01780be</webElementGuid>
+      <webElementGuid>c2ac0dc1-fef2-47b2-adf4-dc02056aa7e0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>dxgvCSD</value>
-      <webElementGuid>12192d9b-26e7-4456-9917-3d8939b252b6</webElementGuid>
+      <webElementGuid>3192a2a0-885b-4062-b907-2f89005ba4cb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +61,7 @@
 				
 			
 		</value>
-      <webElementGuid>3a609f2b-1e5f-4956-bb9c-ceb1701e687c</webElementGuid>
+      <webElementGuid>6b07fa5b-04c6-4afa-8aa7-d1b2386bf465</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,23 +69,23 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-5e6bf00c660b16396de39e21d7e0ab2e</value>
-      <webElementGuid>fa528afd-f5df-4b70-8d1b-d6f36cecb536</webElementGuid>
+      <webElementGuid>dfc67a89-8cc2-4a8e-a6be-2ed584cefbfe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2][normalize-space(text())='${allergies}']</value>
-      <webElementGuid>570e8016-3ec5-475f-a1e3-34df4447fd83</webElementGuid>
+      <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2]</value>
+      <webElementGuid>430626f4-d516-485f-9828-24cd2413f19b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2][normalize-space(text())='${allergies}']</value>
-      <webElementGuid>a513a1b4-c702-47e2-98c4-120c2c36a49e</webElementGuid>
+      <value>//table[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;allergyHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[2]</value>
+      <webElementGuid>5b8598a6-0375-40f2-92c6-499ee216742e</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -117,6 +117,6 @@
 				
 			
 		')]</value>
-      <webElementGuid>96a5d146-b939-4bd0-ab3b-109fa4306759</webElementGuid>
+      <webElementGuid>d6775629-4ec9-464b-9b01-1e76904242f1</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

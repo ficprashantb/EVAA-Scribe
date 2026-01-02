@@ -7,11 +7,15 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//*[span[text()='HPI:']]/following-sibling::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+         <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>div:nth-child(2) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>99832ec7-1b0d-4e62-bef1-f6f3b8d1764f</webElementGuid>
+      <webElementGuid>61786021-0313-4c8c-93e6-2cac4e356d9e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>4afbfdd3-8fb6-4bce-b5bd-8c1d2032e4fb</webElementGuid>
+      <webElementGuid>654b281d-36df-441f-b2de-498b340a0406</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>4f2b2bd3-702b-4689-93b8-dae0dab40217</webElementGuid>
+      <webElementGuid>64b3694c-1bc8-4d89-965f-dff420e876d7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +57,7 @@
       <name>data-path</name>
       <type>Main</type>
       <value>Subjective[1].note.History</value>
-      <webElementGuid>46ff040e-2da2-4f8e-9201-478b91e1248d</webElementGuid>
+      <webElementGuid>7eab8867-6146-457e-bffe-f9e7f8bbe03d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,22 +65,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-9b818a6e64288051c0072884a1b7340c</value>
-      <webElementGuid>83891ee3-c59f-4aba-b690-e388ac6d0263</webElementGuid>
+      <webElementGuid>eabeecba-b089-48d8-8b48-b78c4eb84e26</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[(name() = 'div') and (position() = 2)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' justify-between ') and contains(concat(' ', normalize-space(@class), ' '), ' flex ') and contains(concat(' ', normalize-space(@class), ' '), ' items-center ')]//span[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-sm ') and (@contenteditable = 'true')]</value>
-      <webElementGuid>37a944e3-654d-4b71-8b60-747276b6cbbb</webElementGuid>
+      <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+      <webElementGuid>a5a8ec28-0303-4db8-afc2-3740f7f569e7</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>(//*[span[text()='HPI:']]/following-sibling::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
-      <webElementGuid>5ac2d85e-3cf5-4557-8112-f483ab9ece8b</webElementGuid>
+      <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+      <webElementGuid>415ae693-9a5e-4c8e-8359-4b4361c9a6e9</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

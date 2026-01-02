@@ -47,23 +47,23 @@ public class TestObjectStory {
 				)
 	}
 
-	TestObject tableAllergies(String allergies) {
-		return findTestObject('EncounterPage/Encounter Details/table Allergies',
-				[('allergies') : allergies]
-				)
-	}
+	//	TestObject tableAllergies(String allergies) {
+	//		return findTestObject('EncounterPage/Encounter Details/table Allergies',
+	//				[('allergies') : allergies]
+	//				)
+	//	}
 
-	TestObject tableMedications(String medication) {
-		return findTestObject('EncounterPage/Encounter Details/table Medications',
-				[('medication') : medication]
-				)
-	}
-
-	TestObject tableProblems(String problems) {
-		return findTestObject('EncounterPage/Encounter Details/table Problems',
-				[('problems') : problems]
-				)
-	}
+	//	TestObject tableMedications(String medication) {
+	//		return findTestObject('EncounterPage/Encounter Details/table Medications',
+	//				[('medication') : medication]
+	//				)
+	//	}
+	//
+	//	TestObject tableProblems(String problems) {
+	//		return findTestObject('EncounterPage/Encounter Details/table Problems',
+	//				[('problems') : problems]
+	//				)
+	//	}
 
 	TestObject tableFDDifferentialDiagnosis(String code, String description) {
 		return findTestObject('EncounterPage/Encounter Details/table FD Differential Diagnosis',
@@ -95,4 +95,17 @@ public class TestObjectStory {
 				[('search') : search]
 				)
 	}
+	
+	TestObject img_Start_Dictation(String type) {
+		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Start_Dictation',
+				[('type') : type]
+				)
+	}
+	
+	TestObject img_Stop_Dictation(String type) {
+		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Stop_Dictation',
+				[('type') : type]
+				)
+	}
+	
 }

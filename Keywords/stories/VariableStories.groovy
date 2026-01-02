@@ -89,6 +89,7 @@ public class VariableStories {
 	/* ---------------- IN-MEMORY STORAGE ---------------- */
 
 	public static List<String> elementStorage = []
+	public static List<String> elementStorageForDirectDictation = []
 
 	private static Map<String, String> storage = [:]
 

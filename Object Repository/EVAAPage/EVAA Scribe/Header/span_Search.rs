@@ -6,18 +6,18 @@
    <elementGuidId>b623f9f4-f561-4a4a-b8c6-20b834e8e905</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
+         <key>BASIC</key>
          <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}'][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+         <key>XPATH</key>
+         <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
       </entry>
       <entry>
          <key>CSS</key>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -31,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>3832c2eb-8a74-4f5c-ae6b-9b746366428d</webElementGuid>
+      <webElementGuid>7abd490c-98d0-4032-8ff7-10a6ab287c89</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>highlight-mark text-[#0000ff] font-bold</value>
-      <webElementGuid>df08c9a2-8c5b-436a-955a-d2400399475e</webElementGuid>
+      <webElementGuid>603fe8e2-2e5f-418b-abbb-ec6903a3fad5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +47,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>-1</value>
-      <webElementGuid>e4472686-462d-471f-9412-aee1456c09a0</webElementGuid>
+      <webElementGuid>bb978220-6c04-4efa-911b-04f7d84b670e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -55,7 +55,7 @@
       <name>text</name>
       <type>Main</type>
       <value>${search}</value>
-      <webElementGuid>6fafacfa-7458-4e4f-b255-231b3f00499e</webElementGuid>
+      <webElementGuid>8530245b-5070-42a7-b40b-5f55acc3282e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-ddaaf67b2fcaf307011affcbd37bf46e</value>
-      <webElementGuid>286b9152-02f6-4954-a59b-bdc09740c298</webElementGuid>
+      <webElementGuid>ea0b2f48-2e33-4d5e-8c24-5f67e7a2b39a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>e87ae43d-3063-4968-a34f-7bf3ecc17422</webElementGuid>
+      <webElementGuid>a6c1b0da-35e8-49ba-a9dc-3e4b72bd6e6b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>7b5c8126-2044-41f2-8013-19545a938b4a</webElementGuid>
+      <webElementGuid>ea106724-087f-43b4-8ebf-ba4ff419a0d3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,6 +87,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>ca8e8b66-a7ff-4d9d-9850-b1b8522ada24</webElementGuid>
+      <webElementGuid>2388673d-5bb7-4946-81b0-c9529c6aff71</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -42,6 +42,8 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
+
 		//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
 		//				'aria-checked')
 		//
@@ -136,7 +138,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def finalizedAndSendToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String FinalizedStatus = 'Finalized', String MicStatus='Completed'  ) {
+	def finalizedAndSendToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isExpandClose = true  ) {
 		String expectedPtName = "$FirstName $LastName"
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -160,7 +162,7 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully'), 120,
 				FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.delay(5)
+		WebUI.delay(10)
 
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
@@ -168,11 +170,13 @@ public class EVAASteps {
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
+		if(isExpandClose == true) {
+			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 
-		KeywordUtil.logInfo('Clicked on Expand Recording')
+			KeywordUtil.logInfo('Clicked on Expand Recording')
 
-		WebUI.delay(5)
+			WebUI.delay(5)
+		}
 	}
 
 	@Keyword
@@ -190,8 +194,19 @@ public class EVAASteps {
 
 		String PTDOB = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB'))
 
-		String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'd/M/yyyy')
-		String actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'd/M/yyyy')
+		String expectedPTDOB = DOB
+
+		if (!CommonStory.isNullOrEmpty(DOB) &&
+				!DOB.trim().equalsIgnoreCase("Invalid Date")) {
+			expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'd/M/yyyy')
+		}
+
+		String actualPTDOB = PTDOB
+
+		if (!CommonStory.isNullOrEmpty(PTDOB) &&
+				!PTDOB.trim().equalsIgnoreCase("Invalid Date")) {
+			actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'd/M/yyyy')
+		}
 
 		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
 
@@ -426,7 +441,7 @@ public class EVAASteps {
 		assertStory.verifyMatch('"Left Side Panel→→ Mic Status',_micStatus, MicStatus)
 	}
 
-	private void captureSection(
+	private void captureSectionDirectDictation(
 			String sectionName,
 			String testObjectPath,
 			boolean isList = true
@@ -473,46 +488,46 @@ public class EVAASteps {
 
 		VariableStories.elementStorage.clear()
 
-		captureSection('ChiefComplaint',
+		captureSectionDirectDictation('ChiefComplaint',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint', false)
 
-		captureSection('HPI',
+		captureSectionDirectDictation('HPI',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI', false)
 
-		captureSection('CurrentEyeSymptoms',
+		captureSectionDirectDictation('CurrentEyeSymptoms',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Current Eye Symptoms')
 
-		captureSection('Allergies',
+		captureSectionDirectDictation('Allergies',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Allergies')
 
-		captureSection('Medications',
+		captureSectionDirectDictation('Medications',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications')
 
-		captureSection('ReviewOfSystems',
+		captureSectionDirectDictation('ReviewOfSystems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems')
 
-		captureSection('Problems',
+		captureSectionDirectDictation('Problems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems')
 
-		captureSection('Refractions',
+		captureSectionDirectDictation('Refractions',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions')
 
-		captureSection('AuxiliaryLabTests',
+		captureSectionDirectDictation('AuxiliaryLabTests',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests')
 
-		captureSection('DifferentialDiagnosis',
+		captureSectionDirectDictation('DifferentialDiagnosis',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis')
 
-		captureSection('Assessment',
+		captureSectionDirectDictation('Assessment',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment')
 
-		captureSection('Plan',
+		captureSectionDirectDictation('Plan',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans')
 
-		captureSection('EyeDiseases',
+		captureSectionDirectDictation('EyeDiseases',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
 
-		captureSection('MentalAndFunctionalStatus',
+		captureSectionDirectDictation('MentalAndFunctionalStatus',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
@@ -525,46 +540,46 @@ public class EVAASteps {
 
 		VariableStories.elementStorage.clear()
 
-		captureSection('ChiefComplaint',
+		captureSectionDirectDictation('ChiefComplaint',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint', false)
 
-		captureSection('HPI',
+		captureSectionDirectDictation('HPI',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI', false)
 
-		captureSection('CurrentEyeSymptoms',
+		captureSectionDirectDictation('CurrentEyeSymptoms',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms')
 
-		captureSection('Allergies',
+		captureSectionDirectDictation('Allergies',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Allergies')
 
-		captureSection('Medications',
+		captureSectionDirectDictation('Medications',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Medications')
 
-		captureSection('ReviewOfSystems',
+		captureSectionDirectDictation('ReviewOfSystems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Review Of Systems')
 
-		captureSection('Problems',
+		captureSectionDirectDictation('Problems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems')
 
-		captureSection('Refractions',
+		captureSectionDirectDictation('Refractions',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Refractions')
 
-		captureSection('AuxiliaryLabTests',
+		captureSectionDirectDictation('AuxiliaryLabTests',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Auxiliary Lab Tests')
 
-		captureSection('DifferentialDiagnosis',
+		captureSectionDirectDictation('DifferentialDiagnosis',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Differential Diagnosis')
 
-		captureSection('Assessment',
+		captureSectionDirectDictation('Assessment',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment')
 
-		captureSection('Plan',
+		captureSectionDirectDictation('Plan',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans')
 
-		captureSection('EyeDiseases',
+		captureSectionDirectDictation('EyeDiseases',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases')
 
-		captureSection('MentalAndFunctionalStatus',
+		captureSectionDirectDictation('MentalAndFunctionalStatus',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
@@ -1012,9 +1027,9 @@ public class EVAASteps {
 
 					KeywordUtil.logInfo("Allergies→ $allergies")
 
-					TestObject tableAllergies = testObjectStory.tableAllergies(allergies)
+					//					TestObject tableAllergies = testObjectStory.tableAllergies(allergies)
 
-					def actual  = WebUI.getText(tableAllergies,FailureHandling.OPTIONAL)
+					def actual  = WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Allergies'),FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Allergies", actual, allergies)
 				}
@@ -1053,9 +1068,7 @@ public class EVAASteps {
 
 						KeywordUtil.logInfo("Result Expected: $expected")
 
-						TestObject tableMedications = testObjectStory.tableMedications(expected)
-
-						actual = WebUI.getText(tableMedications,FailureHandling.OPTIONAL)
+						actual = WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Medications'),FailureHandling.OPTIONAL)
 					}
 
 					assertStory.verifyMatch("Medications", actual, expected)
@@ -1082,9 +1095,9 @@ public class EVAASteps {
 
 					KeywordUtil.logInfo("Result Expected: $expected")
 
-					TestObject tableProblems = testObjectStory.tableProblems(expected)
+					//					TestObject tableProblems = testObjectStory.tableProblems(expected)
 
-					def actual =  WebUI.getText(tableProblems, ,FailureHandling.OPTIONAL)
+					def actual =  WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Problems'), ,FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Problems", actual, expected)
 				}
@@ -1823,7 +1836,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def directDictationByTypingOnElements(int index = 1) {
+	def directDictationByTypingOnElements() {
 		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
 
 		int rowCount = dictationData.getRowNumbers()
@@ -1936,231 +1949,147 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def OLDverifyStoredDirectDictationOnEVAAScribe(int index = 1) {
-		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+	def directDictationByRecordStartStopOnElements(String UploadFilePath) {
+		int index = 1;
+		int breakIndex = 2;
+		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
 
-		if (!VariableStories.elementStorage.isEmpty()) {
+		int rowCount = dictationData.getRowNumbers()
+
+		if (rowCount == 0) {
+			KeywordUtil.markFailed("❌ DirectDictationData has NO rows")
 			return
 		}
 
-		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+		int row = 1   // first row
 
-		int row = index   // first row
-
-		try {
-			def isPresentChiefComplaint = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),1,FailureHandling.OPTIONAL)
-			if(isPresentChiefComplaint) {
-				// ChiefComplaint
-
-				KeywordUtil.logInfo('Chief Complaint element found')
-
-				def _ChiefComplaint = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'))
-
-				KeywordUtil.logInfo("Direct Dictation→→ Chief Complaint→ $_ChiefComplaint")
-
-				def chiefComplaint = VariableStories.getItem('CHIEF_COMPLAINT')
-
-				String textToAppend = dictationData.getValue('ChiefComplaint', row)
-
-				String expectedText = "${chiefComplaint} ${textToAppend}"
-
-				assertStory.verifyMatch("Direct Dictation→→ Chief Complaint", _ChiefComplaint, expectedText)
-			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation Chief Complaint element not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
+		if (!VariableStories.elementStorageForDirectDictation.isEmpty()) {
+			VariableStories.elementStorageForDirectDictation.clear()
 		}
 
-		try {
-			def isPresentHPI =	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'),1,FailureHandling.OPTIONAL)
-			if(isPresentHPI) {
-				// HPI
+		if (!VariableStories.elementStorage.isEmpty()) {
 
-				KeywordUtil.logInfo('HPI element found')
+			KeywordUtil.logInfo("File Path $UploadFilePath")
 
-				def _HPI = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI'))
+			def elementStorageList = VariableStories.elementStorage
 
-				KeywordUtil.logInfo("Direct Dictation→→ HPI→ $_HPI")
+			try {
+				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
-				def hpi =  VariableStories.getItem('HPI')
+				for (String name : elementStorageList) {
+					VariableStories.elementStorageForDirectDictation << name
 
-				String textToAppend = dictationData.getValue('HPI', row)
+					KeywordUtil.logInfo("Element from Storage → ${name}")
 
-				String expectedText = "${hpi} ${textToAppend}"
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
 
-				assertStory.verifyMatch("Direct Dictation→→ Chief Complaint", hpi, expectedText)
+					if (!sectionTO) {
+						KeywordUtil.markWarning("No TestObject mapped for → ${name}")
+						return
+					}
+
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+
+					elements.each { WebElement el ->
+						def fakeMic = new FakeMicStream(UploadFilePath)
+						
+						KeywordUtil.logInfo("${name} value → ${el.text}")
+
+						String textToAppend = dictationData.getValue(name, row)
+
+						el.click()
+						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
+						el.sendKeys(" ")
+
+						String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
+
+						TestObject img_Start_Dictation = testObjectStory.img_Start_Dictation(moduleName)
+						
+						TestObject img_Stop_Dictation = testObjectStory.img_Stop_Dictation(moduleName)
+ 
+						fakeMic.start()
+						KeywordUtil.logInfo("Dictation Started.")
+						
+						WebUI.click(img_Start_Dictation)
+						KeywordUtil.logInfo("Clicked on ${name} to Start Dictation")
+
+						WebUI.waitForElementVisible(img_Stop_Dictation, 5, FailureHandling.STOP_ON_FAILURE)
+
+						WebUI.delay(10)
+						
+						WebUI.click(img_Stop_Dictation)
+						KeywordUtil.logInfo("Clicked on ${name} to Stop Dictation")
+
+						fakeMic.stop() 
+						KeywordUtil.logInfo("Dictation Stopped.")
+
+						WebUI.waitForElementVisible(img_Start_Dictation, 5, FailureHandling.STOP_ON_FAILURE)
+					}
+
+					if(index == breakIndex) break;
+
+					index++;
+				}
+			} catch (e) {
+				e.printStackTrace()
+			}finally		{
+				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+
+				// Switch back
+				WebUI.switchToDefaultContent()
 			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation HPI element not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
+		}
+	}
+
+	@Keyword
+	def verifyRecordedDirectDictationAddedOnEVAAScribe() {
+
+		if (VariableStories.elementStorageForDirectDictation.isEmpty()) {
+			KeywordUtil.markWarning("No stored elements for verification")
+			return
 		}
 
-		try {
-			def isPresentCurrentEyeSymptoms=	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),1,FailureHandling.OPTIONAL)
-			if(isPresentCurrentEyeSymptoms) {
-				// Current Eye Symptoms
+		if (!VariableStories.elementStorageForDirectDictation.isEmpty()) {
+			WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
-				KeywordUtil.logInfo('Current Eye Symptoms element found')
+			try {
+				def elementStorageList = VariableStories.elementStorageForDirectDictation
+				for (String name : elementStorageList) {
+					KeywordUtil.logInfo("Element from Storage → ${name}")
 
-				List<WebElement> _CurrentEyeSymptoms = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),
-						10)
+					TestObject sectionTO = CommonStory.sectionMapForSOAPNote.get(name)
 
-				List<String> allCurrentEyeSymptoms = _CurrentEyeSymptoms.collect({
-					it.getText().trim()
-				})
+					if (!sectionTO) {
+						KeywordUtil.markWarning("No TestObject mapped for → ${name}")
+						return
+					}
 
-				def expectedCurrentEyeSymptoms = VariableStories.getItem('CURRENT_EYE_SYMPTOMS')
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+					List<String> actualTexts = elements.collect { it.text.trim() }
 
-				if (CommonStory.isNullOrEmpty(expectedCurrentEyeSymptoms) == false) {
+					def variableKey = CommonStory.sectionMapForStorageKey.get(name)
 
-					List currentEyeSymptomsList = CommonStory.getListObject(expectedCurrentEyeSymptoms)
+					def storedValue = VariableStories.getItem(variableKey)
+					if (CommonStory.isNullOrEmpty(storedValue)) return
 
-					if (currentEyeSymptomsList.size() > 0) {
-						for (int i = 0; i < currentEyeSymptomsList.size(); i++) {
-							def currentEyeSymptoms = currentEyeSymptomsList.get(i)
+						List expectedList = CommonStory.getListObject(storedValue)
 
-							String textToAppend = dictationData.getValue('CurrentEyeSymptoms', row)
+					expectedList.eachWithIndex { expected, i ->
+						String expectedText = "${expected}"
 
-							String exprectedText = "${currentEyeSymptoms} ${textToAppend}"
+						def actualLen = actualTexts[i].trim().split('\\s+').length
 
-							assertStory.verifyMatch("Direct Dictation→→ Current Eye Symptoms", allCurrentEyeSymptoms[i], exprectedText)
-						}
+						def expectedLen = expectedText.trim().split('\\s+').length
+
+						assertStory.verifyGreaterThan("Direct Dictation→→ ${name}",actualLen,expectedLen)
 					}
 				}
+			} catch (e) {
+				e.printStackTrace()
+			}finally		{
+				// Switch back
+				WebUI.switchToDefaultContent()
 			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation Current Eye Symptoms element not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
 		}
-
-
-		try {
-			def isPresentProblems =	WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),1,FailureHandling.OPTIONAL)
-			if(isPresentProblems) {
-				// Problems
-
-				KeywordUtil.logInfo('Problems found')
-
-				List<WebElement> _Problems = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),
-						10)
-
-				List<String> allProblems = _Problems.collect({
-					it.getText().trim()
-				})
-
-				def expectedProblems = VariableStories.getItem('PROBLEMS')
-
-				if (CommonStory.isNullOrEmpty(expectedProblems) == false) {
-
-					List problemsList = CommonStory.getListObject(expectedProblems)
-
-					if (problemsList.size() > 0) {
-						for (int i = 0; i < problemsList.size(); i++) {
-							def problem = problemsList.get(i)
-
-							String textToAppend = dictationData.getValue('Problems', row)
-
-							String exprectedText = "${problem} ${textToAppend}"
-
-							assertStory.verifyMatch("Direct Dictation→→ Problems", allProblems[i], exprectedText)
-						}
-					}
-				}
-			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation Problems not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
-		}
-
-		try {
-			def isPresentAssessment = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),1,FailureHandling.OPTIONAL)
-			if(isPresentAssessment) {
-				// Assessment
-
-				KeywordUtil.logInfo('Assessment found')
-
-				List<WebElement> _Assessment = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),
-						10)
-
-				List<String> allAssessment = _Assessment.collect({
-					it.getText().trim()
-				})
-
-				def expectedAssessment = VariableStories.setItem('ASSESSMENT')
-
-				if (CommonStory.isNullOrEmpty(expectedAssessment) == false) {
-
-					List assessmentList = CommonStory.getListObject(expectedAssessment)
-
-					if (assessmentList.size() > 0) {
-						for (int i = 0; i < assessmentList.size(); i++) {
-							def assessment = assessmentList.get(i)
-
-							String textToAppend = dictationData.getValue('Assessment', row)
-
-							String exprectedText = "${assessment} ${textToAppend}"
-
-							assertStory.verifyMatch("Direct Dictation→→ Assessment", allAssessment[i], exprectedText)
-						}
-					}
-				}
-			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation Assessment not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
-		}
-
-		try {
-			def isPresentPlans = WebUI.verifyElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),1,FailureHandling.OPTIONAL)
-			if(isPresentPlans) {
-				// Plans
-
-				KeywordUtil.logInfo('Plans found')
-
-				List<WebElement> _Plans = WebUI.findWebElements(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),
-						10)
-
-				List<String> allPlans = _Plans.collect({
-					it.getText().trim()
-				})
-
-				def expectedPlans = VariableStories.getItem('PLANS')
-
-				if (CommonStory.isNullOrEmpty(expectedPlans) == false) {
-
-					List plansList = CommonStory.getListObject(expectedPlans)
-
-					if (plansList.size() > 0) {
-						for (int i = 0; i < plansList.size(); i++) {
-							def plan = plansList.get(i)
-
-							String textToAppend = dictationData.getValue('Plan', row)
-
-							String exprectedText = "${plan} ${textToAppend}"
-
-							assertStory.verifyMatch("Direct Dictation→→ Plans", allPlans[i], exprectedText)
-						}
-					}
-				}
-			}
-			else {
-				KeywordUtil.markWarning('Direct Dictation Plans not found')
-			}
-		} catch (e) {
-			e.printStackTrace()
-		}
-
-		// Switch back
-		WebUI.switchToDefaultContent()
 	}
 }
