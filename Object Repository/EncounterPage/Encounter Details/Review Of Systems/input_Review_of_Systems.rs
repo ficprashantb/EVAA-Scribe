@@ -6,16 +6,16 @@
    <elementGuidId>32aa14c9-db72-4642-959b-e5c5b8e2fbe6</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//*[@type = 'text' and contains(@name, 'Review_of_Systems_Brief.${inputId}')]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>[name=&quot;\34 112\.Review_of_Systems_Brief\.ENDOCRINE_NOTES&quot;]</value>
       </entry>
       <entry>
          <key>XPATH</key>
          <value>//*contains([@name , 'Review_of_Systems_Brief.${inputId}')]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@type = 'text' and contains(@name, 'Review_of_Systems_Brief.${inputId}')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>0c0f94aa-d7c1-400a-b805-d3ec8ddf3b88</webElementGuid>
+      <webElementGuid>e46a326c-4e49-4a29-adb5-235edf587d34</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -41,7 +41,7 @@
       <name>type</name>
       <type>Main</type>
       <value>text</value>
-      <webElementGuid>1cba4162-fb64-41dd-991f-93079c5b60a7</webElementGuid>
+      <webElementGuid>ef1a9428-7694-4cc2-b6a5-288d840053a0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>data-sysdef</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>9257a888-97ec-4c06-bada-b056afd2e48c</webElementGuid>
+      <webElementGuid>ec4212fe-db6d-4cf5-b4e4-a3b3bb305682</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>maxlength</name>
       <type>Main</type>
       <value>8000</value>
-      <webElementGuid>941fda61-706e-4076-979d-f15ec8ac3a74</webElementGuid>
+      <webElementGuid>cb3da00b-6b38-4c4e-ad2f-4dfdcc8781f8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>data-reffield</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>d8e35be5-386b-48cf-ac76-5f31fba672ce</webElementGuid>
+      <webElementGuid>a5c9d1b0-c18e-4889-81f5-5c1ceacf10a4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>data-isrefered</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>7a923d46-0d4a-4c0c-9f8f-f3290deae1af</webElementGuid>
+      <webElementGuid>868bf5b0-54f6-4628-b3bd-78c803b788c4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -81,7 +81,7 @@
       <name>data-defaultdatatype</name>
       <type>Main</type>
       <value>string</value>
-      <webElementGuid>72ff827a-9428-4440-a66f-280434d770fd</webElementGuid>
+      <webElementGuid>cb906d6e-702a-4846-8e7a-9a12d0ddf9d0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -89,7 +89,7 @@
       <name>name</name>
       <type>Main</type>
       <value>Review_of_Systems_Brief.${inputId}</value>
-      <webElementGuid>4a93827a-0f7d-48db-9cd4-0db25096ee28</webElementGuid>
+      <webElementGuid>0a8becdd-fb6e-4d86-9c57-687d523a816b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -97,7 +97,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>9538</value>
-      <webElementGuid>0afc4336-b348-41c4-a2fe-89501bdc29a6</webElementGuid>
+      <webElementGuid>8e545abc-1deb-4930-9c0e-99e714654069</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -105,7 +105,7 @@
       <name>data-canbehidden</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>01533555-d9c4-4d82-aeb7-290d885bacf3</webElementGuid>
+      <webElementGuid>8a4fd31c-4542-4a03-b1fc-dfb7c700b039</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -113,7 +113,7 @@
       <name>data-cid</name>
       <type>Main</type>
       <value>1324</value>
-      <webElementGuid>4ae3fac3-d57a-480c-ad39-07c916e5a138</webElementGuid>
+      <webElementGuid>dba89255-729a-4448-83b4-52f027522f08</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -121,7 +121,7 @@
       <name>data-isreadonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>b6d9ddbc-e0be-4550-a24b-426f390b756d</webElementGuid>
+      <webElementGuid>773b9d5c-f6a6-42c8-8e67-12df290e1665</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -129,7 +129,7 @@
       <name>data-eyetype</name>
       <type>Main</type>
       <value>null</value>
-      <webElementGuid>fd746d03-4675-4080-ade3-2527441fce69</webElementGuid>
+      <webElementGuid>f0dc5431-f5b9-46c4-89cb-abeb8faedfa9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -137,7 +137,7 @@
       <name>data-elementid</name>
       <type>Main</type>
       <value>4173</value>
-      <webElementGuid>01ac692b-818e-42d5-bae2-7fcbff49d3d8</webElementGuid>
+      <webElementGuid>82094fc1-5b4a-4c7a-bf3f-f8089c2715da</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -145,7 +145,7 @@
       <name>data-supportclearbtn</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>a6a4b19e-bfbd-4cf1-a5e8-edcf771cb9a3</webElementGuid>
+      <webElementGuid>7c1b9a90-c73d-4abc-b595-41cd82965b47</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -153,7 +153,7 @@
       <name>data-enc_elementpagerelid</name>
       <type>Main</type>
       <value>4112</value>
-      <webElementGuid>8295a7c6-1c5a-4c6d-8c5c-920cc89776ab</webElementGuid>
+      <webElementGuid>fa0bfda3-5d73-41ae-8f55-8754cdeaa5dd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -161,7 +161,7 @@
       <name>class</name>
       <type>Main</type>
       <value>clearable</value>
-      <webElementGuid>8e1ac708-708b-470b-a675-57cc459d57a5</webElementGuid>
+      <webElementGuid>50ddeb6a-009a-4065-ac8a-4214e5888df5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -169,7 +169,7 @@
       <name>data-refelmid</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>91f4cd74-6c38-4452-a371-a793d1f5ec63</webElementGuid>
+      <webElementGuid>fabeb8ae-17ec-49e0-9998-4e8ee88f7b5d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -177,7 +177,7 @@
       <name>data-askey</name>
       <type>Main</type>
       <value>~F_F~Review_of_Systems_Brief.${inputId}</value>
-      <webElementGuid>2065bc0c-0e43-4f7c-92e9-6f8405546d53</webElementGuid>
+      <webElementGuid>38755b99-2bd1-4b45-a8ae-635f0ea63271</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -185,7 +185,7 @@
       <name>data-actualname</name>
       <type>Main</type>
       <value>${inputId}</value>
-      <webElementGuid>eb5374af-c7ba-48e8-92d2-4c3f80e22d48</webElementGuid>
+      <webElementGuid>606f1c09-fee0-4616-b4e1-0392c3d399d1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -193,7 +193,7 @@
       <name>data-elementname</name>
       <type>Main</type>
       <value>Review_of_Systems_Brief</value>
-      <webElementGuid>cd0ba67c-1d72-416a-b23b-4de9d196c9d2</webElementGuid>
+      <webElementGuid>8b4ffc3c-6aae-480c-be41-9391646ee226</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -201,7 +201,7 @@
       <name>autocomplete</name>
       <type>Main</type>
       <value>off</value>
-      <webElementGuid>23a2f004-e493-4686-b9ea-ad3595b211a6</webElementGuid>
+      <webElementGuid>60661476-27f5-4b8c-aff1-cd4baeac0e43</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -209,7 +209,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-47ce3a4072e0c200a19dc737cf5fdf0c</value>
-      <webElementGuid>9e69d2da-1519-4a77-8307-a5c5b19fcab3</webElementGuid>
+      <webElementGuid>f7d6e25a-49a4-40a8-a61f-e1468d018388</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -217,7 +217,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*contains([@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>0b1ca277-43cb-40d9-988e-c0a8c2e7a04f</webElementGuid>
+      <webElementGuid>b549403c-9f7c-45e8-8d4d-aff1b28d1cda</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -225,7 +225,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*contains([@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>50a38f64-93b0-43e1-8012-5cf0ae3d2b3c</webElementGuid>
+      <webElementGuid>9f55a91a-64c9-44ed-884a-1a2b2feeb0b5</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -233,6 +233,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//input[@type = 'text' and contains(@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>8510e708-f15a-4fa1-936d-5a51c6dbedc9</webElementGuid>
+      <webElementGuid>d610b814-61da-4ba9-9331-3e263718cc33</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
