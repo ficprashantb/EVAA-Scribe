@@ -27,35 +27,35 @@ import com.github.javafaker.Faker
 public class DateHelper {
 
 	@Keyword
-	String GetISTDate() {
+	String GetISTDate(String dateFormat = "MM/dd/yyyy") {
 		LocalDate date = LocalDate.now(ZoneId.of("Asia/Kolkata"));
 
-		String formattedDate = date.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
 
 		return formattedDate;
 	}
 
 	@Keyword
-	String GetUTCDate() {
+	String GetUTCDate(String dateFormat = "MM/dd/yyyy") {
 		LocalDate date = LocalDate.now(ZoneId.of("UTC"));
 
-		String formattedDate = date.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
 
 		return formattedDate;
 	}
 
 	@Keyword
-	String GetPSTDate() {
+	String GetPSTDate(String dateFormat = "MM/dd/yyyy") {
 		LocalDate date = LocalDate.now(ZoneId.of("Pacific Standard Time"));
 
-		String formattedDate = date.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));
+		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
 
 		return formattedDate;
 	}
 
 	@Keyword
 	String GetFormattedDate(String date, String dateFormat) {
-		def inputDate = Date.parse("MM/dd/yyyy", date)
+		def inputDate = Date.parse(dateFormat, date)
 		def formattedDate = inputDate.format(dateFormat)
 		return formattedDate;
 	}

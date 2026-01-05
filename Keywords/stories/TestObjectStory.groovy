@@ -47,23 +47,23 @@ public class TestObjectStory {
 				)
 	}
 
-	//	TestObject tableAllergies(String allergies) {
-	//		return findTestObject('EncounterPage/Encounter Details/table Allergies',
-	//				[('allergies') : allergies]
-	//				)
-	//	}
+		TestObject tableAllergies(int index) {
+			return findTestObject('EncounterPage/Encounter Details/table Allergies',
+					[('index') : index]
+					)
+		}
 
-	//	TestObject tableMedications(String medication) {
-	//		return findTestObject('EncounterPage/Encounter Details/table Medications',
-	//				[('medication') : medication]
-	//				)
-	//	}
-	//
-	//	TestObject tableProblems(String problems) {
-	//		return findTestObject('EncounterPage/Encounter Details/table Problems',
-	//				[('problems') : problems]
-	//				)
-	//	}
+		TestObject tableMedications(int index) {
+			return findTestObject('EncounterPage/Encounter Details/table Medications',
+					[('index') : index]
+					)
+		}
+	
+		TestObject tableProblems(int index) {
+			return findTestObject('EncounterPage/Encounter Details/table Problems',
+					[('index') : index]
+					)
+		}
 
 	TestObject tableFDDifferentialDiagnosis(String code, String description) {
 		return findTestObject('EncounterPage/Encounter Details/table FD Differential Diagnosis',

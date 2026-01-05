@@ -21,7 +21,7 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_08'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_10'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -44,18 +44,10 @@ CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DO
 //Direct Dictation By Record Start Stop
 CustomKeywords.'steps.EVAASteps.directDictationByRecordStartStopOnElements'(uploadFilePath)
 
-CustomKeywords.'steps.EVAASteps.verifyRecordedDirectDictationAddedOnEVAAScribe'() 
+CustomKeywords.'steps.EVAASteps.verifyRecordedDirectDictationAddedOnEVAAScribe'()
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-//NavigateStory navigateStory = new NavigateStory()
-//
-//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-//
-//String encounterId = VariableStories.getItemFromDB("ENCOUNTER_ID")
-//KeywordUtil.logInfo("Encounter Id=> $encounterId")
-//
-//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-//CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

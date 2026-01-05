@@ -153,9 +153,9 @@ public class CommonSteps {
 		KeywordUtil.logInfo("Clicked on Create Button.")
 
 		try {
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5)
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5, FailureHandling.OPTIONAL)
 
-			WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'))
+			WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), FailureHandling.OPTIONAL)
 			KeywordUtil.logInfo("Clicked on Create New Button.")
 		}
 		catch (def e) {
@@ -210,7 +210,7 @@ public class CommonSteps {
 	}
 
 	@Keyword
-	def clickOnExpandRecording() {
+	def clickOnExpandRecording(Boolean isExpand = true) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		KeywordUtil.logInfo('iframeContainer found')
@@ -223,9 +223,11 @@ public class CommonSteps {
 
 		KeywordUtil.logInfo('Clicked on Expand Recording')
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+		if(isExpand) {
+			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
+		}
 	}
 }
 

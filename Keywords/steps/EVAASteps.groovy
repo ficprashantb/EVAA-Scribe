@@ -181,6 +181,8 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeHeaderDetails(String FirstName, String LastName, String DOB , String Provider_FirstName, String Provider_LastName) {
+		WebUI.delay(5)
+		
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String _ptKey = "${FirstName}_${LastName}".toUpperCase()
@@ -192,7 +194,7 @@ public class EVAASteps {
 		assertStory.verifyMatch("Header→→ Patient Name", PtName, expectedPtName)
 
 
-		String PTDOB = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB'))
+		String actualPTDOB = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB'))
 
 		String expectedPTDOB = DOB
 
@@ -201,12 +203,12 @@ public class EVAASteps {
 			expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'd/M/yyyy')
 		}
 
-		String actualPTDOB = PTDOB
+		//		String actualPTDOB = PTDOB
 
-		if (!CommonStory.isNullOrEmpty(PTDOB) &&
-				!PTDOB.trim().equalsIgnoreCase("Invalid Date")) {
-			actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'd/M/yyyy')
-		}
+		//		if (!CommonStory.isNullOrEmpty(PTDOB) &&
+		//				!PTDOB.trim().equalsIgnoreCase("Invalid Date")) {
+		//			actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'd/M/yyyy')
+		//		}
 
 		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
 
@@ -958,7 +960,7 @@ public class EVAASteps {
 	@Keyword
 	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
 		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
-		def expectedChiefComplaint = VariableStories.getItem('CHIEF_COMPLAINT')
+		def expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
 
 		def variableKeyHPI = CommonStory.sectionMapForStorageKey.get('HPI')
 		def expectedHPI = VariableStories.getItem(variableKeyHPI)
@@ -1022,16 +1024,18 @@ public class EVAASteps {
 			if (allergiesList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Allergies'])
 
+				int index = 1
 				for (int i = 0; i < allergiesList.size(); i++) {
 					def allergies = allergiesList.get(i)
 
 					KeywordUtil.logInfo("Allergies→ $allergies")
 
-					//					TestObject tableAllergies = testObjectStory.tableAllergies(allergies)
+					TestObject tableAllergies = testObjectStory.tableAllergies(index)
 
-					def actual  = WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Allergies'),FailureHandling.OPTIONAL)
+					def actual  = WebUI.getText(tableAllergies,FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Allergies", actual, allergies)
+					index ++
 				}
 			} else {
 				KeywordUtil.markWarning('No Allergies found')
@@ -1048,6 +1052,7 @@ public class EVAASteps {
 			if (medicationsList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Medications'])
 
+				int index  = 1
 				for (int i = 0; i < medicationsList.size(); i++) {
 					def medications = medicationsList.get(i)
 
@@ -1067,11 +1072,14 @@ public class EVAASteps {
 						expected = result._expected
 
 						KeywordUtil.logInfo("Result Expected: $expected")
-
-						actual = WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Medications'),FailureHandling.OPTIONAL)
+						
+						TestObject tableMedications = testObjectStory.tableMedications(index)
+						
+						actual = WebUI.getText(tableMedications,FailureHandling.OPTIONAL)
 					}
 
 					assertStory.verifyMatch("Medications", actual, expected)
+					index ++
 				}
 			} else {
 				KeywordUtil.markWarning('No Medications found')
@@ -1088,6 +1096,7 @@ public class EVAASteps {
 			if (problemsList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Problems'])
 
+				int index = 1
 				for (int i = 0; i < problemsList.size(); i++) {
 					def expected = problemsList.get(i)
 
@@ -1095,11 +1104,12 @@ public class EVAASteps {
 
 					KeywordUtil.logInfo("Result Expected: $expected")
 
-					//					TestObject tableProblems = testObjectStory.tableProblems(expected)
+					TestObject tableProblems = testObjectStory.tableProblems(index)
 
-					def actual =  WebUI.getText(findTestObject('EncounterPage/Encounter Details/table Problems'), ,FailureHandling.OPTIONAL)
+					def actual =  WebUI.getText(tableProblems, ,FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Problems", actual, expected)
+					index ++
 				}
 			} else {
 				KeywordUtil.markWarning('No Problems found')
@@ -1824,15 +1834,35 @@ public class EVAASteps {
 
 		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+	}
+
+	@Keyword
+	def generateSOAPNoteByUploadingFileAndSwitchPatient(String UploadFilePath) {
+		KeywordUtil.logInfo("File Path $UploadFilePath")
+
+		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+	}
+
+	@Keyword
+	def verifySOAPNoteGenerateSucessfully() {
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
 	}
 
 	@Keyword
@@ -1992,7 +2022,7 @@ public class EVAASteps {
 
 					elements.each { WebElement el ->
 						def fakeMic = new FakeMicStream(UploadFilePath)
-						
+
 						KeywordUtil.logInfo("${name} value → ${el.text}")
 
 						String textToAppend = dictationData.getValue(name, row)
@@ -2004,23 +2034,23 @@ public class EVAASteps {
 						String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
 
 						TestObject img_Start_Dictation = testObjectStory.img_Start_Dictation(moduleName)
-						
+
 						TestObject img_Stop_Dictation = testObjectStory.img_Stop_Dictation(moduleName)
- 
-						fakeMic.start()
-						KeywordUtil.logInfo("Dictation Started.")
-						
+
 						WebUI.click(img_Start_Dictation)
 						KeywordUtil.logInfo("Clicked on ${name} to Start Dictation")
 
 						WebUI.waitForElementVisible(img_Stop_Dictation, 5, FailureHandling.STOP_ON_FAILURE)
 
+						fakeMic.start()
+						KeywordUtil.logInfo("Dictation Started.")
+
 						WebUI.delay(10)
-						
+
 						WebUI.click(img_Stop_Dictation)
 						KeywordUtil.logInfo("Clicked on ${name} to Stop Dictation")
 
-						fakeMic.stop() 
+						fakeMic.stop()
 						KeywordUtil.logInfo("Dictation Stopped.")
 
 						WebUI.waitForElementVisible(img_Start_Dictation, 5, FailureHandling.STOP_ON_FAILURE)

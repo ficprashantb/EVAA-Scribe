@@ -56,7 +56,7 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 //
 //navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 //
-//String encounterId = VariableStories.getItemFromDB("ENCOUNTER_ID")
+//String encounterId = VariableStories.getItem("ENCOUNTER_ID")
 //KeywordUtil.logInfo("Encounter Id=> $encounterId")
 //
 //CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
