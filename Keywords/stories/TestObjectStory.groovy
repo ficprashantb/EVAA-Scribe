@@ -29,12 +29,11 @@ public class TestObjectStory {
 	}
 
 	TestObject input_RadioButton(String id, String value) {
-		return findTestObject(
-				'EncounterPage/Encounter Details/Radio Button/input_RadioButton',
+		return findTestObject('EncounterPage/Encounter Details/Radio Button/input_RadioButton',
 				[('id') : id, ('value') : value]
 				)
-	}
-
+	} 
+	
 	TestObject input_CurrentEyeSymptoms(String inputId) {
 		return findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/input_CurrentEyeSymptoms',
 				[('inputId') : inputId]

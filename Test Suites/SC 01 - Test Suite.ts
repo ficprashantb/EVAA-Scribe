@@ -61,7 +61,7 @@
          </iterationEntity>
          <testDataId>Data Files/PatientData</testDataId>
       </testDataLink>
-      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId>4080e1e5-d899-4516-9eca-f9b48d547ceb</testDataLinkId>
          <type>DATA_COLUMN</type>
