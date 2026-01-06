@@ -16,65 +16,110 @@
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01- TC For Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/CreateNewEncounter</testDataId>
+      </testDataLink>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>445a9fd6-e4c1-4315-abec-7de2398bc4ac</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/EVAA/Encounter</testDataId>
+      </testDataLink>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>c6fd655c-903e-4276-835f-7b82eebd7ca0</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Local DB/DirectDictationData</testDataId>
+      </testDataLink>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>4080e1e5-d899-4516-9eca-f9b48d547ceb</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/Local DB/FilesData</testDataId>
+      </testDataLink>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>8549128f-9209-49c8-a8f5-8560b1823b67</id>
+         <iterationEntity>
+            <iterationType>SPECIFIC</iterationType>
+            <value>1</value>
+         </iterationEntity>
+         <testDataId>Data Files/PatientData</testDataId>
+      </testDataLink>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>4080e1e5-d899-4516-9eca-f9b48d547ceb</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>UploadFilePath</value>
          <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>8549128f-9209-49c8-a8f5-8560b1823b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>FirstName</value>
          <variableId>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>8549128f-9209-49c8-a8f5-8560b1823b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>LastName</value>
          <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>EncounterType</value>
          <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>ExamLocation</value>
          <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Provider</value>
          <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Technician</value>
          <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>8549128f-9209-49c8-a8f5-8560b1823b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Provider_FirstName</value>
          <variableId>c9dcceed-7893-4236-9a43-38f17b657049</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>8549128f-9209-49c8-a8f5-8560b1823b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>Provider_LastName</value>
          <variableId>fd026829-ec0e-4055-aa8d-3e1b62c87895</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
+         <testDataLinkId>8549128f-9209-49c8-a8f5-8560b1823b67</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>DOB</value>
          <variableId>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</variableId>
       </variableLink>
    </testCaseLink>
