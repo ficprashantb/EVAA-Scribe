@@ -182,7 +182,7 @@ public class EVAASteps {
 	@Keyword
 	def verifyEVAAScribeHeaderDetails(String FirstName, String LastName, String DOB , String Provider_FirstName, String Provider_LastName) {
 		WebUI.delay(5)
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String _ptKey = "${FirstName}_${LastName}".toUpperCase()
@@ -960,7 +960,7 @@ public class EVAASteps {
 	@Keyword
 	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
 		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
-		def expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
+		String expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
 
 		def variableKeyHPI = CommonStory.sectionMapForStorageKey.get('HPI')
 		def expectedHPI = VariableStories.getItem(variableKeyHPI)
@@ -1004,7 +1004,7 @@ public class EVAASteps {
 		if (CommonStory.isNullOrEmpty(expectedChiefComplaint) == false) {
 			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
 
-			def actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'),'value',FailureHandling.OPTIONAL)
+			String actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'),'value',FailureHandling.OPTIONAL)
 
 			assertStory.verifyMatch("Chief Complaint", actualChiefComplaint, expectedChiefComplaint)
 		}
@@ -1072,9 +1072,9 @@ public class EVAASteps {
 						expected = result._expected
 
 						KeywordUtil.logInfo("Result Expected: $expected")
-						
+
 						TestObject tableMedications = testObjectStory.tableMedications(index)
-						
+
 						actual = WebUI.getText(tableMedications,FailureHandling.OPTIONAL)
 					}
 
@@ -2007,6 +2007,11 @@ public class EVAASteps {
 				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
 				for (String name : elementStorageList) {
+
+					if (!(name in ['ChiefComplaint', 'HPI'])) {
+						break
+					}
+
 					VariableStories.elementStorageForDirectDictation << name
 
 					KeywordUtil.logInfo("Element from Storage → ${name}")
@@ -2029,7 +2034,7 @@ public class EVAASteps {
 
 						el.click()
 						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
-						el.sendKeys(" ")
+						//						el.sendKeys(Keys.SPACE)
 
 						String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
 

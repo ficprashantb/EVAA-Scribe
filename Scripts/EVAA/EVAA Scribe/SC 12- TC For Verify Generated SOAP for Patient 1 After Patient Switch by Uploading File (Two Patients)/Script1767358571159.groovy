@@ -39,6 +39,8 @@ def Provider_FirstName = patientData.getValue('Provider_FirstName', 1)
 
 def Provider_LastName = patientData.getValue('Provider_LastName', 1)
 
+NavigateStory navigateStory = new NavigateStory()
+
 CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
@@ -63,9 +65,9 @@ def FirstName2 = patientData.getValue('FirstName', 2)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName2, FirstName2)
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
-NavigateStory navigateStory = new NavigateStory()
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 

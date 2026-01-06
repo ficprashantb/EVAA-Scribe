@@ -6,19 +6,19 @@
    <elementGuidId>32aa14c9-db72-4642-959b-e5c5b8e2fbe6</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;\34 112\.Review_of_Systems_Brief\.ENDOCRINE_NOTES&quot;]</value>
-      </entry>
-      <entry>
          <key>XPATH</key>
          <value>//*contains([@name , 'Review_of_Systems_Brief.${inputId}')]</value>
       </entry>
       <entry>
+         <key>CSS</key>
+         <value>[name=&quot;\34 112\.Review_of_Systems_Brief\.ENDOCRINE_NOTES&quot;]</value>
+      </entry>
+      <entry>
          <key>BASIC</key>
-         <value>//*[@type = 'text' and contains(@name, 'Review_of_Systems_Brief.${inputId}')]</value>
+         <value>//*[@type = 'text' and contains(@name, 'Review_of_Systems_Brief.ALLERGIC_IMMUNOLOGICAL_NOTES')]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
