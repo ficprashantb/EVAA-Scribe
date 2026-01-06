@@ -958,7 +958,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def (String Provider_FirstName, String Provider_LastName) {
+	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
 		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
 		String expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
 
