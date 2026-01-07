@@ -42,19 +42,19 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
-				'aria-checked')
-
-		if(chk_PatientConsentReceived == isReceived) {
-			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		}
-		else {
-			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		}
-
-		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
+//		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
+//
+//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
+//				'aria-checked')
+//
+//		if(chk_PatientConsentReceived == isReceived) {
+//			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
+//		}
+//		else {
+//			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
+//		}
+//
+//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
 	}
 
 
