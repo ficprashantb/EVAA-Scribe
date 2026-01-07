@@ -61,4 +61,4 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 //
 //CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
 
-//CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

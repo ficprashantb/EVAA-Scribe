@@ -44,17 +44,17 @@ public class EVAASteps {
 	def verifyPatientConsentReceived(String isReceived) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
-		//				'aria-checked')
-		//
-		//		if(chk_PatientConsentReceived == isReceived) {
-		//			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		//		}
-		//		else {
-		//			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		//		}
-		//
-		//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
+		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
+				'aria-checked')
+
+		if(chk_PatientConsentReceived == isReceived) {
+			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
+		}
+		else {
+			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
+		}
+
+		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
 	}
 
 
@@ -1867,7 +1867,7 @@ public class EVAASteps {
 
 	@Keyword
 	def directDictationByTypingOnElements() {
-		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
 
 		int rowCount = dictationData.getRowNumbers()
 
@@ -1925,7 +1925,7 @@ public class EVAASteps {
 			return
 		}
 
-		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
 
 		int row = 1   // first row
 
@@ -1982,7 +1982,7 @@ public class EVAASteps {
 	def directDictationByRecordStartStopOnElements(String UploadFilePath) {
 		int index = 1;
 		int breakIndex = 2;
-		TestData dictationData = TestDataFactory.findTestData('Data Files/Local DB/DirectDictationData')
+		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
 
 		int rowCount = dictationData.getRowNumbers()
 

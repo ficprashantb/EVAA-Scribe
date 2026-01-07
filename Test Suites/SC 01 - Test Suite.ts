@@ -15,25 +15,7 @@
       <guid>49255382-6c34-4e52-9632-e1467067257f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01</testCaseId>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</id>
-         <iterationEntity>
-            <iterationType>SPECIFIC</iterationType>
-            <value>1</value>
-         </iterationEntity>
-         <testDataId>Data Files/CreateNewEncounter</testDataId>
-      </testDataLink>
-      <testDataLink>
-         <combinationType>ONE</combinationType>
-         <id>445a9fd6-e4c1-4315-abec-7de2398bc4ac</id>
-         <iterationEntity>
-            <iterationType>SPECIFIC</iterationType>
-            <value>1</value>
-         </iterationEntity>
-         <testDataId>Data Files/EVAA/Encounter</testDataId>
-      </testDataLink>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>c6fd655c-903e-4276-835f-7b82eebd7ca0</id>
@@ -81,27 +63,27 @@
          <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>EncounterType</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>ExamLocation</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Provider</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
       </variableLink>
       <variableLink>
-         <testDataLinkId>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</testDataLinkId>
-         <type>DATA_COLUMN</type>
-         <value>Technician</value>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
          <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
       </variableLink>
       <variableLink>

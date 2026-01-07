@@ -6,15 +6,54 @@
    <connectionProperties/>
    <containsHeaders>true</containsHeaders>
    <csvSeperator></csvSeperator>
-   <dataFileGUID>e95cd849-8fde-4505-b8b1-f9b952e9e82d</dataFileGUID>
-   <dataSourceUrl>jdbc:mysql://20.98.160.42:3306/test</dataSourceUrl>
-   <driver>DBData</driver>
-   <driverClassName></driverClassName>
+   <dataFileGUID>8fc10c76-3ae9-4cd1-ba9b-4e2821410a44</dataFileGUID>
+   <dataSourceUrl></dataSourceUrl>
+   <driver>InternalData</driver>
+   <data>Simpson Marge 11%2F10%2F1976 ABeaverton Jack Jay 999999100 1</data>
+   <data>Simpson Homer null ABeaverton Ashley Cole 999999101 1</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>LastName</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>FirstName</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>DOB</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>Location</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>4</columnIndex>
+      <name>Provider_FirstName</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>5</columnIndex>
+      <name>Provider_LastName</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>6</columnIndex>
+      <name>SSN</name>
+      <size>2</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>7</columnIndex>
+      <name>IsActive</name>
+      <size>2</size>
+   </internalDataColumns>
    <isInternalPath>false</isInternalPath>
-   <password>IVFAVyNFNHI1dDZ5</password>
-   <query>SELECT * from patients where isActive = 1</query>
-   <secureUserAccount>true</secureUserAccount>
+   <query></query>
+   <secureUserAccount>false</secureUserAccount>
    <sheetName></sheetName>
-   <user>sampleuser</user>
-   <usingGlobalDBSetting>true</usingGlobalDBSetting>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
 </DataFileEntity>

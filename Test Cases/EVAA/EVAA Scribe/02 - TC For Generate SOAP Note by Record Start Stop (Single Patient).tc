@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>TC For Generate SOAP Note by Uploading File --- Append SOAP Note by Start Stop (Single Patient)</description>
-   <name>SC 05</name>
+   <description>Generate SOAP Note by Record Start Stop (Single Patient)</description>
+   <name>02 - TC For Generate SOAP Note by Record Start Stop (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>
@@ -15,10 +15,10 @@
    </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>f1f5eec0-2144-4827-9ed3-e07202d2a8d4</testCaseGuid>
+   <testCaseGuid>26be9c45-b9a2-425d-9d35-999b102d6e8d</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>fc1be2a7-66fd-4895-b279-cba7bb8fc907</id>
+      <id>821d16d7-1d51-49e1-be71-746b32009b27</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -27,25 +27,16 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>f9e8c88c-a37b-4fc5-8776-2f7d0a997b5e</id>
+      <id>e2e0f93c-23b4-42cd-9d69-9fae44fc3192</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
       </iterationEntity>
-      <testDataId>Data Files/EVAA/Encounter</testDataId>
+      <testDataId>Data Files/FilesData</testDataId>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>88e25bc3-f193-4738-90ca-2ceec7914f32</id>
-      <iterationEntity>
-         <iterationType>SPECIFIC</iterationType>
-         <value>3</value>
-      </iterationEntity>
-      <testDataId>Data Files/Local DB/FilesData</testDataId>
-   </testDataLinks>
-   <testDataLinks>
-      <combinationType>ONE</combinationType>
-      <id>82567812-c90d-4ef9-b103-a786d48606ba</id>
+      <id>e184096e-8602-4e52-813a-58b8ead935ae</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -53,84 +44,71 @@
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>88e25bc3-f193-4738-90ca-2ceec7914f32</testDataLinkId>
-      <type>DATA_COLUMN</type>
-      <value>UploadFilePath</value>
-      <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId>88e25bc3-f193-4738-90ca-2ceec7914f32</testDataLinkId>
+      <testDataLinkId>e2e0f93c-23b4-42cd-9d69-9fae44fc3192</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>RecordFilePath</value>
       <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>88e25bc3-f193-4738-90ca-2ceec7914f32</testDataLinkId>
+      <testDataLinkId>e2e0f93c-23b4-42cd-9d69-9fae44fc3192</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FileTime</value>
       <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>82567812-c90d-4ef9-b103-a786d48606ba</testDataLinkId>
+      <testDataLinkId>e184096e-8602-4e52-813a-58b8ead935ae</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
       <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>82567812-c90d-4ef9-b103-a786d48606ba</testDataLinkId>
+      <testDataLinkId>e184096e-8602-4e52-813a-58b8ead935ae</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
       <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>fc1be2a7-66fd-4895-b279-cba7bb8fc907</testDataLinkId>
+      <testDataLinkId>821d16d7-1d51-49e1-be71-746b32009b27</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>fc1be2a7-66fd-4895-b279-cba7bb8fc907</testDataLinkId>
+      <testDataLinkId>821d16d7-1d51-49e1-be71-746b32009b27</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>fc1be2a7-66fd-4895-b279-cba7bb8fc907</testDataLinkId>
+      <testDataLinkId>821d16d7-1d51-49e1-be71-746b32009b27</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>fc1be2a7-66fd-4895-b279-cba7bb8fc907</testDataLinkId>
+      <testDataLinkId>821d16d7-1d51-49e1-be71-746b32009b27</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>82567812-c90d-4ef9-b103-a786d48606ba</testDataLinkId>
+      <testDataLinkId>e184096e-8602-4e52-813a-58b8ead935ae</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
       <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>82567812-c90d-4ef9-b103-a786d48606ba</testDataLinkId>
+      <testDataLinkId>e184096e-8602-4e52-813a-58b8ead935ae</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
       <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>82567812-c90d-4ef9-b103-a786d48606ba</testDataLinkId>
+      <testDataLinkId>e184096e-8602-4e52-813a-58b8ead935ae</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
       <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
    </variableLinks>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>5dbcd699-c1d1-456f-827c-26126108e409</id>
-      <masked>false</masked>
-      <name>UploadFilePath</name>
-   </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -139,7 +117,7 @@
       <name>RecordFilePath</name>
    </variable>
    <variable>
-      <defaultValue>32</defaultValue>
+      <defaultValue>35</defaultValue>
       <description></description>
       <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
       <masked>false</masked>

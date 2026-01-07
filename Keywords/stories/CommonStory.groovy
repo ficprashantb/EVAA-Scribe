@@ -106,14 +106,12 @@ public class CommonStory {
 	static def getKeyValueDetails(def listData, def keyName) {
 
 		def delimeter = ':'
-		switch (keyName) {
-			case "DD":
-				delimeter = ','
-				break
+		if (keyName == 'DD') {
+			delimeter = ','
 		}
 
 		def parts = listData.toString()
-				.split(delimeter)
+				.split(delimeter, 2)   // ✅ ONLY FIRST SPLIT
 				.collect { it.trim() }
 				.findAll { it }
 
@@ -122,9 +120,10 @@ public class CommonStory {
 			return null
 		}
 
-		def key = parts[0].trim()
-		def expected = parts[1].trim()
+		def key = parts[0]
+		def expected = parts[1]
 		def name = ""
+
 		switch (keyName) {
 			case "CES":
 				name = CommonStory.getCurrentEyeSymptoms(key)
@@ -139,6 +138,7 @@ public class CommonStory {
 				name = CommonStory.getMentalAndFunctionalStatus(key)
 				break
 		}
+
 		return [_key: key, _expected: expected, _name: name]
 	}
 

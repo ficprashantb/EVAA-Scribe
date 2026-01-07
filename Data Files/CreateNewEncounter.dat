@@ -6,15 +6,43 @@
    <connectionProperties/>
    <containsHeaders>true</containsHeaders>
    <csvSeperator></csvSeperator>
-   <dataFileGUID>0276f9ce-fda1-4c9d-925a-6f70ba4c42b4</dataFileGUID>
+   <dataFileGUID>754e37f0-0660-4aed-8455-61762928d880</dataFileGUID>
    <dataSourceUrl></dataSourceUrl>
-   <driver>DBData</driver>
-   <driverClassName></driverClassName>
+   <driver>InternalData</driver>
+   <data>New+Patient+Exam ABeaverton null Jack+Jay QA+User null</data>
+   <internalDataColumns>
+      <columnIndex>0</columnIndex>
+      <name>EncounterType</name>
+      <size>1</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>1</columnIndex>
+      <name>ExamLocation</name>
+      <size>1</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>2</columnIndex>
+      <name>ExamDate</name>
+      <size>1</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>3</columnIndex>
+      <name>Provider</name>
+      <size>1</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>4</columnIndex>
+      <name>Technician</name>
+      <size>1</size>
+   </internalDataColumns>
+   <internalDataColumns>
+      <columnIndex>5</columnIndex>
+      <name>Referring physician</name>
+      <size>1</size>
+   </internalDataColumns>
    <isInternalPath>false</isInternalPath>
-   <password></password>
-   <query>SELECT * from createnewencounter</query>
+   <query></query>
    <secureUserAccount>false</secureUserAccount>
    <sheetName></sheetName>
-   <user></user>
-   <usingGlobalDBSetting>true</usingGlobalDBSetting>
+   <usingGlobalDBSetting>false</usingGlobalDBSetting>
 </DataFileEntity>
