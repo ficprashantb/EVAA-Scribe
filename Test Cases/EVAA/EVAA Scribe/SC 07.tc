@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
-   <name>SC 09- TC For Generate SOAP Note by Record Start Stop --- Direct Dictation By Typing (Single Patient)</name>
+   <description>TC For Generate SOAP Note by Uploading File --- Append SOAP Note by Pause Resume Stop (Single Patient)</description>
+   <name>SC 07</name>
    <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>5c5d2e00-794d-494e-93fa-f1576b6c6c4d</testCaseGuid>
+   <testCaseGuid>63f29926-6430-4509-a484-8ba8adfa8f3c</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>57939901-b468-4c91-935e-a7df2ce6fd3b</id>
+      <id>5a51daba-f4cd-4f77-8015-a61745968eed</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -17,7 +27,7 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>e71ff439-4aad-4997-9417-6afb521f4849</id>
+      <id>dfe30b61-1751-4dd9-8346-b6e5b67a3ca4</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -26,25 +36,16 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>5ad11d53-59d1-43bf-a7fa-0a0b6fc60e24</id>
+      <id>ff42053f-d9e2-4e89-ba31-15e0e7045a9e</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
-      </iterationEntity>
-      <testDataId>Data Files/Local DB/DirectDictationData</testDataId>
-   </testDataLinks>
-   <testDataLinks>
-      <combinationType>ONE</combinationType>
-      <id>400b58cb-fe63-49f0-aded-a68022806327</id>
-      <iterationEntity>
-         <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
+         <value>3</value>
       </iterationEntity>
       <testDataId>Data Files/Local DB/FilesData</testDataId>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>266c2f35-4574-43f4-a6cd-078c6d7e34de</id>
+      <id>d11df70c-d0c3-4632-aed1-56e6da234aa9</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -52,71 +53,84 @@
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>400b58cb-fe63-49f0-aded-a68022806327</testDataLinkId>
+      <testDataLinkId>ff42053f-d9e2-4e89-ba31-15e0e7045a9e</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>UploadFilePath</value>
+      <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>ff42053f-d9e2-4e89-ba31-15e0e7045a9e</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>RecordFilePath</value>
       <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>400b58cb-fe63-49f0-aded-a68022806327</testDataLinkId>
+      <testDataLinkId>ff42053f-d9e2-4e89-ba31-15e0e7045a9e</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FileTime</value>
       <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>266c2f35-4574-43f4-a6cd-078c6d7e34de</testDataLinkId>
+      <testDataLinkId>d11df70c-d0c3-4632-aed1-56e6da234aa9</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
       <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>266c2f35-4574-43f4-a6cd-078c6d7e34de</testDataLinkId>
+      <testDataLinkId>d11df70c-d0c3-4632-aed1-56e6da234aa9</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
       <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>57939901-b468-4c91-935e-a7df2ce6fd3b</testDataLinkId>
+      <testDataLinkId>5a51daba-f4cd-4f77-8015-a61745968eed</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>57939901-b468-4c91-935e-a7df2ce6fd3b</testDataLinkId>
+      <testDataLinkId>5a51daba-f4cd-4f77-8015-a61745968eed</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>57939901-b468-4c91-935e-a7df2ce6fd3b</testDataLinkId>
+      <testDataLinkId>5a51daba-f4cd-4f77-8015-a61745968eed</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>57939901-b468-4c91-935e-a7df2ce6fd3b</testDataLinkId>
+      <testDataLinkId>5a51daba-f4cd-4f77-8015-a61745968eed</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>266c2f35-4574-43f4-a6cd-078c6d7e34de</testDataLinkId>
+      <testDataLinkId>d11df70c-d0c3-4632-aed1-56e6da234aa9</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
       <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>266c2f35-4574-43f4-a6cd-078c6d7e34de</testDataLinkId>
+      <testDataLinkId>d11df70c-d0c3-4632-aed1-56e6da234aa9</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
       <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>266c2f35-4574-43f4-a6cd-078c6d7e34de</testDataLinkId>
+      <testDataLinkId>d11df70c-d0c3-4632-aed1-56e6da234aa9</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
       <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
    </variableLinks>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>5dbcd699-c1d1-456f-827c-26126108e409</id>
+      <masked>false</masked>
+      <name>UploadFilePath</name>
+   </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -125,7 +139,7 @@
       <name>RecordFilePath</name>
    </variable>
    <variable>
-      <defaultValue>35</defaultValue>
+      <defaultValue>32</defaultValue>
       <description></description>
       <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
       <masked>false</masked>
@@ -194,14 +208,4 @@
       <masked>false</masked>
       <name>DOB</name>
    </variable>
-   <integratedEntity>
-      <productName>TESTOPS</productName>
-      <properties>
-         <entry>
-            <key>integratedValue</key>
-            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
-         </entry>
-      </properties>
-      <type>TESTCASE</type>
-   </integratedEntity>
 </TestCaseEntity>

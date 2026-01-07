@@ -15,7 +15,7 @@
       <guid>49255382-6c34-4e52-9632-e1467067257f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01- TC For Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01</testCaseId>
       <testDataLink>
          <combinationType>ONE</combinationType>
          <id>2b6ec68b-37b3-4873-8af2-5df8ed7c98ab</id>

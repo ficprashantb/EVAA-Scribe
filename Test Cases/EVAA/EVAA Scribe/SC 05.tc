@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
-   <name>SC 05- TC For Generate SOAP Note by Uploading File --- Append SOAP Note by Start Stop (Single Patient)</name>
+   <description>TC For Generate SOAP Note by Uploading File --- Append SOAP Note by Start Stop (Single Patient)</description>
+   <name>SC 05</name>
    <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
    <testCaseGuid>f1f5eec0-2144-4827-9ed3-e07202d2a8d4</testCaseGuid>
@@ -198,14 +208,4 @@
       <masked>false</masked>
       <name>DOB</name>
    </variable>
-   <integratedEntity>
-      <productName>TESTOPS</productName>
-      <properties>
-         <entry>
-            <key>integratedValue</key>
-            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
-         </entry>
-      </properties>
-      <type>TESTCASE</type>
-   </integratedEntity>
 </TestCaseEntity>

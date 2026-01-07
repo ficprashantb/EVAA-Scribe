@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Generate SOAP for Patient 1 After Switching from Patient 2 and Verify SOAP for Patient 1 After Patient Switch</description>
-   <name>SC 12- TC For Verify Generated SOAP for Patient 1 After Patient Switch by Uploading File (Two Patients)</name>
+   <description>TC For Verify Generated SOAP for Patient 1 After Patient Switch by Uploading File (Two Patients)</description>
+   <name>SC 12</name>
    <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
    <testCaseGuid>bb20a727-3c0d-4a76-bb12-593a66ab3586</testCaseGuid>
@@ -98,14 +108,4 @@
       <masked>false</masked>
       <name>Technician</name>
    </variable>
-   <integratedEntity>
-      <productName>TESTOPS</productName>
-      <properties>
-         <entry>
-            <key>integratedValue</key>
-            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
-         </entry>
-      </properties>
-      <type>TESTCASE</type>
-   </integratedEntity>
 </TestCaseEntity>
