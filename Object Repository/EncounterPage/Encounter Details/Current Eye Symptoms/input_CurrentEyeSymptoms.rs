@@ -6,16 +6,16 @@
    <elementGuidId>f10c4547-42f7-49ed-b7d3-eb26527512ae</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//*[contains(@name , 'Current_Eye_Symptoms.${inputId}')]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
          <value>[name=&quot;\34 115\.Current_Eye_Symptoms\.GLARE_NOTES&quot;]</value>
       </entry>
       <entry>
          <key>BASIC</key>
          <value>//*[@type = 'text' and contains(@name, 'Current_Eye_Symptoms.${inputId}')]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[contains(@name , 'Current_Eye_Symptoms.${inputId}')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>5079b49e-46d0-4ed4-ae3d-956968a46a91</webElementGuid>
+      <webElementGuid>c4879aeb-163c-4874-b60c-80c06a7bedfc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -41,7 +41,7 @@
       <name>type</name>
       <type>Main</type>
       <value>text</value>
-      <webElementGuid>2e5f5d78-cc13-4139-84c3-12a97df3c8ed</webElementGuid>
+      <webElementGuid>45006713-29e3-4705-b3d8-b1efc01b69c5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>data-sysdef</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>1c486f0b-fcc3-4821-b0e1-254e6540b7a7</webElementGuid>
+      <webElementGuid>58913c1c-4f32-4259-8c9e-afaf30935266</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>maxlength</name>
       <type>Main</type>
       <value>8000</value>
-      <webElementGuid>091eb74a-3e44-405b-95ae-3e932035096c</webElementGuid>
+      <webElementGuid>de7a538b-c01c-41dc-821e-ec7c3fae9c5f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>data-reffield</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>341ab856-0a84-4c44-a259-a6433bb8967c</webElementGuid>
+      <webElementGuid>bc20ac81-3ca1-41bf-a71f-a8a44ab9f623</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>data-isrefered</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>07c1ef6c-e5d2-4f9c-ad5c-a85a0dc72510</webElementGuid>
+      <webElementGuid>67315220-74a7-4019-b77b-7f6f4d8bc489</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -81,7 +81,7 @@
       <name>data-defaultdatatype</name>
       <type>Main</type>
       <value>string</value>
-      <webElementGuid>9130c6c4-0c4e-44c3-abd0-2a1cacfd77f3</webElementGuid>
+      <webElementGuid>23df2063-e146-44a3-9aaf-fc765b6ca900</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -89,7 +89,7 @@
       <name>name</name>
       <type>Main</type>
       <value>Current_Eye_Symptoms.${inputId}</value>
-      <webElementGuid>ee36a5d6-bcb7-444d-9f8c-addf6b00fe79</webElementGuid>
+      <webElementGuid>bc550df6-603d-40ad-8607-efea095f37e1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -97,7 +97,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>2012</value>
-      <webElementGuid>2b36aa0a-6aa2-4cde-817a-bf1556d3afc7</webElementGuid>
+      <webElementGuid>6f2d64bc-e177-4d0e-b9b1-8d7e5a3a8886</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -105,7 +105,7 @@
       <name>data-canbehidden</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>f279ee83-ce87-4010-b216-bed2906645d3</webElementGuid>
+      <webElementGuid>7dc070de-5d57-4cec-9b21-842293bf6afc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -113,7 +113,7 @@
       <name>data-cid</name>
       <type>Main</type>
       <value>1946</value>
-      <webElementGuid>5b709a71-bc02-49b7-9cac-d9060ab9fe6e</webElementGuid>
+      <webElementGuid>643aa227-a49c-43ad-8d6e-98baa2d9d09a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -121,7 +121,7 @@
       <name>data-isreadonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>29404e07-8b05-499c-a943-46be0b12bf65</webElementGuid>
+      <webElementGuid>be463a42-586e-46a2-ac73-26c2b63b32cb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -129,7 +129,7 @@
       <name>data-eyetype</name>
       <type>Main</type>
       <value>null</value>
-      <webElementGuid>b8113f63-dbb5-4da8-90d1-3a6009227a78</webElementGuid>
+      <webElementGuid>df903fee-b47f-41d2-a6bb-08422d11e410</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -137,7 +137,7 @@
       <name>data-elementid</name>
       <type>Main</type>
       <value>2138</value>
-      <webElementGuid>9db595fa-ee6a-46bb-a988-1026e1febb95</webElementGuid>
+      <webElementGuid>d98d136e-4d0f-480f-ba8e-7f164dca6855</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -145,7 +145,7 @@
       <name>data-enc_elementpagerelid</name>
       <type>Main</type>
       <value>4115</value>
-      <webElementGuid>d9dd9af4-f1ee-42e7-ad7a-e682dfa3e3e6</webElementGuid>
+      <webElementGuid>e471ea45-69dd-40af-98f5-a263df5322ac</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -153,7 +153,7 @@
       <name>data-supportclearbtn</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>31daa98f-0cb8-493e-be5f-0211add34700</webElementGuid>
+      <webElementGuid>b819e8c8-0011-4cb4-a34c-9082840901a8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -161,7 +161,7 @@
       <name>class</name>
       <type>Main</type>
       <value>clearable</value>
-      <webElementGuid>83d2e115-d8b6-4bb0-aaa2-a4b449f527ce</webElementGuid>
+      <webElementGuid>8a16357c-2529-436f-a6e9-ea64a7b1f522</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -169,7 +169,7 @@
       <name>data-refelmid</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>1582fba9-90ea-4bf2-a992-05f843e6d83c</webElementGuid>
+      <webElementGuid>bf690b25-7a99-4f7f-bb75-f36382eaae76</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -177,7 +177,7 @@
       <name>data-askey</name>
       <type>Main</type>
       <value>~F_F~Current_Eye_Symptoms.${inputId}</value>
-      <webElementGuid>e6d909b4-3360-401e-9c71-a22d4ebfcac2</webElementGuid>
+      <webElementGuid>f444e123-0f67-4fd2-baca-5432c332b89a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -185,7 +185,7 @@
       <name>data-actualname</name>
       <type>Main</type>
       <value>${inputId}</value>
-      <webElementGuid>e1a555cc-a2a9-4f2f-b1a3-345e3fe56acc</webElementGuid>
+      <webElementGuid>45c1d4f0-0c1a-4fce-927b-0c055f5394c3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -193,7 +193,7 @@
       <name>autocomplete</name>
       <type>Main</type>
       <value>off</value>
-      <webElementGuid>a9f41eee-be20-4264-a5ea-86f7ab946a50</webElementGuid>
+      <webElementGuid>104cc785-8d91-4454-b9ad-3b2e39f5dd13</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -201,7 +201,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-c2915e1bb11d77ea177a7bf0e1147af5</value>
-      <webElementGuid>9c56d3fe-849e-4e6d-ada0-2bee72fc5756</webElementGuid>
+      <webElementGuid>8dc2e84f-a9e8-427f-84db-27445d9fcb7b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -209,7 +209,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*[contains(@name , 'Current_Eye_Symptoms.${inputId}')]</value>
-      <webElementGuid>6fdaa974-74eb-46db-ac66-8a097ad0a9ed</webElementGuid>
+      <webElementGuid>e4629dbc-36f0-4299-ac4f-22a97dd2eb56</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -217,7 +217,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[contains(@name , 'Current_Eye_Symptoms.${inputId}')]</value>
-      <webElementGuid>e179708d-2089-454c-bcdc-d58c4afcafad</webElementGuid>
+      <webElementGuid>ff394d3e-5f6c-4610-a3a0-4b7e771d99be</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -225,6 +225,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//input[@type = 'text' and contains(@name , 'Current_Eye_Symptoms.${inputId}')]')]</value>
-      <webElementGuid>a010fac5-b4b1-4909-9388-2934a96042da</webElementGuid>
+      <webElementGuid>922492c7-29af-4788-979e-d306f2141e56</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

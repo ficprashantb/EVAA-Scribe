@@ -3,6 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import java.beans.Customizer as Customizer
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -23,7 +24,7 @@ import stories.VariableStories as VariableStories
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_13'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_12'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -62,5 +63,17 @@ CustomKeywords.'steps.EVAASteps.verifySOAPNoteGenerateSucessfully'()
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
+
+KeywordUtil.logInfo('iframeContainer found')
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
+
+KeywordUtil.logInfo('Expand Recording found')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

@@ -24,7 +24,7 @@ import stories.VariableStories as VariableStories
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_14'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_13'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -40,7 +40,8 @@ KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
-CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
+CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
+    ExamLocation, Provider, Technician)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
@@ -48,8 +49,14 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
+
+KeywordUtil.logInfo('iframeContainer found')
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
+
+KeywordUtil.logInfo('Expand Recording found')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

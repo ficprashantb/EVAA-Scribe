@@ -830,7 +830,7 @@
       <guid>88945e4d-c864-4d03-a2ba-b7911ff244a8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/12 - Verify SOAP Notes for Patient 1 After Patient Switch after Uploading File (Two Patients)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/16 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

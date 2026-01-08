@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_Review_of_Systems</name>
+   <name>textarea_Additional_Notes_ROS</name>
    <tag></tag>
-   <elementGuidId>32aa14c9-db72-4642-959b-e5c5b8e2fbe6</elementGuidId>
+   <elementGuidId>e3380c2f-d11e-4492-a6c5-8622faf3755d</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>[name=&quot;\34 112\.Review_of_Systems_Brief\.ENDOCRINE_NOTES&quot;]</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//*[@type = 'text' and contains(@name, 'Review_of_Systems_Brief.${inputId}')]</value>
+         <value>//*[contains(@name, 'Review_of_Systems_Brief.ADDITIONAL_NOTES') and @placeholder = 'Additional Notes']</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//*[contains(@name , 'Review_of_Systems_Brief.${inputId}')]</value>
+         <value>//textarea[contains(@name , 'Review_of_Systems_Brief.ADDITIONAL_NOTES') and @placeholder = 'Additional Notes']</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>XPATH</selectorMethod>
+   <selectorMethod>BASIC</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>input[name=&quot;\34 112\.Review_of_Systems_Brief\.ENDOCRINE_NOTES&quot;]</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -32,16 +32,8 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>input</value>
-      <webElementGuid>514549f0-3610-49a1-9148-7a9d16f91b84</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>type</name>
-      <type>Main</type>
-      <value>text</value>
-      <webElementGuid>3fa83036-d7d7-4423-9d48-0a646f220408</webElementGuid>
+      <value>textarea</value>
+      <webElementGuid>a9ef91e8-d975-49c7-a01e-2996f9eaa8a6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,15 +41,7 @@
       <name>data-sysdef</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>fc67500c-f7db-4abd-af95-dd83dcaabee6</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>maxlength</name>
-      <type>Main</type>
-      <value>8000</value>
-      <webElementGuid>041e2c81-5bf7-4310-a908-1e41494d8756</webElementGuid>
+      <webElementGuid>877a3908-6b51-4292-9b2a-6f6843ce34fd</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +49,7 @@
       <name>data-reffield</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>da091096-8dbf-4ac7-9077-2ef5e29e99d1</webElementGuid>
+      <webElementGuid>1d3fa5eb-0014-4e5e-9e68-b33fcd308c23</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +57,15 @@
       <name>data-isrefered</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>145d606a-d887-43a5-9c7e-d402cd6ed469</webElementGuid>
+      <webElementGuid>28d4f1cc-41ba-4cb6-a577-3e9374878818</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>maxlength</name>
+      <type>Main</type>
+      <value>8000</value>
+      <webElementGuid>3b616abc-1a7f-4cf7-a4d6-acf2e6187e3b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -81,23 +73,31 @@
       <name>data-defaultdatatype</name>
       <type>Main</type>
       <value>string</value>
-      <webElementGuid>227e05e6-a00f-4fbb-9f6e-c634d42637b5</webElementGuid>
+      <webElementGuid>c9095a0e-f041-444e-b659-97cbb6792b5e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>contains</matchCondition>
       <name>name</name>
       <type>Main</type>
-      <value>Review_of_Systems_Brief.${inputId}</value>
-      <webElementGuid>3cba93e4-2a30-40ac-a66f-843a82fb4d48</webElementGuid>
+      <value>Review_of_Systems_Brief.ADDITIONAL_NOTES</value>
+      <webElementGuid>7f9f82fd-5300-4d7c-81b8-fbcc06b8545b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>tabindex</name>
       <type>Main</type>
-      <value>9538</value>
-      <webElementGuid>58fad105-04c0-45bc-a731-2f07c92dc9d4</webElementGuid>
+      <value>9547</value>
+      <webElementGuid>cbc86fd5-860a-4aac-a271-6ed3821cf1bb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-ec_ctrldispname</name>
+      <type>Main</type>
+      <value>Notes</value>
+      <webElementGuid>2278b3a7-a256-4eda-b604-c120800afdc7</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -105,15 +105,15 @@
       <name>data-canbehidden</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>5a90d0e5-35a6-447e-b676-48154201ec4e</webElementGuid>
+      <webElementGuid>1be8cbd5-791e-4bcc-89ce-bf40357c5820</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>data-cid</name>
       <type>Main</type>
-      <value>1324</value>
-      <webElementGuid>579b3208-3edb-43f2-bb8b-9405fc005ff5</webElementGuid>
+      <value>1336</value>
+      <webElementGuid>504c4501-bf76-40fa-a920-59a555eaa692</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -121,7 +121,7 @@
       <name>data-isreadonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>8e20bb82-d6c6-4bbb-adbb-70fcf73e3625</webElementGuid>
+      <webElementGuid>733c46b5-8ae1-44aa-b0a5-c53c9399bb5e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -129,7 +129,7 @@
       <name>data-eyetype</name>
       <type>Main</type>
       <value>null</value>
-      <webElementGuid>b234542c-bc22-4ded-91ee-99ae59830037</webElementGuid>
+      <webElementGuid>d1a9d3e0-aca3-4da5-b911-95faa78b6ac5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -137,15 +137,15 @@
       <name>data-elementid</name>
       <type>Main</type>
       <value>4173</value>
-      <webElementGuid>a6fc98ee-e212-4eef-8005-1de7a9f0ec4e</webElementGuid>
+      <webElementGuid>4b35006a-2f1b-481e-a4fb-0292671efa86</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>data-supportclearbtn</name>
+      <name>data-watermark</name>
       <type>Main</type>
-      <value>true</value>
-      <webElementGuid>af9dd7d3-7c79-44a4-83fa-bbe6dc151e8c</webElementGuid>
+      <value>Additional Notes</value>
+      <webElementGuid>d856f761-1ca5-416c-949c-0a4bd21a82d4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -153,15 +153,31 @@
       <name>data-enc_elementpagerelid</name>
       <type>Main</type>
       <value>4112</value>
-      <webElementGuid>61387164-0a10-42ed-8f97-2026f42aea54</webElementGuid>
+      <webElementGuid>bd1c39dc-c2a8-4b1a-80ce-a67c1133f253</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>class</name>
+      <name>data-oldvalue</name>
       <type>Main</type>
-      <value>clearable</value>
-      <webElementGuid>98f4d91d-3999-433f-909e-e28e9f3022d7</webElementGuid>
+      <value>null</value>
+      <webElementGuid>eb84efe7-1f20-46f3-af13-01801e701084</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-includeinsummaryelm</name>
+      <type>Main</type>
+      <value>True</value>
+      <webElementGuid>f4cbcc32-024d-48fe-bc10-c0c10ca14e7e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>placeholder</name>
+      <type>Main</type>
+      <value>Additional Notes</value>
+      <webElementGuid>59c41ca3-12a8-40f2-b1d3-03723057d700</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -169,23 +185,23 @@
       <name>data-refelmid</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>01d41823-ea8a-4800-9289-f5d13b38747e</webElementGuid>
+      <webElementGuid>06ae7ab3-5228-42cd-a57b-7daf08257e76</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>data-askey</name>
       <type>Main</type>
-      <value>~F_F~Review_of_Systems_Brief.${inputId}</value>
-      <webElementGuid>a8b77b3c-689b-48ca-9529-626744136434</webElementGuid>
+      <value>~F_F~Review_of_Systems_Brief.ADDITIONAL_NOTES</value>
+      <webElementGuid>76ae1224-ad2f-47f7-9956-6303dbee46ad</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>data-actualname</name>
       <type>Main</type>
-      <value>${inputId}</value>
-      <webElementGuid>d652e2f5-9ff7-4ce2-8bef-3b354b353be2</webElementGuid>
+      <value>ADDITIONAL_NOTES</value>
+      <webElementGuid>4f59d228-7cde-4f0c-99ed-d9a035ccf2ea</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -193,7 +209,7 @@
       <name>data-elementname</name>
       <type>Main</type>
       <value>Review_of_Systems_Brief</value>
-      <webElementGuid>9e47db01-df09-486d-8aa2-699039444850</webElementGuid>
+      <webElementGuid>03310e4f-9f92-4349-a3c3-9e2e2bfbaa87</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -201,38 +217,38 @@
       <name>autocomplete</name>
       <type>Main</type>
       <value>off</value>
-      <webElementGuid>1aae54fa-1a22-44d3-8b78-317245550bed</webElementGuid>
+      <webElementGuid>5cd5124d-fb5e-4500-be97-18994ee6fa8f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-47ce3a4072e0c200a19dc737cf5fdf0c</value>
-      <webElementGuid>a9fd90bd-68f6-4f9c-a422-86ca9ac1bfa2</webElementGuid>
+      <value>md5.v1-1f594c6af9ac361c9865fb05d5974294</value>
+      <webElementGuid>331aa48d-3a7e-4a9b-822d-9d03448d8403</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*contains([@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>9e73f444-2dbb-47fc-aec1-0b9ce7d313ed</webElementGuid>
+      <value>//textarea[contains(@name , 'Review_of_Systems_Brief.ADDITIONAL_NOTES') and @placeholder = 'Additional Notes']</value>
+      <webElementGuid>9cc01177-c5f0-4330-9543-afbf2e35e6e3</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[contains(@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>bbbd7be0-bfbe-40d4-a995-ef090703e381</webElementGuid>
+      <value>//textarea[contains(@name , 'Review_of_Systems_Brief.ADDITIONAL_NOTES') and @placeholder = 'Additional Notes']</value>
+      <webElementGuid>69e6a5e0-b1fd-4f54-8273-0cfe16d79ee7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//input[@type = 'text' and contains(@name , 'Review_of_Systems_Brief.${inputId}')]</value>
-      <webElementGuid>aa4181fa-3b34-4f45-8782-b728a298ebdf</webElementGuid>
+      <value>//textarea[contains(@name , 'Review_of_Systems_Brief.ADDITIONAL_NOTES') and @placeholder = 'Additional Notes']</value>
+      <webElementGuid>1417d26a-ec81-43f3-92de-4f72821d55b8</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

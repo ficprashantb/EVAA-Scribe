@@ -1139,7 +1139,7 @@ public class EVAASteps {
 
 					def name = ''
 
-					def text = ''
+					String text = ''
 					if (result) {
 						text = result._key
 
@@ -1158,6 +1158,10 @@ public class EVAASteps {
 						KeywordUtil.logInfo("Result Name: $name")
 
 						TestObject input_CurrentEyeSymptoms = testObjectStory.input_CurrentEyeSymptoms(name)
+
+						if (text?.toLowerCase()?.contains('additional')) {
+							input_CurrentEyeSymptoms = findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/textarea_Additional_Notes_CES')
+						}
 
 						actual = WebUI.getAttribute(input_CurrentEyeSymptoms, 'value',FailureHandling.OPTIONAL)
 					}
@@ -1197,7 +1201,7 @@ public class EVAASteps {
 
 					def name = ''
 
-					def text = ''
+					String text = ''
 
 					if (result) {
 						text = result._key
@@ -1218,6 +1222,10 @@ public class EVAASteps {
 						KeywordUtil.logInfo("Result Name: $name")
 
 						TestObject input_Review_of_Systems = testObjectStory.input_Review_of_Systems(name)
+
+						if (text?.toLowerCase()?.contains('additional')) {
+							input_Review_of_Systems = findTestObject('EncounterPage/Encounter Details/Review Of Systems/textarea_Additional_Notes_ROS')
+						}
 
 						actual = WebUI.getAttribute(input_Review_of_Systems, 'value',FailureHandling.OPTIONAL)
 					}
@@ -1254,7 +1262,7 @@ public class EVAASteps {
 
 					def name = ''
 
-					def text = ''
+					String  text = ''
 
 					if (result) {
 						text = result._key
@@ -1274,6 +1282,10 @@ public class EVAASteps {
 						KeywordUtil.logInfo("Result Name: $name")
 
 						TestObject inputEyeDiseases = testObjectStory.inputEyeDiseases(name)
+
+						if (text?.toLowerCase()?.contains('additional')) {
+							inputEyeDiseases = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
+						}
 
 						actual = WebUI.getAttribute(inputEyeDiseases, 'value',FailureHandling.OPTIONAL)
 					}
@@ -1887,7 +1899,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifySOAPNoteGenerateSucessfully() {
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.OPTIONAL)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 150, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
 
@@ -1897,49 +1909,51 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
 	}
-	
+
 	@Keyword
 	def StartRecording_CreateNewEncounter_StopRecording(String recordFilePath, String FirstName, String LastName, String EncounterType, String ExamLocation, String Provider, String Technician ) {
 		def fakeMic = new FakeMicStream(recordFilePath)
-		
+
 		// Start Recording
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
-		
+
 		KeywordUtil.logInfo('Clicked on Start Record Button')
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
-		
+
 		fakeMic.start()
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
-		
+
 		// Collapse Expand Recording Screen
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
-		  
+
 		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician,
-			false)
-		
+				false)
+
 		navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-		
+
 		String encounterId = VariableStories.getItem('ENCOUNTER_ID')
-		
+
 		KeywordUtil.logInfo("Encounter Id=> $encounterId")
-		
+
 		CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-		
+
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-		
+
 		// Stop Recording
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
-		
+
+		WebUI.delay(10)
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
-		
+
 		KeywordUtil.logInfo('Clicked on Stop Record Button')
-		
+
 		fakeMic.stop()
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
@@ -1954,7 +1968,78 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
- 
+
+	@Keyword
+	def StartRecording_CreateNewEncounterForOtherPatient_StopRecording(String recordFilePath, String FirstName, String LastName, String EncounterType, String ExamLocation, String Provider, String Technician ) {
+		def fakeMic = new FakeMicStream(recordFilePath)
+
+		// Start Recording
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
+
+		KeywordUtil.logInfo('Clicked on Start Record Button')
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
+
+		fakeMic.start()
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		// Collapse Expand Recording Screen
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+
+		TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
+
+		def LastName2 = patientData.getValue('LastName', 2)
+
+		def FirstName2 = patientData.getValue('FirstName', 2)
+
+		//Find Patient 2
+		CustomKeywords.'steps.CommonSteps.findPatient'(LastName2, FirstName2)
+
+		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName2, LastName2, EncounterType, ExamLocation, Provider, Technician,
+				false)
+
+		//Find patient 1
+		CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+
+		navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
+
+		String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+
+		KeywordUtil.logInfo("Encounter Id=> $encounterId")
+
+		CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
+
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+
+		// Stop Recording
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.delay(10)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
+
+		KeywordUtil.logInfo('Clicked on Stop Record Button')
+
+		fakeMic.stop()
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
+	}
+
 	@Keyword
 	def directDictationByTypingOnElements() {
 		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
@@ -2215,6 +2300,25 @@ public class EVAASteps {
 				// Switch back
 				WebUI.switchToDefaultContent()
 			}
+		}
+	}
+
+	@Keyword
+	def TransferEncounterDataToSuperbill() {
+		WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.logInfo("Clicked on Transfer button.")
+
+		try {
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_Data transferred'), 10, FailureHandling.CONTINUE_ON_FAILURE)
+
+			WebUI.focus(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
+
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/powerTip_Data transferred'), 5, FailureHandling.STOP_ON_FAILURE)
+			KeywordUtil.markPassed("Data transferred to Superbill.")
+		} catch (e) {
+			KeywordUtil.markFailedAndStop("Data not transferred to Superbill.")
 		}
 	}
 }

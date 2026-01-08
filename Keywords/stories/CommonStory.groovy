@@ -191,7 +191,8 @@ public class CommonStory {
 			'Central Loss'      : 'LOSS_OF_CENTRAL_VISION_NOTES',
 			'Side Loss'      	: 'LOSS_OF_SIDE_VISION_NOTES',
 			'Loss of Vision'    : 'LOSS_OF_VISION_NOTES',
-			'Other'        		: 'OTHER_NOTES'
+			'Other'        		: 'OTHER_NOTES',
+			'Additional'        : 'NOTES'
 		]
 
 		map.find { k, v -> txt.containsIgnoreCase(k) }?.value
@@ -229,7 +230,8 @@ public class CommonStory {
 			'Allergic'        			: 'ALLERGIC_IMMUNOLOGICAL_NOTES',
 			'Immuno'        			: 'ALLERGIC_IMMUNOLOGICAL_NOTES',
 			'Pregnant'        			: 'PREGNANT_NOTES',
-			'Nursing'        			: 'NURSING_NOTES'
+			'Nursing'        			: 'NURSING_NOTES',
+			'Additional'        		: 'ADDITIONAL_NOTES'
 
 		]
 
@@ -270,7 +272,8 @@ public class CommonStory {
 			'Strabismus'			: 'STRABISMUS_NOTES',
 			'Keratoconus'			: 'KERATOCONUS_NOTES',
 			'Corneal Disease'		: 'CORNEAL_DISEASE_NOTES',
-			'Other'					: 'OTHER_NOTES'
+			'Other'					: 'OTHER_NOTES',
+			'Additional'        	: 'ADDITIONAL_NOTES'
 		]
 
 		map.find { k, v -> txt.containsIgnoreCase(k) }?.value

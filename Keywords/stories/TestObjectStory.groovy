@@ -32,8 +32,8 @@ public class TestObjectStory {
 		return findTestObject('EncounterPage/Encounter Details/Radio Button/input_RadioButton',
 				[('id') : id, ('value') : value]
 				)
-	} 
-	
+	}
+
 	TestObject input_CurrentEyeSymptoms(String inputId) {
 		return findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/input_CurrentEyeSymptoms',
 				[('inputId') : inputId]
@@ -46,23 +46,23 @@ public class TestObjectStory {
 				)
 	}
 
-		TestObject tableAllergies(int index) {
-			return findTestObject('EncounterPage/Encounter Details/table Allergies',
-					[('index') : index]
-					)
-		}
+	TestObject tableAllergies(int index) {
+		return findTestObject('EncounterPage/Encounter Details/table Allergies',
+				[('index') : index]
+				)
+	}
 
-		TestObject tableMedications(int index) {
-			return findTestObject('EncounterPage/Encounter Details/table Medications',
-					[('index') : index]
-					)
-		}
-	
-		TestObject tableProblems(int index) {
-			return findTestObject('EncounterPage/Encounter Details/table Problems',
-					[('index') : index]
-					)
-		}
+	TestObject tableMedications(int index) {
+		return findTestObject('EncounterPage/Encounter Details/table Medications',
+				[('index') : index]
+				)
+	}
+
+	TestObject tableProblems(int index) {
+		return findTestObject('EncounterPage/Encounter Details/table Problems',
+				[('index') : index]
+				)
+	}
 
 	TestObject tableFDDifferentialDiagnosis(String code, String description) {
 		return findTestObject('EncounterPage/Encounter Details/table FD Differential Diagnosis',
@@ -94,17 +94,16 @@ public class TestObjectStory {
 				[('search') : search]
 				)
 	}
-	
+
 	TestObject img_Start_Dictation(String type) {
 		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Start_Dictation',
 				[('type') : type]
 				)
 	}
-	
+
 	TestObject img_Stop_Dictation(String type) {
 		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Stop_Dictation',
 				[('type') : type]
 				)
 	}
-	
 }
