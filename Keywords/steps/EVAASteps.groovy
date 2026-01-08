@@ -42,19 +42,19 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
-//		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
-//
-//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
-//				'aria-checked')
-//
-//		if(chk_PatientConsentReceived == isReceived) {
-//			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
-//		}
-//		else {
-//			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
-//		}
-//
-//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
+		//		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
+		//
+		//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
+		//				'aria-checked')
+		//
+		//		if(chk_PatientConsentReceived == isReceived) {
+		//			KeywordUtil.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
+		//		}
+		//		else {
+		//			KeywordUtil.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
+		//		}
+		//
+		//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
 	}
 
 
@@ -1828,6 +1828,34 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
 
+
+
+	@Keyword
+	def StopRecordingForSOAPNote(String FileTime, String UploadFilePath) {
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
+
+		KeywordUtil.logInfo('Clicked on Stop Record Button')
+
+		fakeMic.stop()
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
+	}
+
 	@Keyword
 	def generateSOAPNoteByUploadingFile(String UploadFilePath) {
 		KeywordUtil.logInfo("File Path $UploadFilePath")
@@ -1846,10 +1874,15 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def generateSOAPNoteByUploadingFileAndSwitchPatient(String UploadFilePath) {
+	def UploadingSOAPNoteFile(String UploadFilePath) {
 		KeywordUtil.logInfo("File Path $UploadFilePath")
 
 		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+	}
+
+	@Keyword
+	def generateSOAPNoteByUploadingFileAndSwitchPatient(String UploadFilePath) {
+		UploadingSOAPNoteFile(UploadFilePath)
 	}
 
 	@Keyword
@@ -1864,7 +1897,64 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
 	}
+	
+	@Keyword
+	def StartRecording_CreateNewEncounter_StopRecording(String recordFilePath, String FirstName, String LastName, String EncounterType, String ExamLocation, String Provider, String Technician ) {
+		def fakeMic = new FakeMicStream(recordFilePath)
+		
+		// Start Recording
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
+		
+		KeywordUtil.logInfo('Clicked on Start Record Button')
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
+		
+		fakeMic.start()
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		// Collapse Expand Recording Screen
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+		  
+		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician,
+			false)
+		
+		navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
+		
+		String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+		
+		KeywordUtil.logInfo("Encounter Id=> $encounterId")
+		
+		CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
+		
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+		
+		// Stop Recording
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
+		
+		KeywordUtil.logInfo('Clicked on Stop Record Button')
+		
+		fakeMic.stop()
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
+	}
+ 
 	@Keyword
 	def directDictationByTypingOnElements() {
 		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')

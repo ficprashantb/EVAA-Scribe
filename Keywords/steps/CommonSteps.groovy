@@ -131,7 +131,7 @@ public class CommonSteps {
 	}
 
 	@Keyword
-	def createNewEncounter(String firstName,String lastName, String encounterType, String examLocation,String provider, String technician) {
+	def createNewEncounter(String firstName,String lastName, String encounterType, String examLocation,String provider, String technician, Boolean isEncIdStore = true) {
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Encounters_dropdown-toggle menu-large rec_046ac3'))
 
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Actions_Encounters  Add New Encounter'))
@@ -172,18 +172,20 @@ public class CommonSteps {
 
 		KeywordUtil.markPassed('Encounter Saved Suceesfully.')
 
-		String _key = "ENC_${firstName}_${lastName}".toUpperCase()
+		if(isEncIdStore == true) {
+			String _key = "ENC_${firstName}_${lastName}".toUpperCase()
 
-		String encIdKey = "${_key}_ENCOUNTER_ID"
+			String encIdKey = "${_key}_ENCOUNTER_ID"
 
-		String encId = WebUI.getText(findTestObject('EncounterPage/Header/EncounterId'))
-		VariableStories.setItem(encIdKey, encId)
+			String encId = WebUI.getText(findTestObject('EncounterPage/Header/EncounterId'))
+			VariableStories.setItem(encIdKey, encId)
 
-		VariableStories.setItem("ENCOUNTER_ID", encId)
+			VariableStories.setItem("ENCOUNTER_ID", encId)
 
-		VariableStories.setItem(encIdKey, encId)
+			VariableStories.setItem(encIdKey, encId)
 
-		VariableStories.setItem("ENCOUNTER_ID", encId)
+			VariableStories.setItem("ENCOUNTER_ID", encId)
+		}
 	}
 
 	@Keyword
