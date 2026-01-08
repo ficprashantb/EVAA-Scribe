@@ -1,4 +1,4 @@
- 
+
 
 import internal.GlobalVariable as GlobalVariable
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -10,10 +10,10 @@ import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
-
+import com.kms.katalon.core.util.KeywordUtil
 
 class NewTestListener {
- 
+
 	/*
 	 * Executes before every test case starts.
 	 * @param testCaseContext related information of the executed test case.
@@ -23,14 +23,13 @@ class NewTestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
 
-		
+
 		PermissionManagerListener.enableBrowserPermissions()
-		
-//		WebUI.openBrowser('')
+
+		//		WebUI.openBrowser('')
 
 		'Maximize the window'
 		WebUI.maximizeWindow()
-  
 	}
 
 	/*
@@ -47,10 +46,12 @@ class NewTestListener {
 			String testCaseName = testCaseContext.getTestCaseId()
 					.replaceAll('[^a-zA-Z0-9_]', '_')
 
+			KeywordUtil.logInfo("Screenshot: $testCaseName")
+
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'(testCaseName)
 		}
- 
- 
+
+
 		WebUI.closeBrowser()
 	}
 
