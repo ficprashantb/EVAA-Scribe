@@ -10,7 +10,7 @@ import javax.mail.search.ComparisonTerm
 
 public class GetGmailOTP {
 
-	static String getTextFromMessage(Message message) {
+	def String getTextFromMessage(Message message) {
 		if (message.isMimeType("text/plain")) {
 			return message.getContent().toString()
 		} else if (message.isMimeType("text/html")) {
@@ -30,7 +30,7 @@ public class GetGmailOTP {
 	}
 
 	@Keyword
-	def static String getGmailOTP(String host, String username, String password, String from, String subject) {
+	def String getGmailOTP(String host, String username, String password, String from, String subject) {
 		String otp = ""
 
 		try {

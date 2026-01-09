@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestSuiteEntity>
    <description></description>
-   <name>SC 02 - Test Suite</name>
+   <name>Test Suite</name>
    <tag></tag>
    <isRerun>false</isRerun>
    <mailRecipient></mailRecipient>
@@ -12,10 +12,10 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>77d91a45-3fb2-4780-9472-08fe4497d911</testSuiteGuid>
    <testCaseLink>
-      <guid>da5a5d22-4683-4bfd-9475-809f7eba054f</guid>
+      <guid>9e96f573-b1be-4d17-b2ab-1de5d49b24c9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/02 - Generate SOAP Note by Record Start Stop (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/13 - Generate SOAP Note by Record Start Stop With Collapsed Mode (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

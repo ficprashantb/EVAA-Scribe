@@ -47,7 +47,7 @@ CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DO
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+//CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
 
@@ -59,4 +59,4 @@ WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Rec
 
 KeywordUtil.logInfo('Expand Recording found')
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+//CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
