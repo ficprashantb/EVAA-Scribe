@@ -74,7 +74,7 @@ public class EVAASteps {
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'))
 
-		WebUI.delay(2)
+		WebUI.delay(5)
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, 'Invalid Date (NaN)', '', FinalizedStatus, MicStatus)
 	}
