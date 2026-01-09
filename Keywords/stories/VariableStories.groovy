@@ -73,7 +73,6 @@ public class VariableStories {
 				)
 	}
 
-
 	static void setItem(String key = 'EVAA', Object value) {
 		setItemToDB(key, value)
 	}
@@ -85,7 +84,6 @@ public class VariableStories {
 	static void clearItem(String key = 'EVAA') {
 		clearAllItemFromDB(key)
 	}
-
 
 	/* ---------------- IN-MEMORY STORAGE ---------------- */
 

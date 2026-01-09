@@ -958,7 +958,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
+	def verifySOAPNoteSentToMaximeyesOLD(String Provider_FirstName, String Provider_LastName) {
 		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
 		String expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
 
@@ -1052,34 +1052,46 @@ public class EVAASteps {
 			if (medicationsList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Medications'])
 
+				int count = medicationsList.size()
 				int index  = 1
-				for (int i = 0; i < medicationsList.size(); i++) {
+				for (int i = 0; i < count; i++) {
 					def medications = medicationsList.get(i)
+
+					def expected2 = '';
+
+					// 🔹 Safely read NEXT item
+					if (i + 1 < count) {
+						def medications2 = medicationsList[i + 1]
+						def result2 = CommonStory.getKeyValueDetails(medications2, 'MED')
+
+						if (result2?._key == 'Generic Name') {
+							expected2 = result2._expected
+						}
+					}
 
 					KeywordUtil.logInfo("Medications→ $medications")
 
 					def result = CommonStory.getKeyValueDetails(medications, 'MED')
+					if (!result) continue
 
-					def actual = ''
-
-					def expected = ''
-
-					if (result) {
 						def key = result._key
+					def expected = result._expected
 
-						KeywordUtil.logInfo("Result Key: $key")
+					// 🔹 Skip standalone Generic Name rows
+					if (key == 'Generic Name') continue
 
-						expected = result._expected
+						// 🔹 Merge Generic Name if present
+						if (!CommonStory.isNullOrEmpty(expected2)) {
+							expected = "${expected} ${expected2}"
+						}
 
-						KeywordUtil.logInfo("Result Expected: $expected")
+					KeywordUtil.logInfo("Expected: $expected")
 
-						TestObject tableMedications = testObjectStory.tableMedications(index)
-
-						actual = WebUI.getText(tableMedications,FailureHandling.OPTIONAL)
-					}
+					TestObject tableMedications = testObjectStory.tableMedications(index)
+					def actual = WebUI.getText(tableMedications, FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Medications", actual, expected)
-					index ++
+					index++
 				}
 			} else {
 				KeywordUtil.markWarning('No Medications found')
@@ -1106,7 +1118,7 @@ public class EVAASteps {
 
 					TestObject tableProblems = testObjectStory.tableProblems(index)
 
-					def actual =  WebUI.getText(tableProblems, ,FailureHandling.OPTIONAL)
+					def actual =  WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
 
 					assertStory.verifyMatch("Problems", actual, expected)
 					index ++
@@ -1151,6 +1163,7 @@ public class EVAASteps {
 
 						// Skip if expected is True
 						if (expected == 'True') {
+							return
 						}
 
 						name = result._name
@@ -1543,6 +1556,455 @@ public class EVAASteps {
 			KeywordUtil.markWarning('No Plans found')
 		}
 	}
+	
+	@Keyword
+	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
+		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
+		String expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
+	
+		def variableKeyHPI = CommonStory.sectionMapForStorageKey.get('HPI')
+		def expectedHPI = VariableStories.getItem(variableKeyHPI)
+	
+		def variableKeyCES = CommonStory.sectionMapForStorageKey.get('CurrentEyeSymptoms')
+		def expectedCurrentEyeSymptoms = VariableStories.getItem(variableKeyCES)
+	
+		def variableKeyALG = CommonStory.sectionMapForStorageKey.get('Allergies')
+		def expectedAllergies = VariableStories.getItem(variableKeyALG)
+	
+		def variableKeyMED = CommonStory.sectionMapForStorageKey.get('Medications')
+		def expectedMedications = VariableStories.getItem(variableKeyMED)
+	
+		def variableKeyROS = CommonStory.sectionMapForStorageKey.get('ReviewOfSystems')
+		def expectedReviewOfSystems = VariableStories.getItem(variableKeyROS)
+	
+		def variableKeyPRL = CommonStory.sectionMapForStorageKey.get('Problems')
+		def expectedProblems = VariableStories.getItem(variableKeyPRL)
+	
+		def variableKeyREF = CommonStory.sectionMapForStorageKey.get('Refractions')
+		def expectedRefractions = VariableStories.getItem(variableKeyREF)
+	
+		def variableKeyALT = CommonStory.sectionMapForStorageKey.get('AuxiliaryLabTests')
+		def expectedAuxiliaryLabTests = VariableStories.getItem(variableKeyALT)
+	
+		def variableKeyDD = CommonStory.sectionMapForStorageKey.get('DifferentialDiagnosis')
+		def expectedDifferentialDiagnosis = VariableStories.getItem(variableKeyDD)
+	
+		def variableKeyASMT = CommonStory.sectionMapForStorageKey.get('Assessment')
+		def expectedAssessment = VariableStories.getItem(variableKeyASMT)
+	
+		def variableKeyPLN = CommonStory.sectionMapForStorageKey.get('Plan')
+		def expectedPlans = VariableStories.getItem(variableKeyPLN)
+	
+		def variableKeyED = CommonStory.sectionMapForStorageKey.get('EyeDiseases')
+		def expectedEyeDiseases = VariableStories.getItem(variableKeyED)
+	
+		def variableKeyMFS = CommonStory.sectionMapForStorageKey.get('MentalAndFunctionalStatus')
+		def expectedMentalAndFunctionalStatus = VariableStories.getItem(variableKeyMFS)
+	
+		// ===== Chief Complaint =====
+		if (CommonStory.isNullOrEmpty(expectedChiefComplaint) == false) {
+			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
+			String actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'), 'value', FailureHandling.OPTIONAL)
+			assertStory.verifyMatch("Chief Complaint", actualChiefComplaint, expectedChiefComplaint)
+		}
+	
+		// ===== HPI =====
+		if (CommonStory.isNullOrEmpty(expectedHPI) == false) {
+			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
+			def actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.OPTIONAL)
+			assertStory.verifyMatch("HPI", actualHPI, expectedHPI)
+		}
+	
+		// ===== Allergies =====
+		if (CommonStory.isNullOrEmpty(expectedAllergies) == false) {
+			List allergiesList = CommonStory.getListObject(expectedAllergies)
+			if (allergiesList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Allergies'])
+				int index = 1
+				for (int i = 0; i < allergiesList.size(); i++) {
+					def allergies = allergiesList.get(i)
+					KeywordUtil.logInfo("Allergies→ $allergies")
+					TestObject tableAllergies = testObjectStory.tableAllergies(index)
+					def actual = WebUI.getText(tableAllergies, FailureHandling.OPTIONAL)
+					assertStory.verifyMatch("Allergies", actual, allergies)
+					index++
+				}
+			} else {
+				KeywordUtil.markWarning('No Allergies found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Allergies found')
+		}
+	
+		// ===== Medications =====
+		if (CommonStory.isNullOrEmpty(expectedMedications) == false) {
+			List medicationsList = CommonStory.getListObject(expectedMedications)
+			if (medicationsList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Medications'])
+				int count = medicationsList.size()
+				int index = 1
+				for (int i = 0; i < count; i++) {
+					def medications = medicationsList.get(i)
+					def expected2 = ''
+	
+					// 🔹 Safely read NEXT item
+					if (i + 1 < count) {
+						def medications2 = medicationsList[i + 1]
+						def result2 = CommonStory.getKeyValueDetails(medications2, 'MED')
+						if (result2?._key == 'Generic Name') {
+							expected2 = result2._expected
+						}
+					}
+	
+					KeywordUtil.logInfo("Medications→ $medications")
+					def result = CommonStory.getKeyValueDetails(medications, 'MED')
+					if (!result) continue
+	
+					def key = result._key
+					def expected = result._expected
+	
+					// 🔹 Skip standalone Generic Name rows
+					if (key == 'Generic Name') continue
+	
+					// 🔹 Merge Generic Name if present
+					if (!CommonStory.isNullOrEmpty(expected2)) {
+						expected = "${expected} ${expected2}"
+					}
+	
+					KeywordUtil.logInfo("Expected: $expected")
+					TestObject tableMedications = testObjectStory.tableMedications(index)
+					def actual = WebUI.getText(tableMedications, FailureHandling.OPTIONAL)
+					assertStory.verifyMatch("Medications", actual, expected)
+					index++
+				}
+			} else {
+				KeywordUtil.markWarning('No Medications found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Medications found')
+		}
+	
+		// ===== Problems =====
+		if (CommonStory.isNullOrEmpty(expectedProblems) == false) {
+			List problemsList = CommonStory.getListObject(expectedProblems)
+			if (problemsList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Problems'])
+				int index = 1
+				for (int i = 0; i < problemsList.size(); i++) {
+					def expected = problemsList.get(i)
+					KeywordUtil.logInfo("Problems→ $expected")
+					KeywordUtil.logInfo("Result Expected: $expected")
+					TestObject tableProblems = testObjectStory.tableProblems(index)
+					def actual = WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
+					assertStory.verifyMatch("Problems", actual, expected)
+					index++
+				}
+			} else {
+				KeywordUtil.markWarning('No Problems found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Problems found')
+		}
+	
+		// ===== Current Eye Symptoms =====
+		if (CommonStory.isNullOrEmpty(expectedCurrentEyeSymptoms) == false) {
+			List currentEyeSymptomsList = CommonStory.getListObject(expectedCurrentEyeSymptoms)
+			if (currentEyeSymptomsList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Medical History', ('pElement') : 'Current Eye Symptoms'])
+				for (int i = 0; i < currentEyeSymptomsList.size(); i++) {
+					def currentEyeSymptoms = currentEyeSymptomsList.get(i)
+					KeywordUtil.logInfo("Current Eye Symptoms→ $currentEyeSymptoms")
+					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
+	
+					if (result) {
+						def text = result._key
+						def expected = result._expected
+						def name = result._name
+	
+						KeywordUtil.logInfo("Result Text: $text")
+						KeywordUtil.logInfo("Result Expected: $expected")
+						KeywordUtil.logInfo("Result Name: $name")
+	
+						// ✅ FIXED: Changed from 'return' to 'continue' to skip only this iteration
+						if (expected == 'True') {
+							continue
+						}
+	
+						TestObject input_CurrentEyeSymptoms = testObjectStory.input_CurrentEyeSymptoms(name)
+						if (text?.toLowerCase()?.contains('additional')) {
+							input_CurrentEyeSymptoms = findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/textarea_Additional_Notes_CES')
+						}
+	
+						def actual = WebUI.getAttribute(input_CurrentEyeSymptoms, 'value', FailureHandling.OPTIONAL)
+						assertStory.verifyMatch("Current Eye Symptoms- $name", actual, expected)
+						verifyRadioButtonIsChecked(currentEyeSymptoms, name, 'CES')
+					}
+				}
+			} else {
+				KeywordUtil.markWarning('No Current Eye Symptoms found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Current Eye Symptoms found')
+		}
+	
+		// ===== Review Of Systems =====
+		if (CommonStory.isNullOrEmpty(expectedReviewOfSystems) == false) {
+			List reviewList = CommonStory.getListObject(expectedReviewOfSystems)
+			if (reviewList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Medical History', ('pElement') : 'Review of Systems - Brief'])
+				for (int i = 0; i < reviewList.size(); i++) {
+					def review = reviewList.get(i)
+					KeywordUtil.logInfo("Review Of Systems→ $review")
+					def result = CommonStory.getKeyValueDetails(review, 'ROS')
+	
+					if (result) {
+						def text = result._key
+						def expected = result._expected
+						def name = result._name
+	
+						KeywordUtil.logInfo("Result Text: $text")
+						KeywordUtil.logInfo("Result Expected: $expected")
+						KeywordUtil.logInfo("Result Name: $name")
+	
+						// ✅ FIXED: Changed from 'return' to 'continue'
+						if (expected == 'True') {
+							continue
+						}
+	
+						TestObject input_Review_of_Systems = testObjectStory.input_Review_of_Systems(name)
+						if (text?.toLowerCase()?.contains('additional')) {
+							input_Review_of_Systems = findTestObject('EncounterPage/Encounter Details/Review Of Systems/textarea_Additional_Notes_ROS')
+						}
+	
+						def actual = WebUI.getAttribute(input_Review_of_Systems, 'value', FailureHandling.OPTIONAL)
+						assertStory.verifyMatch("Review Of Systems- $name", actual, expected)
+						verifyRadioButtonIsChecked(review, name, 'ROS')
+					}
+				}
+			} else {
+				KeywordUtil.markWarning('No Review Of Systems found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Review Of Systems found')
+		}
+	
+		// ===== Eye Diseases =====
+		if (CommonStory.isNullOrEmpty(expectedEyeDiseases) == false) {
+			List eyeDiseaseList = CommonStory.getListObject(expectedEyeDiseases)
+			if (eyeDiseaseList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Medical History', ('pElement') : 'Eye Diseases'])
+				for (int i = 0; i < eyeDiseaseList.size(); i++) {
+					def eyeDisease = eyeDiseaseList.get(i)
+					KeywordUtil.logInfo("Eye Diseases→ $eyeDisease")
+					def result = CommonStory.getKeyValueDetails(eyeDisease, 'ED')
+	
+					if (result) {
+						def text = result._key
+						def expected = result._expected
+						def name = result._name
+	
+						KeywordUtil.logInfo("Result Text: $text")
+						KeywordUtil.logInfo("Result Expected: $expected")
+						KeywordUtil.logInfo("Result Name: $name")
+	
+						// ✅ FIXED: Changed from empty block to 'continue'
+						if (expected == 'True') {
+							continue
+						}
+	
+						TestObject inputEyeDiseases = testObjectStory.inputEyeDiseases(name)
+						if (text?.toLowerCase()?.contains('additional')) {
+							inputEyeDiseases = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
+						}
+	
+						def actual = WebUI.getAttribute(inputEyeDiseases, 'value', FailureHandling.OPTIONAL)
+						assertStory.verifyMatch("Eye Diseases- $name", actual, expected)
+						verifyRadioButtonIsChecked(eyeDisease, name, 'ED')
+					}
+				}
+			} else {
+				KeywordUtil.markWarning('No Eye Diseases found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Eye Diseases found')
+		}
+	
+//		// ===== Mental and Functional Status =====
+//		if (CommonStory.isNullOrEmpty(expectedMentalAndFunctionalStatus) == false) {
+//			List mentalAndFunctionalStatusList = CommonStory.getListObject(expectedMentalAndFunctionalStatus)
+//			if (mentalAndFunctionalStatusList.size() > 0) {
+//				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Medical History', ('pElement') : 'Mental and Functional Status'])
+//				for (int i = 0; i < mentalAndFunctionalStatusList.size(); i++) {
+//					def mentalAndFunctionalStatus = mentalAndFunctionalStatusList.get(i)
+//					KeywordUtil.logInfo("Mental and Functional Status→ $mentalAndFunctionalStatus")
+//					def result = CommonStory.getKeyValueDetails(mentalAndFunctionalStatus, 'MFS')
+//	
+//					if (result) {
+//						def key = result._key
+//						def expected = result._expected
+//						def name = result._name
+//	
+//						KeywordUtil.logInfo("Result Key: $key")
+//						KeywordUtil.logInfo("Result Expected: $expected")
+//						KeywordUtil.logInfo("Result Name: $name")
+//	
+//						TestObject inputMentalAndFunctionalStatus = testObjectStory.inputMentalAndFunctionalStatus(name)
+//						def actual = WebUI.getAttribute(inputMentalAndFunctionalStatus, 'value', FailureHandling.OPTIONAL)
+//						assertStory.verifyMatch("Mental and Functional Status $name", actual, expected)
+//					}
+//				}
+//			} else {
+//				KeywordUtil.markWarning('No Mental and Functional Status found')
+//			}
+//		} else {
+//			KeywordUtil.markWarning('No Mental and Functional Status found')
+//		}
+//	
+//		// ===== Refractions =====
+//		if (CommonStory.isNullOrEmpty(expectedRefractions) == false) {
+//			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Refraction and Preliminaries', ('pElement') : 'Refractions'])
+//			expectedRefractions = expectedRefractions.toString().replace('Notes:', '').trim()
+//			def actualRefractions = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea_Refractions'), 'value', FailureHandling.OPTIONAL)
+//			assertStory.verifyMatch("Refractions", actualRefractions, expectedRefractions)
+//		} else {
+//			KeywordUtil.logInfo('No Refractions found')
+//		}
+//	
+//		// ===== Auxiliary Lab Tests =====
+//		if (CommonStory.isNullOrEmpty(expectedAuxiliaryLabTests) == false) {
+//			List auxiliaryLabTestsList = CommonStory.getListObject(expectedAuxiliaryLabTests)
+//			if (auxiliaryLabTestsList.size() > 0) {
+//				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Examination', ('pElement') : 'Auxiliary & Lab Tests'])
+//	
+//				// Push data into list
+//				def orderDate = CustomKeywords.'DateHelper.GetUTCDate'()
+//				def provider = "${Provider_FirstName} ${Provider_LastName}"
+//	
+//				auxiliaryLabTestsList += [
+//					"Provider: $provider",
+//					"User: $GlobalVariable.EVAA_UserName",
+//					"Ordered: $orderDate"
+//				]
+//	
+//				for (int i = 0; i < auxiliaryLabTestsList.size(); i++) {
+//					def auxiliaryLabTests = auxiliaryLabTestsList.get(i)
+//					KeywordUtil.logInfo("Auxiliary Lab Tests→ $auxiliaryLabTests")
+//					def result = CommonStory.getKeyValueDetails(auxiliaryLabTests, 'ALT')
+//	
+//					if (result) {
+//						def key = result._key
+//						def expected = result._expected
+//						def name = result._name
+//	
+//						KeywordUtil.logInfo("Result Key: $key")
+//						KeywordUtil.logInfo("Result Expected: $expected")
+//	
+//						// ✅ FIXED: Changed from 'return' to 'continue'
+//						if (expected == 'True') {
+//							continue
+//						}
+//	
+//						def value = "${key}, ${expected}"
+//						KeywordUtil.logInfo("Result Value: $value")
+//	
+//						TestObject toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span User')
+//	
+//						switch (key) {
+//							case 'Category':
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span AuxCategory')
+//								break
+//							case 'Type':
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span Type')
+//								break
+//							case 'Note':
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span Test Notes')
+//								break
+//							case ~('.*Findings.*'):
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span FINDINGS')
+//								break
+//							case 'Provider':
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span Provider')
+//								break
+//							case 'Ordered':
+//								toAuxLab = findTestObject('EncounterPage/Encounter Details/Auxiliary Lab Tests/span ORDERED DATE')
+//								break
+//						}
+//	
+//						def actual = WebUI.getText(toAuxLab, FailureHandling.OPTIONAL)
+//						assertStory.verifyMatch("Auxiliary Lab Tests- $name", actual, expected)
+//					}
+//				}
+//			} else {
+//				KeywordUtil.markWarning('No Auxiliary Lab Tests found')
+//			}
+//		} else {
+//			KeywordUtil.markWarning('No Auxiliary Lab Tests found')
+//		}
+	
+		// ===== Differential Diagnosis =====
+		if (CommonStory.isNullOrEmpty(expectedDifferentialDiagnosis) == false) {
+			List diffDiagnosisList = CommonStory.getListObject(expectedDifferentialDiagnosis)
+			if (diffDiagnosisList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Final Findings', ('pElement') : 'Final Diagnoses'])
+				for (int i = 0; i < diffDiagnosisList.size(); i++) {
+					def diffDiagnosis = diffDiagnosisList.get(i)
+					KeywordUtil.logInfo("Differential Diagnosis→ $diffDiagnosis")
+					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
+	
+					if (result) {
+						def code = result._key
+						def desc = result._expected
+						KeywordUtil.logInfo("Result Expected: $code, $desc")
+						def expected = "${code}, ${desc}"
+						TestObject tableFDDifferentialDiagnosis = testObjectStory.tableFDDifferentialDiagnosis(code, desc)
+						def isPresent = WebUI.verifyElementPresent(tableFDDifferentialDiagnosis, 1, FailureHandling.OPTIONAL)
+						assertStory.verifyMatch("Differential Diagnosis- $expected", isPresent, true)
+					}
+				}
+			} else {
+				KeywordUtil.markWarning('No Differential Diagnosis found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Differential Diagnosis found')
+		}
+	
+		// ===== Assessment =====
+		if (CommonStory.isNullOrEmpty(expectedAssessment) == false) {
+			List assessmentList = CommonStory.getListObject(expectedAssessment)
+			if (assessmentList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Final Findings', ('pElement') : 'Final Diagnoses'])
+				def _expectedAssessment = assessmentList.join('\n')
+				KeywordUtil.logInfo("Assessment→ $_expectedAssessment")
+				def actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
+				assertStory.verifyMatch("Assessment", actualAssessment, _expectedAssessment)
+			} else {
+				KeywordUtil.markWarning('No Assessment found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Assessment found')
+		}
+	
+		// ===== Plans =====
+		if (CommonStory.isNullOrEmpty(expectedPlans) == false) {
+			List plansList = CommonStory.getListObject(expectedPlans)
+			if (plansList.size() > 0) {
+				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Final Findings', ('pElement') : 'Final Diagnoses'])
+				def _expectedPlans = plansList.join('\n')
+				KeywordUtil.logInfo("Plans→ $_expectedPlans")
+				def actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
+	
+				if (CommonStory.isNullOrEmpty(actualPlans)) {
+					actualPlans = WebUI.getText(findTestObject('EncounterPage/Encounter Details/div Plans'), FailureHandling.OPTIONAL)
+				}
+	
+				assertStory.verifyMatch("Plans", actualPlans, _expectedPlans)
+			} else {
+				KeywordUtil.markWarning('No Plans found')
+			}
+		} else {
+			KeywordUtil.markWarning('No Plans found')
+		}
+	}
 
 	@Keyword
 	def verifyRadioButtonIsChecked(String text, String name, String key) {
@@ -1838,8 +2300,8 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
-	} 
- 
+	}
+
 	@Keyword
 	def generateSOAPNoteByUploadingFile(String UploadFilePath) {
 		KeywordUtil.logInfo("File Path $UploadFilePath")
