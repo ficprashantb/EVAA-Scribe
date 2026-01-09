@@ -33,7 +33,7 @@ import org.openqa.selenium.Keys
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
-
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI2
 
 public class EVAASteps {
 	NavigateStory navigateStory = new NavigateStory()
@@ -1840,6 +1840,51 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
 
+	@Keyword
+	def generateSOAPNoteByRecordStartStopOnCloud(String FileTime, String UploadFilePath) {
+		int fileTimeinSeconds = Integer.valueOf(FileTime)
+
+		KeywordUtil.logInfo("File Path $UploadFilePath")
+
+		def fakeMic = new FakeMicStream(UploadFilePath)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
+
+		KeywordUtil.logInfo('Clicked on Start Record Button')
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
+
+		// Open new tab with MP3 file using file:// protocol
+		WebUI.newTab(UploadFilePath)
+
+		// Step 4: Wait for audio to load (optional)
+		WebUI.delay(2)
+
+		// Step 5: Switch back to previous tab
+		WebUI.switchToWindowIndex(0)
+
+		WebUI.delay(fileTimeinSeconds)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
+
+		KeywordUtil.logInfo('Clicked on Stop Record Button')
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
+	}
 
 
 	@Keyword

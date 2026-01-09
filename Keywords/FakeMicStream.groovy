@@ -28,33 +28,7 @@ import javazoom.jl.player.AudioDevice
 import javazoom.jl.player.FactoryRegistry
 import javazoom.jl.decoder.*
 
-//class FakeMicStream {
-//	private Player player
-//
-//	FakeMicStream(String mp3Path) {
-//		FileInputStream fis = new FileInputStream(mp3Path)
-//		player = new Player(fis)
-//	}
-//	
-//	FakeMicStream() { 
-//	}
-//
-//	void start() {
-//		// Play in a separate thread so it doesn’t block
-//		Thread.start {
-//			player.play()
-//		}
-//	}
-//
-//	void stop() {
-//		player.close()
-//	}
-// 
-//}
-
-
-
-class FakeMicStream {
+public class FakeMicStream {
 
     private String mp3Path
     private Thread playThread

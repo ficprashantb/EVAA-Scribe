@@ -13,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.firefox.FirefoxProfile
 import com.kms.katalon.core.configuration.RunConfiguration
 
-class PermissionManagerListener {
+public class PermissionManagerListener {
 
 	static void enableBrowserPermissions() {
 

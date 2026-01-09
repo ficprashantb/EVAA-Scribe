@@ -8,7 +8,7 @@ import org.openqa.selenium.firefox.FirefoxProfile
 import org.openqa.selenium.edge.EdgeDriver
 import org.openqa.selenium.edge.EdgeOptions
 
-class PermissionManager {
+public class PermissionManager {
 
 	/**
 	 * Launch Chrome with ALL permissions auto-allowed
