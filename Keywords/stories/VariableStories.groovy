@@ -74,15 +74,15 @@ public class VariableStories {
 	}
 
 	static void setItem(String key = 'EVAA', Object value) {
-		setItemToDB(key, value)
+		setItemToLocal(key, value)
 	}
 
 	static Object getItem(String key = 'EVAA') {
-		return getItemFromDB(key)
+		return getItemFromLocal(key)
 	}
 
 	static void clearItem(String key = 'EVAA') {
-		clearAllItemFromDB(key)
+		clearItemFromLocal(key)
 	}
 
 	/* ---------------- IN-MEMORY STORAGE ---------------- */
