@@ -2513,6 +2513,8 @@ public class EVAASteps {
 						el.click()
 						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
 						el.sendKeys(" ${textToAppend}")
+						
+						WebUI.delay(6)
 					}
 				}
 			} catch (e) {
