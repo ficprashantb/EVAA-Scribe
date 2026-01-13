@@ -2514,13 +2514,15 @@ public class EVAASteps {
 						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
 						el.sendKeys(" ${textToAppend}")
 						
-						WebUI.delay(6)
+						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+						
+						WebUI.delay(1)
 					}
 				}
 			} catch (e) {
 				e.printStackTrace()
 			}finally		{
-				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+//				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
 
 				// Switch back
 				WebUI.switchToDefaultContent()
@@ -2670,6 +2672,10 @@ public class EVAASteps {
 						KeywordUtil.logInfo("Dictation Stopped.")
 
 						WebUI.waitForElementVisible(img_Start_Dictation, 5, FailureHandling.STOP_ON_FAILURE)
+												
+						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+						
+						WebUI.delay(1)
 					}
 
 					if(index == breakIndex) break;
@@ -2679,7 +2685,7 @@ public class EVAASteps {
 			} catch (e) {
 				e.printStackTrace()
 			}finally		{
-				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+//				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
 
 				// Switch back
 				WebUI.switchToDefaultContent()
