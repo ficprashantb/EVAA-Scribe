@@ -1605,13 +1605,21 @@ public class EVAASteps {
 		if (CommonStory.isNullOrEmpty(expectedChiefComplaint) == false) {
 			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
 			String actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'), 'value', FailureHandling.OPTIONAL)
+			
+			actualChiefComplaint = actualChiefComplaint.replaceAll("[:]", "")
+			expectedChiefComplaint = expectedChiefComplaint.replaceAll("[:]", "")
+			
 			assertStory.verifyMatch("Chief Complaint", actualChiefComplaint, expectedChiefComplaint)
 		}
 	
 		// ===== HPI =====
 		if (CommonStory.isNullOrEmpty(expectedHPI) == false) {
 			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Chief Complaint'])
-			def actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.OPTIONAL)
+			String actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.OPTIONAL)
+			
+			actualHPI = actualHPI.replaceAll("[:]", "")
+			expectedHPI = expectedHPI.replaceAll("[:]", "")
+			
 			assertStory.verifyMatch("HPI", actualHPI, expectedHPI)
 		}
 	
@@ -1622,11 +1630,16 @@ public class EVAASteps {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Allergies'])
 				int index = 1
 				for (int i = 0; i < allergiesList.size(); i++) {
-					def allergies = allergiesList.get(i)
+					String allergies = allergiesList.get(i)
+										
 					KeywordUtil.logInfo("Allergies→ $allergies")
 					TestObject tableAllergies = testObjectStory.tableAllergies(index)
-					def actual = WebUI.getText(tableAllergies, FailureHandling.OPTIONAL)
-					assertStory.verifyMatch("Allergies", actual, allergies)
+					String actual = WebUI.getText(tableAllergies, FailureHandling.OPTIONAL)
+					
+					actual = actual.replaceAll("[:]", "")
+					String expected = allergies.replaceAll("[:]", "")
+					
+					assertStory.verifyMatch("Allergies", actual, expected)
 					index++
 				}
 			} else {
@@ -1644,13 +1657,13 @@ public class EVAASteps {
 				int count = medicationsList.size()
 				int index = 1
 				for (int i = 0; i < count; i++) {
-					def medications = medicationsList.get(i)
-					def expected2 = ''
+					String medications = medicationsList.get(i)
+					String expected2 = ''
 	
 					// 🔹 Safely read NEXT item
 					if (i + 1 < count) {
-						def medications2 = medicationsList[i + 1]
-						def result2 = CommonStory.getKeyValueDetails(medications2, 'MED')
+						String medications2 = medicationsList[i + 1]
+						String result2 = CommonStory.getKeyValueDetails(medications2, 'MED')
 						if (result2?._key == 'Generic Name') {
 							expected2 = result2._expected
 						}
@@ -1660,8 +1673,8 @@ public class EVAASteps {
 					def result = CommonStory.getKeyValueDetails(medications, 'MED')
 					if (!result) continue
 	
-					def key = result._key
-					def expected = result._expected
+					String key = result._key
+					String expected = result._expected
 	
 					// 🔹 Skip standalone Generic Name rows
 					if (key == 'Generic Name') continue
@@ -1673,7 +1686,11 @@ public class EVAASteps {
 	
 					KeywordUtil.logInfo("Expected: $expected")
 					TestObject tableMedications = testObjectStory.tableMedications(index)
-					def actual = WebUI.getText(tableMedications, FailureHandling.OPTIONAL)
+					String actual = WebUI.getText(tableMedications, FailureHandling.OPTIONAL)
+					
+					actual = actual.replaceAll("[:]", "")
+					expected = expected.replaceAll("[:]", "")
+					
 					assertStory.verifyMatch("Medications", actual, expected)
 					index++
 				}
@@ -1691,11 +1708,15 @@ public class EVAASteps {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'CC & History Review', ('pElement') : 'Problems'])
 				int index = 1
 				for (int i = 0; i < problemsList.size(); i++) {
-					def expected = problemsList.get(i)
+					String expected = problemsList.get(i)
 					KeywordUtil.logInfo("Problems→ $expected")
 					KeywordUtil.logInfo("Result Expected: $expected")
 					TestObject tableProblems = testObjectStory.tableProblems(index)
-					def actual = WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
+					String actual = WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
+					
+					actual = actual.replaceAll("[:]", "")
+					expected = expected.replaceAll("[:]", "")
+					
 					assertStory.verifyMatch("Problems", actual, expected)
 					index++
 				}
@@ -1717,9 +1738,9 @@ public class EVAASteps {
 					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
 	
 					if (result) {
-						def text = result._key
-						def expected = result._expected
-						def name = result._name
+						String text = result._key
+						String expected = result._expected
+						String name = result._name
 	
 						KeywordUtil.logInfo("Result Text: $text")
 						KeywordUtil.logInfo("Result Expected: $expected")
@@ -1735,7 +1756,11 @@ public class EVAASteps {
 							input_CurrentEyeSymptoms = findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/textarea_Additional_Notes_CES')
 						}
 	
-						def actual = WebUI.getAttribute(input_CurrentEyeSymptoms, 'value', FailureHandling.OPTIONAL)
+						String actual = WebUI.getAttribute(input_CurrentEyeSymptoms, 'value', FailureHandling.OPTIONAL)
+						
+						actual = actual.replaceAll("[:]", "")
+						expected = expected.replaceAll("[:]", "")
+						
 						assertStory.verifyMatch("Current Eye Symptoms- $name", actual, expected)
 						verifyRadioButtonIsChecked(currentEyeSymptoms, name, 'CES')
 					}
@@ -1758,9 +1783,9 @@ public class EVAASteps {
 					def result = CommonStory.getKeyValueDetails(review, 'ROS')
 	
 					if (result) {
-						def text = result._key
-						def expected = result._expected
-						def name = result._name
+						String text = result._key
+						String expected = result._expected
+						String name = result._name
 	
 						KeywordUtil.logInfo("Result Text: $text")
 						KeywordUtil.logInfo("Result Expected: $expected")
@@ -1776,7 +1801,11 @@ public class EVAASteps {
 							input_Review_of_Systems = findTestObject('EncounterPage/Encounter Details/Review Of Systems/textarea_Additional_Notes_ROS')
 						}
 	
-						def actual = WebUI.getAttribute(input_Review_of_Systems, 'value', FailureHandling.OPTIONAL)
+						String actual = WebUI.getAttribute(input_Review_of_Systems, 'value', FailureHandling.OPTIONAL)
+						
+						actual = actual.replaceAll("[:]", "")
+						expected = expected.replaceAll("[:]", "")
+						
 						assertStory.verifyMatch("Review Of Systems- $name", actual, expected)
 						verifyRadioButtonIsChecked(review, name, 'ROS')
 					}
@@ -1799,9 +1828,9 @@ public class EVAASteps {
 					def result = CommonStory.getKeyValueDetails(eyeDisease, 'ED')
 	
 					if (result) {
-						def text = result._key
-						def expected = result._expected
-						def name = result._name
+						String text = result._key
+						String expected = result._expected
+						String name = result._name
 	
 						KeywordUtil.logInfo("Result Text: $text")
 						KeywordUtil.logInfo("Result Expected: $expected")
@@ -1817,7 +1846,11 @@ public class EVAASteps {
 							inputEyeDiseases = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
 						}
 	
-						def actual = WebUI.getAttribute(inputEyeDiseases, 'value', FailureHandling.OPTIONAL)
+						String actual = WebUI.getAttribute(inputEyeDiseases, 'value', FailureHandling.OPTIONAL)
+												
+						actual = actual.replaceAll("[:]", "")
+						expected = expected.replaceAll("[:]", "")
+						
 						assertStory.verifyMatch("Eye Diseases- $name", actual, expected)
 						verifyRadioButtonIsChecked(eyeDisease, name, 'ED')
 					}
@@ -1952,12 +1985,13 @@ public class EVAASteps {
 					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
 	
 					if (result) {
-						def code = result._key
-						def desc = result._expected
+						String code = result._key
+						String desc = result._expected
 						KeywordUtil.logInfo("Result Expected: $code, $desc")
 						def expected = "${code}, ${desc}"
 						TestObject tableFDDifferentialDiagnosis = testObjectStory.tableFDDifferentialDiagnosis(code, desc)
 						def isPresent = WebUI.verifyElementPresent(tableFDDifferentialDiagnosis, 1, FailureHandling.OPTIONAL)
+												
 						assertStory.verifyMatch("Differential Diagnosis- $expected", isPresent, true)
 					}
 				}
@@ -1973,9 +2007,13 @@ public class EVAASteps {
 			List assessmentList = CommonStory.getListObject(expectedAssessment)
 			if (assessmentList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Final Findings', ('pElement') : 'Final Diagnoses'])
-				def _expectedAssessment = assessmentList.join('\n')
+				String _expectedAssessment = assessmentList.join('\n')
 				KeywordUtil.logInfo("Assessment→ $_expectedAssessment")
-				def actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
+				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
+								
+				actualAssessment = actualAssessment.replaceAll("[:]", "")
+				_expectedAssessment = _expectedAssessment.replaceAll("[:]", "")
+				
 				assertStory.verifyMatch("Assessment", actualAssessment, _expectedAssessment)
 			} else {
 				KeywordUtil.markWarning('No Assessment found')
@@ -1989,14 +2027,18 @@ public class EVAASteps {
 			List plansList = CommonStory.getListObject(expectedPlans)
 			if (plansList.size() > 0) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage') : 'Final Findings', ('pElement') : 'Final Diagnoses'])
-				def _expectedPlans = plansList.join('\n')
+				String _expectedPlans = plansList.join('\n')
 				KeywordUtil.logInfo("Plans→ $_expectedPlans")
-				def actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
+				String actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
 	
 				if (CommonStory.isNullOrEmpty(actualPlans)) {
 					actualPlans = WebUI.getText(findTestObject('EncounterPage/Encounter Details/div Plans'), FailureHandling.OPTIONAL)
 				}
 	
+				actualPlans = actualPlans.replaceAll("[:]", "")
+				_expectedPlans = _expectedPlans.replaceAll("[:]", "")
+				
+				
 				assertStory.verifyMatch("Plans", actualPlans, _expectedPlans)
 			} else {
 				KeywordUtil.markWarning('No Plans found')
