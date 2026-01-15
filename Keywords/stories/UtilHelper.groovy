@@ -21,6 +21,8 @@ import java.awt.Toolkit
 import java.awt.datatransfer.*
 import java.util.concurrent.CompletableFuture
 import internal.GlobalVariable
+import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.exception.StepFailedException
 
 public class UtilHelper {
 
@@ -44,3 +46,39 @@ public class UtilHelper {
 		})
 	}
 }
+
+public class ExceptionHelper {
+	
+		/**
+		 * Handle exception and decide execution behavior
+		 */
+		static void handle(Exception e,
+						   String message = 'Unexpected error occurred',
+						   boolean stopExecution = true) {
+	
+			String finalMessage = """
+        ❌ ${message}
+        🔍 Exception: ${e.getClass().getSimpleName()}
+        📄 Details: ${e.message}
+        """.stripIndent()
+	
+			if (stopExecution) {
+				KeywordUtil.markFailedAndStop(finalMessage)
+			} else {
+				KeywordUtil.markFailed(finalMessage)
+			}
+		}
+	
+		/**
+		 * Safe execution wrapper
+		 */
+		static def execute(String stepName,
+						   boolean stopExecution = true,
+						   Closure action) {
+			try {
+				return action.call()
+			} catch (Exception e) {
+				handle(e, "Step failed: ${stepName}", stopExecution)
+			}
+		}
+	}

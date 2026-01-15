@@ -73,8 +73,12 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'))
+		
+		KeywordUtil.logInfo('Patient Consent Received checked.')
 
 		WebUI.delay(5)
+		
+		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, 'Invalid Date (NaN)', '', FinalizedStatus, MicStatus)
 	}
@@ -2320,6 +2324,7 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
 		fakeMic.start()
+		KeywordUtil.logInfo('Clicked on fakeMic Start Record Button')
 
 		WebUI.delay(fileTimeinSeconds)
 
@@ -2328,6 +2333,7 @@ public class EVAASteps {
 		KeywordUtil.logInfo('Clicked on Stop Record Button')
 
 		fakeMic.stop()
+		KeywordUtil.logInfo('Clicked on fakeMic Stop Record Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
@@ -2405,6 +2411,8 @@ public class EVAASteps {
 
 		// Collapse Expand Recording Screen
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+		
+		CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician,
 				false)

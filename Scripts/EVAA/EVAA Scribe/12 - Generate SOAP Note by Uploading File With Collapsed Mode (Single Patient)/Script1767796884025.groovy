@@ -45,6 +45,8 @@ CustomKeywords.'steps.EVAASteps.UploadingSOAPNoteFile'(uploadFilePath)
 // Collapse Expand Recording Screen
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician, 
     false)
 

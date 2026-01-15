@@ -41,7 +41,7 @@ class NewTestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseStatus()
 
-		if (testCaseContext.getTestCaseStatus() == 'FAILED' ||  testCaseContext.getTestCaseStatus() == 'ERROR') {
+		if (testCaseContext.getTestCaseStatus() != 'PASS') {
 
 			String testCaseName = testCaseContext.getTestCaseId()
 					.replaceAll('[^a-zA-Z0-9_]', '_')

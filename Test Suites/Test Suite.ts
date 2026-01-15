@@ -12,7 +12,7 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>77d91a45-3fb2-4780-9472-08fe4497d911</testSuiteGuid>
    <testCaseLink>
-      <guid>e9cf1aa4-1ae4-4d21-9cc2-ef49dfa1d624</guid>
+      <guid>019602c5-85ca-48f6-a920-d59b36794d1d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
