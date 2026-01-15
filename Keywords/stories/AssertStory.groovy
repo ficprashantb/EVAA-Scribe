@@ -84,7 +84,7 @@ public class AssertStory {
 		WebUI.verifyMatch(isEnabled, false, false,FailureHandling.CONTINUE_ON_FAILURE)
 	}
 
-	def verifyMatch(String text, def actual, def expected) {
+	def verifyMatch (String text, def actual, def expected) {
 
 		KeywordUtil.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
 

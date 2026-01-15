@@ -15,7 +15,7 @@
       <guid>e55e1804-e502-4201-9833-222c20540326</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/TC01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -82,7 +82,7 @@
       <guid>0e26208a-84ea-468c-aa09-a2c822f6e081</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/TC08 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -149,7 +149,7 @@
       <guid>ab2fb6af-5b47-4efa-bb76-cec0ce834140</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/TC12 - Generate SOAP Note by Uploading File With Collapsed Mode (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Generate SOAP Note by Uploading File With Collapsed Mode (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -216,7 +216,7 @@
       <guid>d21dc678-8e9c-4bb1-8ecc-3d8f6b937baa</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/TC14 - Generate SOAP Note by Uploading File With Collapsed Mode After Patient Switch (Two Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Generate SOAP Note by Uploading File With Collapsed Mode After Patient Switch (Two Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -253,7 +253,7 @@
       <guid>6b10b061-fb73-4b2b-8e2e-b9cbd0cf7b20</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/TC16 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U06 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

@@ -295,6 +295,24 @@ public class CommonStory {
 		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
 		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 	]
+	
+	static Map<String, TestObject> sectionMapForSentToMaximeyes = [
+		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint'),
+		HPI: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI'),
+		CurrentEyeSymptoms: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Current Eye Symptoms'),
+		Allergies: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Allergies'),
+		Medications: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications'),
+		ReviewOfSystems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems'),
+		Problems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems'),
+		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions'),
+		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests'),
+		DifferentialDiagnosis: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis'),
+		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment'),
+		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans'),
+		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
+		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
+	]
+	
 
 	static Map<String, TestObject> sectionMapForSOAPNote = [
 		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),
