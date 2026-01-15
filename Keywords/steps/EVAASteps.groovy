@@ -139,6 +139,19 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 
 		CustomKeywords.'steps.EVAASteps.searchStringAndVerify'(SearchText)
+		 
+	}
+		
+	@Keyword
+	def unfinalizedDictationAfterFinalized(String FirstName, String LastName, String DOB, String Provider_FirstName, String Provider_LastName) {
+				
+		CustomKeywords.'steps.EVAASteps.unFinalizedDictationAfterFinalized'(false)
+		
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+		
+		CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+		
+		CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 	}
 
 	@Keyword
@@ -146,6 +159,8 @@ public class EVAASteps {
 		String expectedPtName = "$FirstName $LastName"
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
 
@@ -162,11 +177,16 @@ public class EVAASteps {
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'))
 		KeywordUtil.logInfo("Clicked on Send to MaximEyes")
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sending SOAP notes and PDF to MaximEyes'), 60,
+			FailureHandling.CONTINUE_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully'), 120,
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully'), 60,
 				FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.delay(10)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
@@ -181,6 +201,33 @@ public class EVAASteps {
 
 			WebUI.delay(5)
 		}
+	}
+	
+	@Keyword
+	def unFinalizedDictationAfterFinalized(Boolean isExpandClose = true ) {
+		
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
+	 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalized'), FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.logInfo("Clicked on UnFinalized")
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Unfinalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.OPTIONAL)
+		
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		if(isExpandClose == true) {
+			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
+
+			KeywordUtil.logInfo('Clicked on Expand Recording')
+
+			WebUI.delay(5)
+		}		 
 	}
 
 	@Keyword

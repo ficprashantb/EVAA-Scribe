@@ -212,6 +212,25 @@ public class CommonSteps {
 	}
 
 	@Keyword
+	def getFirstEncounterId(String firstName, String lastName) {
+		String _key = "ENC_${firstName}_${lastName}".toUpperCase()
+
+		String encIdKey = "${_key}_ENCOUNTER_ID"
+
+		String encId = WebUI.getText(findTestObject('EncounterPage/EncounterHx/Grid/td_FirstEncounterId'))
+
+		VariableStories.setItem(encIdKey, encId)
+
+		VariableStories.setItem('ENCOUNTER_ID', encId)
+
+		VariableStories.setItem(encIdKey, encId)
+
+		VariableStories.setItem('ENCOUNTER_ID', encId)
+
+		KeywordUtil.logInfo("Encounter Id=> $encId")
+	}
+
+	@Keyword
 	def clickOnExpandRecording(Boolean isExpand = true) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 120, FailureHandling.STOP_ON_FAILURE)
 
@@ -231,5 +250,8 @@ public class CommonSteps {
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
 		}
 	}
+	
+	
+	
 }
 

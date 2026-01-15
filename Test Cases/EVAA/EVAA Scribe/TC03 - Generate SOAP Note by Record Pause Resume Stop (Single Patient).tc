@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Generate SOAP Note by Record Start Stop - Append SOAP Note by Pause Resume Stop (Single Patient)</description>
-   <name>06 - Generate SOAP Note by Record Start Stop - Append SOAP Note by Pause Resume Stop (Single Patient)</name>
+   <description>Generate SOAP Note by Record Pause Resume Stop (Single Patient)</description>
+   <name>TC03 - Generate SOAP Note by Record Pause Resume Stop (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>
@@ -15,10 +15,10 @@
    </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>b8a69f94-3650-4c8a-b69c-bf435980f86f</testCaseGuid>
+   <testCaseGuid>63c61dc0-7989-4cbc-9487-c97c33c5d11d</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>01e5d44c-bded-409e-8c91-afa55be0bb0e</id>
+      <id>3cbba0fa-6c96-40d8-a125-2298e542c3b2</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -27,101 +27,88 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>5a2c785a-5664-4368-a881-b2d2590dd9a7</id>
+      <id>0cd536ce-400f-4907-ad2a-12cc154167cc</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/FilesData</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>841cc6ee-6785-4e55-9ea5-669423ff0e2a</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
-   <testDataLinks>
-      <combinationType>ONE</combinationType>
-      <id>71adc7d9-5d58-4026-8790-5894a80ff3fe</id>
-      <iterationEntity>
-         <iterationType>SPECIFIC</iterationType>
-         <value>3</value>
-      </iterationEntity>
-      <testDataId>Data Files/FilesData</testDataId>
-   </testDataLinks>
    <variableLinks>
-      <testDataLinkId>71adc7d9-5d58-4026-8790-5894a80ff3fe</testDataLinkId>
-      <type>DATA_COLUMN</type>
-      <value>UploadFilePath</value>
-      <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-   </variableLinks>
-   <variableLinks>
-      <testDataLinkId>71adc7d9-5d58-4026-8790-5894a80ff3fe</testDataLinkId>
+      <testDataLinkId>0cd536ce-400f-4907-ad2a-12cc154167cc</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>RecordFilePath</value>
       <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>71adc7d9-5d58-4026-8790-5894a80ff3fe</testDataLinkId>
+      <testDataLinkId>0cd536ce-400f-4907-ad2a-12cc154167cc</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FileTime</value>
       <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>5a2c785a-5664-4368-a881-b2d2590dd9a7</testDataLinkId>
+      <testDataLinkId>841cc6ee-6785-4e55-9ea5-669423ff0e2a</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
       <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>5a2c785a-5664-4368-a881-b2d2590dd9a7</testDataLinkId>
+      <testDataLinkId>841cc6ee-6785-4e55-9ea5-669423ff0e2a</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
       <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>01e5d44c-bded-409e-8c91-afa55be0bb0e</testDataLinkId>
+      <testDataLinkId>3cbba0fa-6c96-40d8-a125-2298e542c3b2</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>01e5d44c-bded-409e-8c91-afa55be0bb0e</testDataLinkId>
+      <testDataLinkId>3cbba0fa-6c96-40d8-a125-2298e542c3b2</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>01e5d44c-bded-409e-8c91-afa55be0bb0e</testDataLinkId>
+      <testDataLinkId>3cbba0fa-6c96-40d8-a125-2298e542c3b2</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>01e5d44c-bded-409e-8c91-afa55be0bb0e</testDataLinkId>
+      <testDataLinkId>3cbba0fa-6c96-40d8-a125-2298e542c3b2</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>5a2c785a-5664-4368-a881-b2d2590dd9a7</testDataLinkId>
+      <testDataLinkId>841cc6ee-6785-4e55-9ea5-669423ff0e2a</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
       <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>5a2c785a-5664-4368-a881-b2d2590dd9a7</testDataLinkId>
+      <testDataLinkId>841cc6ee-6785-4e55-9ea5-669423ff0e2a</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
       <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>5a2c785a-5664-4368-a881-b2d2590dd9a7</testDataLinkId>
+      <testDataLinkId>841cc6ee-6785-4e55-9ea5-669423ff0e2a</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
       <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
    </variableLinks>
-   <variable>
-      <defaultValue>''</defaultValue>
-      <description></description>
-      <id>5dbcd699-c1d1-456f-827c-26126108e409</id>
-      <masked>false</masked>
-      <name>UploadFilePath</name>
-   </variable>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>

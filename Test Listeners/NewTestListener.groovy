@@ -1,6 +1,8 @@
 
 
-import internal.GlobalVariable as GlobalVariable
+import internal.GlobalVariable
+import stories.VideoRecorderHelper
+
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 
@@ -10,6 +12,7 @@ import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
+import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
 import com.kms.katalon.core.util.KeywordUtil
 
 class NewTestListener {
@@ -30,6 +33,8 @@ class NewTestListener {
 
 		'Maximize the window'
 		WebUI.maximizeWindow()
+		
+		VideoRecorderHelper.startRecording(testCaseContext.getTestCaseId())
 	}
 
 	/*
@@ -51,7 +56,8 @@ class NewTestListener {
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'(testCaseName)
 		}
 
-
+		VideoRecorderHelper.stopRecording()
+		
 		WebUI.closeBrowser()
 	}
 

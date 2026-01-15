@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Sending SOAP notes and PDF to MaximEyes</name>
+   <tag></tag>
+   <elementGuidId>89a43e2a-3aac-4450-bf6a-e4608305a94e</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[text()[normalize-space() = &quot;Sending SOAP notes and PDF to MaximEyes...&quot;]]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[(text() = 'Sending SOAP notes and PDF to MaximEyes...' or . = 'Sending SOAP notes and PDF to MaximEyes...')]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>21f99aac-fa45-4029-a023-c218b3eb1548</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>1</value>
+      <webElementGuid>2142973d-419d-477d-9d84-73c3a5af63af</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>5ed8eab0-870b-4efd-a217-ecf9f7777c19</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-in</name>
+      <type>Main</type>
+      <value>false</value>
+      <webElementGuid>7b21713d-0078-4d94-b912-87fb6ebb522f</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>Toastify__toast Toastify__toast-theme--colored Toastify__toast--info Toastify__toast--close-on-click Toastify--animate Toastify__bounce-exit--top-right</value>
+      <webElementGuid>4e713e23-8670-4781-8fb0-409e7a57e54c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Sending SOAP notes and PDF to MaximEyes...</value>
+      <webElementGuid>27c60896-c49b-4bfe-884f-ff9cdb84facc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-193380a3f1fc0d9095907d855f95c42c</value>
+      <webElementGuid>59ecf7aa-43c1-4318-93ee-9290be2fc6f0</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[text()[normalize-space() = &quot;Sending SOAP notes and PDF to MaximEyes...&quot;]]</value>
+      <webElementGuid>b2c8b95c-75f8-4b2d-97fd-7edf1d2a3e2c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>d4c0ab04-a4d9-4c89-9f91-15933492616e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[text()[normalize-space() = &quot;Sending SOAP notes and PDF to MaximEyes...&quot;]]</value>
+      <webElementGuid>a3b81471-8aa7-496e-a826-e5554dcb4195</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//*[(text() = 'Sending SOAP notes and PDF to MaximEyes...' or . = 'Sending SOAP notes and PDF to MaximEyes...')]</value>
+      <webElementGuid>a681a70a-2dcd-4a82-ae66-6fc37ea38bf2</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

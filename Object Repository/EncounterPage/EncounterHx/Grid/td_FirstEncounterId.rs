@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>td_EncounterId</name>
+   <name>td_FirstEncounterId</name>
    <tag></tag>
-   <elementGuidId>129fc674-b932-494a-abe6-2854c02a1afa</elementGuidId>
+   <elementGuidId>7db24a1e-bd01-49fd-b82a-eda4fcf5a526</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.dx-data-row:nth-child(1) .hxExamNumbers.underline[role=&quot;gridcell&quot;]</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1][text()='${encounterId}']</value>
+         <value>(//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1])[1]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1][text()='${encounterId}']</value>
+         <value>(//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1])[1]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=gridcell[name=&quot;100889&quot;i]</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>td</value>
-      <webElementGuid>c376f722-41d2-473f-8e09-231afe1e3c54</webElementGuid>
+      <webElementGuid>97e239e8-c2e3-4e55-8b68-80e6afbd2486</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>underline cursor-pointer hxExamNumbers</value>
-      <webElementGuid>c816683c-22c0-4f67-8a71-b3d94a47f262</webElementGuid>
+      <webElementGuid>134668c1-4d0b-49c4-93a9-4646b32a886f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>aria-selected</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>4acbdec3-8e1d-4d58-9040-e0db004ef605</webElementGuid>
+      <webElementGuid>fd365f3d-3012-4016-afb6-a93a0b0640dc</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>role</name>
       <type>Main</type>
       <value>gridcell</value>
-      <webElementGuid>f3fdeb62-0a80-4653-8b17-dab391a55ea2</webElementGuid>
+      <webElementGuid>18dcb295-12f7-4b4a-9840-c9c6dd4681c6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>aria-colindex</name>
       <type>Main</type>
       <value>1</value>
-      <webElementGuid>a4d27af0-8bd0-413c-8544-07217b88fdde</webElementGuid>
+      <webElementGuid>3683a2fc-abb8-49fb-b775-1fb930d81d57</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>9e496d44-40ab-4baa-a87a-d5149fc17320</webElementGuid>
+      <webElementGuid>f8dd027d-0296-45a3-9dc9-4e2907ad71ff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -81,7 +81,7 @@
       <name>text</name>
       <type>Main</type>
       <value>100889</value>
-      <webElementGuid>b52d003a-b430-447b-8c25-942e9ecfd08e</webElementGuid>
+      <webElementGuid>354a90ce-c0bf-4d88-8b0e-609424c4bc3c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -89,22 +89,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-cfc00b4d0cc40d685fbb2f4506e1f25b</value>
-      <webElementGuid>36c8e317-da5e-4f32-8999-3fd762a0610d</webElementGuid>
+      <webElementGuid>c0cd51b6-cb3f-46eb-9e19-82a1944d815f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1][text()='${encounterId}']</value>
-      <webElementGuid>a87a0f7c-e1f8-480b-b1a3-24240c2fe9aa</webElementGuid>
+      <value>(//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1])[1]</value>
+      <webElementGuid>b3756f74-c378-4469-8306-4f23db12676c</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1][text()='${encounterId}']</value>
-      <webElementGuid>bba81bc0-e9ed-489e-bcd3-88e14c4eb63a</webElementGuid>
+      <value>(//*[@id = 'EncounterGrid']//div[starts-with(@class,&quot;dx-datagrid-rowsview&quot;)]//table/tbody/tr[not(contains(@class,'dx-freespace-row'))]/td[1])[1]</value>
+      <webElementGuid>96663e46-c2bd-4bac-8dde-b149ce4c0f30</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

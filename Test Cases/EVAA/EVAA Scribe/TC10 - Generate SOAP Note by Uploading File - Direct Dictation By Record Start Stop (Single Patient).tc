@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description>Generate SOAP Note by Uploading File --- Direct Dictation By Record Start Stop (Single Patient)</description>
-   <name>10 - Generate SOAP Note by Uploading File - Direct Dictation By Record Start Stop (Single Patient)</name>
+   <name>TC10 - Generate SOAP Note by Uploading File - Direct Dictation By Record Start Stop (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>

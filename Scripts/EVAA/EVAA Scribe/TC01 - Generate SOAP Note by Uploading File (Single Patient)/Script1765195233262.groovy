@@ -21,7 +21,7 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_02'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_SC_01'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -31,16 +31,26 @@ CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
+def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 
-KeywordUtil.logInfo("Record File Path=> $recordFilePath")
+KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
+//NavigateStory navigateStory = new NavigateStory()
+//
+//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
+//
+//String encounterId = VariableStories.getItem("ENCOUNTER_ID")
+//KeywordUtil.logInfo("Encounter Id=> $encounterId")
+//
+//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)

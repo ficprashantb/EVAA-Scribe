@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
-   <name>14 - Generate SOAP Note by Uploading File With Collapsed Mode After Patient Switch (Two Patient)</name>
+   <description>Verify SOAP Notes for Patient 1 After Patient Switch after Uploading File (Two Patients)</description>
+   <name>TC16 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</name>
    <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>77ebee55-cd1d-4808-9f52-1ba3353cc000</testCaseGuid>
+   <testCaseGuid>bb20a727-3c0d-4a76-bb12-593a66ab3586</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>b4a30d2c-76ff-4cd2-a4f0-d766192b8c87</id>
+      <id>58d715cb-dbd6-474e-a340-644e70ee0a1f</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -17,7 +27,7 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>d70c7cfe-3f37-420b-afaa-e923c1eadf22</id>
+      <id>74a23860-5204-4861-b2dd-024b8a427feb</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -25,31 +35,31 @@
       <testDataId>Data Files/FilesData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>d70c7cfe-3f37-420b-afaa-e923c1eadf22</testDataLinkId>
+      <testDataLinkId>74a23860-5204-4861-b2dd-024b8a427feb</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>UploadFilePath</value>
       <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b4a30d2c-76ff-4cd2-a4f0-d766192b8c87</testDataLinkId>
+      <testDataLinkId>58d715cb-dbd6-474e-a340-644e70ee0a1f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b4a30d2c-76ff-4cd2-a4f0-d766192b8c87</testDataLinkId>
+      <testDataLinkId>58d715cb-dbd6-474e-a340-644e70ee0a1f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b4a30d2c-76ff-4cd2-a4f0-d766192b8c87</testDataLinkId>
+      <testDataLinkId>58d715cb-dbd6-474e-a340-644e70ee0a1f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>b4a30d2c-76ff-4cd2-a4f0-d766192b8c87</testDataLinkId>
+      <testDataLinkId>58d715cb-dbd6-474e-a340-644e70ee0a1f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
@@ -89,14 +99,4 @@
       <masked>false</masked>
       <name>Technician</name>
    </variable>
-   <integratedEntity>
-      <productName>TESTOPS</productName>
-      <properties>
-         <entry>
-            <key>integratedValue</key>
-            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
-         </entry>
-      </properties>
-      <type>TESTCASE</type>
-   </integratedEntity>
 </TestCaseEntity>
