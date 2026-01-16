@@ -6,14 +6,14 @@
    <elementGuidId>3dcc891d-b7aa-413c-993e-bc9666d5cc30</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
-      </entry>
-      <entry>
          <key>CSS</key>
       </entry>
       <entry>
          <key>XPATH</key>
+         <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
          <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
       </entry>
    </selectorCollection>
@@ -31,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>beb7d69f-9b42-4c0a-b3b6-ffef4ce5172b</webElementGuid>
+      <webElementGuid>4a587e34-4eee-4839-a5a7-15d781954b2a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>dxgvCSD</value>
-      <webElementGuid>5fd317e6-c289-4562-baf9-72fc1ffa5609</webElementGuid>
+      <webElementGuid>13251193-99f9-44a7-96bd-92a85aba9a6a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +61,7 @@
 				
 			
 		</value>
-      <webElementGuid>6d6a694c-b4c5-4d2c-8ddf-4ce596ad14eb</webElementGuid>
+      <webElementGuid>b8fb026d-0e9b-4ce8-9754-c8c550783d7c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +69,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-58e049770b02c17b4eb0cb5d271a7924</value>
-      <webElementGuid>6d57a932-458d-4d06-95bd-0f598a819554</webElementGuid>
+      <webElementGuid>48a10941-a318-4961-9205-b84f308648b9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -77,7 +77,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
-      <webElementGuid>0f9b27b6-4ae1-4b82-b521-4e4608680a21</webElementGuid>
+      <webElementGuid>562679ff-71de-4960-bb29-00cb97991ee4</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -85,42 +85,14 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
-      <webElementGuid>c383e61a-feaa-4ca7-83b8-848cd6b74e36</webElementGuid>
+      <webElementGuid>47b0c644-c72d-4cd7-bcb0-a37f03c6a252</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[(text() = '
-			
-				
-					
-				
-					Active12/11/2025 FalseFalseFalseFalse12/11/2025      Pataday Pataday                 False 
-				
-					
-						No data to display
-					
-				
-					                                   
-				
-			
-		' or . = '
-			
-				
-					
-				
-					Active12/11/2025 FalseFalseFalseFalse12/11/2025      Pataday Pataday                 False 
-				
-					
-						No data to display
-					
-				
-					                                   
-				
-			
-		')]</value>
-      <webElementGuid>b8bd59b7-b290-4931-9e28-c3907b35a01f</webElementGuid>
+      <value>(//table[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXMainTable&quot;)]/tbody/tr[starts-with(@id,&quot;medicationHistoryGridView_&quot;)][contains(@id,&quot;_EEG_DXDataRow&quot;)][not(contains(@style, 'display:none;'))]/td[contains(@class,&quot;dxgv_editable_cell&quot;)][5])[${index}]</value>
+      <webElementGuid>3dffd570-ec2b-4db4-be48-01add8d2bd6d</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

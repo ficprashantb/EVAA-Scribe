@@ -23,6 +23,8 @@ import java.awt.Toolkit
 import java.awt.datatransfer.*
 import java.util.concurrent.CompletableFuture
 import internal.GlobalVariable
+import steps.CommonSteps
+
 import com.kms.katalon.core.util.KeywordUtil
 import com.kms.katalon.core.exception.StepFailedException
 import org.monte.media.*
@@ -53,6 +55,23 @@ public class UtilHelper {
 			return clipboardText
 		})
 	}
+
+	static void sendWindowsNotification(String title, String message) {
+		String psCommand = """
+    powershell -command "
+    [Windows.UI.Notifications.ToastNotificationManager, Windows.UI.Notifications, ContentType = WindowsRuntime] > \$null;
+    \$template = [Windows.UI.Notifications.ToastTemplateType]::ToastText02;
+    \$xml = [Windows.UI.Notifications.ToastNotificationManager]::GetTemplateContent(\$template);
+    \$textNodes = \$xml.GetElementsByTagName('text');
+    \$textNodes.Item(0).AppendChild(\$xml.CreateTextNode('${title}')) > \$null;
+    \$textNodes.Item(1).AppendChild(\$xml.CreateTextNode('${message}')) > \$null;
+    \$toast = [Windows.UI.Notifications.ToastNotification]::new(\$xml);
+    [Windows.UI.Notifications.ToastNotificationManager]::CreateToastNotifier('Katalon').Show(\$toast);
+    "
+    """
+
+		psCommand.execute()
+	}
 }
 
 public class ExceptionHelper {
@@ -60,7 +79,7 @@ public class ExceptionHelper {
 	/**
 	 * Handle exception and decide execution behavior
 	 */
-	static void handle(Exception e,
+	static void handle(Exception e,String stepName,
 			String message = 'Unexpected error occurred',
 			boolean stopExecution = true) {
 
@@ -75,6 +94,10 @@ public class ExceptionHelper {
 		} else {
 			KeywordUtil.markFailed(finalMessage)
 		}
+
+		KeywordUtil.logInfo("Screenshot: $stepName")
+		CommonSteps commonSteps = new CommonSteps()
+		commonSteps.takeScreenshots(stepName)
 	}
 
 	/**
@@ -86,40 +109,40 @@ public class ExceptionHelper {
 		try {
 			return action.call()
 		} catch (Exception e) {
-			handle(e, "Step failed: ${stepName}", stopExecution)
+			handle(e, stepName,"Step failed: ${stepName}", stopExecution)
 		}
 	}
 }
 
 public class VideoRecorderHelper {
-	
-		private static ScreenRecorder screenRecorder
-	
-		static void startRecording(String fileName) {
-			File file = new File("Reports/Videos")
-			if (!file.exists()) file.mkdirs()
-	
-			screenRecorder = new ScreenRecorder(
+
+	private static ScreenRecorder screenRecorder
+
+	static void startRecording(String fileName) {
+		File file = new File("Reports/Videos")
+		if (!file.exists()) file.mkdirs()
+
+		screenRecorder = new ScreenRecorder(
 				GraphicsEnvironment.localGraphicsEnvironment.defaultScreenDevice.defaultConfiguration,
 				new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
 				new Format(MediaTypeKey, MediaType.VIDEO,
-					EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-					CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-					DepthKey, 24,
-					FrameRateKey, Rational.valueOf(15),
-					QualityKey, 1.0f,
-					KeyFrameIntervalKey, 15 * 60),
+				EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+				CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
+				DepthKey, 24,
+				FrameRateKey, Rational.valueOf(15),
+				QualityKey, 1.0f,
+				KeyFrameIntervalKey, 15 * 60),
 				new Format(MediaTypeKey, MediaType.VIDEO,
-					EncodingKey, "black",
-					FrameRateKey, Rational.valueOf(30)),
+				EncodingKey, "black",
+				FrameRateKey, Rational.valueOf(30)),
 				null,
 				file,
 				fileName
-			)
-			screenRecorder.start()
-		}
-	
-		static void stopRecording() {
-			screenRecorder?.stop()
-		}
+				)
+		screenRecorder.start()
 	}
+
+	static void stopRecording() {
+		screenRecorder?.stop()
+	}
+}

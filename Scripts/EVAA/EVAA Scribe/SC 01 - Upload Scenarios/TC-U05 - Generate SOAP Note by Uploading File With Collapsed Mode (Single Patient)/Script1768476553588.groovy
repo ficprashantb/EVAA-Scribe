@@ -24,7 +24,7 @@ import stories.VariableStories as VariableStories
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U03'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U05'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -32,7 +32,9 @@ CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, G
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
+String ProviderName = "$Provider_FirstName $Provider_LastName"
+
+CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
 def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 

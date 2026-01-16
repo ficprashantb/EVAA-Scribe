@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description>Verify SOAP Notes for Patient 1 After Patient Switch after Uploading File (Two Patients)</description>
-   <name>TC-U06 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</name>
+   <name>TC-U07 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>

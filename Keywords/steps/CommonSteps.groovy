@@ -24,6 +24,7 @@ import stories.VariableStories
 import stories.AssertStory
 import stories.NavigateStory
 import stories.TestObjectStory
+import stories.UtilHelper
 
 import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.chrome.ChromeOptions
@@ -103,6 +104,8 @@ public class CommonSteps {
 
 		KeywordUtil.logInfo('Clicked on Find Button.')
 
+		UtilHelper.sendWindowsNotification("Katalon", "Execution finished")
+
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('PatientPage/Find Patients/Header Patient Name'),30)
@@ -153,10 +156,11 @@ public class CommonSteps {
 		KeywordUtil.logInfo("Clicked on Create Button.")
 
 		try {
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5, FailureHandling.OPTIONAL)
-
-			WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), FailureHandling.OPTIONAL)
-			KeywordUtil.logInfo("Clicked on Create New Button.")
+			Boolean isCreateNew =  WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5, FailureHandling.OPTIONAL)
+			if(isCreateNew) {
+				WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), FailureHandling.OPTIONAL)
+				KeywordUtil.logInfo("Clicked on Create New Button.")
+			}
 		}
 		catch (def e) {
 			e.printStackTrace()
@@ -250,8 +254,5 @@ public class CommonSteps {
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
 		}
 	}
-	
-	
-	
 }
 

@@ -18,29 +18,65 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import stories.AssertStory as AssertStory
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U05'
+AssertStory assertStory = new AssertStory()
 
-VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U02'
 
 CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
+NavigateStory navigateStory = new NavigateStory()
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
+CustomKeywords.'steps.CommonSteps.getFirstEncounterId'(FirstName, LastName)
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
+KeywordUtil.logInfo("Encounter Id=> $encounterId")
+
+CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
+
+CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
+
+String PtName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'))
+
+String expectedPtName = "$FirstName $LastName"
+
+assertStory.verifyMatch('PatientName', PtName, expectedPtName)
+
+CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
+
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+//Direct Dictation By Typing on Elements
+CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
+
+CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
+
+CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
- 
+
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+
+
+
+
+
+
+
+

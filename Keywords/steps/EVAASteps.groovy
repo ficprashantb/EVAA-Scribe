@@ -143,9 +143,31 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def unfinalizedDictationAfterFinalized(String FirstName, String LastName, String DOB, String Provider_FirstName, String Provider_LastName) {
+	def unfinalizedDictationAfterFinalized(String FirstName, String LastName, String DOB, String Provider_FirstName, String Provider_LastName, Boolean isExpandClose = false) {
 
-		CustomKeywords.'steps.EVAASteps.unFinalizedDictationAfterFinalized'(false)
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalized'), FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.logInfo("Clicked on UnFinalized")
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Unfinalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Status updated to Unfinalized!")
+
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.OPTIONAL)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		if(isExpandClose == true) {
+			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
+
+			KeywordUtil.logInfo('Clicked on Expand Recording')
+
+			WebUI.delay(5)
+		}
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
@@ -168,6 +190,7 @@ public class EVAASteps {
 		KeywordUtil.logInfo("Clicked on Finalize")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Status updated to Unfinalized!")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
 
@@ -182,9 +205,11 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sending SOAP notes and PDF to MaximEyes'), 60,
 				FailureHandling.CONTINUE_ON_FAILURE)
+		KeywordUtil.markPassed("Sending SOAP notes and PDF to MaximEyes...")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully'), 60,
 				FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Sent SOAP notes and PDF to MaximEyes successfully.")
 
 		WebUI.delay(10)
 
@@ -221,6 +246,7 @@ public class EVAASteps {
 		KeywordUtil.logInfo("Clicked on Finalize")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Status updated to Finalized!")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
 
@@ -259,12 +285,15 @@ public class EVAASteps {
 						return
 					}
 
+					WebUI.waitForElementClickable(sectionTO, 10, FailureHandling.STOP_ON_FAILURE)
+					
 					WebUI.click(sectionTO, FailureHandling.STOP_ON_FAILURE)
-					KeywordUtil.markWarning("Clicked on Send to MaximEyes for element- ${name}");
+					KeywordUtil.logInfo("Clicked on Send to MaximEyes for element- ${name}");
 
 					WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully'), 60,
 							FailureHandling.CONTINUE_ON_FAILURE)
-
+					KeywordUtil.markPassed("SOAP note sent to MaximEyes successfully.")
+					
 					WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 
 					KeywordUtil.logInfo('Clicked on Collapse Recording')
@@ -640,34 +669,7 @@ public class EVAASteps {
 			}
 		}
 	}
-
-	@Keyword
-	def unFinalizedDictationAfterFinalized(Boolean isExpandClose = true ) {
-
-		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalized'), FailureHandling.STOP_ON_FAILURE)
-		KeywordUtil.logInfo("Clicked on UnFinalized")
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Unfinalized'), 60, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.OPTIONAL)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		if(isExpandClose == true) {
-			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
-
-			KeywordUtil.logInfo('Clicked on Expand Recording')
-
-			WebUI.delay(5)
-		}
-	}
-
+ 
 	@Keyword
 	def verifyEVAAScribeHeaderDetails(String FirstName, String LastName, String DOB , String Provider_FirstName, String Provider_LastName) {
 		WebUI.delay(5)
@@ -877,6 +879,8 @@ public class EVAASteps {
 	@Keyword
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String txtDOB,  String DOB, String FinalizedStatus, String MicStatus ) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
+		
+		WebUI.delay(5)
 
 		def div_PatientName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'))
 
@@ -2256,6 +2260,7 @@ public class EVAASteps {
 		fakeMic.start()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Append-mode recording started'), 10, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Append-mode recording started")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 
@@ -2296,7 +2301,7 @@ public class EVAASteps {
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 30, FailureHandling.OPTIONAL)
-
+		
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
@@ -2367,6 +2372,7 @@ public class EVAASteps {
 		KeywordUtil.logInfo('Clicked on Stop Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Generating SOAP Notes")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
@@ -2396,6 +2402,7 @@ public class EVAASteps {
 		fakeMic.start()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/div_Append-mode recording started'), 10, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Append-mode recording started")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
 
@@ -2412,7 +2419,7 @@ public class EVAASteps {
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.OPTIONAL)
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 30, FailureHandling.OPTIONAL)
-
+		
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
@@ -2451,6 +2458,7 @@ public class EVAASteps {
 		KeywordUtil.logInfo('Clicked on fakeMic Stop Record Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Generating SOAP Notes")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
@@ -2472,6 +2480,7 @@ public class EVAASteps {
 		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("File processed successfully")
 
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
 
@@ -2497,6 +2506,7 @@ public class EVAASteps {
 	@Keyword
 	def verifySOAPNoteGenerateSucessfully() {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 150, FailureHandling.OPTIONAL)
+		KeywordUtil.markPassed("File processed successfully")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
 
@@ -2554,6 +2564,7 @@ public class EVAASteps {
 		fakeMic.stop()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
+		KeywordUtil.markPassed("Generating SOAP Notes")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
@@ -2625,6 +2636,7 @@ public class EVAASteps {
 		fakeMic.stop()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.OPTIONAL)
+		KeywordUtil.markPassed("Generating SOAP Notes")
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 
@@ -2919,7 +2931,8 @@ public class EVAASteps {
 
 		try {
 			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_Data transferred'), 10, FailureHandling.CONTINUE_ON_FAILURE)
-
+			KeywordUtil.markPassed("Data transferred.")
+			
 			WebUI.focus(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
 
 			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/powerTip_Data transferred'), 5, FailureHandling.STOP_ON_FAILURE)

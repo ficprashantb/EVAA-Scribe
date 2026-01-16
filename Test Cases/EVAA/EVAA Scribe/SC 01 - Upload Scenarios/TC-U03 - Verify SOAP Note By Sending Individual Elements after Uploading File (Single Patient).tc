@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-U05 - Verify SOAP Note By Sending Individual Elements after Uploading File (Single Patient)</name>
+   <name>TC-U03 - Verify SOAP Note By Sending Individual Elements after Uploading File (Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
@@ -29,7 +29,7 @@
       <id>17a35179-f166-466c-b6c2-25f188330224</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
+         <value>3</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>

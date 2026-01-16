@@ -4,17 +4,22 @@
    <name>img_SendToMaximeyesWithParams</name>
    <tag></tag>
    <elementGuidId>6560299d-fe42-40ab-921f-476e04cb8bb8</elementGuidId>
+   <imagePath></imagePath>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;]</value>
+         <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;]</value>
+         <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
       </entry>
       <entry>
-         <key>CSS</key>
+         <key>BASIC</key>
+         <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      </entry>
+      <entry>
+         <key>IMAGE</key>
          <value></value>
       </entry>
    </selectorCollection>
@@ -33,7 +38,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>59081bcc-c261-424b-a9d3-06d2aa47481d</webElementGuid>
+      <webElementGuid>e711a182-8467-4f92-ae41-d5ecb250fab1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +46,7 @@
       <name>src</name>
       <type>Main</type>
       <value>/Evaa-Mike.svg</value>
-      <webElementGuid>2f44512d-f529-458f-b267-c6f551cbe714</webElementGuid>
+      <webElementGuid>415e87a6-211a-4493-8937-34f38dde0abe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +54,7 @@
       <name>alt</name>
       <type>Main</type>
       <value>maximeyes-logo</value>
-      <webElementGuid>54e78444-1291-4319-b08a-d399168fd105</webElementGuid>
+      <webElementGuid>50abecbb-606c-42bf-bb91-4bfce534a6bb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +62,7 @@
       <name>class</name>
       <type>Main</type>
       <value>w-4 h-4</value>
-      <webElementGuid>59493a5d-c577-4759-bc92-13ca778131b4</webElementGuid>
+      <webElementGuid>c51f5567-e829-4924-b897-b6f59bae2d49</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,30 +70,38 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-c8f53b12b9608ce24f3f03b1a319280e</value>
-      <webElementGuid>5b164b4c-2fbe-463f-831b-277e59b8d408</webElementGuid>
+      <webElementGuid>edd4619c-31c9-4626-9105-f7a7f42e899c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;]</value>
-      <webElementGuid>2af29e24-0c7c-4534-a22c-d5f16c160dee</webElementGuid>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>42f79fa2-5c57-4701-9a6a-a4f451ee8a00</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>b51ea194-de10-4016-b6ff-667730cf76f1</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;]</value>
-      <webElementGuid>83e046ee-105d-4cbb-929b-8526465296ca</webElementGuid>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>d8bea909-a85a-4c2c-95c9-d5e9a9839dce</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;]</value>
-      <webElementGuid>ed72608a-545e-4e23-b8bd-f4aad6a7949d</webElementGuid>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>4424470a-5655-498a-8adc-b5eb5055e20f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
