@@ -57,7 +57,6 @@ public class EVAASteps {
 		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
 	}
 
-
 	@Keyword
 	def commonStepsForEVAA(String FirstName, LastName, String FinalizedStatus = 'Pending', String MicStatus='Recording Not Started' ) {
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
@@ -136,6 +135,8 @@ public class EVAASteps {
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '', DOB,FinalizedStatus , MicStatus)
 
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 
 		CustomKeywords.'steps.EVAASteps.searchStringAndVerify'(SearchText)
@@ -172,6 +173,8 @@ public class EVAASteps {
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+
 		WebUI.delay(2)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'))
@@ -203,7 +206,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ) {
+	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isExpandClose = true  ) {
 		String expectedPtName = "$FirstName $LastName"
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -211,6 +214,8 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalize'), FailureHandling.STOP_ON_FAILURE)
 		KeywordUtil.logInfo("Clicked on Finalize")
@@ -220,6 +225,8 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.delay(2)
 
@@ -239,12 +246,13 @@ public class EVAASteps {
 			def elementStorageList = VariableStories.elementStorage
 
 			try {
-				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
-
+				
 				for (String name : elementStorageList) {
 					KeywordUtil.logInfo("Element from Storage → ${name}")
 
-					TestObject sectionTO = CommonStory.sectionMapForSentToMaximeyes.get(name)
+					String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
+					
+					TestObject sectionTO = testObjectStory.img_SendToMaximeyesWithParams(moduleName) 
 
 					if (!sectionTO) {
 						KeywordUtil.markWarning("No TestObject mapped for → ${name}")
@@ -269,6 +277,14 @@ public class EVAASteps {
 				e.printStackTrace()
 			}finally		{
 			}
+		}
+
+		if(isExpandClose == true) {
+			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
+
+			KeywordUtil.logInfo('Clicked on Expand Recording')
+
+			WebUI.delay(5)
 		}
 	}
 

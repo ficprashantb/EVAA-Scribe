@@ -101,9 +101,11 @@ public class TestObjectStory {
 				)
 	}
 
-	TestObject img_Stop_Dictation(String type) {
-		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Stop_Dictation',
+	TestObject img_SendToMaximeyesWithParams(String type) {
+		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_SendToMaximeyesWithParams',
 				[('type') : type]
 				)
 	}
+	
+	
 }
