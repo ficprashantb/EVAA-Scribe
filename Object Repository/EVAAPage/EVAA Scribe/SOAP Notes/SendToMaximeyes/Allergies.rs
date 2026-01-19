@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>Allergies</name>
+   <tag></tag>
+   <elementGuidId>b67415b7-428d-4bab-8f4f-2fd8edd3c7eb</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Allergies:']]/following-sibling::ol//li</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>div:nth-child(3) > .list-decimal li[contenteditable=&quot;true&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>ol >> internal:has-text=/^Allergies$/ >> internal:role=listitem</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>li</value>
+      <webElementGuid>411945b0-a077-429c-a12e-6d7d2f26517e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>contenteditable</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>27e260d4-ebef-4ac0-8b59-ef3496978f09</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-sm text-black</value>
+      <webElementGuid>15a05b31-a5f2-4e30-afc9-5bd4bebdb600</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-fcaa5d2527f2b04e58938d4fe1728e24</value>
+      <webElementGuid>a111290a-137a-4579-ab7b-86383be95d50</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[(name() = 'div') and (position() = 3)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' list-decimal ')]//li[@contenteditable = 'true']</value>
+      <webElementGuid>3282cbe1-f486-478c-a9d0-e0e395222d3c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>006e07d9-2339-4c65-b57c-b96d54da654e</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[*/span[text()='Allergies:']]/following-sibling::ol//li</value>
+      <webElementGuid>34cc1e3d-c2a5-4465-a4a4-cf974042cbde</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

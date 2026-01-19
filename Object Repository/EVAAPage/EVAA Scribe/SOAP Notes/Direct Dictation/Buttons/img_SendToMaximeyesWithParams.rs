@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>img_SendToMaximeyesWithParams</name>
+   <tag></tag>
+   <elementGuidId>6560299d-fe42-40ab-921f-476e04cb8bb8</elementGuidId>
+   <imagePath></imagePath>
+   <selectorCollection>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      </entry>
+      <entry>
+         <key>IMAGE</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>img</value>
+      <webElementGuid>e711a182-8467-4f92-ae41-d5ecb250fab1</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>src</name>
+      <type>Main</type>
+      <value>/Evaa-Mike.svg</value>
+      <webElementGuid>415e87a6-211a-4493-8937-34f38dde0abe</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>alt</name>
+      <type>Main</type>
+      <value>maximeyes-logo</value>
+      <webElementGuid>50abecbb-606c-42bf-bb91-4bfce534a6bb</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>w-4 h-4</value>
+      <webElementGuid>c51f5567-e829-4924-b897-b6f59bae2d49</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-c8f53b12b9608ce24f3f03b1a319280e</value>
+      <webElementGuid>edd4619c-31c9-4626-9105-f7a7f42e899c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>42f79fa2-5c57-4701-9a6a-a4f451ee8a00</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>b51ea194-de10-4016-b6ff-667730cf76f1</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>d8bea909-a85a-4c2c-95c9-d5e9a9839dce</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>(//*[span[normalize-space()='${type}']]/ancestor::div[1]/following-sibling::div[1]/button[@title=&quot;Send to MaximEyes&quot;] | //*[span[normalize-space()='${type}']]/ancestor::div[1]/div[1]/button[@title=&quot;Send to MaximEyes&quot;])</value>
+      <webElementGuid>4424470a-5655-498a-8adc-b5eb5055e20f</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

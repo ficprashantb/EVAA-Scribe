@@ -32,9 +32,7 @@ class NewTestListener {
 		//		WebUI.openBrowser('')
 
 		'Maximize the window'
-		WebUI.maximizeWindow()
-		
-		VideoRecorderHelper.startRecording(testCaseContext.getTestCaseId())
+		WebUI.maximizeWindow() 
 	}
 
 	/*
@@ -54,9 +52,7 @@ class NewTestListener {
 			KeywordUtil.logInfo("Screenshot: $testCaseName")
 
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'(testCaseName)
-		}
-
-		VideoRecorderHelper.stopRecording()
+		} 
 		
 		WebUI.closeBrowser()
 	}
