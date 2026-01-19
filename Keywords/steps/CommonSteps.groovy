@@ -104,7 +104,7 @@ public class CommonSteps {
 
 		KeywordUtil.logInfo('Clicked on Find Button.')
 
-		UtilHelper.sendWindowsNotification("Katalon", "Execution finished")
+//		UtilHelper.sendWindowsNotification("Katalon", "Execution finished")
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
