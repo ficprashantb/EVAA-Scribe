@@ -38,7 +38,7 @@
       <id>efa6276e-030d-4ddb-9b2b-98fac928a11f</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>2</value>
+         <value>1</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
