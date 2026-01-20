@@ -303,9 +303,15 @@ public class EVAASteps {
 							FailureHandling.CONTINUE_ON_FAILURE)
 					LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
 
+					boolean	isPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
+					if(isPresent) {
+						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
+						LogStories.logInfo("Clicked on Refresh button")
+					} 
+					
 					CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-					CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name,"IC")
+					CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, isPresent)
 
 					CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 				}
@@ -317,35 +323,13 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def verifyIndividualSOAPNoteSentToMaximeyes(String key, String isIndividual = "ALL") {
+	def verifyIndividualSOAPNoteSentToMaximeyes(String key, Boolean isElementPresent = false) {
 		def variableKey = CommonStory.sectionMapForStorageKey.get(key)
 		String expectedData = VariableStories.getItem(variableKey)
-
-		//		if(isIndividual == "IC") {
-		//			boolean isPresent = WebUI.verifyElementPresent(findTestObject('EncounterPage/Menu/a_Electronic_Files'), 5, FailureHandling.OPTIONAL)
-		//			if (isPresent) {
-		//				WebUI.click(findTestObject('EncounterPage/Menu/a_Electronic_Files'), FailureHandling.OPTIONAL)
-		//				LogStories.logInfo("Clicked on Encounter Files.")
-		//				WebUI.waitForElementPresent(findTestObject('EncounterPage/Menu/a_dvInboundFile'), 5, FailureHandling.CONTINUE_ON_FAILURE)
-		//			} else {
-		//				isPresent = WebUI.verifyElementPresent(findTestObject('EncounterPage/Menu/a_Encounter_Summary'), 5, FailureHandling.OPTIONAL)
-		//				if (isPresent) {
-		//					WebUI.click(findTestObject('EncounterPage/Menu/a_Encounter_Summary'), FailureHandling.OPTIONAL)
-		//					LogStories.logInfo("Clicked on Encounter Summary.")
-		//					WebUI.waitForElementPresent(findTestObject('EncounterPage/Menu/a_Full Summary'), 5, FailureHandling.CONTINUE_ON_FAILURE)
-		//				}
-		//			}
-		//		}
-
-		boolean	isPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/Menu/button_refresh'), 5, FailureHandling.OPTIONAL)
-		if(isPresent) {
-			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
-			LogStories.logInfo("Clicked on Refresh button")
-		}
-
+   
 		// ===== Chief Complaint =====
 		if (key == "ChiefComplaint" && !CommonStory.isNullOrEmpty(expectedData)) {
-			if(!isPresent) {
+			if(!isElementPresent) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'CC & History Review', ('pElement'): 'Chief Complaint'])
 			}
 
@@ -357,7 +341,7 @@ public class EVAASteps {
 
 		// ===== HPI =====
 		else if (key == "HPI" && !CommonStory.isNullOrEmpty(expectedData)) {
-			if(!isPresent) {
+			if(!isElementPresent) {
 				navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'CC & History Review', ('pElement'): 'Chief Complaint'])
 			}
 
@@ -371,11 +355,11 @@ public class EVAASteps {
 		else if (key == "CurrentEyeSymptoms" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List currentEyeSymptomsList = CommonStory.getListObject(expectedData)
 			if (currentEyeSymptomsList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Medical History', ('pElement'): 'Current Eye Symptoms'])
 				}
 
-				WebUI.waitForElementPresent(findTestObject('EncounterPage/Encounter Details/divCurrentEyeSymptoms'), 10, FailureHandling.OPTIONAL)
+				WebUI.waitForElementPresent(findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/divCurrentEyeSymptoms'), 10, FailureHandling.OPTIONAL)
 
 				for (def currentEyeSymptoms : currentEyeSymptomsList) {
 					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
@@ -401,11 +385,11 @@ public class EVAASteps {
 		else if (key == "Allergies" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List allergiesList = CommonStory.getListObject(expectedData)
 			if (allergiesList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'CC & History Review', ('pElement'): 'Allergies'])
 				}
 
-				WebUI.waitForElementPresent(findTestObject('EncounterPage/Encounter Details/divCurrentEyeSymptoms'), 10, FailureHandling.OPTIONAL)
+				WebUI.waitForElementPresent(findTestObject('EncounterPage/Encounter Details/trAllergies'), 10, FailureHandling.OPTIONAL)
 
 				int index = 1
 				for (String allergies : allergiesList) {
@@ -423,7 +407,7 @@ public class EVAASteps {
 		else if (key == "Medications" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List medicationsList = CommonStory.getListObject(expectedData)
 			if (medicationsList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'CC & History Review', ('pElement'): 'Medications'])
 				}
 
@@ -455,7 +439,7 @@ public class EVAASteps {
 		else if (key == "ReviewOfSystems" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List reviewList = CommonStory.getListObject(expectedData)
 			if (reviewList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Medical History', ('pElement'): 'Review of Systems - Brief'])
 				}
 
@@ -485,7 +469,7 @@ public class EVAASteps {
 		else if (key == "Problems" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List problemsList = CommonStory.getListObject(expectedData)
 			if (problemsList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'CC & History Review', ('pElement'): 'Problems'])
 				}
 
@@ -507,7 +491,7 @@ public class EVAASteps {
 		else if (key == "DifferentialDiagnosis" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List diffDiagnosisList = CommonStory.getListObject(expectedData)
 			if (diffDiagnosisList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Final Findings', ('pElement'): 'Final Diagnoses'])
 				}
 
@@ -531,7 +515,7 @@ public class EVAASteps {
 		else if (key == "Assessment" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List assessmentList = CommonStory.getListObject(expectedData)
 			if (assessmentList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Final Findings', ('pElement'): 'Final Diagnoses'])
 				}
 
@@ -549,7 +533,7 @@ public class EVAASteps {
 		else if (key == "Plan" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List plansList = CommonStory.getListObject(expectedData)
 			if (plansList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Final Findings', ('pElement'): 'Final Diagnoses'])
 				}
 
@@ -570,7 +554,7 @@ public class EVAASteps {
 		else if (key == "EyeDiseases" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List eyeDiseaseList = CommonStory.getListObject(expectedData)
 			if (eyeDiseaseList.size() > 0) {
-				if(!isPresent) {
+				if(!isElementPresent) {
 					navigateStory.SelectEncounterElementFromLeftNavOnEncounter([('pElementPage'): 'Medical History', ('pElement'): 'Eye Diseases'])
 				}
 

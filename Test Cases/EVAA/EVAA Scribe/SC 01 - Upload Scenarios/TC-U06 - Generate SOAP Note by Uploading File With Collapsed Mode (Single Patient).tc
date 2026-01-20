@@ -19,7 +19,7 @@ Ability to use the encounter when record or upload is in progress</description>
    <testCaseGuid>2f318e76-cd1f-430d-b92f-be0e1995f7b3</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>17f76791-7035-4414-95fb-4ce5c21ba27d</id>
+      <id>9a3b1890-95ea-4469-bb6a-b8333f6095e6</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -28,7 +28,7 @@ Ability to use the encounter when record or upload is in progress</description>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>15900f1f-ae40-4414-98b3-f1455f3f4f1f</id>
+      <id>5641b4b1-f584-402b-a3d9-d206b46ee7e1</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -37,7 +37,7 @@ Ability to use the encounter when record or upload is in progress</description>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>bfebdbb1-1842-4945-8703-329b125c12b7</id>
+      <id>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>6</value>
@@ -45,61 +45,61 @@ Ability to use the encounter when record or upload is in progress</description>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>15900f1f-ae40-4414-98b3-f1455f3f4f1f</testDataLinkId>
+      <testDataLinkId>5641b4b1-f584-402b-a3d9-d206b46ee7e1</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>UploadFilePath</value>
       <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>bfebdbb1-1842-4945-8703-329b125c12b7</testDataLinkId>
+      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
       <variableId>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>bfebdbb1-1842-4945-8703-329b125c12b7</testDataLinkId>
+      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
       <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>17f76791-7035-4414-95fb-4ce5c21ba27d</testDataLinkId>
+      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>17f76791-7035-4414-95fb-4ce5c21ba27d</testDataLinkId>
+      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>17f76791-7035-4414-95fb-4ce5c21ba27d</testDataLinkId>
+      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>17f76791-7035-4414-95fb-4ce5c21ba27d</testDataLinkId>
+      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>bfebdbb1-1842-4945-8703-329b125c12b7</testDataLinkId>
+      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
       <variableId>c9dcceed-7893-4236-9a43-38f17b657049</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>bfebdbb1-1842-4945-8703-329b125c12b7</testDataLinkId>
+      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
       <variableId>fd026829-ec0e-4055-aa8d-3e1b62c87895</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>bfebdbb1-1842-4945-8703-329b125c12b7</testDataLinkId>
+      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
       <variableId>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</variableId>
