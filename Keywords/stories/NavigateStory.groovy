@@ -448,7 +448,7 @@ public class NavigateStory {
 	//	}
 
 	boolean isPresent(TestObject to, int timeout = 3) {
-		return WebUI.findWebElements(to, timeout).size() > 0
+		return WebUI.waitForImagePresent(to, timeout, FailureHandling.OPTIONAL)
 	}
 
 	static void safeClick(TestObject to) {
