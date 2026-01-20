@@ -16,8 +16,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import com.kms.katalon.core.util.KeywordUtil
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows 
 import internal.GlobalVariable
 import org.openqa.selenium.WebElement
 import stories.VariableStories as VariableStories
@@ -40,7 +39,7 @@ public class NavigateStory {
 		while (attempt < maxRetries) {
 			try {
 				if (attempt > 0) {
-					KeywordUtil.logInfo("Retrying action (attempt ${attempt + 1}/${maxRetries})...") ;
+					LogStories.logInfo("Retrying action (attempt ${attempt + 1}/${maxRetries})...") ;
 				}
 
 				action.call();
@@ -94,7 +93,7 @@ public class NavigateStory {
 						"Physical Inventory & Reconciliation"
 					]) {
 
-				KeywordUtil.logInfo("SubItem: ${props.SubItem}")
+				LogStories.logInfo("SubItem: ${props.SubItem}")
 
 				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -125,7 +124,7 @@ public class NavigateStory {
 						"Superbills"
 					]) {
 
-				KeywordUtil.logInfo( "SubItem: ${props.SubItem}")
+				LogStories.logInfo( "SubItem: ${props.SubItem}")
 
 				WebUI.waitForElementVisible(
 						makeTO("(//a[text()='${props.SubItem}'])[1]"),
@@ -147,7 +146,7 @@ public class NavigateStory {
 			// ---------------- GROUP 3 ----------------
 			if (!isBreak && props.SubItem in ["Claim", "Claims Overview"]) {
 
-				KeywordUtil.logInfo( "SubItem: ${props.SubItem}")
+				LogStories.logInfo( "SubItem: ${props.SubItem}")
 
 				WebUI.waitForElementVisible(
 						makeTO("//li/a[@data-tabtitle='${props.SubItem}']"),
@@ -169,7 +168,7 @@ public class NavigateStory {
 			// ---------------- CLAIMS ----------------
 			if (!isBreak && props.SubItem == "Claims") {
 
-				KeywordUtil.logInfo("SubItem: ${props.SubItem}")
+				LogStories.logInfo("SubItem: ${props.SubItem}")
 
 				WebUI.waitForElementVisible(
 						makeTO("//li/a[starts-with(@onclick,'loadPatientDependentModules')][text()='Claims']"),
@@ -191,7 +190,7 @@ public class NavigateStory {
 			// ---------------- ADD NEW TASK ----------------
 			if (!isBreak && props.SubItem == "Add New Task") {
 
-				KeywordUtil.logInfo( "SubItem: ${props.SubItem}")
+				LogStories.logInfo( "SubItem: ${props.SubItem}")
 
 				WebUI.waitForElementVisible(
 						makeTO("//*[@data-madel='${props.TopMenuOption}']//a[text()='Add New Task']"),
@@ -213,7 +212,7 @@ public class NavigateStory {
 			// ---------------- DEFAULT ----------------
 			if (!isBreak && props.TopMenuOption && props.SubItem && props.SubItem != "Superbill") {
 
-				KeywordUtil.logInfo("SubItem: ${props.SubItem}")
+				LogStories.logInfo("SubItem: ${props.SubItem}")
 
 				if (props.TopMenuOption == "Encounters") {
 
@@ -268,7 +267,7 @@ public class NavigateStory {
 			WebUI.delay(2)
 		})
 
-		KeywordUtil.logInfo("Clicked on ${props.SubItem} from ${props.TopMenuOption}")
+		LogStories.logInfo("Clicked on ${props.SubItem} from ${props.TopMenuOption}")
 	}
 
 	def ClickOnOfficeAdminNavigationTabs(Map props) {
@@ -291,7 +290,7 @@ public class NavigateStory {
 						)
 
 				WebUI.click(makeTO("//a[text()='General']"))
-				KeywordUtil.logInfo("Click 1")
+				LogStories.logInfo("Click 1")
 
 				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -304,7 +303,7 @@ public class NavigateStory {
 						makeTO("//*[@id='Genral_menu']/ul/li/a[contains(text(),'${props.SubTabL1}')]")
 						)
 
-				KeywordUtil.logInfo("Click 2")
+				LogStories.logInfo("Click 2")
 
 				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -334,7 +333,7 @@ public class NavigateStory {
 							makeTO("//*[@id='DocumentManagement']//a[contains(text(),'${props.SubTabL2}')]")
 							)
 
-					KeywordUtil.logInfo("Click 3")
+					LogStories.logInfo("Click 3")
 					WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 				}
 			}
@@ -346,7 +345,7 @@ public class NavigateStory {
 						makeTO("//*[@data-officeadminelementtitle='Business Details']")
 						)
 
-				KeywordUtil.logInfo("Click 6")
+				LogStories.logInfo("Click 6")
 
 				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -354,7 +353,7 @@ public class NavigateStory {
 						makeTO("//*[@id='Business_Details_menu']//a[contains(text(),'${props.SubTabL1}')]")
 						)
 
-				KeywordUtil.logInfo("Click 7")
+				LogStories.logInfo("Click 7")
 			}
 
 			// ---------------- MAIN TAB : MODULES ----------------
@@ -364,14 +363,14 @@ public class NavigateStory {
 						makeTO("//*[@data-officeadminelementtitle='Modules']")
 						)
 
-				KeywordUtil.logInfo("Click 9")
+				LogStories.logInfo("Click 9")
 				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
 				WebUI.click(
 						makeTO("//*[@id='Modules_menu']//a[text()='${props.SubTabL1}']")
 						)
 
-				KeywordUtil.logInfo("Click 10")
+				LogStories.logInfo("Click 10")
 			}
 
 			// ---------------- MAIN TAB : VALUE LISTS ----------------
@@ -381,7 +380,7 @@ public class NavigateStory {
 						makeTO("//*[@data-officeadminelementtitle='Value List']")
 						)
 
-				KeywordUtil.logInfo("Click 19")
+				LogStories.logInfo("Click 19")
 
 				WebUI.waitForElementVisible(
 						makeTO("//*[@id='ValueList_menu']//a[text()='${props.SubTabL1}']"),
@@ -392,11 +391,11 @@ public class NavigateStory {
 						makeTO("//*[@id='ValueList_menu']//a[text()='${props.SubTabL1}']")
 						)
 
-				KeywordUtil.logInfo("Click 20")
+				LogStories.logInfo("Click 20")
 			}
 		})
 
-		KeywordUtil.logInfo(
+		LogStories.logInfo(
 				"Navigated: ${props.MainTab} → ${props.SubTabL1} → ${props.SubTabL2}"
 				)
 	}
@@ -422,7 +421,7 @@ public class NavigateStory {
 	//			TestObject tabExpandedTO = makeTO( "//a[@title='${pageTitle}']/following-sibling::ul" )
 	//
 	//			if (WebUI.verifyElementVisible(tabExpandedTO, FailureHandling.OPTIONAL)) {
-	//				KeywordUtil.logInfo("${pageTitle} Tab already open")
+	//				LogStories.logInfo("${pageTitle} Tab already open")
 	//			} else {
 	//				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span"), 30 )
 	//				WebUI.click( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span") )
@@ -436,7 +435,7 @@ public class NavigateStory {
 	//			if (isElementClickable(subElementTO)) {
 	//				WebUI.click(subElementTO)
 	//			} else {
-	//				KeywordUtil.logInfo("Element not clickable by WebUI.click, trying with JavaScript click")
+	//				LogStories.logInfo("Element not clickable by WebUI.click, trying with JavaScript click")
 	//				clickElementWithJS(subElementTO)
 	//			}
 	//
@@ -444,7 +443,7 @@ public class NavigateStory {
 	//			WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
 	//			WebUI.delay(5)
 	//
-	//			KeywordUtil.logInfo("Clicked on Element ${element}")
+	//			LogStories.logInfo("Clicked on Element ${element}")
 	//		})
 	//	}
 
@@ -479,24 +478,24 @@ public class NavigateStory {
 		try {
 			// ✅ Expand tab ONLY if collapsed
 			if (!isPresent(tabMinus, 10)) {
-				KeywordUtil.logInfo("${pageTitle} tab is collapsed → expanding")
+				LogStories.logInfo("${pageTitle} tab is collapsed → expanding")
 				safeClick(tabPlus)
 
-				KeywordUtil.logInfo("${pageTitle} tab is expanding")
+				LogStories.logInfo("${pageTitle} tab is expanding")
 
 				WebUI.waitForElementVisible(childTO, 30)
 			} else {
-				KeywordUtil.logInfo("${pageTitle} tab already expanded")
+				LogStories.logInfo("${pageTitle} tab already expanded")
 			}
 
 			// ✅ Ensure clickable (not just visible)
 			WebUI.waitForElementClickable(childTO, 30)
 			safeClick(childTO)
 
-			KeywordUtil.logInfo("Clicked on Element ${element}")
+			LogStories.logInfo("Clicked on Element ${element}")
 		} catch (e) {
 			safeClick(mainTo)
-			KeywordUtil.logInfo("Clicked on Page ${pageTitle}")
+			LogStories.logInfo("Clicked on Page ${pageTitle}")
 		}
 
 		// ✅ Validate navigation
@@ -504,7 +503,7 @@ public class NavigateStory {
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'),60)
 
-		KeywordUtil.logInfo("Navigated to ${pageTitle} → ${element}")
+		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
 
 	/* ---------------- HELPER ---------------- */

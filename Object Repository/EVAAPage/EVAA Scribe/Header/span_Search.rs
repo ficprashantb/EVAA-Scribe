@@ -6,18 +6,18 @@
    <elementGuidId>b623f9f4-f561-4a4a-b8c6-20b834e8e905</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
+         <key>XPATH</key>
          <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
+         <key>BASIC</key>
          <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
       </entry>
       <entry>
          <key>CSS</key>
       </entry>
    </selectorCollection>
-   <selectorMethod>BASIC</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
@@ -31,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>7abd490c-98d0-4032-8ff7-10a6ab287c89</webElementGuid>
+      <webElementGuid>32798357-5a7c-4741-a1cf-6ce398305d69</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -39,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>highlight-mark text-[#0000ff] font-bold</value>
-      <webElementGuid>603fe8e2-2e5f-418b-abbb-ec6903a3fad5</webElementGuid>
+      <webElementGuid>1b7c140d-0842-4fa0-93a7-145c4ee363e3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -47,7 +47,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>-1</value>
-      <webElementGuid>bb978220-6c04-4efa-911b-04f7d84b670e</webElementGuid>
+      <webElementGuid>5ad8d943-4f11-4025-a10d-194d1be50578</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -55,7 +55,7 @@
       <name>text</name>
       <type>Main</type>
       <value>${search}</value>
-      <webElementGuid>8530245b-5070-42a7-b40b-5f55acc3282e</webElementGuid>
+      <webElementGuid>e1454129-0a2c-4bae-99d1-2d752b228c8d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -63,7 +63,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-ddaaf67b2fcaf307011affcbd37bf46e</value>
-      <webElementGuid>ea0b2f48-2e33-4d5e-8c24-5f67e7a2b39a</webElementGuid>
+      <webElementGuid>cf030fd5-68d5-4e1a-9a32-de97e2a8c91d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -71,7 +71,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>a6c1b0da-35e8-49ba-a9dc-3e4b72bd6e6b</webElementGuid>
+      <webElementGuid>29aae39f-12e1-46d2-9d59-f3f1a4df762b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -79,7 +79,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>ea106724-087f-43b4-8ebf-ba4ff419a0d3</webElementGuid>
+      <webElementGuid>954a0918-238f-44a9-883c-0c492de82cf7</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -87,6 +87,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//*[contains(@class,'highlight-mark')  and contains(@class,'text-[#0000ff]')  and translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='${search}']</value>
-      <webElementGuid>2388673d-5bb7-4946-81b0-c9529c6aff71</webElementGuid>
+      <webElementGuid>dd092e78-9187-4797-b48d-1041a691593a</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

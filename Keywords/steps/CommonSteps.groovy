@@ -18,10 +18,10 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import com.kms.katalon.core.util.KeywordUtil
 import internal.GlobalVariable
 import stories.VariableStories
 import stories.AssertStory
+import stories.LogStories
 import stories.NavigateStory
 import stories.TestObjectStory
 import stories.UtilHelper
@@ -65,27 +65,27 @@ public class CommonSteps {
 	@Keyword
 	def maximeyesLogin(String siteURL, String userName, String password) {
 		WebUI.navigateToUrl(siteURL)
-		KeywordUtil.logInfo("Site URL: $siteURL")
+		LogStories.logInfo("Site URL: $siteURL")
 
 		WebUI.setText(findTestObject('LoginPage/UserName'), userName)
 
-		KeywordUtil.logInfo("User Name: $userName")
+		LogStories.logInfo("User Name: $userName")
 
 		WebUI.setText(findTestObject('LoginPage/Password'), password)
 
-		KeywordUtil.logInfo("User Name: $password")
+		LogStories.logInfo("User Name: $password")
 
 		WebUI.click(findTestObject('LoginPage/LoginBtn'))
 
-		KeywordUtil.logInfo("Clicked on SignIn Button.")
+		LogStories.logInfo("Clicked on SignIn Button.")
 
-		KeywordUtil.logInfo("Awaiting the Home Screen.")
+		LogStories.logInfo("Awaiting the Home Screen.")
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('CommonPage/WorkQueue'), 30)
 
-		KeywordUtil.logInfo("Home Screen is visible.")
+		LogStories.logInfo("Home Screen is visible.")
 	}
 
 	@Keyword
@@ -94,17 +94,15 @@ public class CommonSteps {
 
 		WebUI.setText(findTestObject('PatientPage/Find Patients/input_Find Patient_LastName'), lastName)
 
-		KeywordUtil.logInfo("Last Name: $lastName")
+		LogStories.logInfo("Last Name: $lastName")
 
 		WebUI.setText(findTestObject('PatientPage/Find Patients/input_Find Patient_FirstName'), firstName)
 
-		KeywordUtil.logInfo("First Name: $firstName")
+		LogStories.logInfo("First Name: $firstName")
 
 		WebUI.click(findTestObject('PatientPage/Find Patients/input_Active_btnSearchPatient'))
 
-		KeywordUtil.logInfo('Clicked on Find Button.')
-
-//		UtilHelper.sendWindowsNotification("Katalon", "Execution finished")
+		LogStories.logInfo('Clicked on Find Button.')
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -116,7 +114,7 @@ public class CommonSteps {
 
 		WebUI.verifyMatch(PatientName, expectedPtName, true)
 
-		KeywordUtil.markPassed("Patient Name: $expectedPtName")
+		LogStories.markPassed("Patient Name: $expectedPtName")
 
 		String _key = "FP_${firstName}_${lastName}".toUpperCase()
 
@@ -138,28 +136,28 @@ public class CommonSteps {
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Encounters_dropdown-toggle menu-large rec_046ac3'))
 
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Actions_Encounters  Add New Encounter'))
-		KeywordUtil.logInfo("Clicked on Add New Encounter.")
+		LogStories.logInfo("Clicked on Add New Encounter.")
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_Encounter Type_EncounterTypeID'), encounterType, true)
-		KeywordUtil.logInfo("Encounter Type: $encounterType")
+		LogStories.logInfo("Encounter Type: $encounterType")
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_PracticeLocationID'), examLocation, true)
-		KeywordUtil.logInfo("Exam Location: $examLocation")
+		LogStories.logInfo("Exam Location: $examLocation")
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_ProviderId'), provider, true)
-		KeywordUtil.logInfo("Provider: $provider")
+		LogStories.logInfo("Provider: $provider")
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_Technician_NewPE_TechnicianID'), technician, true)
-		KeywordUtil.logInfo("Technician: $technician")
+		LogStories.logInfo("Technician: $technician")
 
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/btnSaveNewPEPopup'))
-		KeywordUtil.logInfo("Clicked on Create Button.")
+		LogStories.logInfo("Clicked on Create Button.")
 
 		try {
 			Boolean isCreateNew =  WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5, FailureHandling.OPTIONAL)
 			if(isCreateNew) {
 				WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), FailureHandling.OPTIONAL)
-				KeywordUtil.logInfo("Clicked on Create New Button.")
+				LogStories.logInfo("Clicked on Create New Button.")
 			}
 		}
 		catch (def e) {
@@ -174,7 +172,7 @@ public class CommonSteps {
 
 		WebUI.verifyMatch(PatientName, expected, true)
 
-		KeywordUtil.markPassed('Encounter Saved Suceesfully.')
+		LogStories.markPassed('Encounter Saved Suceesfully.')
 
 		if(isEncIdStore == true) {
 			String _key = "ENC_${firstName}_${lastName}".toUpperCase()
@@ -199,7 +197,7 @@ public class CommonSteps {
 		WebUI.setText(findTestObject('EncounterPage/EncounterHx/input_ExamNumber'), encounterId)
 
 		WebUI.click(findTestObject('EncounterPage/EncounterHx/button_GO'))
-		KeywordUtil.logInfo("Clicked on Go button.")
+		LogStories.logInfo("Clicked on Go button.")
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -208,7 +206,7 @@ public class CommonSteps {
 		WebUI.waitForElementVisible(td_EncounterId, 30)
 
 		WebUI.click(td_EncounterId)
-		KeywordUtil.logInfo("Click on Encounter Id: $encounterId")
+		LogStories.logInfo("Click on Encounter Id: $encounterId")
 
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
 
@@ -231,27 +229,37 @@ public class CommonSteps {
 
 		VariableStories.setItem('ENCOUNTER_ID', encId)
 
-		KeywordUtil.logInfo("Encounter Id=> $encId")
+		LogStories.logInfo("Encounter Id=> $encId")
 	}
 
 	@Keyword
 	def clickOnExpandRecording(Boolean isExpand = true) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		KeywordUtil.logInfo('iframeContainer found')
+		LogStories.logInfo('iframeContainer found')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		KeywordUtil.logInfo('Expand Recording found')
+		LogStories.logInfo('Expand Recording found')
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 
-		KeywordUtil.logInfo('Clicked on Expand Recording')
+		LogStories.logInfo('Clicked on Expand Recording')
 
 		if(isExpand) {
-			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30)
+			String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+			TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
+
+			try {
+				WebUI.waitForElementPresent(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
+			} catch (e) {
+				WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
+			} 
+		}
+		else {
+			WebUI.delay(2)
 		}
 	}
 }

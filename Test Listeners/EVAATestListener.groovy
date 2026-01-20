@@ -1,6 +1,8 @@
 
 
 import internal.GlobalVariable
+import stories.LogStories
+import stories.UtilHelper
 import stories.VideoRecorderHelper
 
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -13,9 +15,8 @@ import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
-import com.kms.katalon.core.util.KeywordUtil
 
-class NewTestListener {
+class EVAATestListener {
 
 	/*
 	 * Executes before every test case starts.
@@ -32,7 +33,7 @@ class NewTestListener {
 		//		WebUI.openBrowser('')
 
 		'Maximize the window'
-		WebUI.maximizeWindow() 
+		WebUI.maximizeWindow()
 	}
 
 	/*
@@ -44,16 +45,19 @@ class NewTestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseStatus()
 
+		String testCaseId = testCaseContext.getTestCaseId()
+
 		if (testCaseContext.getTestCaseStatus() != 'PASS') {
+			String ssName = UtilHelper.randomString()
 
-			String testCaseName = testCaseContext.getTestCaseId()
-					.replaceAll('[^a-zA-Z0-9_]', '_')
+			LogStories.logInfo("TestCase Name: $testCaseId")
+			LogStories.logInfo("Screenshot: $ssName")
 
-			KeywordUtil.logInfo("Screenshot: $testCaseName")
+			CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+		}
 
-			CustomKeywords.'steps.CommonSteps.takeScreenshots'(testCaseName)
-		} 
-		
+		LogStories.sendNotification("${testCaseId} is completed.")
+
 		WebUI.closeBrowser()
 	}
 

@@ -19,8 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-import org.openqa.selenium.WebElement
-import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import org.openqa.selenium.WebElement 
 
 import groovy.json.JsonOutput as JsonOutput
 import groovy.json.JsonSlurper as JsonSlurper
@@ -48,7 +47,7 @@ public class CommonStory {
 			String dataColumn
 	) {
 		if (!WebUI.verifyElementPresent(to, 1, FailureHandling.OPTIONAL)) {
-			KeywordUtil.markWarning("Direct Dictation ${label} not found")
+			LogStories.markWarning("Direct Dictation ${label} not found")
 			return
 		}
 
@@ -72,7 +71,7 @@ public class CommonStory {
 		List reviewList = []
 		try {
 			if (!(expectedObj)) {
-				KeywordUtil.logInfo('No Review Of Systems found')
+				LogStories.logInfo('No Review Of Systems found')
 
 				reviewList= []
 			}
@@ -92,7 +91,7 @@ public class CommonStory {
 			}
 
 			if (reviewList.isEmpty()) {
-				KeywordUtil.logInfo('No Review Of Systems found')
+				LogStories.logInfo('No Review Of Systems found')
 
 				reviewList= []
 			}
@@ -115,8 +114,9 @@ public class CommonStory {
 				.collect { it.trim() }
 				.findAll { it }
 
-		if (parts.size() < 2) {
-			KeywordUtil.logInfo("Invalid Data format => $listData")
+		if (parts.size() < 2) { 
+			def logData = JsonOutput.toJson(listData)
+			LogStories.logInfo("Invalid Data format =>  $logData")
 			return null
 		}
 

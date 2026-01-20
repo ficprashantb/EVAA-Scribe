@@ -20,9 +20,9 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import groovy.sql.Sql
 import internal.GlobalVariable
+import stories.LogStories
 
-import java.sql.Connection
-import com.kms.katalon.core.util.KeywordUtil
+import java.sql.Connection 
 
 
 public class MySqlHelper {
@@ -43,7 +43,7 @@ public class MySqlHelper {
 				lastError = e
 				if (e.message?.toLowerCase()?.contains('lock')) {
 					attempt++
-					KeywordUtil.logInfo("DB lock detected, retrying (${attempt}/${MAX_RETRY})")
+					LogStories.logInfo("DB lock detected, retrying (${attempt}/${MAX_RETRY})")
 					sleep(1000)
 				} else {
 					throw e

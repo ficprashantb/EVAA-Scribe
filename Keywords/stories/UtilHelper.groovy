@@ -24,8 +24,7 @@ import java.awt.datatransfer.*
 import java.util.concurrent.CompletableFuture
 import internal.GlobalVariable
 import steps.CommonSteps
-
-import com.kms.katalon.core.util.KeywordUtil
+ 
 import com.kms.katalon.core.exception.StepFailedException
 import org.monte.media.*
 import org.monte.media.math.Rational
@@ -33,6 +32,7 @@ import static org.monte.media.FormatKeys.*
 import static org.monte.media.VideoFormatKeys.*
 
 import ScreenRecorder
+import org.apache.commons.lang.RandomStringUtils
 
 public class UtilHelper {
 
@@ -40,6 +40,10 @@ public class UtilHelper {
 	//	.thenAccept { text ->
 	//		println "Clipboard: $text"
 	//	}
+	
+	static String randomString(int maxLen = 5) {
+		return RandomStringUtils.randomAlphanumeric(maxLen)
+	}
 
 	static CompletableFuture<String> getClipboardTextAsync() {
 		return CompletableFuture.supplyAsync({
@@ -72,6 +76,13 @@ public class UtilHelper {
 
 		psCommand.execute()
 	}
+	
+	
+	static boolean isCloud() {
+		return System.getenv("KATALON_CLOUD_URL") ||
+			   System.getenv("TESTOPS_URL")
+	}
+	
 }
 
 public class ExceptionHelper {
@@ -90,12 +101,12 @@ public class ExceptionHelper {
         """.stripIndent()
 
 		if (stopExecution) {
-			KeywordUtil.markFailedAndStop(finalMessage)
+			LogStories.markFailedAndStop(finalMessage)
 		} else {
-			KeywordUtil.markFailed(finalMessage)
+			LogStories.markFailed(finalMessage)
 		}
 
-		KeywordUtil.logInfo("Screenshot: $stepName")
+		LogStories.logInfo("Screenshot: $stepName")
 		CommonSteps commonSteps = new CommonSteps()
 		commonSteps.takeScreenshots(stepName)
 	}

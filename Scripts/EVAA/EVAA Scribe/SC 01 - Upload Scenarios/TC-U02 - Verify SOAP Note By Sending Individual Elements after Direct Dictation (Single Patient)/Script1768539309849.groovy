@@ -3,6 +3,9 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+
+import java.io.ObjectInputFilter.Status
+
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -54,7 +57,7 @@ assertStory.verifyMatch('PatientName', PtName, expectedPtName)
 
 CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,'b', 'Finalized','Completed')
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()

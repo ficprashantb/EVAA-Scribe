@@ -16,8 +16,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows 
 
 import internal.GlobalVariable
 
@@ -33,7 +32,7 @@ public class AssertStory {
 		boolean present = WebUI.waitForElementPresent(testObject, result, FailureHandling.OPTIONAL)
 
 		if (!present) {
-			KeywordUtil.markFailed("$xpath → Element NOT PRESENT in DOM")
+			LogStories.markFailed("$xpath → Element NOT PRESENT in DOM")
 			return
 		}
 
@@ -41,12 +40,12 @@ public class AssertStory {
 		boolean visible = WebUI.waitForElementVisible(testObject, result, FailureHandling.OPTIONAL)
 
 		if (visible) {
-			KeywordUtil.markPassed("$xpath → Element is VISIBLE ✔")
+			LogStories.markPassed("$xpath → Element is VISIBLE ✔")
 			return
 		}
 
 		// 3️⃣ Present but not visible
-		KeywordUtil.markFailed("$xpath → Element PRESENT but NOT visible ❌")
+		LogStories.markFailed("$xpath → Element PRESENT but NOT visible ❌")
 	}
 
 	def verifyElementNotVisible(TestObject testObject, int timeOut = 5) {
@@ -61,14 +60,14 @@ public class AssertStory {
 			boolean notPresent = WebUI.waitForElementNotPresent(testObject, result, FailureHandling.OPTIONAL)
 
 			if (invisible || notPresent) {
-				KeywordUtil.markPassed("$xpath → Element is not visible / not present")
+				LogStories.markPassed("$xpath → Element is not visible / not present")
 				return
 			}
 
-			KeywordUtil.markFailed("$xpath → Still visible")
+			LogStories.markFailed("$xpath → Still visible")
 		}
 		catch(Exception ignore){
-			KeywordUtil.markFailed("$xpath → Unexpected failure")
+			LogStories.markFailed("$xpath → Unexpected failure")
 			throw ignore
 		}
 	}
@@ -86,14 +85,14 @@ public class AssertStory {
 
 	def verifyMatch (String text, def actual, def expected) {
 
-		KeywordUtil.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
+		LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
 
 		try {
 			WebUI.verifyMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
-			KeywordUtil.markPassed("${text} → PASSED => ${actual}")
+			LogStories.markPassed("${text} → PASSED => ${actual}")
 		}
 		catch(Exception err) {
-			KeywordUtil.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
+			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
 			throw err
 		}
 	}
@@ -104,13 +103,13 @@ public class AssertStory {
 		def a = actual instanceof Number ? actual : actual.toString().toBigDecimal()
 		def e = expected instanceof Number ? expected : expected.toString().toBigDecimal()
 
-		KeywordUtil.logInfo("${text} → Actual: ${a} | Expected >= ${e}")
+		LogStories.logInfo("${text} → Actual: ${a} | Expected >= ${e}")
 
 		try {
 			WebUI.verifyGreaterThanOrEqual(a, e,FailureHandling.CONTINUE_ON_FAILURE)
-			KeywordUtil.markPassed("${text} → Passed: ${a} >= ${e}")
+			LogStories.markPassed("${text} → Passed: ${a} >= ${e}")
 		} catch (Exception err) {
-			KeywordUtil.markFailed("${text} → FAILED: ${a} < ${e}")
+			LogStories.markFailed("${text} → FAILED: ${a} < ${e}")
 			throw err
 		}
 	}
@@ -121,13 +120,13 @@ public class AssertStory {
 		def a = actual instanceof Number ? actual : actual.toString().toBigDecimal()
 		def e = expected instanceof Number ? expected : expected.toString().toBigDecimal()
 
-		KeywordUtil.logInfo("${text} → Actual: ${a} | Expected >= ${e}")
+		LogStories.logInfo("${text} → Actual: ${a} | Expected >= ${e}")
 
 		try {
 			WebUI.verifyGreaterThan(a, e,FailureHandling.CONTINUE_ON_FAILURE)
-			KeywordUtil.markPassed("${text} → Passed: ${a} > ${e}")
+			LogStories.markPassed("${text} → Passed: ${a} > ${e}")
 		} catch (Exception err) {
-			KeywordUtil.markFailed("${text} → FAILED: ${a} < ${e}")
+			LogStories.markFailed("${text} → FAILED: ${a} < ${e}")
 			throw err
 		}
 	}

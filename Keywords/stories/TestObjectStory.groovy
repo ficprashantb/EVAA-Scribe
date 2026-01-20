@@ -107,5 +107,9 @@ public class TestObjectStory {
 				)
 	}
 	
-	
+	TestObject header_EncounterId(String EncId) {
+		return findTestObject('EVAAPage/EVAA Scribe/Header/header_EncounterId',
+				[('EncId') : EncId]
+				)
+	}
 }

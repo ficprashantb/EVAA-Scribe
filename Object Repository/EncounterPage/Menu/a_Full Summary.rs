@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>a_Full Summary</name>
+   <tag></tag>
+   <elementGuidId>825d95f8-3a01-40b5-a1bc-91a712e35bda</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@aria-labelledby = 'ui-id-9']//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ui-tabs-anchor ') and (@role = 'presentation') and (@href = '#')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>[aria-labelledby=&quot;ui-id-9&quot;] .ui-tabs-anchor[role=&quot;presentation&quot;][href=&quot;\#&quot;]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value>internal:role=link[name=&quot;Full Summary&quot;i]</value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>a</value>
+      <webElementGuid>28ba53de-62a0-43e5-9c18-5cc6ec2a5fc6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>href</name>
+      <type>Main</type>
+      <value>#</value>
+      <webElementGuid>792bdf0b-887d-4c5c-984e-86b100555419</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>ui-tabs-anchor</value>
+      <webElementGuid>552588c3-e4e2-41f8-bc2e-801be2d203b8</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>presentation</value>
+      <webElementGuid>aedd06ba-4da3-4f30-973a-b4544067d64c</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>1</value>
+      <webElementGuid>304fdf2a-429e-4d4c-88a3-2038b588c5e5</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>onclick</name>
+      <type>Main</type>
+      <value>showEncounterSummary('1626', '4abfae60', 'FULL_ENCOUNTER_SUMMARY')</value>
+      <webElementGuid>10b32a5b-bccc-40d4-b688-bd891f1a2a55</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Full Summary</value>
+      <webElementGuid>ac4abbc0-4225-4826-8716-f02288358f8b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-c2ea90d395313c743cded79f531fe4fc</value>
+      <webElementGuid>fa9c9529-c728-4b6d-992f-2e915d7271c7</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@aria-labelledby = 'ui-id-9']//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ui-tabs-anchor ') and (@role = 'presentation') and (@href = '#')]</value>
+      <webElementGuid>5b56db67-ea8a-418e-989a-ea746a5ba0a5</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@aria-labelledby = 'ui-id-9']//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' ui-tabs-anchor ') and (@role = 'presentation') and (@href = '#')]</value>
+      <webElementGuid>3abfdb10-3647-4cc7-b0a2-9d9ca448dc6b</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//a[@href = '#' and (text() = 'Full Summary' or . = 'Full Summary')]</value>
+      <webElementGuid>9e95c5e5-a680-4cb0-b4c8-f0319d98399d</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
