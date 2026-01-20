@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>header_EncounterId</name>
+   <name>header_PatientName</name>
    <tag></tag>
-   <elementGuidId>162656f8-1264-42c6-acf9-f59dd8dd1e2d</elementGuidId>
+   <elementGuidId>baefb876-1e43-495c-9179-efcd5191608a</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//span[@id=&quot;header-encounter-id&quot;][contains(text(),'Enc ID: ${EncId}')]</value>
+         <value>//h2[@id=&quot;header-patient-name&quot;][contains(text(),'${ptName}')]</value>
       </entry>
       <entry>
          <key>CSS</key>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//span[@id=&quot;header-encounter-id&quot;][contains(text(),'Enc ID: ${EncId}')]</value>
+         <value>//h2[@id=&quot;header-patient-name&quot;][contains(text(),'${ptName}')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -30,8 +30,8 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//span[@id=&quot;header-encounter-id&quot;][contains(text(),'Enc ID: ${EncId}')]</value>
-      <webElementGuid>bf2a0d3e-bf31-4a47-95dd-9a986629ba5c</webElementGuid>
+      <value>//h2[@id=&quot;header-patient-name&quot;][contains(text(),'${ptName}')]</value>
+      <webElementGuid>f84f33f3-79e0-43c2-b393-d049d7a6fe0e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -39,22 +39,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>ffa26074-4ad0-493d-b474-45ef3d4f7d31</webElementGuid>
+      <webElementGuid>419526ce-1a00-42e0-b97b-2fef5f73599e</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//span[@id=&quot;header-encounter-id&quot;][contains(text(),'Enc ID: ${EncId}')]</value>
-      <webElementGuid>daa9e956-170c-4ebc-be44-c05f06fdfa61</webElementGuid>
+      <value>//h2[@id=&quot;header-patient-name&quot;][contains(text(),'${ptName}')]</value>
+      <webElementGuid>a4707971-d9d3-43f0-b180-6bad1e3672bb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//span[@id=&quot;header-encounter-id&quot;][contains(text(),'Enc ID: ${EncId}')]</value>
-      <webElementGuid>bad58d88-29ca-434e-b276-f4713e4bed16</webElementGuid>
+      <value>//h2[@id=&quot;header-patient-name&quot;][contains(text(),'${ptName}')]</value>
+      <webElementGuid>b4e5b07f-6c38-4648-b1ab-032bed22c577</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

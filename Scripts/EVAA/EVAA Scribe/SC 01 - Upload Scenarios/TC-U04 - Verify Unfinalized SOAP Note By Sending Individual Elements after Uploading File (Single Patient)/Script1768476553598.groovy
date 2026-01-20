@@ -21,34 +21,16 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R01'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U04'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician, false)
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
-
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
-
-KeywordUtil.logInfo("Record File Path=> $recordFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
+CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+ 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+ 
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName) 

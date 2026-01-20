@@ -25,35 +25,5 @@ import stories.VariableStories as VariableStories
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U01'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
-
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
-
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-String ProviderName = "$Provider_FirstName $Provider_LastName"
-
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
-
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
-
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
-
-//NavigateStory navigateStory = new NavigateStory()
-//
-//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-//
-//String encounterId = VariableStories.getItem("ENCOUNTER_ID")
-//KeywordUtil.logInfo("Encounter Id=> $encounterId")
-//
-//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+ 
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician) 

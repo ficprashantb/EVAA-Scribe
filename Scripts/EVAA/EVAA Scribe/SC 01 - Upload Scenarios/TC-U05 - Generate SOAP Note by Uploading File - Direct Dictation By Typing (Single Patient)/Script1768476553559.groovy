@@ -21,7 +21,7 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U04'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U05'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 

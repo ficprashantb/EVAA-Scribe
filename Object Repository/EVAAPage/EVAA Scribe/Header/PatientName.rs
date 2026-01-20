@@ -6,18 +6,18 @@
    <elementGuidId>c6fff566-a0f7-4dee-9706-4893138b8c43</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>IMAGE</key>
-      </entry>
-      <entry>
          <key>BASIC</key>
          <value>//*[@ref_element = 'Object Repository/EVAA Scribe/iFrame']</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>(//div/span[contains(text(),'Pt ID:')]/parent::div/preceding-sibling::div/h2)[1]</value>
+         <key>CSS</key>
       </entry>
       <entry>
-         <key>CSS</key>
+         <key>IMAGE</key>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//h2[@id=&quot;header-patient-name&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -34,6 +34,6 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>f47b4d8f-a6f3-4cd1-bc1e-7e5dc14195e4</webElementGuid>
+      <webElementGuid>010e4dad-0dcc-455b-b256-427c730a5e59</webElementGuid>
    </webElementProperties>
 </WebElementEntity>

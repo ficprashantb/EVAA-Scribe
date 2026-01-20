@@ -12,10 +12,10 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>77d91a45-3fb2-4780-9472-08fe4497d911</testSuiteGuid>
    <testCaseLink>
-      <guid>281805a6-9596-4801-9590-5eaf507d0a95</guid>
+      <guid>ab0f91b1-364a-418d-bb47-04f31fae82fd</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Verify Unfinalized SOAP Note By Sending Individual Elements after Uploading File (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

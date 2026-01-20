@@ -461,7 +461,7 @@ public class NavigateStory {
 	}
 
 	@Keyword
-	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
+	def SelectEncounterElementFromLeftNavOnEncounter_OLD(Map props) {
 		String pageTitle = props.pElementPage
 		String element   = props.pElement
 
@@ -505,6 +505,53 @@ public class NavigateStory {
 
 		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
+	
+	@Keyword
+	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
+		String pageTitle = props.pElementPage
+		String element   = props.pElement
+	
+		assert pageTitle?.trim()
+		assert element?.trim()
+	
+		TestObject mainTo   = makeTO("//li[a[@title='${pageTitle}']]")
+		TestObject tabPlus  = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
+		TestObject tabMinus = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
+		TestObject childTO  = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
+	
+		try {
+			// ✅ Check if pageTitle already has active-toggle class
+			TestObject activeToggleTO = makeTO("//li[a[@title='${pageTitle}'] and contains(@class,'active-toggle')]")
+	
+			if (isPresent(activeToggleTO, 5)) {
+				LogStories.logInfo("${pageTitle} is already active → skipping click")
+			} else {
+				// Expand tab ONLY if collapsed
+				if (!isPresent(tabMinus, 10)) {
+					LogStories.logInfo("${pageTitle} tab is collapsed → expanding")
+					safeClick(tabPlus)
+					LogStories.logInfo("${pageTitle} tab is expanding")
+					WebUI.waitForElementVisible(childTO, 30)
+				} else {
+					LogStories.logInfo("${pageTitle} tab already expanded")
+				}
+	
+				// Ensure clickable (not just visible)
+				WebUI.waitForElementClickable(childTO, 30)
+				safeClick(childTO)
+				LogStories.logInfo("Clicked on Element ${element}")
+			}
+		} catch (e) {
+			safeClick(mainTo)
+			LogStories.logInfo("Clicked on Page ${pageTitle}")
+		}
+	
+		// ✅ Validate navigation
+		WebUI.waitForElementVisible(makeTO("//div/span[contains(normalize-space(),'${element}')]"), 30)
+		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
+	
+		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
+	} 
 
 	/* ---------------- HELPER ---------------- */
 	TestObject makeTO(String xpath) {

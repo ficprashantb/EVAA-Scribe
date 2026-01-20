@@ -81,4 +81,10 @@
       <protected>false</protected>
       <valueType>STRING</valueType>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>false</initValue>
+      <name>IS_ENCOUNTER_ID</name>
+      <protected>false</protected>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>

@@ -24,40 +24,12 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.AssertStory as AssertStory
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
+ 
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U03'
 
-AssertStory assertStory = new AssertStory()
-
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U02'
-
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
-
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-NavigateStory navigateStory = new NavigateStory()
-
-navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-
-CustomKeywords.'steps.CommonSteps.getFirstEncounterId'(FirstName, LastName)
-
-String encounterId = VariableStories.getItem('ENCOUNTER_ID')
-
-KeywordUtil.logInfo("Encounter Id=> $encounterId")
-
-CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-
-CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
-
-WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
-
-String PtName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'))
-
-String expectedPtName = "$FirstName $LastName"
-
-assertStory.verifyMatch('PatientName', PtName, expectedPtName)
-
-CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,'b', 'Finalized','Completed')
+VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
+ 
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician,false)
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
@@ -67,19 +39,12 @@ CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
+ 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
-
-
-
-
-
-
-
 

@@ -12,7 +12,7 @@
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>2bd272b1-bc6c-4ae1-9e18-8eaf9ca3133f</testSuiteGuid>
    <testCaseLink>
-      <guid>6e6555c9-30b4-425b-80be-11ccb44a3e5d</guid>
+      <guid>895076dc-caba-4833-9f7b-1f36f580d06b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
@@ -79,10 +79,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d469a60e-e921-4b54-aff2-a1b787fb5549</guid>
+      <guid>e1240108-b5b5-445e-9bbe-11a9457c5392</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Verify SOAP Note By Sending Individual Elements after Direct Dictation (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Finalize and Unfinalize SOAP Note After Uploading File (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -146,10 +146,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>cd4dc95a-3dc8-49f9-b756-c53144ab8676</guid>
+      <guid>4d3c3a70-81f5-4b76-b343-220a3aac497d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Verify SOAP Note By Sending Individual Elements after Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Verify Unfinalized SOAP Note By Sending Individual Elements after Direct Dictation (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -213,10 +213,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d29db65a-6a20-4e8d-ad04-36cd0e6e24e3</guid>
+      <guid>3bb5ff13-90b3-45a6-9808-5fc874d1e061</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Verify Unfinalized SOAP Note By Sending Individual Elements after Uploading File (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -280,10 +280,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>da0ee4e7-4a52-493a-9fd2-33875b16f4bb</guid>
+      <guid>b0c92068-f379-4fba-9a12-f100ff78668f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U05 - Generate SOAP Note by Uploading File With Collapsed Mode (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U05 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -347,10 +347,77 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>a74507b3-71db-4692-b6de-a6d4c54b15f3</guid>
+      <guid>3062a180-af4b-48d4-8948-1579bd2c7b96</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U06 - Generate SOAP Note by Uploading File With Collapsed Mode After Patient Switch (Two Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U06 - Generate SOAP Note by Uploading File With Collapsed Mode (Single Patient)</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>c9dcceed-7893-4236-9a43-38f17b657049</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>fd026829-ec0e-4055-aa8d-3e1b62c87895</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e2a02b09-7a5b-4c6c-9ace-bff36c21b8ef</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Generate SOAP Note by Uploading File With Collapsed Mode After Patient Switch (Two Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -384,10 +451,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>29b0289c-aec6-4652-954e-500ffd071628</guid>
+      <guid>17db4fd5-a691-460d-9982-8ee5c3337ef1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Notes for Patient 1 by Uploading File After Patient Switch (Two Patients)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

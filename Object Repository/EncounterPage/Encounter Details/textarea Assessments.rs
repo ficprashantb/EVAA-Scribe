@@ -10,23 +10,19 @@
          <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+         <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>[name=&quot;\32 234\.Final_Diagnoses\.ASSESSMENT&quot;]</value>
+         <key>XPATH</key>
+         <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:role=textbox[name=&quot;Patient's vision has been slightly off, potentially related to blood sugar levels.
-Visual field testing showed a couple of missed spots, which were not considered significant.
-Patient is currently using Pataday daily for allergies.;Patient's vision has been slightly off, potentially related to blood sugar levels.
-Visual field testing showed a couple of missed spots, which were not considered significant.
-Patient is currently using Pataday daily for allergies.&quot;i]</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -37,7 +33,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>tag</name>
       <type>Main</type>
       <value>textarea</value>
-      <webElementGuid>1daf5aef-8707-4c15-b294-c0bb2b77182d</webElementGuid>
+      <webElementGuid>f329c5c2-ee11-47ae-bd2b-b0aef39aa0a9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +41,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-sysdef</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>096ec796-5b21-4fa2-80b7-2a05b8706247</webElementGuid>
+      <webElementGuid>d7234d51-4e66-43f9-9862-0da8126624b1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +49,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-reffield</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>d584d3b4-0787-4738-8873-6bd332094dcd</webElementGuid>
+      <webElementGuid>95492208-346c-40ff-aff1-8e7ee5fabaa4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +57,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-isrefered</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>e99d569a-d23b-4e65-a8f2-1c0100e15e4d</webElementGuid>
+      <webElementGuid>29253ad5-ab04-4f27-a6ae-7c7b13038696</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +65,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>maxlength</name>
       <type>Main</type>
       <value>-1</value>
-      <webElementGuid>f1a4a25c-9198-46d5-be22-c194ce4749d7</webElementGuid>
+      <webElementGuid>b1f35e9b-4d01-4341-8df2-37f2b86c9367</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -77,7 +73,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-defaultdatatype</name>
       <type>Main</type>
       <value>string</value>
-      <webElementGuid>e7c80049-8553-4397-881e-5371ba089315</webElementGuid>
+      <webElementGuid>06fd8966-6488-4dcd-909f-f4086cd042a3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -85,7 +81,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>name</name>
       <type>Main</type>
       <value>2234.Final_Diagnoses.ASSESSMENT</value>
-      <webElementGuid>befbdc33-515c-4b0f-b2d7-55dd8ebf5301</webElementGuid>
+      <webElementGuid>6b705f49-f24d-4e5e-8a2e-46e6ae5d354a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -93,7 +89,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>tabindex</name>
       <type>Main</type>
       <value>7011</value>
-      <webElementGuid>2dc23a80-6c76-46ae-bfa8-5d8ecd36a7e2</webElementGuid>
+      <webElementGuid>a88729cc-cd60-4fb3-ab11-d885cc9d4e78</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -101,7 +97,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-ec_ctrldispname</name>
       <type>Main</type>
       <value>Assessment</value>
-      <webElementGuid>5987f089-f366-434e-a08a-51819afe50ca</webElementGuid>
+      <webElementGuid>0c464054-2f23-47c0-bc7c-f90ec5e58905</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -109,7 +105,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-canbehidden</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>2c863884-92ff-41e0-a20c-e4294355ca70</webElementGuid>
+      <webElementGuid>0e19aa16-d4a7-4d55-82dd-3f9524f10d18</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -117,7 +113,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-cid</name>
       <type>Main</type>
       <value>1706</value>
-      <webElementGuid>f3f5e761-162c-4173-995a-2e03ed8dd306</webElementGuid>
+      <webElementGuid>86c9d168-a159-490b-ae09-bc15c46fbe51</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -125,7 +121,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-isreadonly</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>86c3f9e2-26fa-4e93-a8ee-0df00b280b23</webElementGuid>
+      <webElementGuid>9f476026-3691-46f9-aead-1312d122bc18</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -133,7 +129,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-eyetype</name>
       <type>Main</type>
       <value>null</value>
-      <webElementGuid>3247ec66-f7c4-42c1-930d-21e84f02b1c7</webElementGuid>
+      <webElementGuid>463a9d0c-e5cb-4ef7-96ae-31578d6f4cfa</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -141,7 +137,7 @@ Patient is currently using Pataday daily for allergies.&quot;i]</value>
       <name>data-elementid</name>
       <type>Main</type>
       <value>2121</value>
-      <webElementGuid>046e0fe0-1e24-4e04-a0d9-4dadc7b0069c</webElementGuid>
+      <webElementGuid>c905b098-4b12-4fe8-891d-6469f6643fd8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -153,7 +149,7 @@ Visual field testing showed a couple of missed spots, which were not considered 
 Patient is currently using Pataday daily for allergies.,Patient's vision has been slightly off, potentially related to blood sugar levels.
 Visual field testing showed a couple of missed spots, which were not considered significant.
 Patient is currently using Pataday daily for allergies.</value>
-      <webElementGuid>8ad3aa04-290a-4a43-9af9-fbfce6e14c0f</webElementGuid>
+      <webElementGuid>61ec1473-0008-49d6-bd11-abd5e83156d8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -161,7 +157,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-supportclearbtn</name>
       <type>Main</type>
       <value>false</value>
-      <webElementGuid>63b0272c-fa22-4acc-b988-af74239c0b37</webElementGuid>
+      <webElementGuid>51b4bfd4-f206-4982-b7da-d1b9d0485a12</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -169,7 +165,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-enc_elementpagerelid</name>
       <type>Main</type>
       <value>2234</value>
-      <webElementGuid>8895fa87-28ef-40e8-b4f4-a29163a8a423</webElementGuid>
+      <webElementGuid>c0dc1d73-a665-4a9c-b2f1-ba846c3e86f8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -177,7 +173,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>onfocus</name>
       <type>Main</type>
       <value>expandTextarea(this)</value>
-      <webElementGuid>866e0d62-a2c0-4834-bf88-2e84072dce21</webElementGuid>
+      <webElementGuid>5a68c052-cdba-4031-983a-a6f202f7e466</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -185,7 +181,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>oninput</name>
       <type>Main</type>
       <value>expandTextarea(this)</value>
-      <webElementGuid>aad3a053-25b7-459d-8edf-c5024858aba7</webElementGuid>
+      <webElementGuid>5f7f2baf-ff32-482f-bf42-9703b1579158</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -193,7 +189,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>onfocusout</name>
       <type>Main</type>
       <value>restoreOriginalSize(this)</value>
-      <webElementGuid>6fae858e-e0e4-4f52-8dc5-73c4acd52372</webElementGuid>
+      <webElementGuid>f6863b5b-7673-4c74-a03e-d0f6611540c8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -205,7 +201,7 @@ Visual field testing showed a couple of missed spots, which were not considered 
 Patient is currently using Pataday daily for allergies.;Patient's vision has been slightly off, potentially related to blood sugar levels.
 Visual field testing showed a couple of missed spots, which were not considered significant.
 Patient is currently using Pataday daily for allergies.</value>
-      <webElementGuid>04282926-f218-407d-b8cf-850a08231a8a</webElementGuid>
+      <webElementGuid>ca04d040-530f-43a3-9c06-d78ef5938dc5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -213,7 +209,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-refelmid</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>399127cc-fe9e-4531-bb85-bfa23989f634</webElementGuid>
+      <webElementGuid>2a11b0b5-a22c-4813-ac6b-ff1c89cdee29</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -221,7 +217,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-askey</name>
       <type>Main</type>
       <value>~F_F~Final_Diagnoses.ASSESSMENT</value>
-      <webElementGuid>d8b21686-f312-4ac1-9db3-e23a985517d5</webElementGuid>
+      <webElementGuid>1f1ad835-8a8e-4e9b-adc2-871eed0c5a8e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -229,7 +225,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-actualname</name>
       <type>Main</type>
       <value>ASSESSMENT</value>
-      <webElementGuid>e4d0f522-881b-42cd-8be6-ec3721a9626b</webElementGuid>
+      <webElementGuid>5e1f757f-d4c7-46e9-8ed4-8fc5a1951af1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -237,7 +233,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>data-elementname</name>
       <type>Main</type>
       <value>Final_Diagnoses</value>
-      <webElementGuid>29f560a4-f50d-47ce-88b5-4824b09351a0</webElementGuid>
+      <webElementGuid>0886d2a2-2c39-44f9-941d-038f97822182</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -245,7 +241,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>autocomplete</name>
       <type>Main</type>
       <value>off</value>
-      <webElementGuid>78ce1e04-a3ba-40b3-8d65-cf02fea35f14</webElementGuid>
+      <webElementGuid>674c2f1c-e773-41b3-815b-10018633b073</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -253,7 +249,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-0dd371eb9327cb66cc7bb761deb343fd</value>
-      <webElementGuid>22ca3697-cbb3-4cc5-9b3d-7d5e644479f7</webElementGuid>
+      <webElementGuid>ee5b81a8-ab3c-40ab-be8a-40b921e01a59</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -261,7 +257,7 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>xpath</name>
       <type>Main</type>
       <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
-      <webElementGuid>5f97c573-55d5-431d-af1f-749506a0fe9c</webElementGuid>
+      <webElementGuid>e49b4f34-a170-4110-9790-845719189556</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -269,18 +265,14 @@ Patient is currently using Pataday daily for allergies.</value>
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
-      <webElementGuid>6f6c7729-092a-4bb6-a087-0ab6711a6a4a</webElementGuid>
+      <webElementGuid>4a6e0623-74fd-41ea-8d54-54c17105aad3</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//textarea[@name = '2234.Final_Diagnoses.ASSESSMENT' and @title = concat(&quot;Patient&quot; , &quot;'&quot; , &quot;s vision has been slightly off, potentially related to blood sugar levels.&#xd;
-Visual field testing showed a couple of missed spots, which were not considered significant.&#xd;
-Patient is currently using Pataday daily for allergies.;Patient&quot; , &quot;'&quot; , &quot;s vision has been slightly off, potentially related to blood sugar levels.&#xd;
-Visual field testing showed a couple of missed spots, which were not considered significant.&#xd;
-Patient is currently using Pataday daily for allergies.&quot;)]</value>
-      <webElementGuid>99c6c56f-d18a-4e4d-97be-8a62051d5541</webElementGuid>
+      <value>//*[contains(@name , 'Final_Diagnoses.ASSESSMENT')]</value>
+      <webElementGuid>80c33263-f5da-41f5-8aae-df80af87e07f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

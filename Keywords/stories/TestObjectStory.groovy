@@ -112,4 +112,11 @@ public class TestObjectStory {
 				[('EncId') : EncId]
 				)
 	}
+	
+	TestObject header_PatientName(String ptName) {
+		return findTestObject('EVAAPage/EVAA Scribe/Header/header_PatientName',
+				[('ptName') : ptName]
+				)
+	} 
+	
 }

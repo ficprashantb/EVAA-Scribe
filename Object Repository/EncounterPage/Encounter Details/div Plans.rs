@@ -6,6 +6,10 @@
    <elementGuidId>ecf54f9e-1473-4c41-9d28-d5652092784f</elementGuidId>
    <selectorCollection>
       <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'encounterPlansData']</value>
+      </entry>
+      <entry>
          <key>CSS</key>
          <value>#encounterPlansData</value>
       </entry>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>bf4363c3-7b48-48d4-95c5-700866dd6581</webElementGuid>
+      <webElementGuid>da7cadb8-11cc-4a05-9663-58d7045ece2d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>encounterPlansData</value>
-      <webElementGuid>7c4a6b6a-fd57-43ee-be4d-3084944eb62f</webElementGuid>
+      <webElementGuid>967503d4-567d-43a4-b87d-7bc9a94c2c05</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -45,7 +49,7 @@
       <name>id</name>
       <type>Main</type>
       <value>encounterPlansData</value>
-      <webElementGuid>2650f43b-9349-4946-af46-adbde36d643f</webElementGuid>
+      <webElementGuid>11d96c83-d3c3-41a7-84c5-30a2058f893b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,7 +57,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>2fef2311-990a-488f-8872-71de8ef28aa6</webElementGuid>
+      <webElementGuid>86860aa7-7925-4f89-973b-b74db6650881</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -61,7 +65,7 @@
       <name>orignal-height</name>
       <type>Main</type>
       <value>109px</value>
-      <webElementGuid>fa016db7-1727-4d25-896d-a3734793b15c</webElementGuid>
+      <webElementGuid>3a98f70a-6b03-4c6f-8de2-2242c315cb80</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -69,7 +73,7 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-5d96f77362db33ed5fd70f57b35524fb</value>
-      <webElementGuid>93df8d82-38db-4b40-9597-669950e3d62a</webElementGuid>
+      <webElementGuid>427180d4-e4e2-4bcb-a5b6-4413b173e3e8</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -77,7 +81,7 @@
       <name>xpath</name>
       <type>Main</type>
       <value>//*[@id = 'encounterPlansData']</value>
-      <webElementGuid>3d8f9cd7-18d1-49a6-8da3-e8e3c552d582</webElementGuid>
+      <webElementGuid>5be0ab45-90c4-4b35-9e7c-e226609f206c</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
@@ -85,7 +89,7 @@
       <name>xpath:attributes</name>
       <type>Main</type>
       <value>//*[@id = 'encounterPlansData']</value>
-      <webElementGuid>df4ccf36-90ab-4dfc-abf2-78c486a8b211</webElementGuid>
+      <webElementGuid>0b6ef995-ec4d-4519-abb1-63929ff80c13</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
@@ -93,6 +97,6 @@
       <name>xpath:customAttributes</name>
       <type>Main</type>
       <value>//div[@id = 'encounterPlansData']</value>
-      <webElementGuid>53682dac-8a90-43df-8f15-8fad46ec44bc</webElementGuid>
+      <webElementGuid>a7a3b11a-6547-4d39-8c72-ccb39feb8394</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

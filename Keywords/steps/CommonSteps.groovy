@@ -115,6 +115,8 @@ public class CommonSteps {
 		WebUI.verifyMatch(PatientName, expectedPtName, true)
 
 		LogStories.markPassed("Patient Name: $expectedPtName")
+		
+		VariableStories.setItem('FP_PATIENT_NAME', expectedPtName)
 
 		String _key = "FP_${firstName}_${lastName}".toUpperCase()
 
@@ -247,20 +249,24 @@ public class CommonSteps {
 		LogStories.logInfo('Clicked on Expand Recording')
 
 		if(isExpand) {
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
-
-			String encounterId = VariableStories.getItem('ENCOUNTER_ID')
-			TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
-
-			try {
+			
+			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
+			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
+			
+			WebUI.waitForElementPresent(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
+			
+			Boolean IS_ENCOUNTER_ID =  GlobalVariable.IS_ENCOUNTER_ID
+			if(IS_ENCOUNTER_ID) {
+				String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+				TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
 				WebUI.waitForElementPresent(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
-			} catch (e) {
+			}
+			else {
 				WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
-			} 
+			}
 		}
-		else {
-			WebUI.delay(2)
-		}
+
+		WebUI.delay(2)
 	}
 }
 

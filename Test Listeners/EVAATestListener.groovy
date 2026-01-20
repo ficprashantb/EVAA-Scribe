@@ -34,6 +34,8 @@ class EVAATestListener {
 
 		'Maximize the window'
 		WebUI.maximizeWindow()
+		
+		GlobalVariable.IS_ENCOUNTER_ID = false
 	}
 
 	/*

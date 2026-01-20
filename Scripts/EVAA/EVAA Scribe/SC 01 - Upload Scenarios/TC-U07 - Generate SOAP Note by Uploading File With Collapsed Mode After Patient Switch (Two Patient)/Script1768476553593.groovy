@@ -21,12 +21,27 @@ import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U05'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U07'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
+
+TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
+
+def ptIndex = 7
+
+def LastName = patientData.getValue('LastName', ptIndex)
+
+def FirstName = patientData.getValue('FirstName', ptIndex)
+
+def DOB = patientData.getValue('DOB', ptIndex)
+
+def Provider_FirstName = patientData.getValue('Provider_FirstName', ptIndex)
+
+def Provider_LastName = patientData.getValue('Provider_LastName', ptIndex)
 
 CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
@@ -47,10 +62,18 @@ CustomKeywords.'steps.EVAASteps.UploadingSOAPNoteFile'(uploadFilePath)
 // Collapse Expand Recording Screen
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+def LastName2 = patientData.getValue('LastName', 2)
 
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician, 
+def FirstName2 = patientData.getValue('FirstName', 2)
+
+//Find Patient 2
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName2, FirstName2)
+
+CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName2, LastName2, EncounterType, ExamLocation, Provider, Technician, 
     false)
+
+//Find patient 1
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 

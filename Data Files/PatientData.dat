@@ -12,18 +12,18 @@
    <data>Simpson Marge 11%2F10%2F1976 ABeaverton Jack Jay 999999100 1</data>
    <data>Simpson Homer 11%2F10%2F1976 ABeaverton Ashley Cole 999999101 1</data>
    <data>Simpson Bart 11%2F10%2F2010 ABeaverton Jack Jay 999999102 1</data>
-   <data>Wiggum Ralph 12%2F29%2F2004 ABeaverton Jack Jay 999999103 0</data>
-   <data>Green Rachel 12%2F11%2F1978 AWillow Prim Rose 999999104 0</data>
-   <data>Geller Monica 12%2F11%2F1971 AWillow Peter Park 999999105 0</data>
-   <data>Denver Harry 11%2F24%2F1982 AStatue Peter Park 999999106 0</data>
-   <data>Kevin Ronny 11%2F21%2F1978 ABeaverton Peter Park 999999107 0</data>
-   <data>Harvey Steffan 12%2F24%2F1985 ABeaverton Peter Park 999999108 0</data>
-   <data>Lewis Jennifer 11%2F21%2F1977 ABeaverton Peter Park 999999109 0</data>
-   <data>Lewis Jonny 11%2F21%2F1979 ABeaverton Peter Park 999999110 0</data>
-   <data>Brown Daisy 11%2F21%2F1980 ABeaverton Peter Park 999999111 0</data>
-   <data>Desouza Ronny 11%2F22%2F1977 ABeaverton Peter Park 999999112 0</data>
-   <data>Adams Austin 05%2F27%2F1982 ABeaverton Peter Park 999999113 0</data>
-   <data>Cruz Elina 05%2F27%2F1983 ABeaverton Peter Park 999999114 0</data>
+   <data>Wiggum Ralph 12%2F29%2F2004 ABeaverton Jack Jay 999999103 1</data>
+   <data>Green Rachel 12%2F11%2F1978 AWillow Prim Rose 999999104 1</data>
+   <data>Geller Monica 12%2F11%2F1971 AWillow Peter Park 999999105 1</data>
+   <data>Denver Harry 11%2F24%2F1982 AStatue Peter Park 999999106 1</data>
+   <data>Kevin Ronny 11%2F21%2F1978 ABeaverton Peter Park 999999107 1</data>
+   <data>Harvey Steffan 12%2F24%2F1985 ABeaverton Peter Park 999999108 1</data>
+   <data>Lewis Jennifer 11%2F21%2F1977 ABeaverton Peter Park 999999109 1</data>
+   <data>Lewis Jonny 11%2F21%2F1979 ABeaverton Peter Park 999999110 1</data>
+   <data>Brown Daisy 11%2F21%2F1980 ABeaverton Peter Park 999999111 1</data>
+   <data>Desouza Ronny 11%2F22%2F1977 ABeaverton Peter Park 999999112 1</data>
+   <data>Adams Austin 05%2F27%2F1982 ABeaverton Peter Park 999999113 1</data>
+   <data>Cruz Elina 05%2F27%2F1983 ABeaverton Peter Park 999999114 1</data>
    <data>null null null null null null null null</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
