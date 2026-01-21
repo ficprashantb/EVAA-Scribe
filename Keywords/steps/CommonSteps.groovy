@@ -115,7 +115,7 @@ public class CommonSteps {
 		WebUI.verifyMatch(PatientName, expectedPtName, true)
 
 		LogStories.markPassed("Patient Name: $expectedPtName")
-		
+
 		VariableStories.setItem('FP_PATIENT_NAME', expectedPtName)
 
 		String _key = "FP_${firstName}_${lastName}".toUpperCase()
@@ -145,6 +145,8 @@ public class CommonSteps {
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_PracticeLocationID'), examLocation, true)
 		LogStories.logInfo("Exam Location: $examLocation")
+
+		WebUI.delay(3)
 
 		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_ProviderId'), provider, true)
 		LogStories.logInfo("Provider: $provider")
@@ -194,35 +196,41 @@ public class CommonSteps {
 
 	@Keyword
 	def findEncounterByEncounterId(def encounterId) {
-		WebUI.waitForElementVisible(findTestObject('EncounterPage/EncounterHx/Grid/first_Tr_EncounterGrid'), 30)
+		// Wait for encounter grid to be ready
+		WebUI.waitForElementVisible(findTestObject('EncounterPage/EncounterHx/Grid/first_Tr_EncounterGrid'), 30, FailureHandling.STOP_ON_FAILURE)
 
+		// Enter encounter ID and click Go
 		WebUI.setText(findTestObject('EncounterPage/EncounterHx/input_ExamNumber'), encounterId)
-
 		WebUI.click(findTestObject('EncounterPage/EncounterHx/button_GO'))
-		LogStories.logInfo("Clicked on Go button.")
+		LogStories.logInfo("Clicked on Go button with EncounterId: $encounterId")
 
-		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
+		// Wait for busy indicator to disappear
+		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		TestObject td_EncounterId = testObjectStory.td_EncounterId(encounterId);
-
-		WebUI.waitForElementVisible(td_EncounterId, 30)
-
+		// Locate and click the encounter row
+		TestObject td_EncounterId = testObjectStory.td_EncounterId(encounterId)
+		WebUI.waitForElementVisible(td_EncounterId, 30, FailureHandling.STOP_ON_FAILURE)
 		WebUI.click(td_EncounterId)
-		LogStories.logInfo("Click on Encounter Id: $encounterId")
+		LogStories.logInfo("Clicked on Encounter Id row: $encounterId")
 
-		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30)
+		// Wait for busy indicator again
+		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30)
+		// Verify patient header is visible
+		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30, FailureHandling.STOP_ON_FAILURE)
+		LogStories.logInfo("Encounter patient header loaded successfully for EncounterId: $encounterId")
 	}
 
 	@Keyword
 	def getFirstEncounterId(String firstName, String lastName) {
+		// Build key
 		String _key = "ENC_${firstName}_${lastName}".toUpperCase()
-
 		String encIdKey = "${_key}_ENCOUNTER_ID"
 
+		// Get encounter ID from grid
 		String encId = WebUI.getText(findTestObject('EncounterPage/EncounterHx/Grid/td_FirstEncounterId'))
 
+		// Store encounter ID in variables
 		VariableStories.setItem(encIdKey, encId)
 
 		VariableStories.setItem('ENCOUNTER_ID', encId)
@@ -231,37 +239,43 @@ public class CommonSteps {
 
 		VariableStories.setItem('ENCOUNTER_ID', encId)
 
-		LogStories.logInfo("Encounter Id=> $encId")
+		LogStories.logInfo("Encounter Id retrieved and stored: $encId (Key: $encIdKey)")
 	}
 
 	@Keyword
 	def clickOnExpandRecording(Boolean isExpand = true) {
+		// Wait for iframe and expand recording button
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 120, FailureHandling.STOP_ON_FAILURE)
-
 		LogStories.logInfo('iframeContainer found')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
-
 		LogStories.logInfo('Expand Recording found')
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
+		// Check if search box is present
+		boolean isSearchPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'), 5, FailureHandling.OPTIONAL)
 
+		// Decide whether to click based on current state vs desired state
+		if ((isSearchPresent && isExpand) || (!isSearchPresent && !isExpand)) {
+			LogStories.logInfo("Expand Recording already in desired state: isExpand=${isExpand}")
+			return
+		}
+
+		// Perform click
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 		LogStories.logInfo('Clicked on Expand Recording')
 
-		if(isExpand) {
-			
+		// If expanding, validate patient and encounter headers
+		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
-			
 			WebUI.waitForElementPresent(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
-			
-			Boolean IS_ENCOUNTER_ID =  GlobalVariable.IS_ENCOUNTER_ID
-			if(IS_ENCOUNTER_ID) {
+
+			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
+			if (IS_ENCOUNTER_ID) {
 				String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 				TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
 				WebUI.waitForElementPresent(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
-			}
-			else {
+			} else {
 				WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
 			}
 		}

@@ -16,7 +16,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows 
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable
 import org.openqa.selenium.WebElement
 import stories.VariableStories as VariableStories
@@ -448,15 +448,14 @@ public class NavigateStory {
 	//	}
 
 	boolean isPresent(TestObject to, int timeout = 3) {
-		return WebUI.waitForImagePresent(to, timeout, FailureHandling.OPTIONAL)
+		return WebUI.waitForElementVisible(to, timeout, FailureHandling.OPTIONAL)
 	}
 
 	static void safeClick(TestObject to) {
-		WebElement el = WebUI.findWebElement(to, 10)
-		try {
-			el.click()
-		} catch (Exception e) {
-			WebUI.executeJavaScript("arguments[0].click();", Arrays.asList(el))
+		boolean isPresent = WebUI.waitForElementVisible(to, 5, FailureHandling.OPTIONAL)
+		if(isPresent) {
+			WebUI.click(to)
+			LogStories.logInfo("Clicked on Test Object.")
 		}
 	}
 
@@ -505,24 +504,24 @@ public class NavigateStory {
 
 		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
-	
+
 	@Keyword
 	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
 		String pageTitle = props.pElementPage
 		String element   = props.pElement
-	
+
 		assert pageTitle?.trim()
 		assert element?.trim()
-	
+
 		TestObject mainTo   = makeTO("//li[a[@title='${pageTitle}']]")
 		TestObject tabPlus  = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
 		TestObject tabMinus = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
 		TestObject childTO  = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
-	
+
 		try {
 			// ✅ Check if pageTitle already has active-toggle class
 			TestObject activeToggleTO = makeTO("//li[a[@title='${pageTitle}'] and contains(@class,'active-toggle')]")
-	
+
 			if (isPresent(activeToggleTO, 5)) {
 				LogStories.logInfo("${pageTitle} is already active → skipping click")
 			} else {
@@ -535,7 +534,7 @@ public class NavigateStory {
 				} else {
 					LogStories.logInfo("${pageTitle} tab already expanded")
 				}
-	
+
 				// Ensure clickable (not just visible)
 				WebUI.waitForElementClickable(childTO, 30)
 				safeClick(childTO)
@@ -545,13 +544,13 @@ public class NavigateStory {
 			safeClick(mainTo)
 			LogStories.logInfo("Clicked on Page ${pageTitle}")
 		}
-	
+
 		// ✅ Validate navigation
 		WebUI.waitForElementVisible(makeTO("//div/span[contains(normalize-space(),'${element}')]"), 30)
 		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
-	
+
 		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
-	} 
+	}
 
 	/* ---------------- HELPER ---------------- */
 	TestObject makeTO(String xpath) {

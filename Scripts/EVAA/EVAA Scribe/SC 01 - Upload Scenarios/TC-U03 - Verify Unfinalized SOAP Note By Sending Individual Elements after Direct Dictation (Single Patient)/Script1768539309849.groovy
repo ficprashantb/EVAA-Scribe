@@ -3,9 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
-
-import java.io.ObjectInputFilter.Status
-
+import java.io.ObjectInputFilter.Status as Status
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -22,29 +20,52 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.AssertStory as AssertStory
+import stories.LogStories as LogStories
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
- 
+
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U03'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
- 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician,false)
+
+LogStories.logInfo('----------------------Step 1----------------------')
+
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, 
+    Technician, false)
+
+LogStories.logInfo('----------------------Step 2----------------------')
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
+LogStories.logInfo('----------------------Step 3----------------------')
+
 CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
+
+LogStories.logInfo('----------------------Step 4----------------------')
 
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
+LogStories.logInfo('----------------------Step 5----------------------')
+
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
- 
+
+LogStories.logInfo('----------------------Step 6----------------------')
+
 CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
+LogStories.logInfo('----------------------Step 7----------------------')
+
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+
+LogStories.logInfo('----------------------Step 8----------------------')
+
+CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+
+LogStories.logInfo('----------------------Step 9----------------------')
 
 CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+LogStories.logInfo('----------------------Step 10----------------------')
 
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

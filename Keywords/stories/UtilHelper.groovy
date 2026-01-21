@@ -81,8 +81,7 @@ public class UtilHelper {
 	static boolean isCloud() {
 		return System.getenv("KATALON_CLOUD_URL") ||
 			   System.getenv("TESTOPS_URL")
-	}
-	
+	}  
 }
 
 public class ExceptionHelper {

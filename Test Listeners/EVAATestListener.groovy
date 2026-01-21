@@ -15,6 +15,7 @@ import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
+ 
 
 class EVAATestListener {
 
@@ -26,7 +27,6 @@ class EVAATestListener {
 	def beforeTestCase(TestCaseContext testCaseContext) {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
-
 
 		PermissionManagerListener.enableBrowserPermissions()
 
@@ -68,15 +68,16 @@ class EVAATestListener {
 	 * @param testSuiteContext: related information of the executed test suite.
 	 */
 	@BeforeTestSuite
-	def sampleBeforeTestSuite(TestSuiteContext testSuiteContext) {
+	def beforeTestSuite(TestSuiteContext testSuiteContext) {
 		println testSuiteContext.getTestSuiteId()
+		Locale.setDefault(new Locale("en", "US"));
 	}
 	/*
 	 * Executes after every test suite ends.
 	 * @param testSuiteContext: related information of the executed test suite.
 	 */
 	@AfterTestSuite
-	def sampleAfterTestSuite(TestSuiteContext testSuiteContext) {
+	def afterTestSuite(TestSuiteContext testSuiteContext) {
 		println testSuiteContext.getTestSuiteId()
-	}
+	} 
 }

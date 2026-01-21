@@ -18,6 +18,7 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import stories.LogStories as LogStories
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
@@ -25,30 +26,46 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U05'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+//CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+//
+//CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+//
+//String ProviderName = "$Provider_FirstName $Provider_LastName"
+//
+//CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
+//
+//def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+//
+//KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
+//
+//CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+//
+//CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
+//
+//CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+LogStories.logInfo('----------------------Step 1----------------------')
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, 
+    Technician, false)
 
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
-
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
-
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+LogStories.logInfo('----------------------Step 2----------------------')
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
+LogStories.logInfo('----------------------Step 3----------------------')
+
 CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
+
+LogStories.logInfo('----------------------Step 4----------------------')
 
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
+LogStories.logInfo('----------------------Step 5----------------------')
+
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+LogStories.logInfo('----------------------Step 6----------------------')
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
@@ -60,4 +77,6 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 //KeywordUtil.logInfo("Encounter Id=> $encounterId")
 //
 //CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
+LogStories.logInfo('----------------------Step 7----------------------')
+
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

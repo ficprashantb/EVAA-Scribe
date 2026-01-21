@@ -182,6 +182,7 @@ public class CommonStory {
 			'Sand'        		: 'SANDY_OR_GRITTY_FEELING_NOTES',
 			'Grit Feel'        	: 'SANDY_OR_GRITTY_FEELING_NOTES',
 			'Dist. Blur'        : 'BLURRED_VISION_DISTANCE_NOTES',
+			'Distance Blur'     : 'BLURRED_VISION_DISTANCE_NOTES',
 			'Near Blur'        	: 'BLURRED_VISION_NEAR_NOTES',
 			'Distortion'        : 'DISTORTED_VISION_NOTES',
 			'Double'        	: 'DOUBLE_VISION_NOTES',
