@@ -28,8 +28,7 @@ VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.logInfo('----------------------Step 1----------------------')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, 
-    Technician, false)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false)
 
 LogStories.logInfo('----------------------Step 2----------------------')
 

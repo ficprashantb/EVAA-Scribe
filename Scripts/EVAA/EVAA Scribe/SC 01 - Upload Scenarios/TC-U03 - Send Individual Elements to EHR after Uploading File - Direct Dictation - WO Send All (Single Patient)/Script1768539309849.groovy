@@ -56,16 +56,20 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(F
 
 LogStories.logInfo('----------------------Step 7----------------------')
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
 LogStories.logInfo('----------------------Step 8----------------------')
 
-CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
 LogStories.logInfo('----------------------Step 9----------------------')
 
-CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 
 LogStories.logInfo('----------------------Step 10----------------------')
+
+CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+LogStories.logInfo('----------------------Step 11----------------------')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

@@ -252,31 +252,33 @@ public class CommonSteps {
 		LogStories.logInfo('Expand Recording found')
 
 		// Check if search box is present
-		boolean isSearchPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'), 5, FailureHandling.OPTIONAL)
+		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
 
+		String mode = isSearchPresent ? "Expand"  : "Collpase"
+		
 		// Decide whether to click based on current state vs desired state
 		if ((isSearchPresent && isExpand) || (!isSearchPresent && !isExpand)) {
-			LogStories.logInfo("Expand Recording already in desired state: isExpand=${isExpand}")
+			LogStories.logInfo("Expand Recording already in ${mode} state")
 			return
 		}
 
 		// Perform click
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
-		LogStories.logInfo('Clicked on Expand Recording')
+		LogStories.logInfo("Clicked on ${mode} Recording")
 
 		// If expanding, validate patient and encounter headers
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
-			WebUI.waitForElementPresent(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
 
 			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
 			if (IS_ENCOUNTER_ID) {
 				String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 				TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
-				WebUI.waitForElementPresent(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
+				WebUI.waitForElementVisible(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
 			} else {
-				WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
+				WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
 			}
 		}
 
