@@ -29,17 +29,17 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U06'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-LogStories.logInfo('----------------------Step 1----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
-LogStories.logInfo('----------------------Step 2----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 String ProviderName = "$Provider_FirstName $Provider_LastName"
 
-LogStories.logInfo('----------------------Step 3----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
@@ -47,28 +47,28 @@ def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
-LogStories.logInfo('----------------------Step 4----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
-LogStories.logInfo('----------------------Step 5----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.UploadingSOAPNoteFile'(uploadFilePath)
 
-LogStories.logInfo('----------------------Step 6----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
 // Collapse Expand Recording Screen
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-LogStories.logInfo('----------------------Step 7----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
-LogStories.logInfo('----------------------Step 8----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician, false)
 
-LogStories.logInfo('----------------------Step 9----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
 
 navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
@@ -76,35 +76,35 @@ String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 
 KeywordUtil.logInfo("Encounter Id=> $encounterId")
 
-LogStories.logInfo('----------------------Step 10----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
 
-LogStories.logInfo('----------------------Step 11----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 11~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 
-LogStories.logInfo('----------------------Step 12----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 12~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteGenerateSucessfully'()
 
-LogStories.logInfo('----------------------Step 13----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 13~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 14----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 14~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 15----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 15~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 16----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 16~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
 
-LogStories.logInfo('----------------------Step 17----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 17~~~~~~~~~~~~~~~~~~~~~~')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
 
@@ -114,6 +114,6 @@ WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Rec
 
 KeywordUtil.logInfo('Expand Recording found')
 
-LogStories.logInfo('----------------------Step 18----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 18~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

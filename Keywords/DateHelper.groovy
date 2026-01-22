@@ -24,6 +24,11 @@ import java.time.format.DateTimeFormatter
 import java.util.Random
 import com.github.javafaker.Faker
 
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.TimeZone
+
+
 public class DateHelper {
 
 	@Keyword
@@ -54,9 +59,17 @@ public class DateHelper {
 	}
 
 	@Keyword
-	String GetFormattedDate(String date, String dateFormat) {
-		def inputDate = Date.parse(dateFormat, date)
-		def formattedDate = inputDate.format(dateFormat)
-		return formattedDate;
-	}
+    String GetFormattedDate(String date, String dateFormat) {
+        // Parse the input date string using the given format
+        def parser = new SimpleDateFormat(dateFormat)
+        Date inputDate = parser.parse(date)
+
+        // Create a formatter with UTC timezone
+        def formatter = new SimpleDateFormat(dateFormat)
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+
+        // Format the date into UTC
+        return formatter.format(inputDate)
+    } 
+
 }

@@ -22,7 +22,6 @@ import internal.GlobalVariable
 
 public class AssertStory {
 
-
 	def verifyElementVisible(TestObject testObject, int timeOut = 5) {
 		def result = Math.round(timeOut / 2)
 

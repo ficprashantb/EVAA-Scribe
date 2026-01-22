@@ -43,29 +43,29 @@ VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 //CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 //
 //CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-LogStories.logInfo('----------------------Step 1----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, 
     Technician, false)
 
-LogStories.logInfo('----------------------Step 2----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
-LogStories.logInfo('----------------------Step 3----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 
-LogStories.logInfo('----------------------Step 4----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
-LogStories.logInfo('----------------------Step 5----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 6----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
@@ -77,6 +77,6 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 //KeywordUtil.logInfo("Encounter Id=> $encounterId")
 //
 //CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-LogStories.logInfo('----------------------Step 7----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)

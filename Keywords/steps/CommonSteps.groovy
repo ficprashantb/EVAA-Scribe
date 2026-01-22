@@ -244,6 +244,8 @@ public class CommonSteps {
 
 	@Keyword
 	def clickOnExpandRecording(Boolean isExpand = true) {
+		LogStories.logInfo("------------------------clickOnExpandRecording------------------------")
+
 		// Wait for iframe and expand recording button
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 120, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo('iframeContainer found')
@@ -254,8 +256,12 @@ public class CommonSteps {
 		// Check if search box is present
 		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
 
-		String mode = isSearchPresent ? "Expand"  : "Collpase"
+		String mode = isSearchPresent ? "Collpase"  : "Expand"
 		
+		def timeout = isSearchPresent ? 5  : 10
+		
+		LogStories.logInfo(".........................timeout ${timeout}.........................")
+
 		// Decide whether to click based on current state vs desired state
 		if ((isSearchPresent && isExpand) || (!isSearchPresent && !isExpand)) {
 			LogStories.logInfo("Expand Recording already in ${mode} state")
@@ -265,12 +271,16 @@ public class CommonSteps {
 		// Perform click
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 		LogStories.logInfo("Clicked on ${mode} Recording")
-
+ 
 		// If expanding, validate patient and encounter headers
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
 			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
+
+			String ssName = UtilHelper.randomString()
+			LogStories.logInfo("------------------------Screenshot: $ssName")
+			takeScreenshots(ssName)
 
 			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
 			if (IS_ENCOUNTER_ID) {
@@ -279,10 +289,10 @@ public class CommonSteps {
 				WebUI.waitForElementVisible(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
 			} else {
 				WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
-			}
+			} 
 		}
 
-		WebUI.delay(2)
+		WebUI.delay(timeout)
 	}
 }
 

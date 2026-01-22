@@ -328,7 +328,7 @@ public class CommonStory {
 		Assessment: 'SOAP_NOTE_ASSESSMENT',
 		Plan:'SOAP_NOTE_PLANS',
 		EyeDiseases:'SOAP_NOTE_EYE_DISEASES',
-//		MentalAndFunctionalStatus: 'SOAP_NOTE_MENTAL_AND_FUNCTIONAL_STATUS'
+		MentalAndFunctionalStatus: 'SOAP_NOTE_MENTAL_AND_FUNCTIONAL_STATUS'
 	]
 
 	static Map<String, String> moduleMapForDirectDictation = [

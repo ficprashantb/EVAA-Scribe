@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation - WO Send All (Single Patient)</name>
+   <name>TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation - WO Send to EHR(Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>

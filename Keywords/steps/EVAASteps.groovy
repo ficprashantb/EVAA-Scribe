@@ -25,6 +25,7 @@ import FakeMicStream
 import java.lang.String
 import internal.GlobalVariable
 import stories.VariableStories
+import stories.WaitStory
 import stories.AssertStory
 import stories.NavigateStory
 import stories.TestObjectStory
@@ -42,6 +43,8 @@ public class EVAASteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory();
+	WaitStory waitStory = new WaitStory()
+
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
@@ -69,6 +72,10 @@ public class EVAASteps {
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
 
 		GlobalVariable.IS_ENCOUNTER_ID = true
+
+		String ssName = UtilHelper.randomString()
+		LogStories.logInfo("------------------------Screenshot: $ssName")
+		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
@@ -256,7 +263,7 @@ public class EVAASteps {
 		}
 
 		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("Screenshot: $ssName")
+		LogStories.logInfo("------------------------Screenshot: $ssName")
 		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
 
 		LogStories.logInfo('----------------------Step Q----------------------')
@@ -324,55 +331,62 @@ public class EVAASteps {
 			def elementStorageList = VariableStories.elementStorage
 
 			for (String name : elementStorageList) {
-				navigateStory.retryAction({
+				LogStories.logInfo("Element from Storage → ${name}")
 
-					LogStories.logInfo("Element from Storage → ${name}")
+				LogStories.logInfo("============================Element Name - ${name}============================")
 
-					LogStories.logInfo("============================Element Name - ${name}============================")
+				String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
 
-					String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
+				TestObject sectionTO = testObjectStory.img_SendToMaximeyesWithParams(moduleName)
 
-					TestObject sectionTO = testObjectStory.img_SendToMaximeyesWithParams(moduleName)
+				if (!sectionTO) {
+					LogStories.markWarning("No TestObject mapped for → ${name}")
+					return
+				}
 
-					if (!sectionTO) {
-						LogStories.markWarning("No TestObject mapped for → ${name}")
-						return
-					}
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(name)
 
-					CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(name)
+				WebUI.waitForElementVisible(sectionTO, 20, FailureHandling.STOP_ON_FAILURE)
 
-					WebUI.waitForElementVisible(sectionTO, 20, FailureHandling.STOP_ON_FAILURE)
+				WebUI.click(sectionTO, FailureHandling.STOP_ON_FAILURE)
+				LogStories.logInfo("Clicked on Send to MaximEyes for element- ${name}");
 
-					WebUI.click(sectionTO, FailureHandling.STOP_ON_FAILURE)
-					LogStories.logInfo("Clicked on Send to MaximEyes for element- ${name}");
+				TestObject failedSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/Failed to send SOAP note to MaximEyes')
+				boolean	isVisible = WebUI.waitForElementVisible(failedSOAPNote, 2,FailureHandling.OPTIONAL)
+				if(isVisible) {
+					LogStories.markFailed("${name} - Failed to send SOAP note to MaximEyes.")
+				}
 
-					WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully'), 60,
-							FailureHandling.CONTINUE_ON_FAILURE)
+				TestObject passSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully')
+				isVisible = WebUI.waitForElementVisible(passSOAPNote, 60, FailureHandling.CONTINUE_ON_FAILURE)
+				if(isVisible) {
 					LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
+				}
 
-					boolean	isPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
-					if(isPresent) {
-						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
-						LogStories.logInfo("Clicked on Refresh button")
+				LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
 
-						WebUI.delay(2)
-					}
+				boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
+				if(isRefreshPresent) {
+					WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
+					LogStories.logInfo("Clicked on Refresh button")
 
-					LogStories.logInfo('----------------------Step W----------------------')
-					CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+					WebUI.delay(2)
+				}
 
-					LogStories.logInfo('----------------------Step X----------------------')
-					CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, isPresent)
+				LogStories.logInfo('----------------------Step W----------------------')
+				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-					LogStories.logInfo('----------------------Step Y----------------------')
-					CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-				})
+				LogStories.logInfo('----------------------Step X----------------------')
+				CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
+
+				LogStories.logInfo('----------------------Step Y----------------------')
+				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 			}
 		}
 	}
 
 	@Keyword
-	def verifyIndividualSOAPNoteSentToMaximeyes(String key, Boolean isElementPresent = false) {
+	def verifyIndividualSOAPNoteSentToMaximeyes(String key, Boolean isElementText = false , Boolean isRefreshPresent = false) {
 		LogStories.logInfo('----------------------Step AAH----------------------')
 
 		def variableKey = CommonStory.sectionMapForStorageKey.get(key)
@@ -380,9 +394,11 @@ public class EVAASteps {
 
 		LogStories.logInfo("********************SOAP Note - ${key}*********************")
 
+		WebUI.delay(5)
+
 		// ===== Chief Complaint =====
 		if (key == "ChiefComplaint" && !CommonStory.isNullOrEmpty(expectedData)) {
-			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 			String actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'), 'value', FailureHandling.STOP_ON_FAILURE)
 
@@ -394,7 +410,7 @@ public class EVAASteps {
 
 		// ===== HPI =====
 		else if (key == "HPI" && !CommonStory.isNullOrEmpty(expectedData)) {
-			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 			String actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.STOP_ON_FAILURE)
 			assertStory.verifyMatch("HPI", actualHPI?.replaceAll("[:]", ""), expectedData?.replaceAll("[:]", ""))
@@ -404,7 +420,7 @@ public class EVAASteps {
 		else if (key == "CurrentEyeSymptoms" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List currentEyeSymptomsList = CommonStory.getListObject(expectedData)
 			if (currentEyeSymptomsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				for (def currentEyeSymptoms : currentEyeSymptomsList) {
 					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
@@ -437,7 +453,7 @@ public class EVAASteps {
 		else if (key == "Allergies" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List allergiesList = CommonStory.getListObject(expectedData)
 			if (allergiesList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				int index = 1
 				for (String allergies : allergiesList) {
@@ -462,7 +478,7 @@ public class EVAASteps {
 		else if (key == "Medications" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List medicationsList = CommonStory.getListObject(expectedData)
 			if (medicationsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				int index = 1
 				for (int i = 0; i < medicationsList.size(); i++) {
@@ -497,7 +513,7 @@ public class EVAASteps {
 		else if (key == "ReviewOfSystems" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List reviewList = CommonStory.getListObject(expectedData)
 			if (reviewList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				for (def review : reviewList) {
 					def result = CommonStory.getKeyValueDetails(review, 'ROS')
@@ -530,7 +546,7 @@ public class EVAASteps {
 		else if (key == "Problems" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List problemsList = CommonStory.getListObject(expectedData)
 			if (problemsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				int index = 1
 				for (String expected : problemsList) {
@@ -551,34 +567,38 @@ public class EVAASteps {
 			}
 		}
 
-		// ===== Differential Diagnosis =====
-		else if (key == "DifferentialDiagnosis" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List diffDiagnosisList = CommonStory.getListObject(expectedData)
-			if (diffDiagnosisList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
-
-				for (def diffDiagnosis : diffDiagnosisList) {
-					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
-					if (result) {
-						String expected = "${result._key}, ${result._expected}"
-						TestObject tableFDDifferentialDiagnosis = testObjectStory.tableFDDifferentialDiagnosis(result._key, result._expected)
-
-						WebUI.waitForElementVisible(tableFDDifferentialDiagnosis, 10, FailureHandling.OPTIONAL)
-
-						boolean isPresentDD = WebUI.waitForElementPresent(tableFDDifferentialDiagnosis, 1, FailureHandling.OPTIONAL)
-						assertStory.verifyMatch("Differential Diagnosis- $expected", isPresentDD, true)
-					}
-				}
-			} else {
-				LogStories.markWarning('No Differential Diagnosis found')
-			}
-		}
+		//		// ===== Differential Diagnosis =====
+		//		else if (key == "DifferentialDiagnosis" && !CommonStory.isNullOrEmpty(expectedData)) {
+		//			List diffDiagnosisList = CommonStory.getListObject(expectedData)
+		//			if (diffDiagnosisList.size() > 0) {
+		//				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
+		//
+		//				for (def diffDiagnosis : diffDiagnosisList) {
+		//					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
+		//					if (result) {
+		//						String expected = "${result._key}, ${result._expected}"
+		//						TestObject tableFDDifferentialDiagnosis = testObjectStory.tableFDDifferentialDiagnosis(result._key, result._expected)
+		//
+		//						WebUI.waitForElementVisible(tableFDDifferentialDiagnosis, 10, FailureHandling.OPTIONAL)
+		//
+		//						boolean isPresentDD = WebUI.waitForElementPresent(tableFDDifferentialDiagnosis, 1, FailureHandling.OPTIONAL)
+		//						assertStory.verifyMatch("Differential Diagnosis- $expected", isPresentDD, true)
+		//					}
+		//				}
+		//			} else {
+		//				LogStories.markWarning('No Differential Diagnosis found')
+		//			}
+		//		}
 
 		// ===== Assessment =====
 		else if (key == "Assessment" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List assessmentList = CommonStory.getListObject(expectedData)
 			if (assessmentList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
+
+				String ssName = UtilHelper.randomString()
+				LogStories.logInfo("------------------------Screenshot: $ssName")
+				CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
 
 				String expectedAssessment = assessmentList.join('\n')
 				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
@@ -596,7 +616,11 @@ public class EVAASteps {
 		else if (key == "Plan" && !CommonStory.isNullOrEmpty(expectedData)) {
 			List plansList = CommonStory.getListObject(expectedData)
 			if (plansList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
+
+				String ssName = UtilHelper.randomString()
+				LogStories.logInfo("------------------------Screenshot: $ssName")
+				CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
 
 				String expectedPlans = plansList.join('\n')
 				String actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
@@ -618,7 +642,7 @@ public class EVAASteps {
 			List eyeDiseaseList = CommonStory.getListObject(expectedData)
 			if (eyeDiseaseList.size() > 0) {
 
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementPresent)
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 				for (def eyeDisease : eyeDiseaseList) {
 					def result = CommonStory.getKeyValueDetails(eyeDisease, 'ED')
@@ -646,10 +670,40 @@ public class EVAASteps {
 				LogStories.markWarning('No Eye Diseases found')
 			}
 		}
+		// ===== Mental and Functional Status =====
+		else if (key == "MentalAndFunctionalStatus" && !CommonStory.isNullOrEmpty(expectedData)) {
+			List mentalAndFunctionalStatusList = CommonStory.getListObject(expectedData)
+			if (mentalAndFunctionalStatusList.size() > 0) {
+
+				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
+
+				for (def mentalAndFunctionalStatus : mentalAndFunctionalStatusList) {
+					def result = CommonStory.getKeyValueDetails(mentalAndFunctionalStatus, 'MFS')
+
+					if (result) {
+						String expected = result._expected
+						String name = result._name
+
+						TestObject inputMentalAndFunctionalStatus = testObjectStory.inputMentalAndFunctionalStatus(name)
+
+						WebUI.waitForElementVisible(inputMentalAndFunctionalStatus, 10, FailureHandling.OPTIONAL)
+
+						String actual = WebUI.getAttribute(inputMentalAndFunctionalStatus, 'value', FailureHandling.OPTIONAL)
+
+						actual=	actual?.replaceAll(":(?=.*:)", "")
+						expected=	expected?.replaceAll(":(?=.*:)", "")
+
+						assertStory.verifyMatch("Mental and Functional Status- $name", actual, expected)
+					}
+				}
+			} else {
+				LogStories.markWarning('No Mental and Functional Status found')
+			}
+		}
 	}
 
 	@Keyword
-	def navigateToEncounterElement(String key, Boolean isElementPresent = false) {
+	def navigateToEncounterElement(String key, Boolean isElementText = false , Boolean isRefreshPresent = false) {
 		LogStories.logInfo('----------------------Step AAI----------------------')
 
 		def page, element
@@ -729,7 +783,7 @@ public class EVAASteps {
 		}
 
 		// Navigate only if element not already present
-		if (!isElementPresent) {
+		if (!isRefreshPresent) {
 			LogStories.logInfo('----------------------Step Z----------------------')
 			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([
 				('pElementPage'): page,
@@ -740,6 +794,10 @@ public class EVAASteps {
 		// Wait for the target element
 		WebUI.waitForElementVisible(testObj, 10, FailureHandling.OPTIONAL)
 
+		if (isElementText) {
+		waitStory.waitForElementText(testObj, 30)
+		}
+
 		LogStories.logInfo("Navigated to Encounter Element: ${key}")
 	}
 
@@ -749,7 +807,10 @@ public class EVAASteps {
 
 		LogStories.logInfo('----------------------Step AA----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 60, FailureHandling.STOP_ON_FAILURE)
+		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Header/PatientName')
+		waitStory.waitForElementText(toPatientName, 30)
+
+		WebUI.waitForElementVisible(toPatientName, 60, FailureHandling.STOP_ON_FAILURE)
 
 		String _ptKey = "${FirstName}_${LastName}".toUpperCase()
 
@@ -962,15 +1023,23 @@ public class EVAASteps {
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String txtDOB,  String DOB, String FinalizedStatus, String MicStatus ) {
 		LogStories.logInfo('----------------------Step AF----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 60, FailureHandling.STOP_ON_FAILURE)
-
 		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("Screenshot: $ssName")
+		LogStories.logInfo("------------------------Screenshot: $ssName")
+		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+
+		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
+
+		WebUI.waitForElementVisible(toPatientName, 60, FailureHandling.STOP_ON_FAILURE)
+
+		waitStory.waitForElementText(toPatientName, 30)
+
+		ssName = UtilHelper.randomString()
+		LogStories.logInfo("------------------------Screenshot: $ssName")
 		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
 
 		WebUI.delay(5)
 
-		def div_PatientName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'))
+		def div_PatientName = WebUI.getText(toPatientName)
 
 		assertStory.verifyMatch("Left Side Panel→→ Patient Name", div_PatientName, PatientName)
 
@@ -1174,59 +1243,11 @@ public class EVAASteps {
 	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
 		LogStories.logInfo('----------------------Step AI----------------------')
 
-		def variableKeyCC = CommonStory.sectionMapForStorageKey.get('ChiefComplaint')
-		String expectedChiefComplaint = VariableStories.getItem(variableKeyCC)
+		for (entry in  CommonStory.sectionMapForStorageKey) {
+			println "Key: ${entry.key}, Value: ${entry.value}"
 
-		def variableKeyHPI = CommonStory.sectionMapForStorageKey.get('HPI')
-		String expectedHPI = VariableStories.getItem(variableKeyHPI)
-
-		def variableKeyCES = CommonStory.sectionMapForStorageKey.get('CurrentEyeSymptoms')
-		def expectedCurrentEyeSymptoms = VariableStories.getItem(variableKeyCES)
-
-		def variableKeyALG = CommonStory.sectionMapForStorageKey.get('Allergies')
-		def expectedAllergies = VariableStories.getItem(variableKeyALG)
-
-		def variableKeyMED = CommonStory.sectionMapForStorageKey.get('Medications')
-		def expectedMedications = VariableStories.getItem(variableKeyMED)
-
-		def variableKeyROS = CommonStory.sectionMapForStorageKey.get('ReviewOfSystems')
-		def expectedReviewOfSystems = VariableStories.getItem(variableKeyROS)
-
-		def variableKeyPRL = CommonStory.sectionMapForStorageKey.get('Problems')
-		def expectedProblems = VariableStories.getItem(variableKeyPRL)
-
-		//		def variableKeyREF = CommonStory.sectionMapForStorageKey.get('Refractions')
-		//		def expectedRefractions = VariableStories.getItem(variableKeyREF)
-
-		//		def variableKeyALT = CommonStory.sectionMapForStorageKey.get('AuxiliaryLabTests')
-		//		def expectedAuxiliaryLabTests = VariableStories.getItem(variableKeyALT)
-
-		def variableKeyDD = CommonStory.sectionMapForStorageKey.get('DifferentialDiagnosis')
-		def expectedDifferentialDiagnosis = VariableStories.getItem(variableKeyDD)
-
-		def variableKeyASMT = CommonStory.sectionMapForStorageKey.get('Assessment')
-		def expectedAssessment = VariableStories.getItem(variableKeyASMT)
-
-		def variableKeyPLN = CommonStory.sectionMapForStorageKey.get('Plan')
-		def expectedPlans = VariableStories.getItem(variableKeyPLN)
-
-		def variableKeyED = CommonStory.sectionMapForStorageKey.get('EyeDiseases')
-		def expectedEyeDiseases = VariableStories.getItem(variableKeyED)
-
-		//		def variableKeyMFS = CommonStory.sectionMapForStorageKey.get('MentalAndFunctionalStatus')
-		//		def expectedMentalAndFunctionalStatus = VariableStories.getItem(variableKeyMFS)
-
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('ChiefComplaint')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('HPI')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('CurrentEyeSymptoms')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('Allergies')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('Medications')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('ReviewOfSystems')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('Problems')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('DifferentialDiagnosis')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('Assessment')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('Plan')
-		CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'('EyeDiseases')
+			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(entry.key)
+		}
 	}
 
 	@Keyword

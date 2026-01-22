@@ -8,8 +8,8 @@
    <numberOfRerun>1</numberOfRerun>
    <pageLoadTimeout>10</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
-   <rerunFailedTestCasesOnly>true</rerunFailedTestCasesOnly>
-   <rerunImmediately>false</rerunImmediately>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>2bd272b1-bc6c-4ae1-9e18-8eaf9ca3133f</testSuiteGuid>
    <testCaseLink>
       <guid>14ac569f-07d5-4a31-be82-0f2a40c9a16b</guid>
@@ -82,7 +82,7 @@
       <guid>bc08a615-2585-4798-b70d-5b714051dae2</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Finalize and Unfinalize SOAP Note After Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Verify SOAP Note After Uploading File - Finalize Send to EHR - Unfinalize - Finalize Send to EHR (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -149,7 +149,7 @@
       <guid>5f186fd5-7c35-4bb8-9d22-67c1661f3e3e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation - WO Send All (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation - WO Send to EHR(Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -216,7 +216,7 @@
       <guid>9d6bdfd7-aa15-4b28-9e99-4a3e231bd0b3</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Send Individual Elements after Uploading File - WO Send All (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Send Individual Elements after Uploading File - WO Send to EHR (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

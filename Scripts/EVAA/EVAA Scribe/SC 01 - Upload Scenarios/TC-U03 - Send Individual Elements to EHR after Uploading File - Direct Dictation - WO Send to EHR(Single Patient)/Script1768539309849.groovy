@@ -28,48 +28,47 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U03'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-LogStories.logInfo('----------------------Step 1----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, 
-    Technician, false)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false,false)
 
-LogStories.logInfo('----------------------Step 2----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
-LogStories.logInfo('----------------------Step 3----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 
-LogStories.logInfo('----------------------Step 4----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
 
-LogStories.logInfo('----------------------Step 5----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 6----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 7----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-LogStories.logInfo('----------------------Step 8----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 9----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 
-LogStories.logInfo('----------------------Step 10----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.logInfo('----------------------Step 11----------------------')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 11~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
