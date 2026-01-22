@@ -2105,8 +2105,10 @@ public class EVAASteps {
 			LogStories.logInfo('----------------------Step D----------------------')
 			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
 
-			LogStories.logInfo('----------------------Step E----------------------')
-			CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+			if(isSendToEHR) {
+				LogStories.logInfo('----------------------Step E----------------------')
+				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+			}
 		}
 	}
 }
