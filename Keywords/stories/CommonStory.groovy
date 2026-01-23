@@ -294,7 +294,7 @@ public class CommonStory {
 		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment'),
 		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans'),
 		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
-//		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
+		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 	] 
 
 	static Map<String, TestObject> sectionMapForSOAPNote = [
@@ -311,7 +311,7 @@ public class CommonStory {
 		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),
 		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),
 		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases'),
-//		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
+		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
 	]
 
 	static Map<String, String> sectionMapForStorageKey = [
@@ -345,7 +345,7 @@ public class CommonStory {
 		Assessment: 'Assessment:',
 		Plan: 'Plan:',
 		EyeDiseases: 'Eye Diseases:',
-//		MentalAndFunctionalStatus: 'Mental and Functional Status:',
+		MentalAndFunctionalStatus: 'Mental and Functional Status:',
 	]
 }
 

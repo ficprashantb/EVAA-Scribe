@@ -59,17 +59,16 @@ public class DateHelper {
 	}
 
 	@Keyword
-    String GetFormattedDate(String date, String dateFormat) {
-        // Parse the input date string using the given format
-        def parser = new SimpleDateFormat(dateFormat)
-        Date inputDate = parser.parse(date)
+	String GetFormattedDate(String date, String dateFormat) {
+		// Parse the input date string using the given format
+		def parser = new SimpleDateFormat(dateFormat)
+		Date inputDate = parser.parse(date)
 
-        // Create a formatter with UTC timezone
-        def formatter = new SimpleDateFormat(dateFormat)
-        formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+		// Create a formatter with IST timezone
+		def formatter = new SimpleDateFormat(dateFormat)
+		formatter.setTimeZone(TimeZone.getTimeZone("Asia/Kolkata"))
 
-        // Format the date into UTC
-        return formatter.format(inputDate)
-    } 
-
+		// Format the date into IST
+		return formatter.format(inputDate)
+	}
 }

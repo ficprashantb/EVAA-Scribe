@@ -253,6 +253,11 @@ public class CommonSteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo('Expand Recording found')
 
+		String ssName = UtilHelper.randomString()
+		LogStories.logInfo("------------------------Screenshot: $ssName")
+		takeScreenshots(ssName)
+		
+		
 		// Check if search box is present
 		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
 
@@ -278,7 +283,7 @@ public class CommonSteps {
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
 			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
 
-			String ssName = UtilHelper.randomString()
+			ssName = UtilHelper.randomString()
 			LogStories.logInfo("------------------------Screenshot: $ssName")
 			takeScreenshots(ssName)
 

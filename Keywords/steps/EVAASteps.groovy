@@ -358,12 +358,10 @@ public class EVAASteps {
 				}
 
 				TestObject passSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully')
-				isVisible = WebUI.waitForElementVisible(passSOAPNote, 60, FailureHandling.CONTINUE_ON_FAILURE)
+				isVisible = WebUI.waitForElementVisible(passSOAPNote, 30, FailureHandling.CONTINUE_ON_FAILURE)
 				if(isVisible) {
 					LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
 				}
-
-				LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
 
 				boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
 				if(isRefreshPresent) {
@@ -776,6 +774,12 @@ public class EVAASteps {
 				element = "Eye Diseases"
 				testObj = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
 				break
+				
+				case "MentalAndFunctionalStatus":
+				page    = "Medical History"
+				element = "Mental and Functional Status"
+				testObj = findTestObject('EncounterPage/Encounter Details/Mental and Functional Status/input_MOOD_AFFECT')
+				break
 
 			default:
 				LogStories.markWarning("Unknown encounter key: ${key}")
@@ -795,7 +799,7 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(testObj, 10, FailureHandling.OPTIONAL)
 
 		if (isElementText) {
-		waitStory.waitForElementText(testObj, 30)
+			waitStory.waitForElementText(testObj, 30)
 		}
 
 		LogStories.logInfo("Navigated to Encounter Element: ${key}")
@@ -1233,8 +1237,8 @@ public class EVAASteps {
 		captureSectionDirectDictation('EyeDiseases',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases')
 
-		//		captureSectionDirectDictation('MentalAndFunctionalStatus',
-		//				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
+		captureSectionDirectDictation('MentalAndFunctionalStatus',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
 	}

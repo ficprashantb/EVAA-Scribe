@@ -27,6 +27,9 @@ public class PermissionManagerListener {
 
 				ChromeOptions options = new ChromeOptions()
 
+			// Disable Safe Browsing checks
+				options.addArguments("--safebrowsing-disable-download-protection")
+
 				Map<String, Object> prefs = new HashMap<>()
 
 			// ========== All Browser Permissions ==========
@@ -44,6 +47,13 @@ public class PermissionManagerListener {
 			// Disable the permission bubbles UI
 				prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
 				prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+
+//			// Set download directory and auto-allow downloads
+//				prefs.put("download.prompt_for_download", false)
+//				prefs.put("download.default_directory", System.getProperty("user.home") + "/Downloads")
+//				prefs.put("safebrowsing.enabled", true)   // ensures downloads are allowed
+//				options.setExperimentalOption("prefs", prefs)
+
 
 				options.setExperimentalOption("prefs", prefs)
 
