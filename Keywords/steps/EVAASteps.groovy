@@ -774,8 +774,8 @@ public class EVAASteps {
 				element = "Eye Diseases"
 				testObj = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
 				break
-				
-				case "MentalAndFunctionalStatus":
+
+			case "MentalAndFunctionalStatus":
 				page    = "Medical History"
 				element = "Mental and Functional Status"
 				testObj = findTestObject('EncounterPage/Encounter Details/Mental and Functional Status/input_MOOD_AFFECT')
@@ -1184,8 +1184,8 @@ public class EVAASteps {
 		captureSectionDirectDictation('EyeDiseases',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
 
-		//		captureSectionDirectDictation('MentalAndFunctionalStatus',
-		//				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
+		captureSectionDirectDictation('MentalAndFunctionalStatus',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
 	}

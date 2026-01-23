@@ -123,36 +123,4 @@ public class ExceptionHelper {
 		}
 	}
 }
-
-public class VideoRecorderHelper {
-
-	private static ScreenRecorder screenRecorder
-
-	static void startRecording(String fileName) {
-		File file = new File("Reports/Videos")
-		if (!file.exists()) file.mkdirs()
-
-		screenRecorder = new ScreenRecorder(
-				GraphicsEnvironment.localGraphicsEnvironment.defaultScreenDevice.defaultConfiguration,
-				new Format(MediaTypeKey, MediaType.FILE, MimeTypeKey, MIME_AVI),
-				new Format(MediaTypeKey, MediaType.VIDEO,
-				EncodingKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-				CompressorNameKey, ENCODING_AVI_TECHSMITH_SCREEN_CAPTURE,
-				DepthKey, 24,
-				FrameRateKey, Rational.valueOf(15),
-				QualityKey, 1.0f,
-				KeyFrameIntervalKey, 15 * 60),
-				new Format(MediaTypeKey, MediaType.VIDEO,
-				EncodingKey, "black",
-				FrameRateKey, Rational.valueOf(30)),
-				null,
-				file,
-				fileName
-				)
-		screenRecorder.start()
-	}
-
-	static void stopRecording() {
-		screenRecorder?.stop()
-	}
-}
+ 

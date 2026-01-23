@@ -400,52 +400,13 @@ public class NavigateStory {
 				)
 	}
 
-	//	boolean isElementClickable(TestObject to) {
-	//		try {
-	//			WebUI.verifyElementClickable(to, FailureHandling.STOP_ON_FAILURE)
-	//			return true
-	//		} catch (Exception e) {
-	//			return false
-	//		}
-	//	}
-	//
-	//	void clickElementWithJS(TestObject to) {
-	//		WebUI.executeJavaScript('arguments[0].click();', Arrays.asList(WebUI.findWebElement(to, 20)))
-	//	}
-	//
-	//	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
-	//
-	//		retryAction({
-	//			String pageTitle = props.pElementPage
-	//			String element = props.pElement
-	//			TestObject tabExpandedTO = makeTO( "//a[@title='${pageTitle}']/following-sibling::ul" )
-	//
-	//			if (WebUI.verifyElementVisible(tabExpandedTO, FailureHandling.OPTIONAL)) {
-	//				LogStories.logInfo("${pageTitle} Tab already open")
-	//			} else {
-	//				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span"), 30 )
-	//				WebUI.click( makeTO("//a[@title='${pageTitle}']/preceding-sibling::span") )
-	//				WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
-	//				WebUI.waitForElementVisible( makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]"), 30 )
-	//			}
-	//
-	//			TestObject subElementTO = makeTO("//a[@title='${pageTitle}']/following-sibling::ul/li/a[starts-with(@title,'${element}')]" )
-	//			WebUI.waitForElementVisible(subElementTO, 30)
-	//
-	//			if (isElementClickable(subElementTO)) {
-	//				WebUI.click(subElementTO)
-	//			} else {
-	//				LogStories.logInfo("Element not clickable by WebUI.click, trying with JavaScript click")
-	//				clickElementWithJS(subElementTO)
-	//			}
-	//
-	//			WebUI.waitForElementVisible( makeTO("//div/span[contains(text(), '${element}')]"), 30 )
-	//			WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
-	//			WebUI.delay(5)
-	//
-	//			LogStories.logInfo("Clicked on Element ${element}")
-	//		})
-	//	}
+	/* ---------------- HELPER ---------------- */
+	TestObject makeTO(String xpath) {
+		assert xpath?.trim() : "XPath cannot be empty"
+		TestObject to = new TestObject(xpath)
+		to.addProperty("xpath", ConditionType.EQUALS, xpath)
+		return to
+	}
 
 	boolean isPresent(TestObject to, int timeout = 3) {
 		return WebUI.waitForElementVisible(to, timeout, FailureHandling.OPTIONAL)
@@ -457,52 +418,6 @@ public class NavigateStory {
 			WebUI.click(to)
 			LogStories.logInfo("Clicked on Test Object.")
 		}
-	}
-
-	@Keyword
-	def SelectEncounterElementFromLeftNavOnEncounter_OLD(Map props) {
-		String pageTitle = props.pElementPage
-		String element   = props.pElement
-
-		assert pageTitle?.trim()
-		assert element?.trim()
-
-		TestObject mainTo  = makeTO("//li[a[@title='${pageTitle}']]")
-
-		TestObject tabPlus  = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
-		TestObject tabMinus = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
-
-		TestObject childTO = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
-
-		try {
-			// ✅ Expand tab ONLY if collapsed
-			if (!isPresent(tabMinus, 10)) {
-				LogStories.logInfo("${pageTitle} tab is collapsed → expanding")
-				safeClick(tabPlus)
-
-				LogStories.logInfo("${pageTitle} tab is expanding")
-
-				WebUI.waitForElementVisible(childTO, 30)
-			} else {
-				LogStories.logInfo("${pageTitle} tab already expanded")
-			}
-
-			// ✅ Ensure clickable (not just visible)
-			WebUI.waitForElementClickable(childTO, 30)
-			safeClick(childTO)
-
-			LogStories.logInfo("Clicked on Element ${element}")
-		} catch (e) {
-			safeClick(mainTo)
-			LogStories.logInfo("Clicked on Page ${pageTitle}")
-		}
-
-		// ✅ Validate navigation
-		WebUI.waitForElementVisible(makeTO("//div/span[contains(normalize-space(),'${element}')]"),30)
-
-		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'),60)
-
-		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
 
 	@Keyword
@@ -526,17 +441,17 @@ public class NavigateStory {
 				LogStories.logInfo("${pageTitle} is already active → skipping click")
 			} else {
 				// Expand tab ONLY if collapsed
-				if (!isPresent(tabMinus, 10)) {
+				if (!isPresent(tabMinus, 5)) {
 					LogStories.logInfo("${pageTitle} tab is collapsed → expanding")
 					safeClick(tabPlus)
 					LogStories.logInfo("${pageTitle} tab is expanding")
-					WebUI.waitForElementVisible(childTO, 30)
+					WebUI.waitForElementVisible(childTO, 10)
 				} else {
 					LogStories.logInfo("${pageTitle} tab already expanded")
 				}
 
 				// Ensure clickable (not just visible)
-				WebUI.waitForElementClickable(childTO, 30)
+				WebUI.waitForElementClickable(childTO, 10)
 				safeClick(childTO)
 				LogStories.logInfo("Clicked on Element ${element}")
 			}
@@ -551,11 +466,5 @@ public class NavigateStory {
 
 		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}
-
-	/* ---------------- HELPER ---------------- */
-	TestObject makeTO(String xpath) {
-		TestObject to = new TestObject()
-		to.addProperty("xpath", ConditionType.EQUALS, xpath)
-		return to
-	}
 }
+

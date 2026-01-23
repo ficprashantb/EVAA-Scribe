@@ -17,8 +17,7 @@ import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
  
 
-class EVAATestListener {
-
+class EVAATestListener { 
 	/*
 	 * Executes before every test case starts.
 	 * @param testCaseContext related information of the executed test case.
@@ -26,8 +25,8 @@ class EVAATestListener {
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
 		println testCaseContext.getTestCaseId()
-		println testCaseContext.getTestCaseVariables()
-
+		println testCaseContext.getTestCaseVariables()  
+		
 		PermissionManagerListener.enableBrowserPermissions()
 
 		//		WebUI.openBrowser('')
@@ -56,8 +55,8 @@ class EVAATestListener {
 			LogStories.logInfo("Screenshot: $ssName")
 
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
-		}
-
+		} 
+		
 		LogStories.sendNotification("${testCaseId} is completed.")
 
 		WebUI.closeBrowser()

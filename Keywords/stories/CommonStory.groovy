@@ -63,7 +63,7 @@ public class CommonStory {
 			String appendText = dictationData.getValue(dataColumn, row)
 			String expectedText = "${expected} ${appendText}"
 
-			assertStory.verifyMatch("Direct Dictation→→ ${label}",actualTexts[i],expectedText					)
+			assertStory.verifyMatch("Direct Dictation→→ ${label}",actualTexts[i],expectedText)
 		}
 	}
 

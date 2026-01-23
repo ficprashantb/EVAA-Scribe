@@ -2,7 +2,7 @@
 <TestCaseEntity>
    <description>Encounter Transfer button click&#xd;
 Ability to use the encounter when record or upload is in progress</description>
-   <name>TC-U06 - Generate SOAP Note by Uploading File With Collapsed Mode (Single Patient)</name>
+   <name>TC-U06 - Generate SOAP Note by Uploading File With Collapsed Mode - Transfer Encounter (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>

@@ -36,19 +36,7 @@ public class CommonSteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory();
-
-	@Keyword
-	def addChromeArguments(String filePath) {
-
-		ChromeOptions opt = new ChromeOptions()
-
-		opt.addArguments("use-fake-ui-for-media-stream")
-		opt.addArguments("use-fake-device-for-media-stream")
-		opt.addArguments("use-file-for-fake-audio-capture=" + "$filePath")
-
-		DriverFactory.changeWebDriver(new org.openqa.selenium.chrome.ChromeDriver(opt))
-	}
-
+ 
 	@Keyword
 	def takeScreenshots(String name) {
 
