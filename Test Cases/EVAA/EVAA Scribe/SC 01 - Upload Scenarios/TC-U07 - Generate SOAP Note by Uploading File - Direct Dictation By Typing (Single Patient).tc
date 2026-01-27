@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description>Generate SOAP Note by Uploading File --- Direct Dictation By Typing (Single Patient)</description>
-   <name>TC-U05 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</name>
+   <name>TC-U07 - Generate SOAP Note by Uploading File - Direct Dictation By Typing (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>
@@ -48,7 +48,7 @@
       <id>a41bc219-6479-46ca-a067-cb83fd2958a3</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>5</value>
+         <value>7</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>

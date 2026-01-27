@@ -15,7 +15,7 @@ import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
- 
+import com.kms.katalon.core.configuration.RunConfiguration
 
 class EVAATestListener { 
 	/*
@@ -27,9 +27,14 @@ class EVAATestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()  
 		
-		PermissionManagerListener.enableBrowserPermissions()
+//		PermissionManagerListener.enableBrowserPermissions()
 
-		//		WebUI.openBrowser('')
+		String wavPath = RunConfiguration.getProjectDir() + "/Files/Cadence_Kingele_1.wav"
+		RunConfiguration.setWebDriverPreferencesProperty("args", ["--use-fake-ui-for-media-stream","--use-fake-device-for-media-stream",
+			"--no-sandbox","--disable-dev-shm-usage","--use-file-for-fake-audio-capture=" + wavPath])
+		
+		
+	 WebUI.openBrowser('')
 
 		'Maximize the window'
 		WebUI.maximizeWindow()

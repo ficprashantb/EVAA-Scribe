@@ -25,7 +25,7 @@ import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U08'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U10'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -33,7 +33,7 @@ LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
 
-def ptIndex = 8
+def ptIndex = 10
 
 def LastName = patientData.getValue('LastName', ptIndex)
 

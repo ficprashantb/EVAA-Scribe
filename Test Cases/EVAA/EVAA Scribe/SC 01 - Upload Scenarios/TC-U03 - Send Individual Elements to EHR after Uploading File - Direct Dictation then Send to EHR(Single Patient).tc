@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Encounter Transfer button click&#xd;
-Ability to use the encounter when record or upload is in progress</description>
-   <name>TC-U06 - Generate SOAP Note by Uploading File With Collapsed Mode - Transfer Encounter (Single Patient)</name>
+   <description></description>
+   <name>TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation then Send to EHR(Single Patient)</name>
    <tag></tag>
-   <integratedEntity>
-      <productName>TESTOPS</productName>
-      <properties>
-         <entry>
-            <key>integratedValue</key>
-            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
-         </entry>
-      </properties>
-      <type>TESTCASE</type>
-   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>2f318e76-cd1f-430d-b92f-be0e1995f7b3</testCaseGuid>
+   <testCaseGuid>d64762a3-dd25-40cc-8556-55bd120a0be7</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>9a3b1890-95ea-4469-bb6a-b8333f6095e6</id>
+      <id>33108797-354d-4c9d-85af-fc7bfa5bfdb4</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -28,7 +17,16 @@ Ability to use the encounter when record or upload is in progress</description>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>5641b4b1-f584-402b-a3d9-d206b46ee7e1</id>
+      <id>d745d3d4-754b-4fb9-b938-ca1c382f2fca</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>1</value>
+      </iterationEntity>
+      <testDataId>Data Files/DirectDictationData</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>10f49f3b-bbaa-4a1b-a006-a615c6716d9e</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>1</value>
@@ -37,69 +35,69 @@ Ability to use the encounter when record or upload is in progress</description>
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</id>
+      <id>8d6fa23a-f92a-45f1-b473-797aba53cf7f</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>6</value>
+         <value>3</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
-      <testDataLinkId>5641b4b1-f584-402b-a3d9-d206b46ee7e1</testDataLinkId>
+      <testDataLinkId>10f49f3b-bbaa-4a1b-a006-a615c6716d9e</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>UploadFilePath</value>
       <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
+      <testDataLinkId>8d6fa23a-f92a-45f1-b473-797aba53cf7f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>FirstName</value>
       <variableId>1a7ad77b-e01f-4a23-bd1b-88c682408bb3</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
+      <testDataLinkId>8d6fa23a-f92a-45f1-b473-797aba53cf7f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>LastName</value>
       <variableId>23208bb3-cc4f-4f78-aec2-78a02b69e679</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
+      <testDataLinkId>33108797-354d-4c9d-85af-fc7bfa5bfdb4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
       <variableId>bd972cd9-2946-4f2b-8e6d-b2f65806e5c9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
+      <testDataLinkId>33108797-354d-4c9d-85af-fc7bfa5bfdb4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>ExamLocation</value>
       <variableId>115c50df-5d2b-481e-a2d8-1b1ee9a915bb</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
+      <testDataLinkId>33108797-354d-4c9d-85af-fc7bfa5bfdb4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider</value>
       <variableId>e0a099d3-98b6-4f01-a48e-10755da98696</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>9a3b1890-95ea-4469-bb6a-b8333f6095e6</testDataLinkId>
+      <testDataLinkId>33108797-354d-4c9d-85af-fc7bfa5bfdb4</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Technician</value>
       <variableId>9a937e1a-65fc-4b64-bbaa-0fda194d67e9</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
+      <testDataLinkId>8d6fa23a-f92a-45f1-b473-797aba53cf7f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_FirstName</value>
       <variableId>c9dcceed-7893-4236-9a43-38f17b657049</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
+      <testDataLinkId>8d6fa23a-f92a-45f1-b473-797aba53cf7f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>Provider_LastName</value>
       <variableId>fd026829-ec0e-4055-aa8d-3e1b62c87895</variableId>
    </variableLinks>
    <variableLinks>
-      <testDataLinkId>32e5a95b-2d1a-4f42-ae74-44d251d2cc53</testDataLinkId>
+      <testDataLinkId>8d6fa23a-f92a-45f1-b473-797aba53cf7f</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>DOB</value>
       <variableId>fb8fa3e3-160f-447d-8b35-d07b9cb6f38e</variableId>
