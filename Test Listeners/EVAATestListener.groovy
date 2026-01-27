@@ -3,10 +3,8 @@
 import internal.GlobalVariable
 import stories.LogStories
 import stories.UtilHelper
-import stories.VideoRecorderHelper
 
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
 
 import com.kms.katalon.core.annotation.BeforeTestCase
 import com.kms.katalon.core.annotation.BeforeTestSuite
@@ -14,7 +12,6 @@ import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
-import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
 import com.kms.katalon.core.configuration.RunConfiguration
 
 class EVAATestListener {
@@ -27,13 +24,13 @@ class EVAATestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
 
-		CustomKeywords.'PermissionManagerListener.enableBrowserPermissions'()
+		PermissionManagerListener.enableBrowserPermissions()
 
-		def siteURL = GlobalVariable.EVAA_SiteURL
-		LogStories.logInfo("Site URL: $siteURL")
-
-		//		WebUI.openBrowser('')
+		//	 WebUI.openBrowser('')
+		
+		String siteURL = GlobalVariable.EVAA_SiteURL
 		WebUI.navigateToUrl(siteURL)
+		LogStories.logInfo("Site URL: $siteURL")
 
 		'Maximize the window'
 		WebUI.maximizeWindow()
@@ -44,11 +41,10 @@ class EVAATestListener {
 
 		if(!isCloud) {
 			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots/FAILED"
-			
-			CustomKeywords.'stories.CommonStory.deleteAllFiles'(screenshotPath)
+
+			CustomKeywords.'steps.CommonSteps.deleteAllFiles'(screenshotPath)
 		}
 	}
-
 
 	/*
 	 * Executes after every test case ends.
@@ -63,7 +59,6 @@ class EVAATestListener {
 
 		if (testCaseContext.getTestCaseStatus() != 'PASS') {
 			LogStories.logInfo("TestCase Name: $testCaseId")
-			LogStories.logInfo("Screenshot: $ssName")
 
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'()
 		}

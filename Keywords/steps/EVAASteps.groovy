@@ -2072,20 +2072,26 @@ public class EVAASteps {
 	@Keyword
 	def TransferEncounterDataToSuperbill() {
 		LogStories.logInfo('----------------------Step AY----------------------')
-
+ 
 		WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.click(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo("Clicked on Transfer button.")
 
 		try {
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_Data transferred'), 10, FailureHandling.CONTINUE_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_PatientEncounterSaved'), 10, FailureHandling.CONTINUE_ON_FAILURE)
+			LogStories.markPassed("Patient encounter saved.")
+			
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_DataTransferred'), 10, FailureHandling.CONTINUE_ON_FAILURE)
 			LogStories.markPassed("Data transferred.")
 
-			WebUI.focus(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
+			WebUI.focus(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferedEncBill'), FailureHandling.STOP_ON_FAILURE)
 
 			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/powerTip_Data transferred'), 5, FailureHandling.STOP_ON_FAILURE)
 			LogStories.markPassed("Data transferred to Superbill.")
+			
+			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferedEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
+			 
 		} catch (e) {
 			LogStories.markFailedAndStop("Data not transferred to Superbill.")
 		}

@@ -33,6 +33,7 @@ import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.chrome.ChromeOptions
 import com.kms.katalon.core.webui.driver.DriverFactory
 
+import java.nio.file.*
 
 
 public class CommonSteps {
@@ -47,7 +48,7 @@ public class CommonSteps {
 			ssName = UtilHelper.randomString()
 		}
 
-		LogStories.logInfo("------------------------Screenshot: $ssName")
+		LogStories.logInfo(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Screenshot: $ssName")
 
 		String timeStamp = new Date().format("yyyyMMdd_HHmmss")
 
@@ -67,7 +68,7 @@ public class CommonSteps {
 
 			String ssName = UtilHelper.randomString()
 
-			LogStories.logInfo("------------------------Screenshot: $ssName")
+			LogStories.logInfo(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Screenshot: $ssName")
 
 			String timeStamp = new Date().format("yyyyMMdd_HHmmss")
 
@@ -309,5 +310,21 @@ public class CommonSteps {
 
 		WebUI.delay(timeout)
 	}
+	
+	@Keyword
+	def deleteAllFiles(String folderPath) {
+		Path dir = Paths.get(folderPath)
+		if (Files.exists(dir) && Files.isDirectory(dir)) {
+			Files.list(dir).each { Path file ->
+				if (Files.isRegularFile(file)) {
+					Files.delete(file)
+					println "Deleted: ${file.fileName}"
+				}
+			}
+		} else {
+			println "Invalid folder path: $folderPath"
+		}
+	}
+	
 }
 

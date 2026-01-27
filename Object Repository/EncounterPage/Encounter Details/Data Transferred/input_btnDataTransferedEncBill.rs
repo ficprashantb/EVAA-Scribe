@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>input_btnDataTransferEncBill</name>
+   <name>input_btnDataTransferedEncBill</name>
    <tag></tag>
-   <elementGuidId>5607fb63-6d17-40dc-b0b1-9106aed72a7d</elementGuidId>
+   <elementGuidId>d8f65088-0011-4e7f-b510-c2ae54c1b13e</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//*[@id='btnDataTransferEncBill' and not(@aria-invalid=&quot;false&quot;)]</value>
-      </entry>
-      <entry>
-         <key>BASIC</key>
-         <value>//*[@id='btnDataTransferEncBill' and not(@aria-invalid=&quot;false&quot;)]</value>
+         <value>//*[@id='btnDataTransferEncBill' and @aria-invalid=&quot;false&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value></value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@id='btnDataTransferEncBill' and @aria-invalid=&quot;false&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>input</value>
-      <webElementGuid>42cf0a2c-3dfd-443e-85db-303129e09ccd</webElementGuid>
+      <webElementGuid>a87ae6fd-0fcd-4322-9c75-480cfc0a2cff</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>type</name>
       <type>Main</type>
       <value>button</value>
-      <webElementGuid>9b3464f2-8699-4765-aa21-cc220232cf92</webElementGuid>
+      <webElementGuid>753f063c-cdac-454a-9ee9-51ba91adeae4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>button mini-button primary marT10 </value>
-      <webElementGuid>4a4c0ebc-37eb-4537-b2df-636f3b5a90ed</webElementGuid>
+      <webElementGuid>af979a38-0f63-4cb7-abf2-090bab84e0ef</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>value</name>
       <type>Main</type>
       <value>TRANSFER</value>
-      <webElementGuid>9a37dbb1-502f-4ae1-94de-6855d497c135</webElementGuid>
+      <webElementGuid>9f3266ae-f3cf-4a5f-81d7-51ce4e3501c4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +65,7 @@
       <name>id</name>
       <type>Main</type>
       <value>btnDataTransferEncBill</value>
-      <webElementGuid>bad7f23e-76b5-47e3-b39f-dcf1429bff55</webElementGuid>
+      <webElementGuid>9da6fe5e-03dd-4206-a4aa-0b2794bdf951</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,7 +73,7 @@
       <name>onclick</name>
       <type>Main</type>
       <value>dataTransferFromEnc_FinalProcedureToSuperBill(this);</value>
-      <webElementGuid>c11e8bba-2c78-4773-9b38-5b362ca194ba</webElementGuid>
+      <webElementGuid>e5932413-a7d4-4963-aa10-3c22761dfe7a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -81,30 +81,30 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-f73afe4df7fc3cfd3d26c19ac6d09a3e</value>
-      <webElementGuid>6ee77dd5-6806-47a9-b0fd-fc8466a73832</webElementGuid>
+      <webElementGuid>e0175ecc-410b-429b-b529-73b700493341</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[@id='btnDataTransferEncBill' and not(@aria-invalid=&quot;false&quot;)]</value>
-      <webElementGuid>7ed07715-209e-4e69-8e2d-4b523a4072ec</webElementGuid>
+      <value>//*[@id='btnDataTransferEncBill' and @aria-invalid=&quot;false&quot;]</value>
+      <webElementGuid>c38090ee-990c-4a45-8268-556a10827189</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[@id='btnDataTransferEncBill' and not(@aria-invalid=&quot;false&quot;)]</value>
-      <webElementGuid>bcc02562-6d1b-4432-ba83-6d87207ab2e3</webElementGuid>
+      <value>//*[@id='btnDataTransferEncBill' and @aria-invalid=&quot;false&quot;]</value>
+      <webElementGuid>d27e57d0-8390-40e9-bb63-07a59c598dbb</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//input[@type = 'button' and @id = 'btnDataTransferEncBill' and not(@aria-invalid=&quot;false&quot;)]</value>
-      <webElementGuid>e117a815-8fb9-4157-b700-3eba95fca0bc</webElementGuid>
+      <value>//input[@type = 'button' and @id = 'btnDataTransferEncBill' and @aria-invalid=&quot;false&quot;]</value>
+      <webElementGuid>f6939ce7-49d5-42ce-ac46-e98ebbc1b3ba</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

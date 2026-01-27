@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>toast_Data transferred</name>
+   <name>toast_PatientEncounterSaved</name>
    <tag></tag>
-   <elementGuidId>62551113-d72d-4b7f-af0a-83136d91f959</elementGuidId>
+   <elementGuidId>b476d469-6204-46a0-b872-80b1b39deb07</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>CSS</key>
-         <value>.lime div:nth-child(3)</value>
-      </entry>
-      <entry>
          <key>BASIC</key>
-         <value>//*[(text() = 'Data transferred.' or . = 'Data transferred.')]</value>
+         <value>//*[(text() = 'Patient encounter saved' or . = 'Patient encounter saved')]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[(text() = 'Data transferred.' or . = 'Data transferred.')]</value>
+         <value>//div[(text() = 'Patient encounter saved.' or . = 'Patient encounter saved.')]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;Data transferred.&quot;i</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>7da15a5a-efe4-4e3f-92d2-7baad3975280</webElementGuid>
+      <webElementGuid>c86ef289-c489-452e-b755-0a9efe892b1d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,15 +41,15 @@
       <name>class</name>
       <type>Main</type>
       <value>jquery-notific8-message</value>
-      <webElementGuid>3ec661bf-852c-4b1a-ac94-23f838f5791f</webElementGuid>
+      <webElementGuid>36ee6d6b-4710-43fb-a1a7-01bf73416f42</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Data transferred.</value>
-      <webElementGuid>a9a7bc0e-82ab-4e05-99c6-311dff09cce5</webElementGuid>
+      <value>Patient encounter saved</value>
+      <webElementGuid>7780b8c1-a19c-49c9-bc4a-5111adf70c7a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,30 +57,30 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-38981c14e68cbc4c16bf9fa8bc135435</value>
-      <webElementGuid>0666f588-fcc5-4dc0-9487-22adb9d3a153</webElementGuid>
+      <webElementGuid>e21ba06d-2c88-46e0-9404-e5cc840c7a3d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[(text() = 'Data transferred.' or . = 'Data transferred.')]</value>
-      <webElementGuid>45a89240-fbac-4159-922b-0a3da7bcab0c</webElementGuid>
+      <value>//div[(text() = 'Patient encounter saved.' or . = 'Patient encounter saved.')]</value>
+      <webElementGuid>0daa8a59-2a2c-48fb-8c38-d503e578c377</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[(text() = 'Data transferred.' or . = 'Data transferred.')]</value>
-      <webElementGuid>dfa040d1-7665-4bb0-a4ad-3b2ee74562e9</webElementGuid>
+      <value>//div[(text() = 'Patient encounter saved.' or . = 'Patient encounter saved.')]</value>
+      <webElementGuid>dd3114b0-05f7-4e60-8965-955154179afa</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[(text() = 'Data transferred.' or . = 'Data transferred.')]</value>
-      <webElementGuid>8af9cef8-ff1e-4b73-a9a7-676bbe3d925c</webElementGuid>
+      <value>//div[(text() = 'Patient encounter saved.' or . = 'Patient encounter saved.')]</value>
+      <webElementGuid>888c6506-e140-4ac8-88f5-43d5500869c0</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
