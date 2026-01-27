@@ -47,7 +47,7 @@ def Provider_LastName = patientData.getValue('Provider_LastName', ptIndex)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 

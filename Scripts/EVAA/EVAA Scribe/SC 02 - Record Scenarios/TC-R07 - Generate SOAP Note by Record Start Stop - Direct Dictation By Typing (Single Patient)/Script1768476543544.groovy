@@ -25,7 +25,7 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R07'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 

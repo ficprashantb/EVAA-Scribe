@@ -27,7 +27,7 @@ WebUI.setViewPortSize(1920, 1080)
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 

@@ -40,7 +40,7 @@ def Provider_FirstName = patientData.getValue('Provider_FirstName', 1)
 
 def Provider_LastName = patientData.getValue('Provider_LastName', 1)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
