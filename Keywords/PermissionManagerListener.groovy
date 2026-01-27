@@ -3,7 +3,7 @@
 import com.kms.katalon.core.webui.driver.DriverFactory
 
 import internal.GlobalVariable
-
+import org.openqa.selenium.WebDriver
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
 import org.openqa.selenium.edge.EdgeDriver
@@ -11,10 +11,14 @@ import org.openqa.selenium.edge.EdgeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.firefox.FirefoxProfile
+import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.configuration.RunConfiguration
+
+
 
 public class PermissionManagerListener {
 
+	@Keyword
 	static void enableBrowserPermissions() {
 
 		//		String browser = RunConfiguration.getExecutionProperties().get("execution.default.executionConfiguration")
@@ -48,11 +52,11 @@ public class PermissionManagerListener {
 				prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
 				prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
 
-//			// Set download directory and auto-allow downloads
-//				prefs.put("download.prompt_for_download", false)
-//				prefs.put("download.default_directory", System.getProperty("user.home") + "/Downloads")
-//				prefs.put("safebrowsing.enabled", true)   // ensures downloads are allowed
-//				options.setExperimentalOption("prefs", prefs)
+			//			// Set download directory and auto-allow downloads
+			//				prefs.put("download.prompt_for_download", false)
+			//				prefs.put("download.default_directory", System.getProperty("user.home") + "/Downloads")
+			//				prefs.put("safebrowsing.enabled", true)   // ensures downloads are allowed
+			//				options.setExperimentalOption("prefs", prefs)
 
 
 				options.setExperimentalOption("prefs", prefs)
@@ -102,4 +106,52 @@ public class PermissionManagerListener {
 				break
 		}
 	}
+
+	@Keyword
+    void addBrowserPermissions() {
+        // Common prefs
+        Map<String, Object> prefs = new HashMap<>()
+        prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
+        prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+        prefs.put("profile.default_content_setting_values.geolocation", 1)
+        prefs.put("profile.default_content_setting_values.notifications", 1)
+        prefs.put("profile.default_content_setting_values.popups", 1)
+        prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
+        prefs.put("profile.default_content_setting_values.clipboard", 1)
+        prefs.put("profile.default_content_setting_values.background_sync", 1)
+        prefs.put("profile.default_content_setting_values.media_stream", 1)
+
+        String wavPath = System.getProperty("user.dir") + "/sample.wav"
+
+        // Detect browser from execution properties
+        String browser = RunConfiguration.getExecutionProperties().get("execution.default.browser")
+		browser = "Chrome"
+        if (browser.equalsIgnoreCase("Chrome")) {
+            ChromeOptions options = new ChromeOptions()
+            options.addArguments(
+                "--use-fake-ui-for-media-stream",
+                "--use-fake-device-for-media-stream",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--use-file-for-fake-audio-capture=" + wavPath
+            )
+            options.setExperimentalOption("prefs", prefs)
+
+            RunConfiguration.setWebDriverPreferencesProperty("options", options)
+
+        } else if (browser.equalsIgnoreCase("Edge")) {
+            EdgeOptions options = new EdgeOptions()
+            options.addArguments(
+                "--use-fake-ui-for-media-stream",
+                "--use-fake-device-for-media-stream",
+                "--no-sandbox",
+                "--disable-dev-shm-usage",
+                "--use-file-for-fake-audio-capture=" + wavPath
+            )
+            options.setExperimentalOption("prefs", prefs)
+
+            RunConfiguration.setWebDriverPreferencesProperty("options", options)
+        }
+    }
+
 }

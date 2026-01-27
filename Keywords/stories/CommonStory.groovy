@@ -24,6 +24,8 @@ import org.openqa.selenium.WebElement
 import groovy.json.JsonOutput as JsonOutput
 import groovy.json.JsonSlurper as JsonSlurper
 import stories.AssertStory
+import java.nio.file.*
+
 
 public class CommonStory {
 	AssertStory assertStory = new AssertStory();
@@ -347,5 +349,22 @@ public class CommonStory {
 		EyeDiseases: 'Eye Diseases:',
 		MentalAndFunctionalStatus: 'Mental and Functional Status:',
 	]
+	
+	@Keyword
+	def deleteAllFiles(String folderPath) {		
+		Path dir = Paths.get(folderPath)
+		if (Files.exists(dir) && Files.isDirectory(dir)) {
+			Files.list(dir).each { Path file ->
+				if (Files.isRegularFile(file)) {
+					Files.delete(file)
+					println "Deleted: ${file.fileName}"
+				}
+			}
+		} else {
+			println "Invalid folder path: $folderPath"
+		}
+	}
+	
+	
 }
 

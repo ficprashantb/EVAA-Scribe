@@ -17,7 +17,7 @@ import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.helper.screenrecorder.VideoRecorder
 import com.kms.katalon.core.configuration.RunConfiguration
 
-class EVAATestListener { 
+class EVAATestListener {
 	/*
 	 * Executes before every test case starts.
 	 * @param testCaseContext related information of the executed test case.
@@ -25,22 +25,30 @@ class EVAATestListener {
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
 		println testCaseContext.getTestCaseId()
-		println testCaseContext.getTestCaseVariables()  
-		
-//		PermissionManagerListener.enableBrowserPermissions()
+		println testCaseContext.getTestCaseVariables()
 
-		String wavPath = RunConfiguration.getProjectDir() + "/Files/Cadence_Kingele_1.wav"
-		RunConfiguration.setWebDriverPreferencesProperty("args", ["--use-fake-ui-for-media-stream","--use-fake-device-for-media-stream",
-			"--no-sandbox","--disable-dev-shm-usage","--use-file-for-fake-audio-capture=" + wavPath])
-		
-		
-	 WebUI.openBrowser('')
+		CustomKeywords.'PermissionManagerListener.enableBrowserPermissions'()
+
+		def siteURL = GlobalVariable.EVAA_SiteURL
+		LogStories.logInfo("Site URL: $siteURL")
+
+		//		WebUI.openBrowser('')
+		WebUI.navigateToUrl(siteURL)
 
 		'Maximize the window'
 		WebUI.maximizeWindow()
-		
+
 		GlobalVariable.IS_ENCOUNTER_ID = false
+
+		boolean isCloud = UtilHelper.isCloud()
+
+		if(!isCloud) {
+			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots/FAILED"
+			
+			CustomKeywords.'stories.CommonStory.deleteAllFiles'(screenshotPath)
+		}
 	}
+
 
 	/*
 	 * Executes after every test case ends.
@@ -54,14 +62,12 @@ class EVAATestListener {
 		String testCaseId = testCaseContext.getTestCaseId()
 
 		if (testCaseContext.getTestCaseStatus() != 'PASS') {
-			String ssName = UtilHelper.randomString()
-
 			LogStories.logInfo("TestCase Name: $testCaseId")
 			LogStories.logInfo("Screenshot: $ssName")
 
-			CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
-		} 
-		
+			CustomKeywords.'steps.CommonSteps.takeScreenshots'()
+		}
+
 		LogStories.sendNotification("${testCaseId} is completed.")
 
 		WebUI.closeBrowser()
@@ -83,5 +89,5 @@ class EVAATestListener {
 	@AfterTestSuite
 	def afterTestSuite(TestSuiteContext testSuiteContext) {
 		println testSuiteContext.getTestSuiteId()
-	} 
+	}
 }

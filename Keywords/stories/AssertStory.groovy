@@ -16,7 +16,7 @@ import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows 
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 
@@ -92,6 +92,21 @@ public class AssertStory {
 		}
 		catch(Exception err) {
 			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
+			throw err
+		}
+	}
+
+	def verifyContainsRegex(String text, def actual, def expected) {
+		LogStories.logInfo("${text} → Actual: ${actual} | Expected to contain (regex): ${expected}")
+
+		try {
+			// Regex pattern: .*expected.*
+			String regexPattern = ".*" + java.util.regex.Pattern.quote(expected?.toString()) + ".*"
+
+			WebUI.verifyMatch(actual?.toString(), regexPattern, true, FailureHandling.CONTINUE_ON_FAILURE)
+			LogStories.markPassed("${text} → PASSED => '${actual}' contains '${expected}' (regex)")
+		} catch (Exception err) {
+			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected to contain: ${expected}")
 			throw err
 		}
 	}

@@ -73,9 +73,7 @@ public class EVAASteps {
 
 		GlobalVariable.IS_ENCOUNTER_ID = true
 
-		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("------------------------Screenshot: $ssName")
-		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
@@ -262,9 +260,7 @@ public class EVAASteps {
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 60, FailureHandling.STOP_ON_FAILURE)
 		}
 
-		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("------------------------Screenshot: $ssName")
-		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		LogStories.logInfo('----------------------Step Q----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
@@ -287,10 +283,10 @@ public class EVAASteps {
 	@Keyword
 	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isFinalize = true) {
 		LogStories.logInfo('----------------------Step AAA----------------------')
-
+		
+		String expectedPtName = "$FirstName $LastName"
+		
 		if(isFinalize) {
-			String expectedPtName = "$FirstName $LastName"
-
 			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
 
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -502,7 +498,7 @@ public class EVAASteps {
 					actual=	actual?.replaceAll(":(?=.*:)", "")
 					expected=	expected?.replaceAll(":(?=.*:)", "")
 
-					assertStory.verifyMatch("Medications", actual, expected)
+					assertStory.verifyContainsRegex("Medications", actual, expected)
 					index++
 				}
 			} else {
@@ -597,9 +593,7 @@ public class EVAASteps {
 			if (assessmentList.size() > 0) {
 				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
-				String ssName = UtilHelper.randomString()
-				LogStories.logInfo("------------------------Screenshot: $ssName")
-				CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+				CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 				String expectedAssessment = assessmentList.join('\n')
 				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
@@ -619,9 +613,7 @@ public class EVAASteps {
 			if (plansList.size() > 0) {
 				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
-				String ssName = UtilHelper.randomString()
-				LogStories.logInfo("------------------------Screenshot: $ssName")
-				CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+				CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 				String expectedPlans = plansList.join('\n')
 				String actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
@@ -1030,9 +1022,7 @@ public class EVAASteps {
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String txtDOB,  String DOB, String FinalizedStatus, String MicStatus ) {
 		LogStories.logInfo('----------------------Step AF----------------------')
 
-		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("------------------------Screenshot: $ssName")
-		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
 
@@ -1040,9 +1030,7 @@ public class EVAASteps {
 
 		waitStory.waitForElementText(toPatientName, 30)
 
-		ssName = UtilHelper.randomString()
-		LogStories.logInfo("------------------------Screenshot: $ssName")
-		CustomKeywords.'steps.CommonSteps.takeScreenshots'(ssName)
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		WebUI.delay(5)
 
@@ -1249,11 +1237,11 @@ public class EVAASteps {
 	@Keyword
 	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
 		LogStories.logInfo('----------------------Step AI----------------------')
+ 
+		for (key in  VariableStories.elementStorage) {
+			println "Key: ${key}"
 
-		for (entry in  CommonStory.sectionMapForStorageKey) {
-			println "Key: ${entry.key}, Value: ${entry.value}"
-
-			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(entry.key)
+			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(key)
 		}
 	}
 
@@ -1545,8 +1533,8 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
-		fakeMic.start()
-		LogStories.logInfo('Clicked on fakeMic Start Record Button')
+//		fakeMic.start()
+//		LogStories.logInfo('Clicked on fakeMic Start Record Button')
 
 		WebUI.delay(fileTimeinSeconds)
 
@@ -1554,8 +1542,8 @@ public class EVAASteps {
 
 		LogStories.logInfo('Clicked on Stop Record Button')
 
-		fakeMic.stop()
-		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
+//		fakeMic.stop()
+//		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
@@ -2108,7 +2096,7 @@ public class EVAASteps {
 	def GenerateSOAPNoteByUploadingFileForSinglePatient(String UploadFilePath,String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ,String EncounterType, String ExamLocation,String Technician, Boolean isFinalize = true, Boolean isSendToEHR = true) {
 		LogStories.logInfo('----------------------Step AZ----------------------')
 
-		CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_SiteURL, GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+		CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 		CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 

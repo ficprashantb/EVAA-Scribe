@@ -18,9 +18,12 @@ import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+
+import CustomKeywords
 import internal.GlobalVariable
 import stories.VariableStories
 import stories.AssertStory
+import stories.CommonStory
 import stories.LogStories
 import stories.NavigateStory
 import stories.TestObjectStory
@@ -36,14 +39,20 @@ public class CommonSteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory();
- 
+
 	@Keyword
-	def takeScreenshots(String name) {
+	def takeScreenshots(String ssName = "") {
+
+		if(CommonStory.isNullOrEmpty(ssName)) {
+			ssName = UtilHelper.randomString()
+		}
+
+		LogStories.logInfo("------------------------Screenshot: $ssName")
 
 		String timeStamp = new Date().format("yyyyMMdd_HHmmss")
 
 		String screenshotPath = RunConfiguration.getProjectDir() +
-				"/Screenshots/FAILED/${name}_${timeStamp}.png"
+				"/Screenshots/FAILED/${ssName}_${timeStamp}.png"
 
 		WebUI.takeScreenshot(screenshotPath)
 
@@ -51,10 +60,28 @@ public class CommonSteps {
 	}
 
 	@Keyword
-	def maximeyesLogin(String siteURL, String userName, String password) {
-		WebUI.navigateToUrl(siteURL)
-		LogStories.logInfo("Site URL: $siteURL")
+	def takeTestCaseScreenshot() {
+		boolean isCloud = UtilHelper.isCloud()
 
+		if(!isCloud) {
+
+			String ssName = UtilHelper.randomString()
+
+			LogStories.logInfo("------------------------Screenshot: $ssName")
+
+			String timeStamp = new Date().format("yyyyMMdd_HHmmss")
+
+			String screenshotPath = RunConfiguration.getProjectDir() +
+					"/Screenshots/FAILED/${ssName}_${timeStamp}.png"
+
+			WebUI.takeScreenshot(screenshotPath)
+
+			println "Screenshot captured: " + screenshotPath
+		}
+	}
+
+	@Keyword
+	def maximeyesLogin(String userName, String password) {
 		WebUI.setText(findTestObject('LoginPage/UserName'), userName)
 
 		LogStories.logInfo("User Name: $userName")
@@ -241,18 +268,15 @@ public class CommonSteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo('Expand Recording found')
 
-		String ssName = UtilHelper.randomString()
-		LogStories.logInfo("------------------------Screenshot: $ssName")
-		takeScreenshots(ssName)
-		
-		
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
+
 		// Check if search box is present
 		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
 
 		String mode = isSearchPresent ? "Collpase"  : "Expand"
-		
+
 		def timeout = isSearchPresent ? 5  : 10
-		
+
 		LogStories.logInfo(".........................timeout ${timeout}.........................")
 
 		// Decide whether to click based on current state vs desired state
@@ -264,16 +288,14 @@ public class CommonSteps {
 		// Perform click
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 		LogStories.logInfo("Clicked on ${mode} Recording")
- 
+
 		// If expanding, validate patient and encounter headers
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
 			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
 
-			ssName = UtilHelper.randomString()
-			LogStories.logInfo("------------------------Screenshot: $ssName")
-			takeScreenshots(ssName)
+			CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
 			if (IS_ENCOUNTER_ID) {
@@ -282,7 +304,7 @@ public class CommonSteps {
 				WebUI.waitForElementVisible(header_EncounterId, 10, FailureHandling.STOP_ON_FAILURE)
 			} else {
 				WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'), 10, FailureHandling.STOP_ON_FAILURE)
-			} 
+			}
 		}
 
 		WebUI.delay(timeout)
