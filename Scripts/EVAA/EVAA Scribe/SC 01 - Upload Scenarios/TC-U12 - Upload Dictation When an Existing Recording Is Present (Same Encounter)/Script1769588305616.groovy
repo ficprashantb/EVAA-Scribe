@@ -18,36 +18,21 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import stories.AssertStory as AssertStory
+import stories.ExceptionHelper as ExceptionHelper
+import stories.LogStories as LogStories
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R08'
+AssertStory assertStory = new AssertStory()
+
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U01'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(RecordFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false, false)
 
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
-
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
-
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-//Direct Dictation By Record Start Stop
-CustomKeywords.'steps.EVAASteps.directDictationByRecordStartStopOnElements'(uploadFilePath)
-
-CustomKeywords.'steps.EVAASteps.verifyRecordedDirectDictationAddedOnEVAAScribe'()
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
+CustomKeywords.'steps.EVAASteps.UploadReRecordDictation'(UploadFilePath,  FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)

@@ -31,15 +31,12 @@ import stories.UtilHelper
 
 import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory
-
-import java.nio.file.*
-
+import com.kms.katalon.core.webui.driver.DriverFactory 
 
 public class CommonSteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
-	AssertStory assertStory = new AssertStory();
+	AssertStory assertStory = new AssertStory()
 
 	@Keyword
 	def takeScreenshots(String ssName = "") {
@@ -310,21 +307,7 @@ public class CommonSteps {
 
 		WebUI.delay(timeout)
 	}
+
 	
-	@Keyword
-	def deleteAllFiles(String folderPath) {
-		Path dir = Paths.get(folderPath)
-		if (Files.exists(dir) && Files.isDirectory(dir)) {
-			Files.list(dir).each { Path file ->
-				if (Files.isRegularFile(file)) {
-					Files.delete(file)
-					println "Deleted: ${file.fileName}"
-				}
-			}
-		} else {
-			println "Invalid folder path: $folderPath"
-		}
-	}
 	
 }
-

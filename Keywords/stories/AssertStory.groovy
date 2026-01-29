@@ -95,6 +95,20 @@ public class AssertStory {
 			throw err
 		}
 	}
+	
+	def verifyNotMatch (String text, def actual, def expected) {
+		
+				LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
+		
+				try {
+					WebUI.verifyNotMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
+					LogStories.markPassed("${text} → PASSED => ${actual}")
+				}
+				catch(Exception err) {
+					LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
+					throw err
+				}
+			}
 
 	def verifyContainsRegex(String text, def actual, def expected) {
 		LogStories.logInfo("${text} → Actual: ${actual} | Expected to contain (regex): ${expected}")

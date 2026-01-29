@@ -39,7 +39,7 @@ CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName,LastName)
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath) 
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 //*********************************** Append Audio **************************************************************//
 
@@ -49,7 +49,7 @@ KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendStartStop'(FileTime, recordFilePath) 
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
  

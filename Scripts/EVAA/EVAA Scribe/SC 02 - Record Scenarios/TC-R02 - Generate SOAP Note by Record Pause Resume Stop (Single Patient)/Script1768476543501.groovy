@@ -39,7 +39,7 @@ CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName,LastName)
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordPauseResumeStop'(FileTime, recordFilePath)
   
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 

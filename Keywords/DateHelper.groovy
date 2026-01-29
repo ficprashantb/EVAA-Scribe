@@ -30,23 +30,36 @@ import java.util.TimeZone
 
 
 public class DateHelper {
+	
+	// Define an enum for supported time zones
+	enum SupportedZone {
+		UTC("UTC"),
+		IST("Asia/Kolkata"),
+		EST("America/New_York"),
+		PST("America/Los_Angeles"),
+		LONDON("Europe/London")
+	
+		private final String zoneId
+	
+		SupportedZone(String zoneId) {
+			this.zoneId = zoneId
+		}
+	
+		String getZoneId() {
+			return zoneId
+		}
+	}
+	
 	@Keyword
-	String GetISTDate(String dateFormat = "MM/dd/yyyy") {
-		LocalDate date = LocalDate.now(ZoneId.of("Asia/Kolkata"));
+	String GetFormattedDate(String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.UTC) {
+		String timezone = ZoneId.of(zone.getZoneId())
+		
+		LocalDate date = LocalDate.now(ZoneId.of(timezone));
 
 		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
 
 		return formattedDate;
-	}
-
-	@Keyword
-	String GetUTCDate(String dateFormat = "MM/dd/yyyy") {
-		LocalDate date = LocalDate.now(ZoneId.of("UTC"));
-
-		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
-
-		return formattedDate;
-	}
+	} 
 
 	@Keyword
 	String GetPSTDate(String dateFormat = "MM/dd/yyyy") {
@@ -58,7 +71,21 @@ public class DateHelper {
 	}
 
 	@Keyword
-	String GetFormattedDate(String date, String dateFormat) {
+	String GetUTCFormattedDate(String date, String dateFormat) {
+		// Parse the input date string using the given format
+		def parser = new SimpleDateFormat(dateFormat)
+		Date inputDate = parser.parse(date)
+
+		// Create a formatter with IST timezone
+		def formatter = new SimpleDateFormat(dateFormat)
+		formatter.setTimeZone(TimeZone.getTimeZone("UTC"))
+
+		// Format the date into IST
+		return formatter.format(inputDate)
+	}
+
+	@Keyword
+	String GetISTFormattedDate(String date, String dateFormat) {
 		// Parse the input date string using the given format
 		def parser = new SimpleDateFormat(dateFormat)
 		Date inputDate = parser.parse(date)

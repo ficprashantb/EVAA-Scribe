@@ -42,7 +42,7 @@ class EVAATestListener {
 		if(!isCloud) {
 			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots/FAILED"
 
-			CustomKeywords.'steps.CommonSteps.deleteAllFiles'(screenshotPath)
+			CustomKeywords.'steps.CommonKeywords.deleteAllFiles'(screenshotPath)
 		}
 	}
 

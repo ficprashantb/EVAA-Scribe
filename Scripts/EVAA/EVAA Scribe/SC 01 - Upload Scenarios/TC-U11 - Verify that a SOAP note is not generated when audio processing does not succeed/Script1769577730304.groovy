@@ -3,6 +3,7 @@ import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
 import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
 import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
 import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import java.beans.Customizer as Customizer
 import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
@@ -18,47 +19,66 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.LogStories as LogStories
-import stories.NavigateStory as NavigateStory
-import stories.VariableStories as VariableStories
+import stories.LogStories as LogStories 
+import stories.VariableStories as VariableStories 
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U07'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U11'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
- 
+
+String expectedPtName = "$FirstName $LastName"
+
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false)
+CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-//Direct Dictation By Typing on Elements
-CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+
+String ProviderName = "$Provider_FirstName $Provider_LastName"
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
+CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
+
+def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+
+KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+// Log the file path
+LogStories.logInfo('File Path: ' + uploadFilePath)
+
+TestObject upload = findTestObject('EVAAPage/EVAA Scribe/Menu/defile input')
+
+WebUI.uploadFile(upload, uploadFilePath)
+
+LogStories.logInfo('File uploaded: ' + uploadFilePath)
+
+LogStories.logInfo('Awaiting file upload...')
+
+// Wait for toast message confirming file processed
+WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Error uploading file. Please try again'), 180, FailureHandling.STOP_ON_FAILURE)
+
+LogStories.markPassed('Error uploading file. Please try again.')
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expectedPtName)
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-//NavigateStory navigateStory = new NavigateStory()
-//
-//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-//
-//String encounterId = VariableStories.getItem("ENCOUNTER_ID")
-//KeywordUtil.logInfo("Encounter Id=> $encounterId")
-//
-//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
+
+String FinalizedStatus = 'Pending' 
+String MicStatus='Recording Not Started'
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, 'Invalid Date (NaN)', '', FinalizedStatus, MicStatus)
+
+
+

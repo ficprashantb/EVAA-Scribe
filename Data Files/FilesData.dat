@@ -12,20 +12,23 @@
    <data>Cadence_Kingele_1.mp3 Cadence_Kingele_1.mp3 32</data>
    <data>Ali+Nomani+5min.wav Ali+Nomani+5min.mp3 302</data>
    <data>Cadence_Kingele_1.mp3 Ali+Nomani+30sec.mp3 32</data>
+   <data>Logs.txt Logs.txt null</data>
+   <data>Cadence_Kingele_1.mp3 Ali+Nomani+mp3.mp3 null</data>
+   <data>Cadence_Kingele_1.mp3 Ali+Nomani+wav.wav null</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
       <name>UploadFilePath</name>
-      <size>3</size>
+      <size>6</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>1</columnIndex>
       <name>RecordFilePath</name>
-      <size>3</size>
+      <size>6</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>2</columnIndex>
       <name>FileTime</name>
-      <size>3</size>
+      <size>6</size>
    </internalDataColumns>
    <isInternalPath>false</isInternalPath>
    <query></query>
