@@ -1001,8 +1001,8 @@ public class EVAASteps {
 
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
-		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
-		VariableStories.setItem("SOAP_NOTES", soapNotes)
+		//		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
+		//		VariableStories.setItem("SOAP_NOTES", soapNotes)
 
 		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, wordMaxCount)
 
@@ -1183,53 +1183,7 @@ public class EVAASteps {
 	def getAndStoreEVAAScribeDirectDictationNote() {
 		LogStories.logInfo('----------------------Step AG----------------------')
 
-		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
-
-		VariableStories.elementStorage.clear()
-
-		captureSectionDirectDictation('ChiefComplaint',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint', false)
-
-		captureSectionDirectDictation('HPI',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI', false)
-
-		captureSectionDirectDictation('CurrentEyeSymptoms',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Current Eye Symptoms')
-
-		captureSectionDirectDictation('Allergies',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Allergies')
-
-		captureSectionDirectDictation('Medications',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications')
-
-		captureSectionDirectDictation('EyeDiseases',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
-
-		captureSectionDirectDictation('ReviewOfSystems',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems')
-
-		captureSectionDirectDictation('Problems',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems')
-
-		captureSectionDirectDictation('MentalAndFunctionalStatus',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
-
-		//		captureSectionDirectDictation('Refractions',
-		//				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions')
-
-		//		captureSectionDirectDictation('AuxiliaryLabTests',
-		//				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests')
-
-		captureSectionDirectDictation('DifferentialDiagnosis',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis')
-
-		captureSectionDirectDictation('Assessment',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment')
-
-		captureSectionDirectDictation('Plan',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans')
-
-		WebUI.switchToDefaultContent()
+		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 	}
 
 	@Keyword
@@ -1283,6 +1237,12 @@ public class EVAASteps {
 				'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
+
+		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
+		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
+
+		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
+		VariableStories.setItem("SOAP_NOTES", soapNotes)
 	}
 
 	@Keyword
@@ -1858,7 +1818,7 @@ public class EVAASteps {
 				for (String name : elementStorageList) {
 					LogStories.logInfo("Element from Storage → ${name}")
 
-					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictationTyping.get(name)
 
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
@@ -2322,7 +2282,7 @@ public class EVAASteps {
 				LogStories.markFailedAndStop("Verified copied content can not be pasted into an external editor")
 			}
 
-			clipboardText = clipboardText.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()  
+			clipboardText = clipboardText.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
 			for (String name : elementStorageList) {
 
@@ -2336,7 +2296,7 @@ public class EVAASteps {
 					if (dataList.size() > 0) {
 
 						for (String data : dataList) {
-							String expectedData = data.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()  
+							String expectedData = data.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
 							assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
 						}
@@ -2358,40 +2318,40 @@ public class EVAASteps {
 			return
 		}
 		else {
-			 
+
 			String clipboardText = UtilHelper.getClipboardText()
 			clipboardText = clipboardText
 
 			// Get all values as a list
 			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
-			
+
 			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
-			
+
 			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
 			String jsonWanted = JsonOutput.toJson(moduleList)
 			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
-			
+
 			// Ensure moduleList only shows data that exists in clipboardTextList
 			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
 			String jsonWantedModified = JsonOutput.toJson(moduleList)
-						
+
 			LogStories.logInfo("Module List: ${jsonWanted}")
 			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
-			
+
 			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
-			
+
 			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-						
+
 			// Equivalent index-based loop
 			for (int i = 0; i < moduleList.size(); i++) {
 				String name = moduleList.get(i)
 
 				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
 
-				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim() 
+				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
 				def actualData = clipboardTextList.get(i)
-				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim() 
+				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
 				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
 			}

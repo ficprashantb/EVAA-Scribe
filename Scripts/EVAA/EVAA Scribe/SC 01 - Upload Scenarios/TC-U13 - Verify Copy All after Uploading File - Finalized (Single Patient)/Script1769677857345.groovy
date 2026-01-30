@@ -30,7 +30,7 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U13'
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician,false,false)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician,true,false)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)

@@ -51,7 +51,7 @@ public class DateHelper {
 	}
 	
 	@Keyword
-	String GetFormattedDate(String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.UTC) {
+	String GetFormattedDate(String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.IST) {
 		String timezone = ZoneId.of(zone.getZoneId())
 		
 		LocalDate date = LocalDate.now(ZoneId.of(timezone));

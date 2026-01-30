@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>MBT55952</description>
    <name>TC-U04 - Send Individual Elements after Uploading File then Send to EHR (Single Patient)</name>
    <tag></tag>
    <comment></comment>

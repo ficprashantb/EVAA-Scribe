@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>MBT55952</description>
    <name>TC-U03 - Send Individual Elements to EHR after Uploading File - Direct Dictation then Send to EHR(Single Patient)</name>
    <tag></tag>
    <comment></comment>
