@@ -19,7 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
-import org.openqa.selenium.WebElement 
+import org.openqa.selenium.WebElement
 
 import groovy.json.JsonOutput as JsonOutput
 import groovy.json.JsonSlurper as JsonSlurper
@@ -115,7 +115,7 @@ public class CommonStory {
 				.collect { it.trim() }
 				.findAll { it }
 
-		if (parts.size() < 2) { 
+		if (parts.size() < 2) {
 			def logData = JsonOutput.toJson(listData)
 			LogStories.logInfo("Invalid Data format =>  $logData")
 			return null
@@ -289,14 +289,14 @@ public class CommonStory {
 		Medications: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications'),
 		ReviewOfSystems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems'),
 		Problems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems'),
-//		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions'),
-//		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests'),
+		//		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions'),
+		//		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Auxiliary Lab Tests'),
 		DifferentialDiagnosis: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Differential Diagnosis'),
 		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Assessment'),
 		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans'),
 		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
 		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
-	] 
+	]
 
 	static Map<String, TestObject> sectionMapForSOAPNote = [
 		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint'),
@@ -306,8 +306,8 @@ public class CommonStory {
 		Medications: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Medications'),
 		ReviewOfSystems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Review Of Systems'),
 		Problems: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems'),
-//		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Refractions'),
-//		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Auxiliary Lab Tests'),
+		//		Refractions: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Refractions'),
+		//		AuxiliaryLabTests: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Auxiliary Lab Tests'),
 		DifferentialDiagnosis: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Differential Diagnosis'),
 		Assessment: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment'),
 		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans'),
@@ -323,8 +323,8 @@ public class CommonStory {
 		Medications:'SOAP_NOTE_MEDICATION',
 		ReviewOfSystems:'SOAP_NOTE_REVIEW_OF_SYSTEMS',
 		Problems: 'SOAP_NOTE_PROBLEMS',
-//		Refractions: 'SOAP_NOTE_REFRACTIONS',
-//		AuxiliaryLabTests:'SOAP_NOTE_AUX_LAB_TESTS',
+		//		Refractions: 'SOAP_NOTE_REFRACTIONS',
+		//		AuxiliaryLabTests:'SOAP_NOTE_AUX_LAB_TESTS',
 		DifferentialDiagnosis:'SOAP_NOTE_DIFF_DIAGNOSIS',
 		Assessment: 'SOAP_NOTE_ASSESSMENT',
 		Plan:'SOAP_NOTE_PLANS',
@@ -338,18 +338,15 @@ public class CommonStory {
 		CurrentEyeSymptoms: 'Current Eye Symptoms:',
 		Allergies: 'Allergies:',
 		Medications: 'Medications:',
+		EyeDiseases: 'Eye Diseases:',
 		ReviewOfSystems: 'Review Of Systems - Brief:',
 		Problems: 'Problems:',
-//		Refractions: 'Refractions:',
-//		AuxiliaryLabTests: 'Auxiliary/Lab Tests:',
+		MentalAndFunctionalStatus: 'Mental and Functional Status:',
+		//		Refractions: 'Refractions:',
+		//		AuxiliaryLabTests: 'Auxiliary/Lab Tests:',
 		DifferentialDiagnosis: 'Differential Diagnosis:',
 		Assessment: 'Assessment:',
 		Plan: 'Plan:',
-		EyeDiseases: 'Eye Diseases:',
-		MentalAndFunctionalStatus: 'Mental and Functional Status:',
 	]
-	
-	
-	
 }
 

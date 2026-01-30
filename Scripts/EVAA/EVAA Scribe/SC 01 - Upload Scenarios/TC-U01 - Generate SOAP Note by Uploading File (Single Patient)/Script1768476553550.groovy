@@ -18,12 +18,14 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.ExceptionHelper as ExceptionHelper
+import stories.ExceptionHelper
+import stories.LogStories
 import stories.NavigateStory as NavigateStory
 import stories.VariableStories as VariableStories
 
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U01'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
- 
+
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician) 

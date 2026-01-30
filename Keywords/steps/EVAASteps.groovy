@@ -32,6 +32,7 @@ import stories.TestObjectStory
 import stories.UtilHelper
 import stories.CommonStory
 import stories.LogStories
+import groovy.json.JsonOutput
 
 import org.openqa.selenium.Keys
 import com.kms.katalon.core.webui.driver.DriverFactory
@@ -44,7 +45,6 @@ public class EVAASteps {
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory();
 	WaitStory waitStory = new WaitStory()
-
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
@@ -142,7 +142,7 @@ public class EVAASteps {
 		LogStories.logInfo('----------------------Step AAD----------------------')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-				
+
 		LogStories.logInfo('----------------------Step M----------------------')
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 
@@ -161,6 +161,7 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
 
 		LogStories.logInfo('----------------------Step H----------------------')
+		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step I----------------------')
@@ -1001,6 +1002,7 @@ public class EVAASteps {
 		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
 
 		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
+		VariableStories.setItem("SOAP_NOTES", soapNotes)
 
 		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, wordMaxCount)
 
@@ -1109,7 +1111,7 @@ public class EVAASteps {
 			expectedPTDOBText =  "$expectedPTDOB ($age)"
 		}
 
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'('M/d/yyyy') 
+		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'('M/d/yyyy')
 
 		def expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
 
@@ -1200,11 +1202,17 @@ public class EVAASteps {
 		captureSectionDirectDictation('Medications',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Medications')
 
+		captureSectionDirectDictation('EyeDiseases',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
+
 		captureSectionDirectDictation('ReviewOfSystems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Review Of Systems')
 
 		captureSectionDirectDictation('Problems',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Problems')
+
+		captureSectionDirectDictation('MentalAndFunctionalStatus',
+				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 
 		//		captureSectionDirectDictation('Refractions',
 		//				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Refractions')
@@ -1220,12 +1228,6 @@ public class EVAASteps {
 
 		captureSectionDirectDictation('Plan',
 				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans')
-
-		captureSectionDirectDictation('EyeDiseases',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases')
-
-		captureSectionDirectDictation('MentalAndFunctionalStatus',
-				'EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
 
 		WebUI.switchToDefaultContent()
 	}
@@ -2181,124 +2183,218 @@ public class EVAASteps {
 			}
 		}
 	}
-	
+
 	@Keyword
 	def VerifyReRecordPopup(String FirstName,String LastName ) {
 		LogStories.logInfo('----------------------Step AAM----------------------')
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/h2_RecordingConflict'), 10, FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.markPassed('The \'Recording Conflict\' text is displayed on the popup.')
-		
+
 		String ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'('MM/dd/yyyy')
-		
+
 		String expectedPtName = "$FirstName $LastName"
-		
+
 		String expectedText = "There is another recording for '$expectedPtName' for '$ptDictationDt', do you want to replace this with a new recording?"
-		
+
 		String actualText = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Menu/p_There_is_another_recording'), FailureHandling.OPTIONAL)
-		
+
 		assertStory.verifyMatch('Recording Conflict Text', actualText, expectedText)
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), 5, FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.markPassed('The \'Re-Record\' button is displayed on the popup.')
-		
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Cancel'), 5, FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.markPassed('The \'Cancel\' button is displayed on the popup.')
 	}
-	
+
 	@Keyword
 	def UploadReRecordDictation(String RecordFilePath, String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ) {
 		LogStories.logInfo('----------------------Step AAL----------------------')
 
 		def wordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_LENGTH')
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step A^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.logInfo('Clicked on Upload Button.')
-		
+
 		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
-		
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Cancel'), FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.logInfo('Clicked on Cancel Button.')
-		
+
 		WebUI.delay(2)
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step B^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
-		
+
 		int wordCountSOAPNotes2 = soapNotes.trim().split('\\s+').length
-		
+
 		assertStory.verifyMatch('SOAP Notes', wordCountSOAPNotes2, wordCountSOAPNotes)
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step C^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.logInfo('Clicked on Upload Button.')
-		
+
 		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
-		
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.logInfo('Clicked on Re-Record Button.')
-		
+
 		def folderPath = RunConfiguration.getProjectDir() + '/Files'
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		LogStories.logInfo('File uploaded: ' + RecordFilePath)
-		
+
 		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath, RecordFilePath)
-		
+
 		LogStories.logInfo('Awaiting file upload...')
-		
+
 		// Wait for toast message confirming file processed
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.STOP_ON_FAILURE)
-		
+
 		// Verify if toast is present quickly
 		boolean isPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 1, FailureHandling.OPTIONAL)
-		
+
 		if (isPresent) {
 			LogStories.markPassed('File processed successfully.')
 		} else {
 			LogStories.markWarning('File not processed successfully.')
 		}
-		
+
 		// Wait for Append Audio button
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
-		
+
 		// Wait for SOAP Notes element
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
-		
+
 		// Ensure Finalize button is clickable
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
-		
+
 		// Wait for SOAP Notes section
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		def soapNotes2 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
-		
+
 		int wordCountSOAPNotes3 = soapNotes2.trim().split('\\s+').length
-		
+
 		assertStory.verifyNotMatch('SOAP Notes', wordCountSOAPNotes3, wordCountSOAPNotes)
-		
+
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
-		
+
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 	}
-	
-	
+
+	@Keyword
+	def VerifyCopiedAllSOAPNotes() {
+		LogStories.logInfo("---------------------Verify clicking Copy All copies data from all available elements---------------------")
+
+		if (VariableStories.elementStorage.isEmpty()) {
+			LogStories.markWarning("No stored elements for verification")
+			return
+		}
+		else {
+			def elementStorageList = VariableStories.elementStorage
+
+			String clipboardText = UtilHelper.getClipboardText()
+
+			if (!CommonStory.isNullOrEmpty(clipboardText)) {
+				LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
+			}
+			else {
+				LogStories.markFailedAndStop("Verified copied content can not be pasted into an external editor")
+			}
+
+			clipboardText = clipboardText.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()  
+
+			for (String name : elementStorageList) {
+
+				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+
+				def variableKey = CommonStory.sectionMapForStorageKey.get(name)
+				String storedData = VariableStories.getItem(variableKey)
+
+				if (!CommonStory.isNullOrEmpty(storedData)) {
+					List dataList = CommonStory.getListObject(storedData)
+					if (dataList.size() > 0) {
+
+						for (String data : dataList) {
+							String expectedData = data.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()  
+
+							assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
+						}
+					}
+					else {
+						LogStories.markWarning('No data found')
+					}
+				}
+			}
+		}
+	}
+
+	@Keyword
+	def VerifyCopiedSOAPNotesFllowsTheCorrectOrderOfElements() {
+		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
+
+		if (VariableStories.elementStorage.isEmpty()) {
+			LogStories.markWarning("No stored elements for verification")
+			return
+		}
+		else {
+			 
+			String clipboardText = UtilHelper.getClipboardText()
+			clipboardText = clipboardText
+
+			// Get all values as a list
+			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
+			
+			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
+			
+			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+			String jsonWanted = JsonOutput.toJson(moduleList)
+			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
+			
+			// Ensure moduleList only shows data that exists in clipboardTextList
+			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
+			String jsonWantedModified = JsonOutput.toJson(moduleList)
+						
+			LogStories.logInfo("Module List: ${jsonWanted}")
+			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
+			
+			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
+			
+			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+						
+			// Equivalent index-based loop
+			for (int i = 0; i < moduleList.size(); i++) {
+				String name = moduleList.get(i)
+
+				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+
+				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim() 
+
+				def actualData = clipboardTextList.get(i)
+				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim() 
+
+				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
+			}
+		}
+	}
 }

@@ -31,7 +31,7 @@ import stories.UtilHelper
 
 import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.chrome.ChromeOptions
-import com.kms.katalon.core.webui.driver.DriverFactory 
+import com.kms.katalon.core.webui.driver.DriverFactory
 
 public class CommonSteps {
 	NavigateStory navigateStory = new NavigateStory()
@@ -287,6 +287,11 @@ public class CommonSteps {
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
 		LogStories.logInfo("Clicked on ${mode} Recording")
 
+		Boolean isptVisible =  WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 5, FailureHandling.OPTIONAL)
+		if((isptVisible && mode == "Expand") || (!isptVisible && mode == "Collpase")) {
+			LogStories.markPassed("${mode}ed Recording Suceesfully.")
+		}
+
 		// If expanding, validate patient and encounter headers
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
@@ -307,7 +312,4 @@ public class CommonSteps {
 
 		WebUI.delay(timeout)
 	}
-
-	
-	
 }

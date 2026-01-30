@@ -95,22 +95,22 @@ public class AssertStory {
 			throw err
 		}
 	}
-	
-	def verifyNotMatch (String text, def actual, def expected) {
-		
-				LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
-		
-				try {
-					WebUI.verifyNotMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
-					LogStories.markPassed("${text} → PASSED => ${actual}")
-				}
-				catch(Exception err) {
-					LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
-					throw err
-				}
-			}
 
-	def verifyContainsRegex(String text, def actual, def expected) {
+	def verifyNotMatch (String text, def actual, def expected) {
+
+		LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
+
+		try {
+			WebUI.verifyNotMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
+			LogStories.markPassed("${text} → PASSED => ${actual}")
+		}
+		catch(Exception err) {
+			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
+			throw err
+		}
+	}
+
+	def verifyContainsRegex(String text, def actual, def expected, def isPassLog = true) {
 		LogStories.logInfo("${text} → Actual: ${actual} | Expected to contain (regex): ${expected}")
 
 		try {
@@ -118,7 +118,9 @@ public class AssertStory {
 			String regexPattern = ".*" + java.util.regex.Pattern.quote(expected?.toString()) + ".*"
 
 			WebUI.verifyMatch(actual?.toString(), regexPattern, true, FailureHandling.CONTINUE_ON_FAILURE)
-			LogStories.markPassed("${text} → PASSED => '${actual}' contains '${expected}' (regex)")
+			if(isPassLog) {
+				LogStories.markPassed("${text} → PASSED => '${actual}' contains '${expected}' (regex)")
+			}
 		} catch (Exception err) {
 			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected to contain: ${expected}")
 			throw err

@@ -42,34 +42,7 @@ public class CommonKeywords {
 		} else {
 			println "Invalid folder path: $folderPath"
 		}
-	}
-
-	@Keyword
-	def uploadFileName(String fileName) {
-		Robot robot = new Robot()
-
-		// Step 3: Copy file name to clipboard
-		StringSelection fileSelection = new StringSelection(fileName)
-		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(fileSelection, null)
-		robot.delay(500)
-
-		robot.keyPress(KeyEvent.VK_ALT)
-		robot.keyPress(KeyEvent.VK_N)
-		robot.keyRelease(KeyEvent.VK_N)
-		robot.keyRelease(KeyEvent.VK_ALT)
-		robot.delay(500)
-
-		// Step 4: Paste file name into bottom input field
-		robot.keyPress(KeyEvent.VK_CONTROL)
-		robot.keyPress(KeyEvent.VK_V)
-		robot.keyRelease(KeyEvent.VK_V)
-		robot.keyRelease(KeyEvent.VK_CONTROL)
-		robot.delay(500)
-
-		// Step 5: Press ENTER to confirm selection
-		robot.keyPress(KeyEvent.VK_ENTER)
-		robot.keyRelease(KeyEvent.VK_ENTER)
-	}
+	} 
 
 	def pressTabs(int count) {
 		Robot robot = new Robot()
@@ -126,4 +99,27 @@ public class CommonKeywords {
 		robot.keyRelease(KeyEvent.VK_ENTER)
 		robot.delay(1000)
 	}
+	
+	/**
+	 * Returns the most recent .txt file from Downloads
+	 * whose name contains 'test'.
+	 */
+	@Keyword
+	File getLatestTestTxtFile(String fileName, String extenstion = ".txt") {
+		Path downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads")
+	
+		File latestFile = Files.list(downloadsDir)
+			.map { it.toFile() }
+			.filter { it.isFile() }
+			.filter { it.name.toLowerCase().contains(fileName) && it.name.endsWith(extenstion) }
+			.max { f1, f2 -> f1.lastModified() <=> f2.lastModified() }
+			.orElse(null)
+	
+		return latestFile
+	}
+	
+	
+	
+	
+	
 }
