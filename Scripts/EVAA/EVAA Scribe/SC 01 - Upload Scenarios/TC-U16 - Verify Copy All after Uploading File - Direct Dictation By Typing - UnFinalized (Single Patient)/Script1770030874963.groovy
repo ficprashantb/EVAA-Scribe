@@ -44,40 +44,23 @@ CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
-
+ 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, false, false)
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1) 
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 //Direct Dictation By Typing on Elements
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
+ 
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+CustomKeywords.'steps.EVAASteps.VerifyCopiedIndividualElementSOAPNotes'()
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
-WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is displayed.')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, false, false)
 
-WebUI.verifyElementClickable(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is Clickable.')
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+Boolean isVisible = WebUI.verifyElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Copy_Note'), 5, FailureHandling.OPTIONAL)
+if(isVisible) {
+	LogStories.markPassed("Copy button is not displayed or is disabled when dictation is finalized.")
+}
+else {
+	LogStories.markFailedAndStop("Copy button is displayed or is enabled when dictation is finalized.")
+}
 
-WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('Clicked on \'Copy All\' button.')
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
-CustomKeywords.'steps.EVAASteps.VerifyCopiedAllSOAPNotes'()
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 11~~~~~~~~~~~~~~~~~~~~~~')
-LogStories.logInfo('---------------------------Verify original element data remains unchanged after copying---------------------------')
-AssertStory assertStory = new AssertStory();
-
-String expectedSOAPNotes = VariableStories.getItem("SOAP_NOTES")
-def actualSOAPNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
-
-assertStory.verifyMatch("SOAP Notes", actualSOAPNotes, expectedSOAPNotes)
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 12~~~~~~~~~~~~~~~~~~~~~~')
-CustomKeywords.'steps.EVAASteps.VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements'()

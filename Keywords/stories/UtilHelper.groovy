@@ -37,10 +37,21 @@ import java.awt.datatransfer.DataFlavor
 
 public class UtilHelper {
 
-	//	UtilHelper.getClipboardTextAsync()
-	//	.thenAccept { text ->
-	//		println "Clipboard: $text"
-	//	}
+	// Generic retry helper
+	static <T> T retryOperation(Closure<T> operation, int maxRetries = 2, long delayMillis = 200) {
+		int attempt = 0
+		while (attempt < maxRetries) {
+			try {
+				return operation.call()
+			} catch (Exception e) {
+				println("***********************************Attempt ${attempt+1} failed: ${e.message}")
+				Thread.sleep(delayMillis)
+			}
+			attempt++
+		}
+		println("***********************************Operation failed after ${maxRetries} attempts")
+		return null
+	}
 
 	static String randomString(int maxLen = 5) {
 		return RandomStringUtils.randomAlphanumeric(maxLen)
@@ -61,11 +72,13 @@ public class UtilHelper {
 	 * Gets the text currently copied to the clipboard.
 	 */
 	static String getClipboardText() {
-		def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
-		def data = clipboard.getData(DataFlavor.stringFlavor)
-		return data?.toString()
+		return retryOperation({
+			def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
+			def data = clipboard.getData(DataFlavor.stringFlavor)
+			return data?.toString()
+		}) 
 	}
-
+	
 	static void sendWindowsNotification(String title, String message) {
 		String psCommand = """
     powershell -command "
@@ -97,7 +110,7 @@ public class UtilHelper {
 
 		// If wanted is null or empty, assign an empty list
 		List<String> wanted = (wantedList == null || wantedList.isEmpty()) ? [] : wantedList
-		
+
 		def lines = input.readLines()
 		List<String> labels = []
 		boolean seenDifferential = false
@@ -108,7 +121,7 @@ public class UtilHelper {
 			if (matcher.matches()) {
 				String _label = matcher[0][1].trim()
 				String label = "${_label}:"
-			 
+
 				if (_label == "Differential Diagnosis") {
 					seenDifferential = true
 					if (wanted.contains(label)) labels << label

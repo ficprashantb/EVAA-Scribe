@@ -7,11 +7,11 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+         <value>//button[@id='btn-copy-${type}'][@title=&quot;Copy Note&quot;][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
+         <value>//button[@id='btn-copy-${type}'][@title=&quot;Copy Note&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>img</value>
-      <webElementGuid>395a1fa2-47c6-4eaf-a22a-c6382499f583</webElementGuid>
+      <webElementGuid>bdc0c60d-10ab-49c8-960b-95ab1467f303</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>src</name>
       <type>Main</type>
       <value>/Evaa-Mike.svg</value>
-      <webElementGuid>711ed07e-137c-41e6-86c4-359214865dc0</webElementGuid>
+      <webElementGuid>186f466c-738c-4c7b-bc87-2835b43ef348</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>alt</name>
       <type>Main</type>
       <value>maximeyes-logo</value>
-      <webElementGuid>cae8ddb1-36d7-42df-aee8-1553198cff8e</webElementGuid>
+      <webElementGuid>4fc0f3ed-78e8-4ff1-8a58-164f95f1667a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>class</name>
       <type>Main</type>
       <value>w-4 h-4</value>
-      <webElementGuid>0cb8fe87-d948-4c49-a6c4-f27c94539636</webElementGuid>
+      <webElementGuid>077bb656-0c8d-4364-b208-4327861ecd61</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,30 +65,38 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-c8f53b12b9608ce24f3f03b1a319280e</value>
-      <webElementGuid>89a79a76-8f31-406a-add0-9880be72af34</webElementGuid>
+      <webElementGuid>5c135270-0969-4da6-9d54-83a7ecae093a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
-      <webElementGuid>cfd67599-9047-40fd-9729-5b5fbd076919</webElementGuid>
+      <value>//button[@id='btn-copy-${type}'][@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>29a85a9e-0876-49e6-831a-65ad62e3d8d6</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>9d995ddd-52a4-4b59-ac94-9b6b687ef681</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
-      <webElementGuid>c3e541cd-b675-4e68-9315-85ca77b14e19</webElementGuid>
+      <value>//button[@id='btn-copy-${type}'][@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>050c6d8a-67b2-4352-852d-2fe0b22e45dc</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//*[span[normalize-space()='${type}']]/ancestor::div[1] /following-sibling::div[1]/button[@title=&quot;Copy Note&quot;]</value>
-      <webElementGuid>6761378a-3d59-467e-92fb-f260c460c70e</webElementGuid>
+      <value>//button[@id='btn-copy-${type}'][@title=&quot;Copy Note&quot;]</value>
+      <webElementGuid>4709051f-301c-4772-a791-4a0913be3f25</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

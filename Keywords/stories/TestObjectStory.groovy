@@ -107,6 +107,12 @@ public class TestObjectStory {
 				)
 	}
 	
+	TestObject img_Copy_Note(String type) {
+		return findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Copy_Note',
+				[('type') : type]
+				)
+	}
+	
 	TestObject header_EncounterId(String EncId) {
 		return findTestObject('EVAAPage/EVAA Scribe/Header/header_EncounterId',
 				[('EncId') : EncId]

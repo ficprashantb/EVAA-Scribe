@@ -366,5 +366,25 @@ public class CommonStory {
 		Assessment: 'Assessment:',
 		Plan: 'Plan:',
 	]
+	
+	static Map<String, String> copyMapForDirectDictation = [
+		ChiefComplaint: 'chiefcomplaint',
+		HPI: 'hpi',
+		CurrentEyeSymptoms: 'current-eye-symptoms',
+		Allergies: 'allergies',
+		Medications: 'medications',
+		EyeDiseases: 'eye-diseases',
+		ReviewOfSystems: 'review-of-systems-brief',
+		Problems: 'problems',
+		MentalAndFunctionalStatus: 'mental-and-functional-status',
+		//		Refractions: 'Refractions:',
+		//		AuxiliaryLabTests: 'auxiliary-lab-tests',
+		DifferentialDiagnosis: 'differential-diagnosis',
+		Assessment: 'assessment',
+		Plan: 'plan',
+	]
+	
+	
+	
 }
 
