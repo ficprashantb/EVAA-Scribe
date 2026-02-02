@@ -70,7 +70,7 @@ public class DateHelper {
 			return  formattedDate
 		} else {
 			// Parse input date string (always MM/dd/yyyy)
-			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
+			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern(dateFormat)
 			LocalDate localDate = LocalDate.parse(date, inputFormatter)
 
 			// Convert to ZonedDateTime at midnight in the given zone
