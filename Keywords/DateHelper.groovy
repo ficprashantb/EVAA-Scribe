@@ -17,6 +17,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import stories.CommonStory
 
 import java.time.LocalDate
 import java.time.ZoneId
@@ -28,9 +29,16 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.TimeZone
 
+import java.time.LocalDateTime
+
+import java.time.LocalDate
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
+
 
 public class DateHelper {
-	
+
 	// Define an enum for supported time zones
 	enum SupportedZone {
 		UTC("UTC"),
@@ -38,28 +46,43 @@ public class DateHelper {
 		EST("America/New_York"),
 		PST("America/Los_Angeles"),
 		LONDON("Europe/London")
-	
+
 		private final String zoneId
-	
+
 		SupportedZone(String zoneId) {
 			this.zoneId = zoneId
 		}
-	
+
 		String getZoneId() {
 			return zoneId
 		}
 	}
-	
+
 	@Keyword
-	String GetFormattedDate(String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.IST) {
-		String timezone = ZoneId.of(zone.getZoneId())
-		
-		LocalDate date = LocalDate.now(ZoneId.of(timezone));
+	String GetFormattedDate(String date = null, String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.IST) {
+		ZoneId zoneId = ZoneId.of(zone.getZoneId())
 
-		String formattedDate = date.format(DateTimeFormatter.ofPattern(dateFormat));
+		if (CommonStory.isNullOrEmpty(date)) {
+			// Current date in zone
+			LocalDate ldate = LocalDate.now(zoneId)
+			String formattedDate = ldate.format(DateTimeFormatter.ofPattern(dateFormat))
 
-		return formattedDate;
-	} 
+			return  formattedDate
+		} else {
+			// Parse input date string (always MM/dd/yyyy)
+			DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MM/dd/yyyy")
+			LocalDate localDate = LocalDate.parse(date, inputFormatter)
+
+			// Convert to ZonedDateTime at midnight in the given zone
+			ZonedDateTime zonedDateTime = localDate.atStartOfDay(zoneId)
+
+			// Format into the desired output pattern
+			DateTimeFormatter outputFormatter = DateTimeFormatter.ofPattern(dateFormat)
+			String formattedDate = zonedDateTime.format(outputFormatter)
+
+			return  formattedDate
+		}
+	}
 
 	@Keyword
 	String GetPSTDate(String dateFormat = "MM/dd/yyyy") {

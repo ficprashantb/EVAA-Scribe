@@ -7,15 +7,15 @@
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value></value>
-      </entry>
-      <entry>
-         <key>XPATH</key>
-         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>902f1b08-f766-4d36-8fb3-03beab0eec82</webElementGuid>
+      <webElementGuid>943bda55-8d22-4ade-bf5e-fd9ba65cc367</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>e7b5276d-4d51-459e-be1d-a5ed7941d56e</webElementGuid>
+      <webElementGuid>a18971f7-dcfe-4747-875b-9ac7ecd7e4ae</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,22 +49,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-35880378e49bb2ddb718c21a7cf9a5f9</value>
-      <webElementGuid>4a6c7184-bd72-4661-894b-573c4063ba3d</webElementGuid>
+      <webElementGuid>59b1ee96-ced9-4976-9b68-46e4e02daaf4</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>ebf44941-037d-4c82-ae30-be95be50dc33</webElementGuid>
+      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>40a16a06-6c45-4a59-8b89-690f97530b73</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>bb7e6d74-d877-41c1-a138-c0470f5c4d27</webElementGuid>
+      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>9f76dfd7-7c4d-47f4-80fa-033b3803562a</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -296,10 +296,9 @@ public class CommonStory {
 		Plan: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Plans'),
 		EyeDiseases: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Eye Diseases'),
 		MentalAndFunctionalStatus: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Mental and Functional Status')
-	]
+	] 
 	
-	
-	static Map<String, TestObject> sectionMapForDirectDictation = [
+	static Map<String, TestObject> verifyMapForDirectDictation = [
 		ChiefComplaint: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/ChiefComplaint'),
 		HPI: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/HPI'),
 		CurrentEyeSymptoms: findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms'),

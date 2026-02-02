@@ -841,7 +841,7 @@ public class EVAASteps {
 
 		//		if (!CommonStory.isNullOrEmpty(PTDOB) &&
 		//				!PTDOB.trim().equalsIgnoreCase("Invalid Date")) {
-		//			actualPTDOB = CustomKeywords.'DateHelper.GetUTCFormattedDate'(PTDOB, 'M/d/yyyy')
+		//			actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'M/d/yyyy')
 		//		}
 
 		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
@@ -920,11 +920,11 @@ public class EVAASteps {
 		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'()
 
 		if (CommonStory.isNullOrEmpty(expectedPtDictationDt) == false) {
-			expectedPtDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
+			expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
 		}
 
-		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
-			ptDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(ptDictationDt, 'M/d/yyyy')
+		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) { 
+			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt,'M/d/yyyy')
 		}
 
 		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
@@ -981,14 +981,10 @@ public class EVAASteps {
 
 		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
 
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'()
-
-		if (CommonStory.isNullOrEmpty(expectedPtDictationDt) == false) {
-			expectedPtDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
-		}
-
+		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
+ 
 		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
-			ptDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(ptDictationDt, 'M/d/yyyy')
+			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
 
 		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
@@ -1043,15 +1039,11 @@ public class EVAASteps {
 		assertStory.verifyMatch("Patient Name", ptName, expectedPtName)
 
 		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
-
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'()
-
-		if (CommonStory.isNullOrEmpty(expectedPtDictationDt) == false) {
-			expectedPtDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
-		}
-
+ 
+			String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
+		  
 		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
-			ptDictationDt = CustomKeywords.'DateHelper.GetUTCFormattedDate'(ptDictationDt, 'M/d/yyyy')
+			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
 
 		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
@@ -1111,7 +1103,7 @@ public class EVAASteps {
 			expectedPTDOBText =  "$expectedPTDOB ($age)"
 		}
 
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'('M/d/yyyy')
+		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null,'M/d/yyyy')
 
 		def expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
 
@@ -1879,14 +1871,14 @@ public class EVAASteps {
 			try {
 				def elementStorageList = VariableStories.elementStorage
 				for (String name : elementStorageList) {
-					LogStories.logInfo("Element from Storage → ${name}")
+					LogStories.logInfo("*************************Element from Storage → ${name}*************************")
 
 					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
 
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
 						return
-					}
+					} 
 
 					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
 					List<String> actualTexts = elements.collect { it.text.trim() }
@@ -1894,9 +1886,10 @@ public class EVAASteps {
 					def variableKey = CommonStory.sectionMapForStorageKey.get(name)
 
 					def storedValue = VariableStories.getItem(variableKey)
-					if (CommonStory.isNullOrEmpty(storedValue)) return
+					if (CommonStory.isNullOrEmpty(storedValue))
+						return
 
-						List expectedList = CommonStory.getListObject(storedValue)
+					List expectedList = CommonStory.getListObject(storedValue)
 
 					expectedList.eachWithIndex { expected, i ->
 						String appendText = dictationData.getValue(name, row)
@@ -1957,7 +1950,7 @@ public class EVAASteps {
 
 					LogStories.logInfo("Element from Storage → ${name}")
 
-					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictationTyping.get(name)
 
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
@@ -2152,7 +2145,7 @@ public class EVAASteps {
 
 		LogStories.markPassed('The \'Recording Conflict\' text is displayed on the popup.')
 
-		String ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'('MM/dd/yyyy')
+		String ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null,'MM/dd/yyyy')
 
 		String expectedPtName = "$FirstName $LastName"
 
