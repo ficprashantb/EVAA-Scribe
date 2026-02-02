@@ -50,7 +50,7 @@ public class CommonSteps {
 		String timeStamp = new Date().format("yyyyMMdd_HHmmss")
 
 		String screenshotPath = RunConfiguration.getProjectDir() +
-				"/Screenshots/FAILED/${ssName}_${timeStamp}.png"
+				"/Screenshots/${ssName}_${timeStamp}.png"
 
 		WebUI.takeScreenshot(screenshotPath)
 
@@ -70,7 +70,7 @@ public class CommonSteps {
 			String timeStamp = new Date().format("yyyyMMdd_HHmmss")
 
 			String screenshotPath = RunConfiguration.getProjectDir() +
-					"/Screenshots/FAILED/${ssName}_${timeStamp}.png"
+					"/Screenshots/${ssName}_${timeStamp}.png"
 
 			WebUI.takeScreenshot(screenshotPath)
 

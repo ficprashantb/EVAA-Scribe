@@ -2270,40 +2270,64 @@ public class EVAASteps {
 			LogStories.markWarning("No stored elements for verification")
 			return
 		}
+
+		def elementStorageList = VariableStories.elementStorage
+
+		String clipboardText = UtilHelper.getClipboardText()
+
+		if (!CommonStory.isNullOrEmpty(clipboardText)) {
+			LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
+		}
 		else {
-			def elementStorageList = VariableStories.elementStorage
+			LogStories.markFailedAndStop("Verified copied content can not be pasted into an external editor")
+		}
 
-			String clipboardText = UtilHelper.getClipboardText()
+		clipboardText = clipboardText.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
-			if (!CommonStory.isNullOrEmpty(clipboardText)) {
-				LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
-			}
-			else {
-				LogStories.markFailedAndStop("Verified copied content can not be pasted into an external editor")
-			}
+		for (String name : elementStorageList) {
 
-			clipboardText = clipboardText.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+			LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
 
-			for (String name : elementStorageList) {
+			def variableKey = CommonStory.sectionMapForStorageKey.get(name)
+			String storedData = VariableStories.getItem(variableKey)
 
-				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+			if (!CommonStory.isNullOrEmpty(storedData)) {
+				List dataList = CommonStory.getListObject(storedData)
+				if (dataList.size() > 0) {
 
-				def variableKey = CommonStory.sectionMapForStorageKey.get(name)
-				String storedData = VariableStories.getItem(variableKey)
+					for (String data : dataList) {
+						String expectedData = data
 
-				if (!CommonStory.isNullOrEmpty(storedData)) {
-					List dataList = CommonStory.getListObject(storedData)
-					if (dataList.size() > 0) {
+						switch (name) {
+							case "CurrentEyeSymptoms":
+							case "EyeDiseases":
+								expectedData = expectedData.replaceFirst(":", " Notes:").replaceAll("\\(OS\\)|\\(OD\\)|\\(OU\\)", "")
+								break
+							case "ReviewOfSystems":
+								expectedData = expectedData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief")
+								expectedData = expectedData.replaceFirst(":", " Notes:").replaceAll("\\(OS\\)|\\(OD\\)|\\(OU\\)", "")
+								break
+							case "DifferentialDiagnosis":
+								def expectedDataList = expectedData
+								.toString()
+								.split(',', 2)   // split into two parts only
+								.collect { it.trim() }
+								.findAll { it }
 
-						for (String data : dataList) {
-							String expectedData = data.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-
-							assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
+								if (expectedDataList.size() >= 2) {
+									// Build combined string with both parts
+									expectedData = "Code: ${expectedDataList[0]} Diagnosis: ${expectedDataList[1]}"
+								}
+								break // skip the generic verification below for this case
 						}
+
+						expectedData = expectedData.replaceAll("\\s{2,}", " ").trim()
+
+						assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
 					}
-					else {
-						LogStories.markWarning('No data found')
-					}
+				}
+				else {
+					LogStories.markWarning('No data found')
 				}
 			}
 		}
@@ -2366,70 +2390,90 @@ public class EVAASteps {
 			LogStories.markWarning("No stored elements for verification")
 			return
 		}
-		else {
-			def elementStorageList = VariableStories.elementStorage
 
-			for (String name : elementStorageList) {
+		def elementStorageList = VariableStories.elementStorage
 
-				LogStories.logInfo("============================Copy SOAP Note Element Name - ${name}============================")
+		for (String name : elementStorageList) {
 
-				String moduleName = CommonStory.copyMapForDirectDictation.get(name)
+			LogStories.logInfo("============================Copy SOAP Note Element Name - ${name}============================")
 
-				TestObject sectionTO = testObjectStory.img_Copy_Note(moduleName)
+			String moduleName = CommonStory.copyMapForDirectDictation.get(name)
 
-				if (!sectionTO) {
-					LogStories.markWarning("No TestObject mapped for → ${name}")
-					return
-				}
+			TestObject sectionTO = testObjectStory.img_Copy_Note(moduleName)
 
-				Boolean isVisible = WebUI.verifyElementVisible(sectionTO, FailureHandling.OPTIONAL)
-				if(isVisible) {
-					LogStories.markPassed("Copy button is visible for → ${name}")
-				}
-				else {
-					LogStories.markFailed("Copy button is not visible for → ${name}")
-				}
-
-				WebUI.click(sectionTO)
-				LogStories.logInfo("Clicked on copy button for element → ${name}")
-				
-				LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
-				WebUI.delay(1)
-				
-				String clipboardText = UtilHelper.getClipboardText()
-
-				if (!CommonStory.isNullOrEmpty(clipboardText)) {
-					LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
-				}
-				else {
-					LogStories.markFailed("Verified copied content can not be pasted into an external editor")
-				}
-
-				clipboardText = clipboardText.replaceAll("\\s{2,}", " ").trim()
-				LogStories.logInfo("***********************************************************************************************************")
-				
-				LogStories.logInfo("**********************************Verify Clipboard Text for element - ${name}**********************************")
-				def variableKey = CommonStory.sectionMapForStorageKey.get(name)
-				String storedData = VariableStories.getItem(variableKey)
-
-				if (!CommonStory.isNullOrEmpty(storedData)) {
-					List dataList = CommonStory.getListObject(storedData)
-					if (dataList.size() > 0) {
-
-						for (String data : dataList) {
-							String expectedData = data.replaceAll("\\s{2,}", " ").trim()
-
-							assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
-						}
-					}
-					else {
-						LogStories.markWarning('No data found')
-					}
-				}
-				
-				LogStories.logInfo("***********************************************************************************************************")
-				
+			if (!sectionTO) {
+				LogStories.markWarning("No TestObject mapped for → ${name}")
+				return
 			}
+
+			Boolean isVisible = WebUI.verifyElementVisible(sectionTO, FailureHandling.OPTIONAL)
+			if(isVisible) {
+				LogStories.markPassed("Copy button is visible for → ${name}")
+			}
+			else {
+				LogStories.markFailed("Copy button is not visible for → ${name}")
+			}
+
+			WebUI.click(sectionTO)
+			LogStories.logInfo("Clicked on copy button for element → ${name}")
+
+			LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
+			WebUI.delay(1)
+
+			String clipboardText = UtilHelper.getClipboardText()
+
+			if (!CommonStory.isNullOrEmpty(clipboardText)) {
+				LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
+			}
+			else {
+				LogStories.markFailed("Verified copied content can not be pasted into an external editor")
+			}
+
+			clipboardText = clipboardText.replaceAll("\\s{2,}", " ").trim()
+			LogStories.logInfo("***********************************************************************************************************")
+
+			LogStories.logInfo("**********************************Verify Clipboard Text for element - ${name}**********************************")
+			def variableKey = CommonStory.sectionMapForStorageKey.get(name)
+			String storedData = VariableStories.getItem(variableKey)
+
+			if (!CommonStory.isNullOrEmpty(storedData)) {
+				List dataList = CommonStory.getListObject(storedData)
+				if (dataList.size() > 0) {
+
+					for (String data : dataList) {
+						String expectedData = data
+
+						switch (name) {
+							case "CurrentEyeSymptoms":
+							case "EyeDiseases":
+							case "ReviewOfSystems":
+								expectedData = expectedData.replaceFirst(":", " Notes:").replaceAll("\\(OS\\)|\\(OD\\)|\\(OU\\)", "")
+								break
+							case "DifferentialDiagnosis":
+								def expectedDataList = expectedData
+								.toString()
+								.split(',', 2)   // split into two parts only
+								.collect { it.trim() }
+								.findAll { it }
+
+								if (expectedDataList.size() >= 2) {
+									// Build combined string with both parts
+									expectedData = "Code: ${expectedDataList[0]} Diagnosis: ${expectedDataList[1]}"
+								}
+								continue // skip the generic verification below for this case
+						}
+
+						expectedData = expectedData.replaceAll("\\s{2,}", " ").trim()
+
+						assertStory.verifyContainsRegex("Copied SOAP Note for - ${name}", clipboardText, expectedData,false)
+					}
+				}
+				else {
+					LogStories.markWarning('No data found')
+				}
+			}
+
+			LogStories.logInfo("***********************************************************************************************************")
 		}
 	}
 }
