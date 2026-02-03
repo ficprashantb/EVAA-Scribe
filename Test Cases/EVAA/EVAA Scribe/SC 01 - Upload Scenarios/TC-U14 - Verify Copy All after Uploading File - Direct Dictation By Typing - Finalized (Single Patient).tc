@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>MBT55988</description>
    <name>TC-U14 - Verify Copy All after Uploading File - Direct Dictation By Typing - Finalized (Single Patient)</name>
    <tag></tag>
    <comment></comment>

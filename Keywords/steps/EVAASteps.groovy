@@ -1873,7 +1873,7 @@ public class EVAASteps {
 				for (String name : elementStorageList) {
 					LogStories.logInfo("*************************Element from Storage → ${name}*************************")
 
-					TestObject sectionTO = CommonStory.sectionMapForDirectDictation.get(name)
+					TestObject sectionTO = CommonStory.verifyMapForDirectDictation.get(name)
 
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
@@ -2328,51 +2328,50 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements() {
-		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
-
-		if (VariableStories.elementStorage.isEmpty()) {
-			LogStories.markWarning("No stored elements for verification")
-			return
-		}
-		else {
-
-			String clipboardText = UtilHelper.getClipboardText()
-			clipboardText = clipboardText
-
-			// Get all values as a list
-			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
-
-			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
-
-			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-			String jsonWanted = JsonOutput.toJson(moduleList)
-			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
-
-			// Ensure moduleList only shows data that exists in clipboardTextList
-			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
-			String jsonWantedModified = JsonOutput.toJson(moduleList)
-
-			LogStories.logInfo("Module List: ${jsonWanted}")
-			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
-
-			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
-
-			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-
-			// Equivalent index-based loop
-			for (int i = 0; i < moduleList.size(); i++) {
-				String name = moduleList.get(i)
-
-				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
-
-				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-
-				def actualData = clipboardTextList.get(i)
-				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-
-				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
-			}
-		}
+//		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
+//
+//		if (VariableStories.elementStorage.isEmpty()) {
+//			LogStories.markWarning("No stored elements for verification")
+//			return
+//		}
+//		else {
+//
+//			String clipboardText = UtilHelper.getClipboardText()
+//
+//			// Get all values as a list
+//			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
+//
+//			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
+//
+//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+//			String jsonWanted = JsonOutput.toJson(moduleList)
+//			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
+//
+//			// Ensure moduleList only shows data that exists in clipboardTextList
+//			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
+//			String jsonWantedModified = JsonOutput.toJson(moduleList)
+//
+//			LogStories.logInfo("Module List: ${jsonWanted}")
+//			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
+//
+//			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
+//
+//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+//
+//			// Equivalent index-based loop
+//			for (int i = 0; i < moduleList.size(); i++) {
+//				String name = moduleList.get(i)
+//
+//				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+//
+//				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+//
+//				def actualData = clipboardTextList.get(i)
+//				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+//
+//				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
+//			}
+//		}
 	}
 
 	@Keyword

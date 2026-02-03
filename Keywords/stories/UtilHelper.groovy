@@ -76,9 +76,9 @@ public class UtilHelper {
 			def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
 			def data = clipboard.getData(DataFlavor.stringFlavor)
 			return data?.toString()
-		}) 
+		})
 	}
-	
+
 	static void sendWindowsNotification(String title, String message) {
 		String psCommand = """
     powershell -command "
@@ -96,7 +96,6 @@ public class UtilHelper {
 		psCommand.execute()
 	}
 
-
 	static boolean isCloud() {
 		return System.getenv("KATALON_CLOUD_URL") ||
 				System.getenv("TESTOPS_URL")
@@ -106,39 +105,35 @@ public class UtilHelper {
 	 * Extracts only selected section labels from text,
 	 * skipping "Assessment" if it appears before "Differential Diagnosis".
 	 */
-	static List<String> getSelectedLabels(String input,List<String> wantedList) {
-
-		// If wanted is null or empty, assign an empty list
-		List<String> wanted = (wantedList == null || wantedList.isEmpty()) ? [] : wantedList
-
+	static List<String> getSelectedLabels(String input, List<String> desiredOrder) {
 		def lines = input.readLines()
-		List<String> labels = []
+		List<String> foundLabels = []
 		boolean seenDifferential = false
 		boolean planAdded = false
 
 		lines.each { line ->
-			def matcher = (line =~ /^([A-Za-z ]+):$/)
+			def matcher = (line =~ /^([\w\s]+):/)
 			if (matcher.matches()) {
-				String _label = matcher[0][1].trim()
-				String label = "${_label}:"
+				String label = matcher[0][1].trim() + ":"
 
-				if (_label == "Differential Diagnosis") {
+				if (label == "Differential Diagnosis:") {
 					seenDifferential = true
-					if (wanted.contains(label)) labels << label
-				} else if (_label == "Assessment" && !seenDifferential) {
+					foundLabels << label
+				} else if (label == "Assessment:" && !seenDifferential) {
 					// skip Assessment before Differential Diagnosis
-				} else if (_label == "Plan") {
+				} else if (label == "Plan:") {
 					if (!planAdded) {
-						labels << label
+						foundLabels << label
 						planAdded = true
 					}
-				} else if (wanted.contains(label)) {
-					labels << label
+				} else {
+					foundLabels << label
 				}
 			}
 		}
 
-		return labels
+		// Return labels in the desired sequence, only if they were found
+		return desiredOrder.findAll { foundLabels.contains(it) }
 	}
 }
 

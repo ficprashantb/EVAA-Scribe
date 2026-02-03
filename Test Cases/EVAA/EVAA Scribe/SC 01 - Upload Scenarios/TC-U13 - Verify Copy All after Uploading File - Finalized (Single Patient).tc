@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description></description>
+   <description>MBT55982</description>
    <name>TC-U13 - Verify Copy All after Uploading File - Finalized (Single Patient)</name>
    <tag></tag>
    <comment></comment>

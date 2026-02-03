@@ -7,22 +7,22 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
-      </entry>
-      <entry>
-         <key>CSS</key>
-         <value>div:nth-child(2) > .justify-between.flex.items-center span.text-sm[contenteditable=&quot;true&quot;]</value>
+         <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
+         <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;Patient reports vision has been slightly off for a while, which she attributes t&quot;i</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>span</value>
-      <webElementGuid>d1ae95cb-775a-4143-9042-7d970b347edc</webElementGuid>
+      <webElementGuid>44d1e85f-7d36-4811-b86b-51b6250b1e8c</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>bee04883-4755-4fef-adb6-383ac4730c1f</webElementGuid>
+      <webElementGuid>67bade8f-e8bb-438b-9c3d-6d2d4ca5f873</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +49,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>4fd0c2cf-2517-4f22-899d-fbc4a4630808</webElementGuid>
+      <webElementGuid>7e24c33d-7142-44e7-8d09-098f7854d3b1</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +57,7 @@
       <name>data-path</name>
       <type>Main</type>
       <value>Subjective[1].note.History</value>
-      <webElementGuid>68144cb7-6e6e-42cd-8d16-784126cc5d2d</webElementGuid>
+      <webElementGuid>f014ccf4-b8ef-4d7b-ad9a-3605e559cf86</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,22 +65,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-9b818a6e64288051c0072884a1b7340c</value>
-      <webElementGuid>09622fd4-015b-4eca-b5c2-7386fb49a85f</webElementGuid>
+      <webElementGuid>c5736e66-4399-4bf4-8b44-4a2968916dbe</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
-      <webElementGuid>cd78eb53-bbc8-476f-ae7f-0250307bd3cb</webElementGuid>
+      <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
+      <webElementGuid>2118d0ed-1a0d-4b11-818d-d5e036d55bb0</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>(//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)])[1]</value>
-      <webElementGuid>25e1f629-2a69-4121-9381-cbc26fe67682</webElementGuid>
+      <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
+      <webElementGuid>8a8d83fc-89b7-4b3a-a5fc-13ce894ad93f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
