@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-U16 - Verify Copy All after Uploading File - Direct Dictation By Typing - UnFinalized (Single Patient)</name>
+   <name>TC-U16 - Verify Copy Individual elements after Uploading File - Direct Dictation By Typing - UnFinalized (Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
