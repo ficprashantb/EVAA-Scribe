@@ -66,7 +66,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def commonStepsForEVAA(String FirstName, LastName, String FinalizedStatus = 'Pending', String MicStatus='Recording Not Started' ) {
+	def commonStepsForEVAA(String FirstName, LastName, String DOB, String FinalizedStatus = 'Pending', String MicStatus='Recording Not Started' ) {
 		LogStories.logInfo('----------------------Step AAE----------------------')
 
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
@@ -95,7 +95,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step G----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '(NaN)', '', FinalizedStatus, MicStatus)
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName,  DOB, FinalizedStatus, MicStatus)
 	}
 
 	@Keyword
@@ -171,7 +171,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeSOAPNotesAndSpeakerNotes'(expectedPtName)
 
 		LogStories.logInfo('----------------------Step K----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '', DOB,FinalizedStatus , MicStatus)
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB,FinalizedStatus , MicStatus)
 
 		LogStories.logInfo('----------------------Step L----------------------')
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -274,7 +274,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step R----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '', DOB, 'Finalized', 'Completed')
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, 'Finalized', 'Completed')
 
 		LogStories.logInfo('----------------------Step S----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
@@ -324,7 +324,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step U----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '', DOB, 'Finalized', 'Completed')
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName,  DOB, 'Finalized', 'Completed')
 
 		LogStories.logInfo('----------------------Step V----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
@@ -843,15 +843,8 @@ public class EVAASteps {
 
 		if (!CommonStory.isNullOrEmpty(DOB) &&
 				!DOB.trim().equalsIgnoreCase("Invalid Date")) {
-			expectedPTDOB = CustomKeywords.'DateHelper.GetISTFormattedDate'(DOB, 'M/d/yyyy')
+			expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
 		}
-
-		//		String actualPTDOB = PTDOB
-
-		//		if (!CommonStory.isNullOrEmpty(PTDOB) &&
-		//				!PTDOB.trim().equalsIgnoreCase("Invalid Date")) {
-		//			actualPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(PTDOB, 'M/d/yyyy')
-		//		}
 
 		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
 
@@ -1072,7 +1065,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def verifyEVAAScribeLeftSidePanel(String PatientName, String txtDOB,  String DOB, String FinalizedStatus, String MicStatus ) {
+	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus ) {
 		LogStories.logInfo('----------------------Step AF----------------------')
 
 		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
@@ -1093,8 +1086,8 @@ public class EVAASteps {
 
 		def actual_PatientDOB_DictationDate = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate'))
 
-		def expectedPTDOBText = txtDOB
-		if (CommonStory.isNullOrEmpty(txtDOB) == true) {
+		def expectedPTDOBText = DOB
+		if (!CommonStory.isNullOrEmpty(DOB) == true) {
 			String ageKey = "FP_${PatientName}".toUpperCase()
 
 			ageKey = "${ageKey}_PATIENT_AGE_AT_EXAM"
@@ -1107,7 +1100,7 @@ public class EVAASteps {
 						.trim()
 			}
 
-			String expectedPTDOB = CustomKeywords.'DateHelper.GetISTFormattedDate'(DOB, 'M/d/yyyy')
+			String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
 
 			expectedPTDOBText =  "$expectedPTDOB ($age)"
 		}
@@ -2127,7 +2120,7 @@ public class EVAASteps {
 		LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
 		LogStories.logInfo('----------------------Step A----------------------')
-		CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+		CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
 
 		LogStories.logInfo('----------------------Step B----------------------')
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
@@ -2337,50 +2330,50 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements() {
-		//		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
-		//
-		//		if (VariableStories.elementStorage.isEmpty()) {
-		//			LogStories.markWarning("No stored elements for verification")
-		//			return
-		//		}
-		//		else {
-		//
-		//			String clipboardText = UtilHelper.getClipboardText()
-		//
-		//			// Get all values as a list
-		//			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
-		//
-		//			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
-		//
-		//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-		//			String jsonWanted = JsonOutput.toJson(moduleList)
-		//			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
-		//
-		//			// Ensure moduleList only shows data that exists in clipboardTextList
-		//			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
-		//			String jsonWantedModified = JsonOutput.toJson(moduleList)
-		//
-		//			LogStories.logInfo("Module List: ${jsonWanted}")
-		//			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
-		//
-		//			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
-		//
-		//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-		//
-		//			// Equivalent index-based loop
-		//			for (int i = 0; i < moduleList.size(); i++) {
-		//				String name = moduleList.get(i)
-		//
-		//				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
-		//
-		//				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-		//
-		//				def actualData = clipboardTextList.get(i)
-		//				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-		//
-		//				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
-		//			}
-		//		}
+		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
+
+		if (VariableStories.elementStorage.isEmpty()) {
+			LogStories.markWarning("No stored elements for verification")
+			return
+		}
+		else {
+
+			String clipboardText = UtilHelper.getClipboardText()
+
+			// Get all values as a list
+			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
+
+			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
+
+			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+			String jsonWanted = JsonOutput.toJson(moduleList)
+			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
+
+			// Ensure moduleList only shows data that exists in clipboardTextList
+			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
+			String jsonWantedModified = JsonOutput.toJson(moduleList)
+
+			LogStories.logInfo("Module List: ${jsonWanted}")
+			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
+
+			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
+
+			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+
+			// Equivalent index-based loop
+			for (int i = 0; i < moduleList.size(); i++) {
+				String name = moduleList.get(i)
+
+				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+
+				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+
+				def actualData = clipboardTextList.get(i)
+				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+
+				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
+			}
+		}
 	}
 
 	@Keyword

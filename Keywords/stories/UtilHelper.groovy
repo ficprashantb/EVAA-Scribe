@@ -112,9 +112,10 @@ public class UtilHelper {
 		boolean planAdded = false
 
 		lines.each { line ->
+			// Match any word characters (including camelCase) and spaces before colon
 			def matcher = (line =~ /^([\w\s]+):/)
-			if (matcher.matches()) {
-				String label = matcher[0][1].trim() + ":"
+			if (matcher.find()) {
+				String label = matcher.group(1).trim() + ":"
 
 				if (label == "Differential Diagnosis:") {
 					seenDifferential = true
@@ -133,7 +134,10 @@ public class UtilHelper {
 		}
 
 		// Return labels in the desired sequence, only if they were found
-		return desiredOrder.findAll { foundLabels.contains(it) }
+		
+		def resultData = desiredOrder.findAll { foundLabels.contains(it) }
+		
+		return resultData
 	}
 }
 

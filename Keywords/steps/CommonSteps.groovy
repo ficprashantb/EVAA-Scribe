@@ -104,6 +104,7 @@ public class CommonSteps {
 	@Keyword
 	def findPatient(String lastName, String firstName) {
 		WebUI.click(findTestObject('PatientPage/Find Patients/FindPatient'))
+		LogStories.logInfo("Clicked on Find Patient") 
 
 		WebUI.setText(findTestObject('PatientPage/Find Patients/input_Find Patient_LastName'), lastName)
 
