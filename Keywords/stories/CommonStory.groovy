@@ -231,6 +231,7 @@ public class CommonStory {
 			'Allergic/Immuno'        	: 'ALLERGIC_IMMUNOLOGICAL_NOTES',
 			'Allergic'        			: 'ALLERGIC_IMMUNOLOGICAL_NOTES',
 			'Immuno'        			: 'ALLERGIC_IMMUNOLOGICAL_NOTES',
+			'Allergic Immunologic'      : 'ALLERGIC_IMMUNOLOGICAL_NOTES',
 			'Pregnant'        			: 'PREGNANT_NOTES',
 			'Nursing'        			: 'NURSING_NOTES',
 			'Additional'        		: 'ADDITIONAL_NOTES'

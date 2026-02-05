@@ -27,7 +27,7 @@ class EVAATestListener {
 		PermissionManagerListener.enableBrowserPermissions()
 
 		//	 WebUI.openBrowser('')
-		
+
 		String siteURL = GlobalVariable.EVAA_SiteURL
 		WebUI.navigateToUrl(siteURL)
 		LogStories.logInfo("Site URL: $siteURL")

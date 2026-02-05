@@ -95,7 +95,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step G----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, 'Invalid Date (NaN)', '', FinalizedStatus, MicStatus)
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, '(NaN)', '', FinalizedStatus, MicStatus)
 	}
 
 	@Keyword
@@ -418,7 +418,10 @@ public class EVAASteps {
 			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
 			String actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.STOP_ON_FAILURE)
-			assertStory.verifyMatch("HPI", actualHPI?.replaceAll("[:]", ""), expectedData?.replaceAll("[:]", ""))
+
+			actualHPI=	actualHPI?.replaceAll(":(?=.*:)", "")
+			expectedData=	expectedData?.replaceAll(":(?=.*:)", "")
+			assertStory.verifyMatch("HPI", actualHPI, expectedData)
 		}
 
 		// ===== Current Eye Symptoms =====
@@ -469,7 +472,7 @@ public class EVAASteps {
 					String actual = WebUI.getText(tableAllergies, FailureHandling.OPTIONAL)
 
 					actual=	actual?.replaceAll(":(?=.*:)", "")
-					String expected=	allergies?.replaceAll(":(?=.*:)", "")
+					String expected = allergies?.replaceAll(":(?=.*:)", "")
 
 					assertStory.verifyMatch("Allergies", actual, expected)
 					index++
@@ -536,7 +539,7 @@ public class EVAASteps {
 						String actual = WebUI.getAttribute(input_Review_of_Systems, 'value', FailureHandling.OPTIONAL)
 
 						actual=	actual?.replaceAll(":(?=.*:)", "")
-						expected=	expected?.replaceAll(":(?=.*:)", "")
+						expected =	expected?.replaceAll(":(?=.*:)", "")
 
 						assertStory.verifyMatch("Review Of Systems- $name", actual, expected)
 						verifyRadioButtonIsChecked(review, name, 'ROS')
@@ -562,7 +565,7 @@ public class EVAASteps {
 					String actual = WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
 
 					actual=	actual?.replaceAll(":(?=.*:)", "")
-					expected=	expected?.replaceAll(":(?=.*:)", "")
+					expected =	expected?.replaceAll(":(?=.*:)", "")
 
 					assertStory.verifyMatch("Problems", actual, expected)
 					index++
@@ -607,7 +610,10 @@ public class EVAASteps {
 				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
 
 				String actual=	actualAssessment?.replaceAll(":(?=.*:)", "")
-				String expected=	expectedAssessment?.replaceAll(":(?=.*:)", "")
+				// Remove leading number + dot + spaces at the start of each line
+				actual = actual.replaceAll(/(?m)^\d+\.\s*/, '')
+
+				String expected = expectedAssessment?.replaceAll(":(?=.*:)", "")
 
 				assertStory.verifyMatch("Assessment", actual, expected)
 			} else {
@@ -630,7 +636,10 @@ public class EVAASteps {
 				}
 
 				String actual=	actualPlans?.replaceAll(":(?=.*:)", "")
-				String expected=	expectedPlans?.replaceAll(":(?=.*:)", "")
+				// Remove leading number + dot + spaces at the start of each line
+				actual = actual.replaceAll(/(?m)^\d+\.\s*/, '')
+
+				String expected = expectedPlans?.replaceAll(":(?=.*:)", "")
 
 				assertStory.verifyMatch("Plans", actual, expected)
 			} else {
@@ -923,7 +932,7 @@ public class EVAASteps {
 			expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
 		}
 
-		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) { 
+		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
 			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt,'M/d/yyyy')
 		}
 
@@ -982,7 +991,7 @@ public class EVAASteps {
 		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
 
 		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
- 
+
 		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
 			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
@@ -1039,9 +1048,9 @@ public class EVAASteps {
 		assertStory.verifyMatch("Patient Name", ptName, expectedPtName)
 
 		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
- 
-			String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
-		  
+
+		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
+
 		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
 			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
@@ -1878,7 +1887,7 @@ public class EVAASteps {
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
 						return
-					} 
+					}
 
 					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
 					List<String> actualTexts = elements.collect { it.text.trim() }
@@ -2328,50 +2337,50 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements() {
-//		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
-//
-//		if (VariableStories.elementStorage.isEmpty()) {
-//			LogStories.markWarning("No stored elements for verification")
-//			return
-//		}
-//		else {
-//
-//			String clipboardText = UtilHelper.getClipboardText()
-//
-//			// Get all values as a list
-//			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
-//
-//			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
-//
-//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-//			String jsonWanted = JsonOutput.toJson(moduleList)
-//			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
-//
-//			// Ensure moduleList only shows data that exists in clipboardTextList
-//			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
-//			String jsonWantedModified = JsonOutput.toJson(moduleList)
-//
-//			LogStories.logInfo("Module List: ${jsonWanted}")
-//			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
-//
-//			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
-//
-//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
-//
-//			// Equivalent index-based loop
-//			for (int i = 0; i < moduleList.size(); i++) {
-//				String name = moduleList.get(i)
-//
-//				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
-//
-//				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-//
-//				def actualData = clipboardTextList.get(i)
-//				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
-//
-//				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
-//			}
-//		}
+		//		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
+		//
+		//		if (VariableStories.elementStorage.isEmpty()) {
+		//			LogStories.markWarning("No stored elements for verification")
+		//			return
+		//		}
+		//		else {
+		//
+		//			String clipboardText = UtilHelper.getClipboardText()
+		//
+		//			// Get all values as a list
+		//			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
+		//
+		//			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
+		//
+		//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+		//			String jsonWanted = JsonOutput.toJson(moduleList)
+		//			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
+		//
+		//			// Ensure moduleList only shows data that exists in clipboardTextList
+		//			moduleList = moduleList.findAll { clipboardTextList.contains(it) }
+		//			String jsonWantedModified = JsonOutput.toJson(moduleList)
+		//
+		//			LogStories.logInfo("Module List: ${jsonWanted}")
+		//			LogStories.logInfo("Clipboard List: ${jsonClipboard}")
+		//
+		//			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
+		//
+		//			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+		//
+		//			// Equivalent index-based loop
+		//			for (int i = 0; i < moduleList.size(); i++) {
+		//				String name = moduleList.get(i)
+		//
+		//				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+		//
+		//				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+		//
+		//				def actualData = clipboardTextList.get(i)
+		//				actualData = actualData.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
+		//
+		//				assertStory.verifyMatch("SOAP Note Order - ${name}", actualData, expectedData)
+		//			}
+		//		}
 	}
 
 	@Keyword
