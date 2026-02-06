@@ -37,13 +37,13 @@ class EVAATestListener {
 
 		GlobalVariable.IS_ENCOUNTER_ID = false
 
-		boolean isCloud = UtilHelper.isCloud()
-
-		if(!isCloud) {
-			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots"
-
-			CustomKeywords.'steps.CommonKeywords.deleteAllFiles'(screenshotPath)
-		}
+//		boolean isCloud = UtilHelper.isCloud()
+//
+//		if(!isCloud) {
+//			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots"
+//
+//			CustomKeywords.'steps.CommonKeywords.deleteAllFiles'(screenshotPath)
+//		}
 	}
 
 	/*
@@ -63,7 +63,7 @@ class EVAATestListener {
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'()
 		}
 
-		LogStories.sendNotification("${testCaseId} is completed.")
+//		LogStories.sendNotification("${testCaseId} is completed.")
 
 		WebUI.closeBrowser()
 	}
