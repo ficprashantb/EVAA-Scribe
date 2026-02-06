@@ -3,9 +3,9 @@
    <description></description>
    <name>EVAA Scribe Suite Collection</name>
    <tag></tag>
-   <delayBetweenInstances>30</delayBetweenInstances>
+   <delayBetweenInstances>0</delayBetweenInstances>
    <executionMode>PARALLEL</executionMode>
-   <maxConcurrentInstances>8</maxConcurrentInstances>
+   <maxConcurrentInstances>2</maxConcurrentInstances>
    <testSuiteRunConfigurations>
       <TestSuiteRunConfiguration>
          <configuration>
