@@ -6,16 +6,16 @@
    <elementGuidId>00b7ebec-6e15-42c1-84ed-2db08dd2b192</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value> //div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[contains(@data-path,&quot;note.Mood Or Affect&quot;)]</value>
+         <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value> //div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[contains(@data-path,&quot;note.Mood Or Affect&quot;)]</value>
+         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value></value>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -33,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>3febb48c-e2ea-4b68-a312-c581c628a76a</webElementGuid>
+      <webElementGuid>df38b76b-5c3b-42d1-a113-867f43448f0a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +41,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>5837998a-6601-4da8-ac33-8d5ecf36d778</webElementGuid>
+      <webElementGuid>1b40e600-341b-46ca-956b-917e33b62fed</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,22 +49,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-35880378e49bb2ddb718c21a7cf9a5f9</value>
-      <webElementGuid>5ae463f5-fee7-4c87-b79d-c207a99dfd9e</webElementGuid>
+      <webElementGuid>fa725f77-12de-4105-b9fe-9c8e7310c9cb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value> //div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[contains(@data-path,&quot;note.Mood Or Affect&quot;)]</value>
-      <webElementGuid>4c010bc5-5b51-4089-81c6-85238809b788</webElementGuid>
+      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>12081517-c6fa-4263-a9e5-4249beed9650</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value> //div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]/span[contains(@data-path,&quot;note.Mood Or Affect&quot;)]</value>
-      <webElementGuid>4b609cf8-f664-455e-857c-bfa1dda2f313</webElementGuid>
+      <value>//div[*/span[text()='Mental and Functional Status:']]/following-sibling::div//div[@class=&quot;text-sm text-black&quot;]</value>
+      <webElementGuid>44458e26-b425-415c-b248-8ff8bb1d9fd8</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
