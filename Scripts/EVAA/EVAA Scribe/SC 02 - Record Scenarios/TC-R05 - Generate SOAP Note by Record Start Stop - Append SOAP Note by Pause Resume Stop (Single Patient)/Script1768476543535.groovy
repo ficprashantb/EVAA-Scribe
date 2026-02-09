@@ -39,7 +39,7 @@ def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
 

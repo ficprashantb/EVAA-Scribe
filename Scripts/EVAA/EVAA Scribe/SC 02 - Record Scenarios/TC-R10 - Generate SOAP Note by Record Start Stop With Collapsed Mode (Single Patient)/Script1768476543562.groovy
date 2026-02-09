@@ -38,7 +38,7 @@ def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
 
 CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
     ExamLocation, Provider, Technician)
