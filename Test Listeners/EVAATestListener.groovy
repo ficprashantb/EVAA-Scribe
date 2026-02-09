@@ -24,9 +24,9 @@ class EVAATestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
 
-		PermissionManagerListener.enableBrowserPermissions()
+//		PermissionManagerListener.enableBrowserPermissions()
 
-		//	 WebUI.openBrowser('')
+		WebUI.openBrowser('')
 
 		String siteURL = GlobalVariable.EVAA_SiteURL
 		WebUI.navigateToUrl(siteURL)
@@ -36,14 +36,6 @@ class EVAATestListener {
 		WebUI.maximizeWindow()
 
 		GlobalVariable.IS_ENCOUNTER_ID = false
-
-//		boolean isCloud = UtilHelper.isCloud()
-//
-//		if(!isCloud) {
-//			String screenshotPath = RunConfiguration.getProjectDir() +"/Screenshots"
-//
-//			CustomKeywords.'steps.CommonKeywords.deleteAllFiles'(screenshotPath)
-//		}
 	}
 
 	/*

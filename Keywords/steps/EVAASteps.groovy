@@ -72,9 +72,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
 
 		GlobalVariable.IS_ENCOUNTER_ID = true
-
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
-
+ 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String PtName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'))
@@ -161,7 +159,6 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
 
 		LogStories.logInfo('----------------------Step H----------------------')
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 		LogStories.logInfo('----------------------Step I----------------------')
@@ -267,8 +264,6 @@ public class EVAASteps {
 		navigateStory.retryAction {
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 60, FailureHandling.STOP_ON_FAILURE)
 		}
-
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		LogStories.logInfo('----------------------Step Q----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
@@ -604,8 +599,6 @@ public class EVAASteps {
 			if (assessmentList.size() > 0) {
 				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
 
-				CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
-
 				String expectedAssessment = assessmentList.join('\n')
 				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
 
@@ -626,8 +619,6 @@ public class EVAASteps {
 			List plansList = CommonStory.getListObject(expectedData)
 			if (plansList.size() > 0) {
 				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 				String expectedPlans = plansList.join('\n')
 				String actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
@@ -1068,15 +1059,11 @@ public class EVAASteps {
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus ) {
 		LogStories.logInfo('----------------------Step AF----------------------')
 
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
-
 		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
 
 		WebUI.waitForElementVisible(toPatientName, 60, FailureHandling.STOP_ON_FAILURE)
 
 		waitStory.waitForElementText(toPatientName, 30)
-
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
 
 		WebUI.delay(5)
 

@@ -265,9 +265,7 @@ public class CommonSteps {
 		LogStories.logInfo('iframeContainer found')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
-		LogStories.logInfo('Expand Recording found')
-
-		CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
+		LogStories.logInfo('Expand Recording found') 
 
 		// Check if search box is present
 		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
@@ -297,9 +295,7 @@ public class CommonSteps {
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
-			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
-
-			CustomKeywords.'steps.CommonSteps.takeTestCaseScreenshot'()
+			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE) 
 
 			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
 			if (IS_ENCOUNTER_ID) {
