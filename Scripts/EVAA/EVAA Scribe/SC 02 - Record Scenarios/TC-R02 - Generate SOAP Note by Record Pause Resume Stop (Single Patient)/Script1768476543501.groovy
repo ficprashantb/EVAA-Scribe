@@ -43,4 +43,4 @@ CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName,
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName,Provider_LastName )
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

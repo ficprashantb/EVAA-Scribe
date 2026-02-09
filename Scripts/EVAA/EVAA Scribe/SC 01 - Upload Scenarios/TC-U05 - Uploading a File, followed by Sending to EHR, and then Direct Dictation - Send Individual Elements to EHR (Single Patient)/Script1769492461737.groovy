@@ -47,7 +47,7 @@ CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
+CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -63,4 +63,4 @@ CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

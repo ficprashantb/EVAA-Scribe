@@ -43,7 +43,7 @@ CustomKeywords.'steps.EVAASteps.directDictationByTypingOnElements'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1)
+CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -51,7 +51,7 @@ CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'(1) 
+CustomKeywords.'steps.EVAASteps.verifyStoredDirectDictationOnEVAAScribe'() 
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 //Direct Dictation By Typing on Elements

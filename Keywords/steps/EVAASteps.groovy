@@ -295,28 +295,28 @@ public class EVAASteps {
 		String expectedPtName = "$FirstName $LastName"
 
 		if(isFinalize) {
-			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 10, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 5, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 5, FailureHandling.STOP_ON_FAILURE)
 
 			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalize'), FailureHandling.STOP_ON_FAILURE)
 			LogStories.logInfo("Clicked on Finalize")
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized'), 30, FailureHandling.STOP_ON_FAILURE)
 			LogStories.markPassed("Status updated to Finalized!")
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 15, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 5, FailureHandling.STOP_ON_FAILURE)
 
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 5, FailureHandling.STOP_ON_FAILURE)
 		}
 
-		WebUI.delay(2)
+		//		WebUI.delay(2)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
 
@@ -334,59 +334,59 @@ public class EVAASteps {
 			LogStories.markWarning("No stored elements for verification")
 			return
 		}
-		else {
-			def elementStorageList = VariableStories.elementStorage
 
-			for (String name : elementStorageList) {
-				LogStories.logInfo("Element from Storage → ${name}")
+		def elementStorageList = VariableStories.elementStorage
 
-				LogStories.logInfo("============================Element Name - ${name}============================")
+		for (String name : elementStorageList) {
+			LogStories.logInfo("Element from Storage → ${name}")
 
-				String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
+			LogStories.logInfo("============================Element Name - ${name}============================")
 
-				TestObject sectionTO = testObjectStory.img_SendToMaximeyesWithParams(moduleName)
+			String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
 
-				if (!sectionTO) {
-					LogStories.markWarning("No TestObject mapped for → ${name}")
-					return
-				}
+			TestObject sectionTO = testObjectStory.img_SendToMaximeyesWithParams(moduleName)
 
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(name)
-
-				WebUI.waitForElementVisible(sectionTO, 20, FailureHandling.STOP_ON_FAILURE)
-
-				WebUI.click(sectionTO, FailureHandling.STOP_ON_FAILURE)
-				LogStories.logInfo("Clicked on Send to MaximEyes for element- ${name}");
-
-				TestObject failedSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/Failed to send SOAP note to MaximEyes')
-				boolean	isVisible = WebUI.waitForElementVisible(failedSOAPNote, 2,FailureHandling.OPTIONAL)
-				if(isVisible) {
-					LogStories.markFailed("${name} - Failed to send SOAP note to MaximEyes.")
-				}
-
-				TestObject passSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully')
-				isVisible = WebUI.waitForElementVisible(passSOAPNote, 30, FailureHandling.CONTINUE_ON_FAILURE)
-				if(isVisible) {
-					LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
-				}
-
-				boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
-				if(isRefreshPresent) {
-					WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
-					LogStories.logInfo("Clicked on Refresh button")
-
-					WebUI.delay(2)
-				}
-
-				LogStories.logInfo('----------------------Step W----------------------')
-				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
-
-				LogStories.logInfo('----------------------Step X----------------------')
-				CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
-
-				LogStories.logInfo('----------------------Step Y----------------------')
-				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+			if (!sectionTO) {
+				LogStories.markWarning("No TestObject mapped for → ${name}")
+				continue
 			}
+
+			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(name)
+
+			WebUI.waitForElementVisible(sectionTO, 20)
+
+			WebUI.click(sectionTO)
+			LogStories.logInfo("Clicked on Send to MaximEyes for element- ${name}");
+
+			// Toast checks
+			TestObject failedSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/Failed to send SOAP note to MaximEyes')
+			boolean	isVisible = WebUI.waitForElementVisible(failedSOAPNote, 2,FailureHandling.OPTIONAL)
+			if(isVisible) {
+				LogStories.markFailed("${name} - Failed to send SOAP note to MaximEyes.")
+			}
+
+			TestObject passSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/SOAP note sent to MaximEyes successfully')
+			isVisible = WebUI.waitForElementVisible(passSOAPNote, 10, FailureHandling.CONTINUE_ON_FAILURE)
+			if(isVisible) {
+				LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
+			}
+
+			boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
+			if(isRefreshPresent) {
+				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
+				LogStories.logInfo("Clicked on Refresh button")
+
+				WebUI.delay(2)
+			}
+
+			LogStories.logInfo('----------------------Step W----------------------')
+			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+
+			LogStories.logInfo('----------------------Step X----------------------')
+			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
+
+			LogStories.logInfo('----------------------Step Y----------------------')
+			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 		}
 	}
 
@@ -399,7 +399,7 @@ public class EVAASteps {
 
 		LogStories.logInfo("********************SOAP Note - ${key}*********************")
 
-		WebUI.delay(5)
+		WebUI.delay(4)
 
 		// ===== Chief Complaint =====
 		if (key == "ChiefComplaint" && !CommonStory.isNullOrEmpty(expectedData)) {
@@ -1008,15 +1008,15 @@ public class EVAASteps {
 
 		LogStories.logInfo("Speaker Notes→ $speakerNotes")
 
-		//		//Speaker A
-		//		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
-		//
-		//		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, maxCount)
-		//
-		//		//Speaker B
-		//		int countSpeakerB = speakerNotes.findAll('Speaker B').size()
-		//
-		//		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, maxCount)
+		//Speaker A
+		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
+
+		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, maxCount)
+
+		//Speaker B
+		int countSpeakerB = speakerNotes.findAll('Speaker B').size()
+
+		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, maxCount)
 
 		//Speaker Dictation Word Count
 		int wordCount = speakerNotes.trim().split('\\s+').length
@@ -1240,7 +1240,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def verifySOAPNoteSentToMaximeyes(String Provider_FirstName, String Provider_LastName) {
+	def verifySOAPNoteSentToMaximeyes() {
 		LogStories.logInfo('----------------------Step AI----------------------')
 
 		for (key in  VariableStories.elementStorage) {
@@ -1847,7 +1847,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def verifyStoredDirectDictationOnEVAAScribe(int index = 1) {
+	def verifyStoredDirectDictationOnEVAAScribe() {
 		LogStories.logInfo('----------------------Step AV----------------------')
 
 		if (VariableStories.elementStorage.isEmpty()) {
@@ -1856,59 +1856,46 @@ public class EVAASteps {
 		}
 
 		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
+		int row = 1   // always first row
+		CommonStory commonStory = new CommonStory(dictationData, row)
 
-		int row = 1   // first row
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+		try {
+			def elementStorageList = VariableStories.elementStorage
+			for (String name : elementStorageList) {
+				LogStories.logInfo("*************************Element from Storage → ${name}*************************")
 
-		int rowCount = dictationData.getRowNumbers()
-		if (index < 1 || index > rowCount) {
-			LogStories.markFailed("Invalid row index ${index}")
-			return
-		}
+				TestObject sectionTO = CommonStory.verifyMapForDirectDictation.get(name)
+				if (!sectionTO) {
+					LogStories.markWarning("No TestObject mapped for → ${name}")
+					continue
+				}
 
-		CommonStory commonStory = new CommonStory(dictationData,index);
+				List<WebElement> elements = WebUI.findWebElements(sectionTO, 5) // shorter timeout
+				if (elements.isEmpty()) {
+					LogStories.markWarning("No elements found for → ${name}")
+					continue
+				}
 
-		if (!VariableStories.elementStorage.isEmpty()) {
-			WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+				List<String> actualTexts = elements.collect { it.text.trim() }
 
-			try {
-				def elementStorageList = VariableStories.elementStorage
-				for (String name : elementStorageList) {
-					LogStories.logInfo("*************************Element from Storage → ${name}*************************")
-
-					TestObject sectionTO = CommonStory.verifyMapForDirectDictation.get(name)
-
-					if (!sectionTO) {
-						LogStories.markWarning("No TestObject mapped for → ${name}")
-						return
-					}
-
-					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
-					List<String> actualTexts = elements.collect { it.text.trim() }
-
-					def variableKey = CommonStory.sectionMapForStorageKey.get(name)
-
-					def storedValue = VariableStories.getItem(variableKey)
-					if (CommonStory.isNullOrEmpty(storedValue))
-						return
+				def variableKey = CommonStory.sectionMapForStorageKey.get(name)
+				def storedValue = VariableStories.getItem(variableKey)
+				if (CommonStory.isNullOrEmpty(storedValue)) continue
 
 					List expectedList = CommonStory.getListObject(storedValue)
 
-					expectedList.eachWithIndex { expected, i ->
-						String appendText = dictationData.getValue(name, row)
-						String expectedText = "${expected} ${appendText}"
-
-						appendText=	appendText?.replaceAll(":(?=.*:)", "")
-						expectedText=	expectedText?.replaceAll(":(?=.*:)", "")
-
-						assertStory.verifyMatch("Direct Dictation→→ ${name}",actualTexts[i],expectedText)
-					}
+				// Cache dictation value once per name
+				String appendText = dictationData.getValue(name, row)?.replaceAll(":(?=.*:)", "")
+				expectedList.eachWithIndex { expected, i ->
+					String expectedText = "${expected} ${appendText}".replaceAll(":(?=.*:)", "")
+					assertStory.verifyMatch("Direct Dictation→→ ${name}", actualTexts[i], expectedText)
 				}
-			} catch (e) {
-				e.printStackTrace()
-			}finally		{
-				// Switch back
-				WebUI.switchToDefaultContent()
 			}
+		} catch (e) {
+			e.printStackTrace()
+		} finally {
+			WebUI.switchToDefaultContent()
 		}
 	}
 
@@ -2134,7 +2121,7 @@ public class EVAASteps {
 
 			if(isSendToEHR) {
 				LogStories.logInfo('----------------------Step E----------------------')
-				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'(Provider_FirstName, Provider_LastName)
+				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
 			}
 		}
 	}
