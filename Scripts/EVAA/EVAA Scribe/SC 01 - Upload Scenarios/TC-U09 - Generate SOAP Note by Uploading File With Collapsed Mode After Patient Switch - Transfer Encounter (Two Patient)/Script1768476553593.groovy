@@ -60,7 +60,7 @@ LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 

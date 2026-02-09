@@ -2089,7 +2089,7 @@ public class EVAASteps {
 
 		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
-		def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+		def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
 
 		LogStories.logInfo("Upload File Path=> $uploadFilePath")
 

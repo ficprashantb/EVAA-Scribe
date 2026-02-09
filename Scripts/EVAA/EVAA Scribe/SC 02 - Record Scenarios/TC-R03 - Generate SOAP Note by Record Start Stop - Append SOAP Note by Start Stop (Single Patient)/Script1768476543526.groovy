@@ -31,11 +31,11 @@ CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
+def recordFilePath = RunConfiguration.getProjectDir() + "/Files/${RecordFilePath}"
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 

@@ -31,7 +31,7 @@ CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
+def recordFilePath = RunConfiguration.getProjectDir() + "/Files/${RecordFilePath}"
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
