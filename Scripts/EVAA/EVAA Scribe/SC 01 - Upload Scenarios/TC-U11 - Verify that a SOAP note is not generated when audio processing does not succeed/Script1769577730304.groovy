@@ -48,7 +48,7 @@ KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 

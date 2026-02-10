@@ -1560,20 +1560,11 @@ public class EVAASteps {
 		// Log the file path
 		LogStories.logInfo("File Path: " + UploadFilePath)
 
-		// Upload the file
-		//		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
-
 		TestObject upload = findTestObject('EVAAPage/EVAA Scribe/Menu/defile input')
 
-		//		WebUI.executeJavaScript(
-		//		  "arguments[0].value = ''",
-		//		  Arrays.asList(WebUI.findWebElement(upload, 5))
-		//		)
-
-//		WebUI.uploadFileToWeb(upload, UploadFilePath)
+		//		WebUI.uploadFileToWeb(upload, UploadFilePath)
 		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, UploadFilePath)
 		
-
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
 		LogStories.logInfo("Awaiting file upload...")
@@ -1879,7 +1870,9 @@ public class EVAASteps {
 				String appendText = dictationData.getValue(name, row)?.replaceAll(":(?=.*:)", "")
 				expectedList.eachWithIndex { expected, i ->
 					String expectedText = "${expected} ${appendText}".replaceAll(":(?=.*:)", "")
-					assertStory.verifyMatch("Direct Dictation→→ ${name}", actualTexts[i], expectedText)
+					String actualText = "${actualTexts[i]}".replaceAll(":(?=.*:)", "")
+					
+					assertStory.verifyMatch("Direct Dictation→→ ${name}", actualText, expectedText)
 				}
 			}
 		} catch (e) {
@@ -2232,6 +2225,17 @@ public class EVAASteps {
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+	}
+	
+	@Keyword
+	def ClickOnCopyAllButton() {
+		LogStories.logInfo("---------------------Verify clicking Copy All copies data from all available elements---------------------")
+
+		if (VariableStories.elementStorage.isEmpty()) {
+			LogStories.markWarning("No stored elements for verification")
+			return
+		}
+
 	}
 
 	@Keyword

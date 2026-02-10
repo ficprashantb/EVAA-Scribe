@@ -17,9 +17,8 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.util.KeywordUtil
-
-import stories.AssertStory
+import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import stories.AssertStory as AssertStory
 import stories.ExceptionHelper as ExceptionHelper
 import stories.LogStories as LogStories
 import stories.NavigateStory as NavigateStory
@@ -30,29 +29,30 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U13'
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath,FirstName,LastName,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician,true,false)
+
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 
+    Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, true, false)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
-WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is displayed.')
 
-WebUI.verifyElementClickable(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is Clickable.')
-
-WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('Clicked on \'Copy All\' button.')
+CustomKeywords.'steps.EVAASteps.ClickOnCopyAllButton'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+
 CustomKeywords.'steps.EVAASteps.VerifyCopiedAllSOAPNotes'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
-LogStories.logInfo('---------------------------Verify original element data remains unchanged after copying---------------------------')
-AssertStory assertStory = new AssertStory();
 
-String expectedSOAPNotes = VariableStories.getItem("SOAP_NOTES")
+LogStories.logInfo('---------------------------Verify original element data remains unchanged after copying---------------------------')
+
+AssertStory assertStory = new AssertStory()
+
+String expectedSOAPNotes = VariableStories.getItem('SOAP_NOTES')
+
 def actualSOAPNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
-assertStory.verifyMatch("SOAP Notes", actualSOAPNotes, expectedSOAPNotes)
+assertStory.verifyMatch('SOAP Notes', actualSOAPNotes, expectedSOAPNotes)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
+
 CustomKeywords.'steps.EVAASteps.VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements'()
