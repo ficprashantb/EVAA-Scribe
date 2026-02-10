@@ -43,11 +43,7 @@ public class PermissionManagerListener {
 				prefs.put("profile.default_content_setting_values.clipboard", 1)
 				prefs.put("profile.default_content_setting_values.background_sync", 1)
 				prefs.put("profile.default_content_setting_values.media_stream", 1)
-
-			// Disable the permission bubbles UI
-				prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
-				prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
-
+ 
 //			// Set download directory and auto-allow downloads
 //				prefs.put("download.prompt_for_download", false)
 //				prefs.put("download.default_directory", System.getProperty("user.home") + "/Downloads")
