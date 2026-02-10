@@ -2229,13 +2229,19 @@ public class EVAASteps {
 	
 	@Keyword
 	def ClickOnCopyAllButton() {
-		LogStories.logInfo("---------------------Verify clicking Copy All copies data from all available elements---------------------")
+		LogStories.logInfo("---------------------Click On Copy AllButton---------------------")
 
-		if (VariableStories.elementStorage.isEmpty()) {
-			LogStories.markWarning("No stored elements for verification")
-			return
-		}
-
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('The \'Copy All\' button is displayed.')
+		
+		WebUI.verifyElementClickable(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('The \'Copy All\' button is Clickable.')
+		
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('Clicked on \'Copy All\' button.')
+		
+		String clipboardText = UtilHelper.getClipboardText()
+		VariableStories.setItem("CLIPBOARD_TEXT",clipboardText) 
 	}
 
 	@Keyword
@@ -2249,7 +2255,7 @@ public class EVAASteps {
 
 		def elementStorageList = VariableStories.elementStorage
 
-		String clipboardText = UtilHelper.getClipboardText()
+		String clipboardText = VariableStories.getItem("CLIPBOARD_TEXT")
 
 		if (!CommonStory.isNullOrEmpty(clipboardText)) {
 			LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
@@ -2318,8 +2324,8 @@ public class EVAASteps {
 			return
 		}
 		else {
-
-			String clipboardText = UtilHelper.getClipboardText()
+ 
+			String clipboardText = VariableStories.getItem("CLIPBOARD_TEXT")
 
 			// Get all values as a list
 			List<String> moduleList = CommonStory.moduleMapForDirectDictation.values().toList()
@@ -2395,7 +2401,7 @@ public class EVAASteps {
 			LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
 			WebUI.delay(1)
 
-			String clipboardText = UtilHelper.getClipboardText()
+			String clipboardText = UtilHelper.getClipboardText() 
 
 			if (!CommonStory.isNullOrEmpty(clipboardText)) {
 				LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")

@@ -58,14 +58,7 @@ LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeDirectDictationNote'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
-WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is displayed.')
-
-WebUI.verifyElementClickable(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('The \'Copy All\' button is Clickable.')
-
-WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
-LogStories.markPassed('Clicked on \'Copy All\' button.')
+CustomKeywords.'steps.EVAASteps.ClickOnCopyAllButton'()
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.VerifyCopiedAllSOAPNotes'()
