@@ -1570,7 +1570,9 @@ public class EVAASteps {
 		//		  Arrays.asList(WebUI.findWebElement(upload, 5))
 		//		)
 
-		WebUI.uploadFile(upload, UploadFilePath)
+//		WebUI.uploadFileToWeb(upload, UploadFilePath)
+		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, UploadFilePath)
+		
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
@@ -1607,7 +1609,8 @@ public class EVAASteps {
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
-		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+//		WebUI.uploadFileToWeb(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
