@@ -944,7 +944,7 @@ public class EVAASteps {
 
 			CustomKeywords.'steps.KW_EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(key)
 		}
-	} 
+	}
 
 	@Keyword
 	def generateSOAPNoteByAppendPauseResumeStop(String FileTime, String RecordFilePath) {
@@ -2097,18 +2097,8 @@ public class EVAASteps {
 		Boolean IS_LIMITED_ELEMENTS = GlobalVariable.G_IS_LIMITED_ELEMENTS
 
 		if (IS_LIMITED_ELEMENTS) {
-			def allowedNames = commonStory.allowedNames
-
-			// Handle both cases: strings or objects with a 'name' property
-			elementStorageList = elementStorageList.findAll { elem ->
-				if (elem instanceof String) {
-					return elem in allowedNames
-				} else if (elem.hasProperty('name')) {
-					return elem.name in allowedNames
-				} else {
-					return false
-				}
-			}
+			def allowedNames = CommonStory.allowedNames
+			elementStorageList = elementStorageList.findAll { elem -> elem in allowedNames }
 		}
 
 		return elementStorageList
