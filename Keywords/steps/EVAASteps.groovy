@@ -175,7 +175,7 @@ public class EVAASteps {
 	def verifyEVAAScribeAllDetails(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String SearchText= 'b', String FinalizedStatus = 'Pending', String MicStatus='Completed' ) {
 		LogStories.logInfo('----------------------Step AAD----------------------')
 
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,SearchText,FinalizedStatus,MicStatus)
 
 		LogStories.logInfo('----------------------Step M----------------------')
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
