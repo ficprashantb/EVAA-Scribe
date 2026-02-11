@@ -13,12 +13,14 @@ import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
 import stories.CommonStory
 
+import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
@@ -29,8 +31,10 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.TimeZone
 
-import java.time.LocalDateTime  
-import java.time.ZonedDateTime 
+import org.openqa.selenium.JavascriptExecutor
+
+import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 
 public class DateHelper {
@@ -59,9 +63,21 @@ public class DateHelper {
 		ZoneId zoneId = ZoneId.of(zone.getZoneId())
 
 		if (CommonStory.isNullOrEmpty(date)) {
-			// Current date in zone
-			LocalDate ldate = LocalDate.now(zoneId)
-			String formattedDate = ldate.format(DateTimeFormatter.ofPattern(dateFormat))
+			//			// Current date in zone
+			//			LocalDate ldate = LocalDate.now(zoneId)
+			//			String formattedDate = ldate.format(DateTimeFormatter.ofPattern(dateFormat))
+
+			// Get browser datetime string (ISO format)
+			JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getWebDriver();
+			String browserDateTimeStr = (String) js.executeScript("return new Date().toISOString();");
+
+			// Convert to ZonedDateTime using your zone
+			Instant instant = Instant.parse(browserDateTimeStr);
+			ZonedDateTime browserDateTime = instant.atZone(zoneId);
+
+			// Format it
+			String formattedDate = browserDateTime.format(DateTimeFormatter.ofPattern(dateFormat));
+			System.out.println("Browser DateTime in zone: " + formattedDate);
 
 			return  formattedDate
 		} else {

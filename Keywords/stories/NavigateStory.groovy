@@ -24,37 +24,32 @@ import com.kms.katalon.core.testobject.ConditionType
 
 
 public class NavigateStory {
-
+	WaitStory waitStory = new WaitStory()
+	
 	/**
-	 * Retries a given action with exponential backoff
+	 * Retries a given action with exponential backoff.
 	 *
 	 * @param action      Closure containing the action to retry
-	 * @param maxRetries  Max retry count (defaults to RETRY_STEPS env var)
+	 * @param maxRetries  Max retry count (defaults to GlobalVariable.RETRY_COUNT)
 	 */
-	def retryAction(Closure action, int maxRetries = GlobalVariable.RETRY_COUNT ) {
+	def retryAction(Closure action, int maxRetries = GlobalVariable.RETRY_COUNT) {
+		Exception lastError
 
-		int attempt = 0;
-		Exception lastError = null;
-
-		while (attempt < maxRetries) {
+		for (int attempt = 0; attempt < maxRetries; attempt++) {
 			try {
 				if (attempt > 0) {
-					LogStories.logInfo("Retrying action (attempt ${attempt + 1}/${maxRetries})...") ;
+					LogStories.logInfo("Retrying action (attempt ${attempt + 1}/${maxRetries})...")
 				}
-
-				action.call();
-				return
+				action.call()
+				return // success, exit immediately
 			} catch (Exception e) {
-				attempt++;
-				lastError = e;
-
-				if (attempt == maxRetries) {
-					throw new Exception("Failed after ${maxRetries} retries: ${lastError.message}", lastError);
+				lastError = e
+				if (attempt == maxRetries - 1) {
+					throw new Exception("Failed after ${maxRetries} retries: ${lastError.message}", lastError)
 				}
-
 				// Exponential backoff: 2^attempt * 1000 ms
-				long backoffMillis = Math.pow(2, attempt) * 1000 as long;
-				Thread.sleep(backoffMillis);
+				long backoffMillis = (1 << attempt) * 1000L
+				Thread.sleep(backoffMillis)
 			}
 		}
 	}
@@ -421,48 +416,95 @@ public class NavigateStory {
 	}
 
 	@Keyword
+def navigateToEncounterElement(String key, Boolean isElementText = false, Boolean isRefreshPresent = false) {
+    LogStories.logInfo('----------------------Step AAI----------------------')
+
+    // Map encounter keys to page, element, and test object
+    def encounterMap = [
+        "ChiefComplaint"         : ["CC & History Review", "Chief Complaint", 'EncounterPage/Encounter Details/textarea Patient Chief Complaint'],
+        "HPI"                    : ["CC & History Review", "Chief Complaint", 'EncounterPage/Encounter Details/textarea HPI Notes'],
+        "CurrentEyeSymptoms"     : ["Medical History", "Current Eye Symptoms", 'EncounterPage/Encounter Details/Current Eye Symptoms/divCurrentEyeSymptoms'],
+        "Allergies"              : ["CC & History Review", "Allergies", 'EncounterPage/Encounter Details/trAllergies'],
+        "Medications"            : ["CC & History Review", "Medications", 'EncounterPage/Encounter Details/trMedications'],
+        "ReviewOfSystems"        : ["Medical History", "Review of Systems - Brief", 'EncounterPage/Encounter Details/Review Of Systems/divReviewOfSystems'],
+        "Problems"               : ["CC & History Review", "Problems", 'EncounterPage/Encounter Details/trProblems'],
+        "DifferentialDiagnosis"  : ["Final Findings", "Final Diagnoses", 'EncounterPage/Encounter Details/trFDDifferentialDiagnosis'],
+        "Assessment"             : ["Final Findings", "Final Diagnoses", 'EncounterPage/Encounter Details/textarea Assessments'],
+        "Plan"                   : ["Final Findings", "Final Diagnoses", 'EncounterPage/Encounter Details/div Plans'],
+        "EyeDiseases"            : ["Medical History", "Eye Diseases", 'EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases'],
+        "MentalAndFunctionalStatus": ["Medical History", "Mental and Functional Status", 'EncounterPage/Encounter Details/Mental and Functional Status/input_MOOD_AFFECT']
+    ]
+
+		def config = encounterMap[key]
+    if (!config) {
+        LogStories.markWarning("Unknown encounter key: ${key}")
+        return
+    }
+
+    String page    = config[0]
+    String element = config[1]
+    TestObject testObj = findTestObject(config[2])
+
+    // Navigate only if element not already present
+    if (!isRefreshPresent) {
+        LogStories.logInfo('----------------------Step Z----------------------')
+        SelectEncounterElementFromLeftNavOnEncounter([
+            pElementPage: page,
+            pElement    : element
+        ])
+    }
+
+    // Wait for the target element
+    WebUI.waitForElementVisible(testObj, 8, FailureHandling.OPTIONAL)
+    if (isElementText) {
+        waitStory.waitForElementText(testObj, 20)
+    }
+
+    LogStories.logInfo("Navigated to Encounter Element: ${key}")
+}
+
+	@Keyword
 	def SelectEncounterElementFromLeftNavOnEncounter(Map props) {
-		String pageTitle = props.pElementPage
-		String element   = props.pElement
+		String pageTitle = props?.get('pElementPage')?.toString()?.trim() ?: ''
+		String element   = props?.get('pElement')?.toString()?.trim() ?: ''
 
-		assert pageTitle?.trim()
-		assert element?.trim()
+		assert pageTitle
+		assert element
 
-		TestObject mainTo   = makeTO("//li[a[@title='${pageTitle}']]")
-		TestObject tabPlus  = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
-		TestObject tabMinus = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
-		TestObject childTO  = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
+		// Cache objects once
+		TestObject mainTo       = makeTO("//li[a[@title='${pageTitle}']]")
+		TestObject tabPlus      = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctPlusIcon')]")
+		TestObject tabMinus     = makeTO("//li[a[@title='${pageTitle}']]//span[contains(@class,'enctMinuIcon')]")
+		TestObject childTO      = makeTO("//a[@title='${pageTitle}']/following-sibling::ul//a[contains(@title,'${element}')]")
+		TestObject activeToggle = makeTO("//li[a[@title='${pageTitle}'] and contains(@class,'active-toggle')]")
+		TestObject navValidation= makeTO("//div/span[contains(normalize-space(),'${element}')]")
+		TestObject busyIndicator= findTestObject('CommonPage/busyIndicator')
 
 		try {
-			// ✅ Check if pageTitle already has active-toggle class
-			TestObject activeToggleTO = makeTO("//li[a[@title='${pageTitle}'] and contains(@class,'active-toggle')]")
-
-			if (isPresent(activeToggleTO, 5)) {
+			if (isPresent(activeToggle, 3)) {
 				LogStories.logInfo("${pageTitle} is already active → skipping click")
 			} else {
-				// Expand tab ONLY if collapsed
-				if (!isPresent(tabMinus, 5)) {
-					LogStories.logInfo("${pageTitle} tab is collapsed → expanding")
+				// Expand only if collapsed
+				if (!isPresent(tabMinus, 3)) {
+					LogStories.logInfo("${pageTitle} tab collapsed → expanding")
 					safeClick(tabPlus)
-					LogStories.logInfo("${pageTitle} tab is expanding")
 					WebUI.waitForElementVisible(childTO, 10)
 				} else {
 					LogStories.logInfo("${pageTitle} tab already expanded")
 				}
 
-				// Ensure clickable (not just visible)
 				WebUI.waitForElementClickable(childTO, 10)
 				safeClick(childTO)
 				LogStories.logInfo("Clicked on Element ${element}")
 			}
-		} catch (e) {
+		} catch (Exception e) {
 			safeClick(mainTo)
-			LogStories.logInfo("Clicked on Page ${pageTitle}")
+			LogStories.logInfo("Fallback: Clicked on Page ${pageTitle}")
 		}
 
-		// ✅ Validate navigation
-		WebUI.waitForElementVisible(makeTO("//div/span[contains(normalize-space(),'${element}')]"), 30)
-		WebUI.waitForElementNotVisible(findTestObject('CommonPage/busyIndicator'), 60)
+		// Validate navigation
+		WebUI.waitForElementVisible(navValidation, 20)
+		WebUI.waitForElementNotVisible(busyIndicator, 30)
 
 		LogStories.logInfo("Navigated to ${pageTitle} → ${element}")
 	}

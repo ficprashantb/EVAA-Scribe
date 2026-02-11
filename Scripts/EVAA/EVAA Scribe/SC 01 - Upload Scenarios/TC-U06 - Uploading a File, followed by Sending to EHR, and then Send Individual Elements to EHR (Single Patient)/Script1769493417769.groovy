@@ -26,6 +26,8 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U06'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
+GlobalVariable.G_IS_LIMITED_ELEMENTS = true
+
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, true,true)
@@ -36,7 +38,7 @@ CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,false)
+CustomKeywords.'steps.EVAASteps.finalizedAndSendIndividualElementsToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,false,false)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 

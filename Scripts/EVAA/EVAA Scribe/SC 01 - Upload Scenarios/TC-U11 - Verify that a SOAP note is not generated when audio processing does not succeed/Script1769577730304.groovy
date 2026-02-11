@@ -57,7 +57,8 @@ LogStories.logInfo('File Path: ' + uploadFilePath)
 
 TestObject upload = findTestObject('EVAAPage/EVAA Scribe/Menu/defile input')
 
-WebUI.uploadFile(upload, uploadFilePath)
+//WebUI.uploadFile(upload, uploadFilePath)
+CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, uploadFilePath)
 
 LogStories.logInfo('File uploaded: ' + uploadFilePath)
 
@@ -78,7 +79,6 @@ LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 
 String FinalizedStatus = 'Pending' 
 String MicStatus='Recording Not Started'
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, 'Invalid Date (NaN)', '', FinalizedStatus, MicStatus)
-
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, FinalizedStatus, MicStatus) 
 
 

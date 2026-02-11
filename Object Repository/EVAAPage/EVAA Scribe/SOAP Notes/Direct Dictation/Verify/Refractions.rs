@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Eye Diseases</name>
+   <name>Refractions</name>
    <tag></tag>
-   <elementGuidId>e281be11-6418-4d26-9cd5-a95138a3ee7c</elementGuidId>
+   <elementGuidId>ebf9ff85-8612-4ddf-ae4b-65af061ce626</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -30,47 +30,39 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>li</value>
-      <webElementGuid>ebb12637-a463-482d-98bd-08cded686ed0</webElementGuid>
+      <value>div</value>
+      <webElementGuid>168aa1cf-6ab0-43ec-ba8f-ec8c60aa4c62</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>4e9359c5-f06b-4862-ad9c-cd8ab7f6ed43</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>text</name>
-      <type>Main</type>
-      <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>8a4dd41c-c7c8-4fc3-acf8-6501364beefc</webElementGuid>
+      <value>text-sm text-black</value>
+      <webElementGuid>93b05050-5f85-4163-9ad9-98ba8dfcc914</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>ddd776f9-2544-44e9-a869-1f03e136583e</webElementGuid>
+      <value>md5.v1-e841ce33537bcd0ea05caf1c32619e6a</value>
+      <webElementGuid>afcc007e-70bc-4b6e-aa80-9c788fa6277e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>5cc6a449-7c8e-4381-9930-b4e586e49fff</webElementGuid>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>09c61526-47c4-4b61-8ef5-bd740ed7090b</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>a76cc559-8db8-4170-b672-bf156631f22b</webElementGuid>
+      <value>//div[*/span[text()='Refractions:']]/following-sibling::div/div[@class=&quot;text-sm text-black&quot;]/span[@class=&quot;text-sm text-black&quot;][@contenteditable=&quot;true&quot;]</value>
+      <webElementGuid>e825c9f4-4d47-47b3-97dc-96cb0c7dc7dc</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

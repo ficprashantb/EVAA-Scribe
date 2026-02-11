@@ -15,20 +15,21 @@
    <data>Logs.txt Logs.txt null</data>
    <data>Cadence_Kingele_1.mp3 Ali+Nomani+mp3.mp3 null</data>
    <data>Cadence_Kingele_1.mp3 Ali+Nomani+wav.wav null</data>
+   <data>Cadence_Kingele_1.mp3 Cadence_Kingele_2.mp3 null</data>
    <internalDataColumns>
       <columnIndex>0</columnIndex>
       <name>UploadFilePath</name>
-      <size>6</size>
+      <size>7</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>1</columnIndex>
       <name>RecordFilePath</name>
-      <size>6</size>
+      <size>7</size>
    </internalDataColumns>
    <internalDataColumns>
       <columnIndex>2</columnIndex>
       <name>FileTime</name>
-      <size>6</size>
+      <size>7</size>
    </internalDataColumns>
    <isInternalPath>false</isInternalPath>
    <query></query>

@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Eye Diseases</name>
+   <name>Medications</name>
    <tag></tag>
-   <elementGuidId>e281be11-6418-4d26-9cd5-a95138a3ee7c</elementGuidId>
+   <elementGuidId>7162063f-7de7-4262-8411-256bb15d8d6f</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]/span</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]/span</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -30,47 +30,39 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>li</value>
-      <webElementGuid>ebb12637-a463-482d-98bd-08cded686ed0</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>class</name>
-      <type>Main</type>
-      <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>4e9359c5-f06b-4862-ad9c-cd8ab7f6ed43</webElementGuid>
+      <value>span</value>
+      <webElementGuid>fd58a989-728c-405b-910f-42db87090ab0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>8a4dd41c-c7c8-4fc3-acf8-6501364beefc</webElementGuid>
+      <value>Brand Name: Pat a day</value>
+      <webElementGuid>d4aaf3e5-cb21-411c-9c16-798902115d4b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>ddd776f9-2544-44e9-a869-1f03e136583e</webElementGuid>
+      <value>md5.v1-d919c45cdb61e1dfdd5df8e916ac87bf</value>
+      <webElementGuid>a10deb74-65f7-453a-a3cc-2c0de18b7ed3</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>5cc6a449-7c8e-4381-9930-b4e586e49fff</webElementGuid>
+      <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]/span</value>
+      <webElementGuid>60d3f88e-11b8-4a27-aa11-bd4c4ef4bb25</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>a76cc559-8db8-4170-b672-bf156631f22b</webElementGuid>
+      <value>//div[*/span[text()='Medications:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]/span</value>
+      <webElementGuid>d65d53de-9c9e-4cda-b9cc-7a0cc40e0ef0</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

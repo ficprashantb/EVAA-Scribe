@@ -1,26 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Eye Diseases</name>
+   <name>Allergies</name>
    <tag></tag>
-   <elementGuidId>e281be11-6418-4d26-9cd5-a95138a3ee7c</elementGuidId>
+   <elementGuidId>c3e164e5-0c4f-49e6-9810-e1e953bf487c</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-      </entry>
-      <entry>
-         <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>div:nth-child(3) > .list-decimal li[contenteditable=&quot;true&quot;]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//div[*/span[text()='Allergies:']]/following-sibling::ol//li</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
+         <value>ol >> internal:has-text=/^Allergies$/ >> internal:role=listitem</value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -31,46 +29,46 @@
       <name>tag</name>
       <type>Main</type>
       <value>li</value>
-      <webElementGuid>ebb12637-a463-482d-98bd-08cded686ed0</webElementGuid>
+      <webElementGuid>576ffd59-11d0-4077-bc7c-8eac579e8bbe</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>contenteditable</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>81c8f0f0-b183-482f-94b7-6287accfecdb</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>4e9359c5-f06b-4862-ad9c-cd8ab7f6ed43</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>text</name>
-      <type>Main</type>
-      <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>8a4dd41c-c7c8-4fc3-acf8-6501364beefc</webElementGuid>
+      <value>text-sm text-black</value>
+      <webElementGuid>c4e12cfb-9fa4-4406-9e42-f796124e8c4a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>ddd776f9-2544-44e9-a869-1f03e136583e</webElementGuid>
+      <value>md5.v1-fcaa5d2527f2b04e58938d4fe1728e24</value>
+      <webElementGuid>de04a9c9-7c91-4e71-8b2d-f44fe61b6446</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>5cc6a449-7c8e-4381-9930-b4e586e49fff</webElementGuid>
+      <value>//*[(name() = 'div') and (position() = 3)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' list-decimal ')]//li[@contenteditable = 'true']</value>
+      <webElementGuid>0380d838-bee1-4362-838b-568335da4442</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>a76cc559-8db8-4170-b672-bf156631f22b</webElementGuid>
+      <value>//div[*/span[text()='Allergies:']]/following-sibling::ol//li</value>
+      <webElementGuid>cc46d39f-b9da-43ee-ada9-855a076a6738</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

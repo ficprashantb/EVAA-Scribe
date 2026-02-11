@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>Eye Diseases</name>
+   <name>HPI</name>
    <tag></tag>
-   <elementGuidId>e281be11-6418-4d26-9cd5-a95138a3ee7c</elementGuidId>
+   <elementGuidId>4c713f62-0b02-4665-ab80-50c753c50c26</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
+         <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -30,47 +30,55 @@
       <matchCondition>equals</matchCondition>
       <name>tag</name>
       <type>Main</type>
-      <value>li</value>
-      <webElementGuid>ebb12637-a463-482d-98bd-08cded686ed0</webElementGuid>
+      <value>span</value>
+      <webElementGuid>a6bd2a04-18b3-4546-b93c-06e6bdb73061</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>text-sm text-black leading-relaxed</value>
-      <webElementGuid>4e9359c5-f06b-4862-ad9c-cd8ab7f6ed43</webElementGuid>
+      <value>text-sm text-black</value>
+      <webElementGuid>55e3d7ec-791a-405f-9af8-b019b63e8a88</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
-      <name>text</name>
+      <name>contenteditable</name>
       <type>Main</type>
-      <value>Other: Takes Pataday every day for allergies.</value>
-      <webElementGuid>8a4dd41c-c7c8-4fc3-acf8-6501364beefc</webElementGuid>
+      <value>true</value>
+      <webElementGuid>4eec3054-65a7-4ec8-a270-1aad7a8078bf</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-path</name>
+      <type>Main</type>
+      <value>Subjective[1].note.History</value>
+      <webElementGuid>78229945-c11c-41d2-8628-2650c6c3dda9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-ff9df3ab274aa756773f0cdd3e061e41</value>
-      <webElementGuid>ddd776f9-2544-44e9-a869-1f03e136583e</webElementGuid>
+      <value>md5.v1-9b818a6e64288051c0072884a1b7340c</value>
+      <webElementGuid>08043ed1-17b7-454e-96ec-bdb8d0341a58</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>5cc6a449-7c8e-4381-9930-b4e586e49fff</webElementGuid>
+      <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
+      <webElementGuid>904fe14c-0365-4056-9024-357086c5aae4</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Eye Diseases:']]/following-sibling::ol//li/span[@contenteditable=&quot;true&quot;]</value>
-      <webElementGuid>a76cc559-8db8-4170-b672-bf156631f22b</webElementGuid>
+      <value>//*[span[text()='HPI:']]/following-sibling::span/descendant-or-self::span[contains(@data-path,&quot;.note.History&quot;)]</value>
+      <webElementGuid>2ed728fb-a2f2-45a5-a970-c2d75590c670</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

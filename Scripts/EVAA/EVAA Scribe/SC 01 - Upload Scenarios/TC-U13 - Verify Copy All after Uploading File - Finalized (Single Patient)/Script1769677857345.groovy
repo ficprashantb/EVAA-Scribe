@@ -28,6 +28,8 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U13'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
+GlobalVariable.G_IS_LIMITED_ELEMENTS = true
+
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 

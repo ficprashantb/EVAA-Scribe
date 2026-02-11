@@ -72,7 +72,7 @@ public class EVAASteps {
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
 
 		GlobalVariable.IS_ENCOUNTER_ID = true
- 
+
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		String PtName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'))
@@ -97,7 +97,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def searchStringAndVerify(String searchText) {
+	def searchStringAndVerify2(String searchText) {
 		LogStories.logInfo('----------------------Step AAG----------------------')
 
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -136,6 +136,42 @@ public class EVAASteps {
 	}
 
 	@Keyword
+	def searchStringAndVerify(String searchText) {
+		LogStories.logInfo('----------------------Step AAG----------------------')
+
+		// Switch once into the frame
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 15, FailureHandling.STOP_ON_FAILURE)
+
+		TestObject searchInput = findTestObject('EVAAPage/EVAA Scribe/Header/input_Search')
+
+		// Wait & type directly
+		WebUI.waitForElementVisible(searchInput, 10)
+		WebUI.setText(searchInput, searchText)   // replaces clearText + sendKeys
+
+		// Press ENTER
+		WebUI.sendKeys(searchInput, Keys.chord(Keys.ENTER))
+
+		LogStories.logInfo("Search: $searchText")
+
+		// Wait for results
+		TestObject span_Search = testObjectStory.span_Search(searchText)
+		WebUI.waitForElementVisible(span_Search, 10)
+
+		// Verify results
+		def elements = WebUI.findWebElements(span_Search, 5)
+		assertStory.verifyGreaterThanOrEqual("Search", elements.size(), 1)
+
+		// Clear input safely (no need to re-find)
+		WebElement freshInput = WebUI.findWebElement(searchInput, 10)
+		freshInput.click()
+		freshInput.sendKeys(Keys.chord(Keys.CONTROL, "a"))
+		freshInput.sendKeys(Keys.BACK_SPACE)
+
+		// Switch back
+		WebUI.switchToDefaultContent()
+	}
+
+	@Keyword
 	def verifyEVAAScribeAllDetails(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String SearchText= 'b', String FinalizedStatus = 'Pending', String MicStatus='Completed' ) {
 		LogStories.logInfo('----------------------Step AAD----------------------')
 
@@ -154,9 +190,9 @@ public class EVAASteps {
 
 		String expectedPtName = "$FirstName $LastName"
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 20, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 20, FailureHandling.STOP_ON_FAILURE)
 
 		LogStories.logInfo('----------------------Step H----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
@@ -204,67 +240,104 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def finalizedAndSendToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isExpandClose = true , Boolean isSendToEHR = true ) {
+	def finalizedAndSendToMaximEyes(
+			String FirstName,
+			String LastName,
+			String DOB,
+			String Provider_FirstName,
+			String Provider_LastName,
+			Boolean isExpandClose = true,
+			Boolean isSendToEHR = true) {
+
 		LogStories.logInfo('----------------------Step AAC----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects once
+		TestObject finalizeBtn = findTestObject('EVAAPage/EVAA Scribe/Finalize')
+		TestObject finalizeBlue = findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue')
+		TestObject soapNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
+		TestObject toastFinalized = findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized')
+		TestObject finalizedIcon = findTestObject('EVAAPage/EVAA Scribe/Finalized')
+		TestObject sendToMaximEyesBtn = findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes')
+		TestObject sendToMaximEyesImg = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes')
+		TestObject micObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalize - Blue'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Wait for key elements (shorter timeouts)
+		WebUI.waitForElementClickable(finalizeBtn, 20, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(finalizeBlue, 20, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(soapNotesObj, 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 60, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Finalize'), FailureHandling.STOP_ON_FAILURE)
+		// Click Finalize
+		WebUI.click(finalizeBtn, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo("Clicked on Finalize")
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Status updated to Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		// Wait for finalized confirmation
+		WebUI.waitForElementVisible(toastFinalized, 30, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Status updated to Finalized")
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized'), 60, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(finalizedIcon, 20, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Wait for Send to MaximEyes availability
+		WebUI.waitForElementClickable(sendToMaximEyesBtn, 20, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(sendToMaximEyesImg, 20, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Ensure mic is not present
+		WebUI.waitForElementNotPresent(micObj, 5, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 10, FailureHandling.STOP_ON_FAILURE)
+		// Small buffer delay only if needed
+		WebUI.delay(1)
 
-		WebUI.delay(2)
-
-		if(isSendToEHR) {
+		if (isSendToEHR) {
 			LogStories.logInfo('----------------------Step P----------------------')
-			CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,isExpandClose)
+			CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(
+					FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, isExpandClose)
 		}
 	}
 
 	@Keyword
-	def sendToAllSOAPNotesToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isExpandClose = true  ) {
+	def sendToAllSOAPNotesToMaximEyes(
+			String FirstName,
+			String LastName,
+			String DOB,
+			String Provider_FirstName,
+			String Provider_LastName,
+			Boolean isExpandClose = true) {
+
 		LogStories.logInfo('----------------------Step AAB----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'), 10, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects once
+		TestObject sendBtn = findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes')
+		TestObject toastSending = findTestObject('EVAAPage/EVAA Scribe/Toast/Sending SOAP notes and PDF to MaximEyes')
+		TestObject toastSent = findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully')
+		TestObject finalizedGreen = findTestObject('EVAAPage/EVAA Scribe/Finalized - Green')
+		TestObject patientNameObj = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
+		TestObject expandRecordingBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording')
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Send to MaximEyes'))
+		// Click Send to MaximEyes
+		WebUI.waitForElementPresent(sendBtn, 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.click(sendBtn)
 		LogStories.logInfo("Clicked on Send to MaximEyes")
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sending SOAP notes and PDF to MaximEyes'), 60,
-				FailureHandling.CONTINUE_ON_FAILURE)
+		// Toast messages
+		WebUI.waitForElementVisible(toastSending, 30, FailureHandling.OPTIONAL)
 		LogStories.markPassed("Sending SOAP notes and PDF to MaximEyes...")
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Sent SOAP notes and PDF to MaximEyes successfully'), 60,
-				FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(toastSent, 30, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Sent SOAP notes and PDF to MaximEyes successfully.")
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Finalized confirmation
+		WebUI.waitForElementVisible(finalizedGreen, 20, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.delay(10)
-
+		// Avoid fixed 10s delay, retry patient name instead
 		LogStories.logInfo('----------------------div_PatientName----------------------')
 		navigateStory.retryAction {
-			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName'), 60, FailureHandling.STOP_ON_FAILURE)
+			WebUI.waitForElementVisible(patientNameObj, 30, FailureHandling.STOP_ON_FAILURE)
 		}
 
+		// Verify consent and details
 		LogStories.logInfo('----------------------Step Q----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
@@ -274,17 +347,16 @@ public class EVAASteps {
 		LogStories.logInfo('----------------------Step S----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-		if(isExpandClose == true) {
-			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'))
-
+		// Expand recording if needed
+		if (isExpandClose) {
+			WebUI.click(expandRecordingBtn)
 			LogStories.logInfo('Clicked on Expand Recording')
-
-			WebUI.delay(5)
+			WebUI.delay(5) // shorter buffer
 		}
 	}
 
 	@Keyword
-	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isFinalize = true) {
+	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isFinalize = true, Boolean isVerifySOAPNote = true) {
 		LogStories.logInfo('----------------------Step AAA----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
@@ -346,7 +418,7 @@ public class EVAASteps {
 				continue
 			}
 
-			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(name)
+			CustomKeywords.'stories.NavigateStory.navigateToEncounterElement'(name)
 
 			WebUI.waitForElementVisible(sectionTO, 20)
 
@@ -355,6 +427,7 @@ public class EVAASteps {
 
 			// Toast checks
 			TestObject failedSOAPNote = findTestObject('EVAAPage/EVAA Scribe/Toast/Failed to send SOAP note to MaximEyes')
+			TestObject toSOAPNote = failedSOAPNote
 			boolean	isVisible = WebUI.waitForElementVisible(failedSOAPNote, 2,FailureHandling.OPTIONAL)
 			if(isVisible) {
 				LogStories.markFailed("${name} - Failed to send SOAP note to MaximEyes.")
@@ -364,655 +437,215 @@ public class EVAASteps {
 			isVisible = WebUI.waitForElementVisible(passSOAPNote, 10, FailureHandling.CONTINUE_ON_FAILURE)
 			if(isVisible) {
 				LogStories.markPassed("${name} - SOAP note sent to MaximEyes successfully.")
+				toSOAPNote = passSOAPNote
 			}
 
-			boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
-			if(isRefreshPresent) {
-				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
-				LogStories.logInfo("Clicked on Refresh button")
+			if(isVerifySOAPNote) {
+				boolean	isRefreshPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'), 5, FailureHandling.OPTIONAL)
+				if(isRefreshPresent) {
+					WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_refresh'))
+					LogStories.logInfo("Clicked on Refresh button")
 
-				WebUI.delay(2)
-			}
-
-			LogStories.logInfo('----------------------Step W----------------------')
-			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
-
-			LogStories.logInfo('----------------------Step X----------------------')
-			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
-
-			LogStories.logInfo('----------------------Step Y----------------------')
-			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-		}
-	}
-
-	@Keyword
-	def verifyIndividualSOAPNoteSentToMaximeyes(String key, Boolean isElementText = false , Boolean isRefreshPresent = false) {
-		LogStories.logInfo('----------------------Step AAH----------------------')
-
-		def variableKey = CommonStory.sectionMapForStorageKey.get(key)
-		String expectedData = VariableStories.getItem(variableKey)
-
-		LogStories.logInfo("********************SOAP Note - ${key}*********************")
-
-		WebUI.delay(4)
-
-		// ===== Chief Complaint =====
-		if (key == "ChiefComplaint" && !CommonStory.isNullOrEmpty(expectedData)) {
-			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-			String actualChiefComplaint = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint'), 'value', FailureHandling.STOP_ON_FAILURE)
-
-			actualChiefComplaint=	actualChiefComplaint?.replaceAll(":(?=.*:)", "")
-			expectedData=	expectedData?.replaceAll(":(?=.*:)", "")
-
-			assertStory.verifyMatch("Chief Complaint", actualChiefComplaint, expectedData)
-		}
-
-		// ===== HPI =====
-		else if (key == "HPI" && !CommonStory.isNullOrEmpty(expectedData)) {
-			CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-			String actualHPI = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea HPI Notes'), 'value', FailureHandling.STOP_ON_FAILURE)
-
-			actualHPI=	actualHPI?.replaceAll(":(?=.*:)", "")
-			expectedData=	expectedData?.replaceAll(":(?=.*:)", "")
-			assertStory.verifyMatch("HPI", actualHPI, expectedData)
-		}
-
-		// ===== Current Eye Symptoms =====
-		else if (key == "CurrentEyeSymptoms" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List currentEyeSymptomsList = CommonStory.getListObject(expectedData)
-			if (currentEyeSymptomsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				for (def currentEyeSymptoms : currentEyeSymptomsList) {
-					def result = CommonStory.getKeyValueDetails(currentEyeSymptoms, 'CES')
-					if (result) {
-						String expected = result._expected
-						String name = result._name
-						if (expected == 'True') continue
-							TestObject input_CurrentEyeSymptoms = testObjectStory.input_CurrentEyeSymptoms(name)
-						if (result._key?.toLowerCase()?.contains('additional')) {
-							input_CurrentEyeSymptoms = findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/textarea_Additional_Notes_CES')
-						}
-
-						WebUI.waitForElementVisible(input_CurrentEyeSymptoms, 10, FailureHandling.OPTIONAL)
-
-						String actual = WebUI.getAttribute(input_CurrentEyeSymptoms, 'value', FailureHandling.OPTIONAL)
-
-						actual=	actual?.replaceAll(":(?=.*:)", "")
-						expected=	expected?.replaceAll(":(?=.*:)", "")
-
-						assertStory.verifyMatch("Current Eye Symptoms- $name", actual, expected)
-						verifyRadioButtonIsChecked(currentEyeSymptoms, name, 'CES')
-					}
-				}
-			} else {
-				LogStories.markWarning('No Current Eye Symptoms found')
-			}
-		}
-
-		// ===== Allergies =====
-		else if (key == "Allergies" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List allergiesList = CommonStory.getListObject(expectedData)
-			if (allergiesList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				int index = 1
-				for (String allergies : allergiesList) {
-					TestObject tableAllergies = testObjectStory.tableAllergies(index)
-
-					WebUI.waitForElementVisible(tableAllergies, 10, FailureHandling.OPTIONAL)
-
-					String actual = WebUI.getText(tableAllergies, FailureHandling.OPTIONAL)
-
-					actual=	actual?.replaceAll(":(?=.*:)", "")
-					String expected = allergies?.replaceAll(":(?=.*:)", "")
-
-					assertStory.verifyMatch("Allergies", actual, expected)
-					index++
-				}
-			} else {
-				LogStories.markWarning('No Allergies found')
-			}
-		}
-
-		// ===== Medications =====
-		else if (key == "Medications" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List medicationsList = CommonStory.getListObject(expectedData)
-			if (medicationsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				int index = 1
-				for (int i = 0; i < medicationsList.size(); i++) {
-					def result = CommonStory.getKeyValueDetails(medicationsList[i], 'MED')
-					if (!result) continue
-						String expected = result._expected
-					if (result._key == 'Generic Name') continue
-						if (i + 1 < medicationsList.size()) {
-							def nextResult = CommonStory.getKeyValueDetails(medicationsList[i + 1], 'MED')
-							if (nextResult?._key == 'Generic Name') {
-								expected = "${expected} ${nextResult._expected}"
-							}
-						}
-					TestObject tableMedications = testObjectStory.tableMedications(index)
-
-					WebUI.waitForElementVisible(tableMedications, 10, FailureHandling.OPTIONAL)
-
-					String actual = WebUI.getText(tableMedications, FailureHandling.OPTIONAL)
-
-					actual=	actual?.replaceAll(":(?=.*:)", "")
-					expected=	expected?.replaceAll(":(?=.*:)", "")
-
-					assertStory.verifyContainsRegex("Medications", actual, expected)
-					index++
-				}
-			} else {
-				LogStories.markWarning('No Medications found')
-			}
-		}
-
-		// ===== Review Of Systems =====
-		else if (key == "ReviewOfSystems" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List reviewList = CommonStory.getListObject(expectedData)
-			if (reviewList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				for (def review : reviewList) {
-					def result = CommonStory.getKeyValueDetails(review, 'ROS')
-					if (result) {
-						String expected = result._expected
-						String name = result._name
-						if (expected == 'True') continue
-							TestObject input_Review_of_Systems = testObjectStory.input_Review_of_Systems(name)
-						if (result._key?.toLowerCase()?.contains('additional')) {
-							input_Review_of_Systems = findTestObject('EncounterPage/Encounter Details/Review Of Systems/textarea_Additional_Notes_ROS')
-						}
-
-						WebUI.waitForElementVisible(input_Review_of_Systems, 10, FailureHandling.OPTIONAL)
-
-						String actual = WebUI.getAttribute(input_Review_of_Systems, 'value', FailureHandling.OPTIONAL)
-
-						actual=	actual?.replaceAll(":(?=.*:)", "")
-						expected =	expected?.replaceAll(":(?=.*:)", "")
-
-						assertStory.verifyMatch("Review Of Systems- $name", actual, expected)
-						verifyRadioButtonIsChecked(review, name, 'ROS')
-					}
-				}
-			} else {
-				LogStories.markWarning('No Review Of Systems found')
-			}
-		}
-
-		// ===== Problems =====
-		else if (key == "Problems" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List problemsList = CommonStory.getListObject(expectedData)
-			if (problemsList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				int index = 1
-				for (String expected : problemsList) {
-					TestObject tableProblems = testObjectStory.tableProblems(index)
-
-					WebUI.waitForElementVisible(tableProblems, 10, FailureHandling.OPTIONAL)
-
-					String actual = WebUI.getText(tableProblems, FailureHandling.OPTIONAL)
-
-					actual=	actual?.replaceAll(":(?=.*:)", "")
-					expected =	expected?.replaceAll(":(?=.*:)", "")
-
-					assertStory.verifyMatch("Problems", actual, expected)
-					index++
-				}
-			} else {
-				LogStories.markWarning('No Problems found')
-			}
-		}
-
-		//		// ===== Differential Diagnosis =====
-		//		else if (key == "DifferentialDiagnosis" && !CommonStory.isNullOrEmpty(expectedData)) {
-		//			List diffDiagnosisList = CommonStory.getListObject(expectedData)
-		//			if (diffDiagnosisList.size() > 0) {
-		//				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-		//
-		//				for (def diffDiagnosis : diffDiagnosisList) {
-		//					def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
-		//					if (result) {
-		//						String expected = "${result._key}, ${result._expected}"
-		//						TestObject tableFDDifferentialDiagnosis = testObjectStory.tableFDDifferentialDiagnosis(result._key, result._expected)
-		//
-		//						WebUI.waitForElementVisible(tableFDDifferentialDiagnosis, 10, FailureHandling.OPTIONAL)
-		//
-		//						boolean isPresentDD = WebUI.waitForElementPresent(tableFDDifferentialDiagnosis, 1, FailureHandling.OPTIONAL)
-		//						assertStory.verifyMatch("Differential Diagnosis- $expected", isPresentDD, true)
-		//					}
-		//				}
-		//			} else {
-		//				LogStories.markWarning('No Differential Diagnosis found')
-		//			}
-		//		}
-
-		// ===== Assessment =====
-		else if (key == "Assessment" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List assessmentList = CommonStory.getListObject(expectedData)
-			if (assessmentList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				String expectedAssessment = assessmentList.join('\n')
-				String actualAssessment = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/textarea Assessments'), 'value', FailureHandling.OPTIONAL)
-
-				String actual=	actualAssessment?.replaceAll(":(?=.*:)", "")
-				// Remove leading number + dot + spaces at the start of each line
-				actual = actual.replaceAll(/(?m)^\d+\.\s*/, '')
-
-				String expected = expectedAssessment?.replaceAll(":(?=.*:)", "")
-
-				assertStory.verifyMatch("Assessment", actual, expected)
-			} else {
-				LogStories.markWarning('No Assessment found')
-			}
-		}
-
-		// ===== Plan =====
-		else if (key == "Plan" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List plansList = CommonStory.getListObject(expectedData)
-			if (plansList.size() > 0) {
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				String expectedPlans = plansList.join('\n')
-				String actualPlans = WebUI.getAttribute(findTestObject('EncounterPage/Encounter Details/div Plans'), 'value', FailureHandling.OPTIONAL)
-				if (CommonStory.isNullOrEmpty(actualPlans)) {
-					actualPlans = WebUI.getText(findTestObject('EncounterPage/Encounter Details/div Plans'), FailureHandling.OPTIONAL)
+					WebUI.delay(2)
 				}
 
-				String actual=	actualPlans?.replaceAll(":(?=.*:)", "")
-				// Remove leading number + dot + spaces at the start of each line
-				actual = actual.replaceAll(/(?m)^\d+\.\s*/, '')
+				LogStories.logInfo('----------------------Step W----------------------')
+				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-				String expected = expectedPlans?.replaceAll(":(?=.*:)", "")
+				LogStories.logInfo('----------------------Step X----------------------')
+				CustomKeywords.'steps.KW_EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
 
-				assertStory.verifyMatch("Plans", actual, expected)
-			} else {
-				LogStories.markWarning('No Plans found')
+				LogStories.logInfo('----------------------Step Y----------------------')
+				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 			}
-		}
-
-		// ===== Eye Diseases =====
-		else if (key == "EyeDiseases" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List eyeDiseaseList = CommonStory.getListObject(expectedData)
-			if (eyeDiseaseList.size() > 0) {
-
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				for (def eyeDisease : eyeDiseaseList) {
-					def result = CommonStory.getKeyValueDetails(eyeDisease, 'ED')
-					if (result) {
-						String expected = result._expected
-						String name = result._name
-						if (expected == 'True') continue
-							TestObject inputEyeDiseases = testObjectStory.inputEyeDiseases(name)
-						if (result._key?.toLowerCase()?.contains('additional')) {
-							inputEyeDiseases = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
-						}
-
-						WebUI.waitForElementVisible(inputEyeDiseases, 10, FailureHandling.OPTIONAL)
-
-						String actual = WebUI.getAttribute(inputEyeDiseases, 'value', FailureHandling.OPTIONAL)
-
-						actual=	actual?.replaceAll(":(?=.*:)", "")
-						expected=	expected?.replaceAll(":(?=.*:)", "")
-
-						assertStory.verifyMatch("Eye Diseases- $name", actual, expected)
-						verifyRadioButtonIsChecked(eyeDisease, name, 'ED')
-					}
-				}
-			} else {
-				LogStories.markWarning('No Eye Diseases found')
-			}
-		}
-		// ===== Mental and Functional Status =====
-		else if (key == "MentalAndFunctionalStatus" && !CommonStory.isNullOrEmpty(expectedData)) {
-			List mentalAndFunctionalStatusList = CommonStory.getListObject(expectedData)
-			if (mentalAndFunctionalStatusList.size() > 0) {
-
-				CustomKeywords.'steps.EVAASteps.navigateToEncounterElement'(key,isElementText,isRefreshPresent)
-
-				for (def mentalAndFunctionalStatus : mentalAndFunctionalStatusList) {
-					def result = CommonStory.getKeyValueDetails(mentalAndFunctionalStatus, 'MFS')
-
-					if (result) {
-						String expected = result._expected
-						String name = result._name
-
-						TestObject inputMentalAndFunctionalStatus = testObjectStory.inputMentalAndFunctionalStatus(name)
-
-						WebUI.waitForElementVisible(inputMentalAndFunctionalStatus, 10, FailureHandling.OPTIONAL)
-
-						String actual = WebUI.getAttribute(inputMentalAndFunctionalStatus, 'value', FailureHandling.OPTIONAL)
-
-						actual=	actual?.replaceAll(":(?=.*:)", "")
-						expected=	expected?.replaceAll(":(?=.*:)", "")
-
-						assertStory.verifyMatch("Mental and Functional Status- $name", actual, expected)
-					}
-				}
-			} else {
-				LogStories.markWarning('No Mental and Functional Status found')
+			else {
+				WebUI.waitForElementNotVisible(toSOAPNote, 5, FailureHandling.OPTIONAL)
 			}
 		}
 	}
 
 	@Keyword
-	def navigateToEncounterElement(String key, Boolean isElementText = false , Boolean isRefreshPresent = false) {
-		LogStories.logInfo('----------------------Step AAI----------------------')
-
-		def page, element
-
-		TestObject testObj
-
-		switch (key) {
-			case "ChiefComplaint":
-				page    = "CC & History Review"
-				element = "Chief Complaint"
-				testObj = findTestObject('EncounterPage/Encounter Details/textarea Patient Chief Complaint')
-				break
-
-			case "HPI":
-				page    = "CC & History Review"
-				element = "Chief Complaint"
-				testObj = findTestObject('EncounterPage/Encounter Details/textarea HPI Notes')
-				break
-
-			case "CurrentEyeSymptoms":
-				page    = "Medical History"
-				element = "Current Eye Symptoms"
-				testObj = findTestObject('EncounterPage/Encounter Details/Current Eye Symptoms/divCurrentEyeSymptoms')
-				break
-
-			case "Allergies":
-				page    = "CC & History Review"
-				element = "Allergies"
-				testObj = findTestObject('EncounterPage/Encounter Details/trAllergies')
-				break
-
-			case "Medications":
-				page    = "CC & History Review"
-				element = "Medications"
-				testObj = findTestObject('EncounterPage/Encounter Details/trMedications')
-				break
-
-			case "ReviewOfSystems":
-				page    = "Medical History"
-				element = "Review of Systems - Brief"
-				testObj = findTestObject('EncounterPage/Encounter Details/Review Of Systems/divReviewOfSystems')
-				break
-
-			case "Problems":
-				page    = "CC & History Review"
-				element = "Problems"
-				testObj = findTestObject('EncounterPage/Encounter Details/trProblems')
-				break
-
-			case "DifferentialDiagnosis":
-				page    = "Final Findings"
-				element = "Final Diagnoses"
-				testObj = findTestObject('EncounterPage/Encounter Details/trFDDifferentialDiagnosis')
-				break
-
-			case "Assessment":
-				page    = "Final Findings"
-				element = "Final Diagnoses"
-				testObj = findTestObject('EncounterPage/Encounter Details/textarea Assessments')
-				break
-
-			case "Plan":
-				page    = "Final Findings"
-				element = "Final Diagnoses"
-				testObj = findTestObject('EncounterPage/Encounter Details/div Plans')
-				break
-
-			case "EyeDiseases":
-				page    = "Medical History"
-				element = "Eye Diseases"
-				testObj = findTestObject('EncounterPage/Encounter Details/Eye Diseases/textarea_Additional_Notes_EyeDiseases')
-				break
-
-			case "MentalAndFunctionalStatus":
-				page    = "Medical History"
-				element = "Mental and Functional Status"
-				testObj = findTestObject('EncounterPage/Encounter Details/Mental and Functional Status/input_MOOD_AFFECT')
-				break
-
-			default:
-				LogStories.markWarning("Unknown encounter key: ${key}")
-				return
-		}
-
-		// Navigate only if element not already present
-		if (!isRefreshPresent) {
-			LogStories.logInfo('----------------------Step Z----------------------')
-			navigateStory.SelectEncounterElementFromLeftNavOnEncounter([
-				('pElementPage'): page,
-				('pElement')    : element
-			])
-		}
-
-		// Wait for the target element
-		WebUI.waitForElementVisible(testObj, 10, FailureHandling.OPTIONAL)
-
-		if (isElementText) {
-			waitStory.waitForElementText(testObj, 30)
-		}
-
-		LogStories.logInfo("Navigated to Encounter Element: ${key}")
-	}
-
-	@Keyword
-	def verifyEVAAScribeHeaderDetails(String FirstName, String LastName, String DOB , String Provider_FirstName, String Provider_LastName) {
-		WebUI.delay(5)
+	def verifyEVAAScribeHeaderDetails(
+			String FirstName,
+			String LastName,
+			String DOB,
+			String Provider_FirstName,
+			String Provider_LastName) {
 
 		LogStories.logInfo('----------------------Step AA----------------------')
 
-		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Header/PatientName')
-		waitStory.waitForElementText(toPatientName, 30)
+		WebUI.delay(5)
 
-		WebUI.waitForElementVisible(toPatientName, 60, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects once
+		TestObject toPatientName   = findTestObject('EVAAPage/EVAA Scribe/Header/PatientName')
+		TestObject toPatientDOB    = findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB')
+		TestObject toPatientId     = findTestObject('EVAAPage/EVAA Scribe/Header/PatientId')
+		TestObject toEncounterId   = findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId')
+		TestObject toProvider      = findTestObject('EVAAPage/EVAA Scribe/Header/Provider')
+
+		// Wait once for patient name text
+		waitStory.waitForElementText(toPatientName, 20)
+		WebUI.waitForElementVisible(toPatientName, 10, FailureHandling.STOP_ON_FAILURE)
 
 		String _ptKey = "${FirstName}_${LastName}".toUpperCase()
 
-		String PtName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientName'))
-
+		// Patient Name
+		String PtName = WebUI.getText(toPatientName)
 		String expectedPtName = "${FirstName} ${LastName}"
-
 		assertStory.verifyMatch("Header→→ Patient Name", PtName, expectedPtName)
 
-
-		String actualPTDOB = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientDOB'))
-
+		// Patient DOB
+		String actualPTDOB = WebUI.getText(toPatientDOB)
 		String expectedPTDOB = DOB
-
-		if (!CommonStory.isNullOrEmpty(DOB) &&
-				!DOB.trim().equalsIgnoreCase("Invalid Date")) {
+		if (!CommonStory.isNullOrEmpty(DOB) && !DOB.trim().equalsIgnoreCase("Invalid Date")) {
 			expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
 		}
-
 		assertStory.verifyMatch("Header→→ Patient DOB", actualPTDOB, expectedPTDOB)
 
-
-		String PtId = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/PatientId'))
-
-		PtId = PtId?.replaceAll('\\D+', '')
-
+		// Patient ID
+		String PtId = WebUI.getText(toPatientId)?.replaceAll("\\D+", "")
 		String patientIdKey = "FP_${_ptKey}_PATIENT_ID"
-
 		String expectedPTId = VariableStories.getItem(patientIdKey)
-
 		assertStory.verifyMatch("Header→→ Patient ID", PtId, expectedPTId)
 
-
-		String EncId = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/EncounterId'))
-
-		EncId = EncId?.replaceAll('\\D+', '')
-
+		// Encounter ID
+		String EncId = WebUI.getText(toEncounterId)?.replaceAll("\\D+", "")
 		String encIdKey = "ENC_${_ptKey}_ENCOUNTER_ID"
-
 		String expectedEncId = VariableStories.getItem(encIdKey)
-
 		assertStory.verifyMatch("Header→→ Encounter ID", EncId, expectedEncId)
 
-
-		String Provider = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Header/Provider'))
-
-		Provider = Provider?.replace('Prov:', '').replace('|', '').replaceAll('\\s+', '')
-
-		String providerKey = "ENC_${_ptKey}_PROVIDER_ID"
-
+		// Provider
+		String Provider = WebUI.getText(toProvider)
+				?.replace("Prov:", "")
+				?.replace("|", "")
+				?.replaceAll("\\s+", "")
 		String expectedProvider = "${Provider_FirstName}${Provider_LastName}"
-
 		assertStory.verifyMatch("Header→→ Provider", Provider, expectedProvider)
 	}
 
 	@Keyword
-	def getSOAPNotesAndSpeakerNotesWordCount(String expectedPtName ) {
+	def getSOAPNotesAndSpeakerNotesWordCount(String expectedPtName) {
 		LogStories.logInfo('----------------------Step AB----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects once
+		TestObject soapNotesObj    = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
+		TestObject speakerNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes')
 
-		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
+		// Wait for SOAP Notes only once
+		WebUI.waitForElementVisible(soapNotesObj, 20, FailureHandling.STOP_ON_FAILURE)
 
+		// SOAP Notes
+		String soapNotes = WebUI.getText(soapNotesObj).trim()
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
-
-		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
-
+		int wordCountSOAPNotes = soapNotes.tokenize().size()   // faster than regex split
 		VariableStories.setItem('SOAP_NOTE_WORDS_COUNT', wordCountSOAPNotes)
 
-		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
-
+		// Speaker Notes
+		String speakerNotes = WebUI.getText(speakerNotesObj).trim()
 		LogStories.logInfo("Speaker Notes→ $speakerNotes")
-
-		//Speaker Dictation Word Count
-		int wordCount = speakerNotes.trim().split('\\s+').length
-
-		VariableStories.setItem('SPEAKER_NOTE_WORDS_COUNT', wordCount)
+		int wordCountSpeakerNotes = speakerNotes.tokenize().size()
+		VariableStories.setItem('SPEAKER_NOTE_WORDS_COUNT', wordCountSpeakerNotes)
 	}
 
 	@Keyword
-	def verifyAppendedSOAPNotesAndSpeakerNotes(String expectedPtName ) {
+	def verifyAppendedSOAPNotesAndSpeakerNotes(String expectedPtName) {
 		LogStories.logInfo('----------------------Step AC----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects once
+		TestObject speakerPtNameObj   = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name')
+		TestObject dictationDateObj   = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date')
+		TestObject soapNotesObj       = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
+		TestObject speakerNotesObj    = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes')
 
-		String ptName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'))
-		expectedPtName = "Pt: $expectedPtName"
+		// Patient Name
+		WebUI.waitForElementVisible(speakerPtNameObj, 20, FailureHandling.STOP_ON_FAILURE)
+		String ptName = WebUI.getText(speakerPtNameObj)
+		assertStory.verifyMatch("Patient Name", ptName, "Pt: $expectedPtName")
 
-		assertStory.verifyMatch("Patient Name", ptName, expectedPtName)
-
-		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
-
+		// Dictation Date
+		String ptDictationDt = WebUI.getText(dictationDateObj)
 		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'()
-
-		if (CommonStory.isNullOrEmpty(expectedPtDictationDt) == false) {
+		if (!CommonStory.isNullOrEmpty(expectedPtDictationDt)) {
 			expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(expectedPtDictationDt, 'M/d/yyyy')
 		}
-
-		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
-			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt,'M/d/yyyy')
+		if (!CommonStory.isNullOrEmpty(ptDictationDt)) {
+			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
-
-		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
-
+		assertStory.verifyMatch("Patient Dictation Date", ptDictationDt, expectedPtDictationDt)
 		LogStories.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
-		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
-
+		// SOAP Notes
+		String soapNotes = WebUI.getText(soapNotesObj).trim()
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
+		int wordCountSOAPNotes = soapNotes.tokenize().size()
+		int expectedWordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_WORDS_COUNT')
+		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, expectedWordCountSOAPNotes)
 
-		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
-
-		def expectedWordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_WORDS_COUNT')
-
-		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, expectedWordCountSOAPNotes )
-
-		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
-
+		// Speaker Notes
+		String speakerNotes = WebUI.getText(speakerNotesObj).trim()
 		LogStories.logInfo("Speaker Notes→ $speakerNotes")
 
-		//Speaker A
-		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
-
+		// Speaker A & B checks
+		int countSpeakerA = speakerNotes.count("Speaker A")
 		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, 1)
 
-		//Speaker B
-		int countSpeakerB = speakerNotes.findAll('Speaker B').size()
-
+		int countSpeakerB = speakerNotes.count("Speaker B")
 		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, 1)
 
-		//Speaker Dictation Word Count
-		int wordCount = speakerNotes.trim().split('\\s+').length
+		// Speaker Dictation Word Count
+		int wordCountSpeaker = speakerNotes.tokenize().size()
+		int expectedWordCountSpeaker = VariableStories.getItem('SPEAKER_NOTE_WORDS_COUNT')
+		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCountSpeaker, expectedWordCountSpeaker)
 
-		def expectedWordCount = VariableStories.getItem('SPEAKER_NOTE_WORDS_COUNT')
-
-		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCount, expectedWordCount)
-
+		// Consent check
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 	}
 
 	@Keyword
-	def verifyEVAAScribeSOAPNotesAndSpeakerNotes(String expectedPtName ) {
+	def verifyEVAAScribeSOAPNotesAndSpeakerNotes(String expectedPtName) {
 		LogStories.logInfo('----------------------Step AD----------------------')
 
 		int wordMaxCount = 1
 		int maxCount = 1
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Cache objects
+		TestObject ptNameObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name')
+		TestObject dictationDateObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date')
+		TestObject soapNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
+		TestObject speakerNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes')
 
-		String ptName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'))
+		WebUI.waitForElementVisible(ptNameObj, 30, FailureHandling.STOP_ON_FAILURE)
+
+		String ptName = WebUI.getText(ptNameObj)
 		expectedPtName = "Pt: $expectedPtName"
-
 		assertStory.verifyMatch("Patient Name", ptName, expectedPtName)
 
-		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
-
+		String ptDictationDt = WebUI.getText(dictationDateObj)
 		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
-
-		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
+		if (!CommonStory.isNullOrEmpty(ptDictationDt)) {
 			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
-
-		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
-
+		assertStory.verifyMatch("Patient Dictation Date", ptDictationDt, expectedPtDictationDt)
 		LogStories.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
-		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
-
+		// SOAP Notes
+		def soapNotes = WebUI.getText(soapNotesObj)
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
-
-		int wordCountSOAPNotes = soapNotes.trim().split('\\s+').length
-
-		//		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
-		//		VariableStories.setItem("SOAP_NOTES", soapNotes)
-
+		int wordCountSOAPNotes = soapNotes.tokenize().size()
 		assertStory.verifyGreaterThanOrEqual("SOAP Notes Total Words", wordCountSOAPNotes, wordMaxCount)
 
-		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'))
-
+		// Speaker Notes
+		def speakerNotes = WebUI.getText(speakerNotesObj)
 		LogStories.logInfo("Speaker Notes→ $speakerNotes")
 
-		//Speaker A
-		int countSpeakerA = speakerNotes.findAll('Speaker A').size()
-
+		int countSpeakerA = speakerNotes.count("Speaker A")
 		assertStory.verifyGreaterThanOrEqual("'Speaker A' Word found", countSpeakerA, maxCount)
 
-		//Speaker B
-		int countSpeakerB = speakerNotes.findAll('Speaker B').size()
-
+		int countSpeakerB = speakerNotes.count("Speaker B")
 		assertStory.verifyGreaterThanOrEqual("'Speaker B' Word found", countSpeakerB, maxCount)
 
-		//Speaker Dictation Word Count
-		int wordCount = speakerNotes.trim().split('\\s+').length
-
-		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCount, wordMaxCount)
+		int wordCountSpeakerNotes = speakerNotes.tokenize().size()
+		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCountSpeakerNotes, wordMaxCount)
 
 		LogStories.logInfo('----------------------Step AE----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
@@ -1022,105 +655,108 @@ public class EVAASteps {
 	def verifySOAPNotesAndSpeakerNotesNotGenerated(String expectedPtName) {
 		LogStories.logInfo('----------------------Step AAJ----------------------')
 
-		WebUI.delay(5)
+		// Avoid fixed delay, rely on waitForElementVisible
+		TestObject ptNameObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name')
+		TestObject dictationDateObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date')
+		TestObject soapNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
+		TestObject speakerNotesObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(ptNameObj, 30, FailureHandling.STOP_ON_FAILURE)
 
-		String ptName = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name'))
+		// Patient Name
+		String ptName = WebUI.getText(ptNameObj)
 		expectedPtName = "Pt: $expectedPtName"
-
 		assertStory.verifyMatch("Patient Name", ptName, expectedPtName)
 
-		String ptDictationDt = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Pt Dictation Date'))
-
+		// Dictation Date
+		String ptDictationDt = WebUI.getText(dictationDateObj)
 		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
-
-		if (CommonStory.isNullOrEmpty(ptDictationDt) == false) {
+		if (!CommonStory.isNullOrEmpty(ptDictationDt)) {
 			ptDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(ptDictationDt, 'M/d/yyyy')
 		}
-
-		assertStory.verifyMatch("Patient Dictation Date",ptDictationDt, expectedPtDictationDt)
-
+		assertStory.verifyMatch("Patient Dictation Date", ptDictationDt, expectedPtDictationDt)
 		LogStories.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
-		String soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), FailureHandling.OPTIONAL)
-
+		// SOAP Notes
+		String soapNotes = WebUI.getText(soapNotesObj, FailureHandling.OPTIONAL)
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
-
 		assertStory.verifyMatch("SOAP Notes Total Words", soapNotes, "")
 
-		def speakerNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Notes'), FailureHandling.OPTIONAL)
+		// Speaker Notes
+		String speakerNotes = WebUI.getText(speakerNotesObj, FailureHandling.OPTIONAL)
 		LogStories.logInfo("Speaker Notes→ $speakerNotes")
+		assertStory.verifyMatch("Speaker Dictation Total Words", speakerNotes,
+				"No transcript available. Upload an audio file to get started.")
 
-		assertStory.verifyMatch("Speaker Dictation Total Words", speakerNotes, "No transcript available. Upload an audio file to get started.")
+		LogStories.logInfo('----------------------Step AAJ Completed----------------------')
 	}
 
 	@Keyword
-	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus ) {
+	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus) {
 		LogStories.logInfo('----------------------Step AF----------------------')
 
+		// Cache objects once
 		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
+		TestObject toPatientDOBDictationDate = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate')
+		TestObject svgPending = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Pending')
+		TestObject svgFinalized = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Finalized')
+		TestObject micGrey = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_grey_mic-status')
+		TestObject micGreen = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_green_mic-status')
+		TestObject micBlue = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_blue_mic-status')
 
-		WebUI.waitForElementVisible(toPatientName, 60, FailureHandling.STOP_ON_FAILURE)
-
+		// Wait once for patient name, no need for delay
+		WebUI.waitForElementVisible(toPatientName, 30, FailureHandling.STOP_ON_FAILURE)
 		waitStory.waitForElementText(toPatientName, 30)
 
-		WebUI.delay(5)
-
-		def div_PatientName = WebUI.getText(toPatientName)
-
+		// Patient Name
+		String div_PatientName = WebUI.getText(toPatientName)
 		assertStory.verifyMatch("Left Side Panel→→ Patient Name", div_PatientName, PatientName)
 
-		def actual_PatientDOB_DictationDate = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate'))
+		// Patient DOB + Dictation Date
+		String actual_PatientDOB_DictationDate = WebUI.getText(toPatientDOBDictationDate)
+		String expectedPTDOBText = DOB
 
-		def expectedPTDOBText = DOB
-		if (!CommonStory.isNullOrEmpty(DOB) == true) {
-			String ageKey = "FP_${PatientName}".toUpperCase()
-
-			ageKey = "${ageKey}_PATIENT_AGE_AT_EXAM"
-			ageKey = ageKey.replaceAll(/\s+/, '_')
-
-			def age =	VariableStories.getItem(ageKey)
-			if (CommonStory.isNullOrEmpty(age) == false) {
-				age = age.toString()
-						.replaceAll('YRS', "")
-						.trim()
+		if (!CommonStory.isNullOrEmpty(DOB)) {
+			String ageKey = ("FP_" + PatientName.replaceAll("\\s+", "_")).toUpperCase() + "_PATIENT_AGE_AT_EXAM"
+			def age = VariableStories.getItem(ageKey)
+			if (!CommonStory.isNullOrEmpty(age)) {
+				age = age.toString().replaceAll('YRS', "").trim()
 			}
-
 			String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
-
-			expectedPTDOBText =  "$expectedPTDOB ($age)"
+			expectedPTDOBText = "$expectedPTDOB ($age)"
 		}
 
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null,'M/d/yyyy')
+		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
+		String expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
 
-		def expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
+		assertStory.verifyMatch('Left Side Panel→→ Patient Name, DOB, Dictation Date',
+				actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
 
-		assertStory.verifyMatch('Left Side Panel→→ Patient Name, DOB, Dictation Date',actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
-
-		// Finalized Status
-		boolean isPending = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Pending'), 2, FailureHandling.OPTIONAL)
-		String _finalizedStatus = isPending ? 'Pending' : ''
-
-		boolean isFinalized = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Finalized'), 1, FailureHandling.OPTIONAL)
-		_finalizedStatus = isFinalized ? 'Finalized' : _finalizedStatus
-
+		// Finalized Status (check once, short waits)
+		String _finalizedStatus = ''
+		if (WebUI.waitForElementPresent(svgPending, 2, FailureHandling.OPTIONAL)) {
+			_finalizedStatus = 'Pending'
+		}
+		if (WebUI.waitForElementPresent(svgFinalized, 1, FailureHandling.OPTIONAL)) {
+			_finalizedStatus = 'Finalized'
+		}
 		assertStory.verifyMatch('Left Side Panel→→ Finalized Status', _finalizedStatus, FinalizedStatus)
 
-		// Mic Status
-		boolean notStarted = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_grey_mic-status'), 2, FailureHandling.OPTIONAL)
-		String _micStatus = notStarted ? 'Recording Not Started' : ''
-
-		boolean isInProgress = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_green_mic-status'), 1, FailureHandling.OPTIONAL)
-		_micStatus = isInProgress ? 'In Progress' : _micStatus
-
-		boolean isCompleted = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_blue_mic-status'), 1, FailureHandling.OPTIONAL)
-		_micStatus = isCompleted ? 'Completed' : _micStatus
-
+		// Mic Status (check once, short waits)
+		String _micStatus = ''
+		if (WebUI.waitForElementPresent(micGrey, 2, FailureHandling.OPTIONAL)) {
+			_micStatus = 'Recording Not Started'
+		}
+		if (WebUI.waitForElementPresent(micGreen, 1, FailureHandling.OPTIONAL)) {
+			_micStatus = 'In Progress'
+		}
+		if (WebUI.waitForElementPresent(micBlue, 1, FailureHandling.OPTIONAL)) {
+			_micStatus = 'Completed'
+		}
 		assertStory.verifyMatch('Left Side Panel→→ Mic Status', _micStatus, MicStatus)
 	}
 
-	private void captureSectionDirectDictation(
+	private void captureSectionDirectDictation2(
 			String sectionName,
 			String testObjectPath,
 			boolean isList = true
@@ -1161,6 +797,79 @@ public class EVAASteps {
 	}
 
 	@Keyword
+	def getAndStoreEVAAScribeSOAPNote() {
+		LogStories.logInfo('----------------------Step AH----------------------')
+
+		// Switch once into the frame
+		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+		// Clear storage
+		VariableStories.elementStorage.clear()
+
+		// Define sections in a list for iteration
+		def sections = [
+			[name: 'ChiefComplaint', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/ChiefComplaint', isList: false],
+			[name: 'HPI', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/HPI', isList: false],
+			[name: 'CurrentEyeSymptoms', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Current Eye Symptoms', isList: true],
+			[name: 'Allergies', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Allergies', isList: true],
+			[name: 'Medications', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Medications', isList: true],
+			[name: 'EyeDiseases', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Eye Diseases', isList: true],
+			[name: 'ReviewOfSystems', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Review Of Systems', isList: true],
+			[name: 'Problems', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Problems', isList: true],
+			[name: 'MentalAndFunctionalStatus', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Mental and Functional Status', isList: true],
+			[name: 'DifferentialDiagnosis', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Differential Diagnosis', isList: true],
+			[name: 'Assessment', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Assessment', isList: true],
+			[name: 'Plan', path: 'EVAAPage/EVAA Scribe/SOAP Notes/Note/Plans', isList: true]
+		]
+
+		Boolean IS_LIMITED_ELEMENTS = GlobalVariable.G_IS_LIMITED_ELEMENTS
+
+		if (IS_LIMITED_ELEMENTS) {
+			def allowedNames = CommonStory.allowedNames
+			sections = sections.findAll { elem -> elem.name in allowedNames }
+		}
+
+		// Iterate once instead of multiple calls
+		sections.each { sec ->
+			captureSectionDirectDictation(sec.name, sec.path, sec.isList)
+		}
+
+		WebUI.switchToDefaultContent()
+
+		// SOAP Notes
+		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
+		int wordCountSOAPNotes = soapNotes.tokenize().size()
+
+		VariableStories.setItem("SOAP_NOTE_LENGTH", wordCountSOAPNotes)
+		VariableStories.setItem("SOAP_NOTES", soapNotes)
+	}
+
+	private void captureSectionDirectDictation(String sectionName, String testObjectPath, boolean isList = true) {
+		try {
+			TestObject obj = findTestObject(testObjectPath)
+			if (!WebUI.waitForElementPresent(obj, 1, FailureHandling.OPTIONAL)) {
+				LogStories.markWarning("${sectionName} not found")
+				return
+			}
+
+			def variableKey = CommonStory.sectionMapForStorageKey.get(sectionName)
+
+			if (isList) {
+				List<String> values = WebUI.findWebElements(obj, 5).collect { it.getText().trim() }
+				VariableStories.setItem(variableKey, values)
+			} else {
+				String value = WebUI.getText(obj).trim()
+				VariableStories.setItem(variableKey, value)
+			}
+
+			VariableStories.elementStorage << sectionName
+			LogStories.logInfo("${sectionName} captured successfully")
+		} catch (Exception e) {
+			LogStories.markWarning("Error capturing ${sectionName}: ${e.message}")
+		}
+	}
+
+	@Keyword
 	def getAndStoreEVAAScribeDirectDictationNote() {
 		LogStories.logInfo('----------------------Step AG----------------------')
 
@@ -1168,7 +877,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def getAndStoreEVAAScribeSOAPNote() {
+	def getAndStoreEVAAScribeSOAPNote2() {
 		LogStories.logInfo('----------------------Step AH----------------------')
 
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
@@ -1233,79 +942,9 @@ public class EVAASteps {
 		for (key in  VariableStories.elementStorage) {
 			println "Key: ${key}"
 
-			CustomKeywords.'steps.EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(key)
+			CustomKeywords.'steps.KW_EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(key)
 		}
-	}
-
-	@Keyword
-	def verifyRadioButtonIsChecked(String text, String name, String key) {
-		LogStories.logInfo('----------------------Step AJ----------------------')
-
-		//		def type = ''
-		//		def resultODOSOU = CommonStory.getODOSOU(text)
-		//		if (resultODOSOU) {
-		//			type = resultODOSOU.type
-		//			text = resultODOSOU.value
-		//		}
-		//
-		//		String txt;
-		//
-		//		/** prefix handling **/
-		//		switch (key) {
-		//			case "ED":
-		//				name = "Eye_Diseases.${name}"
-		//				txt="Eye Diseases"
-		//				break
-		//
-		//			case "CES":
-		//				name = "Current_Eye_Symptoms.${name}"
-		//				txt = "Current Eye Symptoms"
-		//				break
-		//
-		//			case "ROS":
-		//				name = "Review_of_Systems_Brief.${name}"
-		//				txt = "Review of Systems Brief"
-		//				break
-		//
-		//			default:
-		//				LogStories.markWarning("Unknown key → $key")
-		//				return
-		//		}
-		//
-		//		if (CommonStory.isNullOrEmpty(type)) {
-		//			LogStories.logInfo("No type present for element → '$txt'.")
-		//			return
-		//		}
-		//
-		//		/** name formatting **/
-		//		if (type in ["OD", "OS", "OU"]) {
-		//			name = name.replace("_NOTES", "_LOCATION")
-		//		} else if (type in ["Yes", "No", "Unk"]) {
-		//			name = name.replace("_NOTES", "")
-		//		}
-		//
-		//		/** build TestObject **/
-		//		TestObject rbTestObject = testObjectStory.input_RadioButton(name, type)
-		//
-		//		if (!rbTestObject) {
-		//			LogStories.markFailed("Radio Button not found → $text ($name:$type)")
-		//			return
-		//		}
-		//
-		//		/** find web element safely **/
-		//		WebElement el = WebUI.findWebElement(rbTestObject, 5, FailureHandling.OPTIONAL)
-		//
-		//		if (!el) {
-		//			LogStories.markFailed("Radio button missing in DOM → $text ($name:$type)")
-		//			return
-		//		}
-		//
-		//		boolean isChecked = el.isSelected()
-		//
-		//		LogStories.logInfo("Checked? $isChecked → ($text, $name, $type)")
-		//
-		//		assertStory.verifyMatch("${text}-${type}", isChecked.toString(), "true")
-	}
+	} 
 
 	@Keyword
 	def generateSOAPNoteByAppendPauseResumeStop(String FileTime, String RecordFilePath) {
@@ -1564,7 +1203,7 @@ public class EVAASteps {
 
 		//		WebUI.uploadFileToWeb(upload, UploadFilePath)
 		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, UploadFilePath)
-		
+
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
 		LogStories.logInfo("Awaiting file upload...")
@@ -1582,16 +1221,16 @@ public class EVAASteps {
 		}
 
 		// Wait for Append Audio button
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		// Wait for SOAP Notes element
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		// Ensure Finalize button is clickable
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		// Wait for SOAP Notes section
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 	}
 
 	@Keyword
@@ -1600,7 +1239,7 @@ public class EVAASteps {
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
-//		WebUI.uploadFileToWeb(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+		//		WebUI.uploadFileToWeb(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
@@ -1624,11 +1263,11 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 	}
 
 	@Keyword
@@ -1686,11 +1325,11 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
@@ -1760,11 +1399,11 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.OPTIONAL)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 10, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 5, FailureHandling.STOP_ON_FAILURE)
 	}
@@ -1774,7 +1413,6 @@ public class EVAASteps {
 		LogStories.logInfo('----------------------Step AU----------------------')
 
 		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
-
 		int rowCount = dictationData.getRowNumbers()
 
 		if (rowCount == 0) {
@@ -1782,46 +1420,38 @@ public class EVAASteps {
 			return
 		}
 
-		int row = 1   // first row
+		int row = 1 // first row
 
 		if (!VariableStories.elementStorage.isEmpty()) {
 			def elementStorageList = VariableStories.elementStorage
 
 			try {
-				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 8)
 
-				for (String name : elementStorageList) {
+				elementStorageList.each { String name ->
 					LogStories.logInfo("Element from Storage → ${name}")
 
 					TestObject sectionTO = CommonStory.sectionMapForDirectDictationTyping.get(name)
-
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
 						return
 					}
 
-					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 5)
+					String textToAppend = dictationData.getValue(name, row)
 
 					elements.each { WebElement el ->
 						LogStories.logInfo("${name} value → ${el.text}")
-
-						String textToAppend = dictationData.getValue(name, row)
-
 						el.click()
 						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
 						el.sendKeys(" ${textToAppend}")
 
 						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
-
-						WebUI.delay(1)
 					}
 				}
-			} catch (e) {
-				e.printStackTrace()
-			}finally		{
-				//				WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
-
-				// Switch back
+			} catch (Exception e) {
+				LogStories.markWarning("Error in dictation typing: ${e.message}")
+			} finally {
 				WebUI.switchToDefaultContent()
 			}
 		}
@@ -1871,7 +1501,7 @@ public class EVAASteps {
 				expectedList.eachWithIndex { expected, i ->
 					String expectedText = "${expected} ${appendText}".replaceAll(":(?=.*:)", "")
 					String actualText = "${actualTexts[i]}".replaceAll(":(?=.*:)", "")
-					
+
 					assertStory.verifyMatch("Direct Dictation→→ ${name}", actualText, expectedText)
 				}
 			}
@@ -2226,22 +1856,22 @@ public class EVAASteps {
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 	}
-	
+
 	@Keyword
 	def ClickOnCopyAllButton() {
 		LogStories.logInfo("---------------------Click On Copy AllButton---------------------")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('The \'Copy All\' button is displayed.')
-		
+
 		WebUI.verifyElementClickable(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('The \'Copy All\' button is Clickable.')
-		
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Clicked on \'Copy All\' button.')
-		
+
 		String clipboardText = UtilHelper.getClipboardText()
-		VariableStories.setItem("CLIPBOARD_TEXT",clipboardText) 
+		VariableStories.setItem("CLIPBOARD_TEXT",clipboardText)
 	}
 
 	@Keyword
@@ -2254,6 +1884,8 @@ public class EVAASteps {
 		}
 
 		def elementStorageList = VariableStories.elementStorage
+
+		elementStorageList = CustomKeywords.'steps.EVAASteps.GetLimitedElementList'(elementStorageList)
 
 		String clipboardText = VariableStories.getItem("CLIPBOARD_TEXT")
 
@@ -2324,7 +1956,7 @@ public class EVAASteps {
 			return
 		}
 		else {
- 
+
 			String clipboardText = VariableStories.getItem("CLIPBOARD_TEXT")
 
 			// Get all values as a list
@@ -2374,6 +2006,8 @@ public class EVAASteps {
 
 		def elementStorageList = VariableStories.elementStorage
 
+		elementStorageList = CustomKeywords.'steps.EVAASteps.GetLimitedElementList'(elementStorageList)
+
 		for (String name : elementStorageList) {
 
 			LogStories.logInfo("============================Copy SOAP Note Element Name - ${name}============================")
@@ -2401,7 +2035,7 @@ public class EVAASteps {
 			LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
 			WebUI.delay(1)
 
-			String clipboardText = UtilHelper.getClipboardText() 
+			String clipboardText = UtilHelper.getClipboardText()
 
 			if (!CommonStory.isNullOrEmpty(clipboardText)) {
 				LogStories.markPassed("Verified copied content can be pasted successfully into an external editor")
@@ -2456,5 +2090,27 @@ public class EVAASteps {
 
 			LogStories.logInfo("***********************************************************************************************************")
 		}
+	}
+
+	@Keyword
+	def GetLimitedElementList(def elementStorageList) {
+		Boolean IS_LIMITED_ELEMENTS = GlobalVariable.G_IS_LIMITED_ELEMENTS
+
+		if (IS_LIMITED_ELEMENTS) {
+			def allowedNames = commonStory.allowedNames
+
+			// Handle both cases: strings or objects with a 'name' property
+			elementStorageList = elementStorageList.findAll { elem ->
+				if (elem instanceof String) {
+					return elem in allowedNames
+				} else if (elem.hasProperty('name')) {
+					return elem.name in allowedNames
+				} else {
+					return false
+				}
+			}
+		}
+
+		return elementStorageList
 	}
 }
