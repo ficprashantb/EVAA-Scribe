@@ -59,7 +59,7 @@ public class DateHelper {
 	}
 
 	@Keyword
-	String GetFormattedDate(String date = null, String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.IST) {
+	String GetFormattedDate(String date = null, String dateFormat = "MM/dd/yyyy", SupportedZone zone = SupportedZone.UTC) {
 		ZoneId zoneId = ZoneId.of(zone.getZoneId())
 
 		if (CommonStory.isNullOrEmpty(date)) {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
-   <description>Generate SOAP Note by Uploading File (Single Patient)</description>
+   <description>Generate SOAP Note by Uploading File (Single Patient)&#xd;
+MBT56103</description>
    <name>TC-U01 - Generate SOAP Note by Uploading File (Single Patient)</name>
    <tag></tag>
    <integratedEntity>
