@@ -19,6 +19,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 
 import internal.GlobalVariable
+import stories.LogStories
 
 import java.nio.file.*
 import java.awt.Robot
@@ -42,7 +43,7 @@ public class CommonKeywords {
 		} else {
 			println "Invalid folder path: $folderPath"
 		}
-	} 
+	}
 
 	def pressTabs(int count) {
 		Robot robot = new Robot()
@@ -94,12 +95,91 @@ public class CommonKeywords {
 		robot.keyRelease(KeyEvent.VK_V)
 		robot.keyRelease(KeyEvent.VK_CONTROL)
 		robot.delay(500)
-		
+
 		robot.keyPress(KeyEvent.VK_ENTER)
 		robot.keyRelease(KeyEvent.VK_ENTER)
 		robot.delay(1000)
 	}
-	
+
+	@Keyword
+	def enterFilePathInFileNameInput(String fullFilePath) {
+		Robot robot = new Robot()
+
+		// Step 1: Copy folder path to clipboard
+		StringSelection folderSelection = new StringSelection(fullFilePath)
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(folderSelection, null)
+		robot.delay(1000)
+
+		// Step 2: Focus top address bar (ALT+D), paste folder path, press ENTER
+		robot.keyPress(KeyEvent.VK_ALT)
+		robot.keyPress(KeyEvent.VK_D)
+		robot.keyRelease(KeyEvent.VK_D)
+		robot.keyRelease(KeyEvent.VK_ALT)
+		robot.delay(500)
+
+		pressTabs(7)
+
+		// Step 3: Paste file name into bottom input field
+		robot.keyPress(KeyEvent.VK_CONTROL)
+		robot.keyPress(KeyEvent.VK_V)
+		robot.keyRelease(KeyEvent.VK_V)
+		robot.keyRelease(KeyEvent.VK_CONTROL)
+		robot.delay(500)
+
+		robot.keyPress(KeyEvent.VK_ENTER)
+		robot.keyRelease(KeyEvent.VK_ENTER)
+		robot.delay(1000)
+	}
+
+	// Helper method to type text character by character
+	private void typeText(Robot robot, String text) {
+		text.each { ch ->
+			int keyCode = KeyEvent.getExtendedKeyCodeForChar((int) ch)
+			if (keyCode != KeyEvent.VK_UNDEFINED) {
+				if (Character.isUpperCase(ch)) {
+					robot.keyPress(KeyEvent.VK_SHIFT)
+					robot.keyPress(keyCode)
+					robot.keyRelease(keyCode)
+					robot.keyRelease(KeyEvent.VK_SHIFT)
+				} else {
+					robot.keyPress(keyCode)
+					robot.keyRelease(keyCode)
+				}
+				robot.delay(30) // small delay between keystrokes
+			} else {
+				println "Skipping unsupported char: ${ch}"
+			}
+		}
+	}
+
+	@Keyword
+	def getFileFromDownloads(String fileName) {
+		// Resolve Downloads folder for current user
+		def downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads")
+
+		// Build full path to the file
+		def filePath = downloadsDir.resolve(fileName)
+
+		if (Files.exists(filePath)) {
+			println "File found: ${filePath.toAbsolutePath()}"
+
+			def _filePath = filePath.toFile()
+
+			return _filePath.getAbsolutePath()
+		} else {
+			println "File not found in Downloads: ${fileName}"
+			return null
+		}
+	}
+
+	@Keyword
+	def getFilePathFromDownloads() {
+		// Resolve Downloads folder for current user
+		def downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads")
+
+		return downloadsDir.toString()
+	}
+
 	/**
 	 * Returns the most recent .txt file from Downloads
 	 * whose name contains 'test'.
@@ -107,19 +187,34 @@ public class CommonKeywords {
 	@Keyword
 	File getLatestTestTxtFile(String fileName, String extenstion = ".txt") {
 		Path downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads")
-	
+
 		File latestFile = Files.list(downloadsDir)
-			.map { it.toFile() }
-			.filter { it.isFile() }
-			.filter { it.name.toLowerCase().contains(fileName) && it.name.endsWith(extenstion) }
-			.max { f1, f2 -> f1.lastModified() <=> f2.lastModified() }
-			.orElse(null)
-	
+				.map { it.toFile() }
+				.filter { it.isFile() }
+				.filter { it.name.toLowerCase().contains(fileName) && it.name.endsWith(extenstion) }
+				.max { f1, f2 -> f1.lastModified() <=> f2.lastModified() }
+				.orElse(null)
+
 		return latestFile
 	}
-	
-	
-	
-	
-	
+
+
+	@Keyword
+	def copyFileToDownloads(String sourceFilePath) {
+		// Resolve source file
+		def source = Paths.get(sourceFilePath)
+
+		// Resolve target path (Downloads folder under current user)
+		def downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads")
+		if (!Files.exists(downloadsDir)) {
+			Files.createDirectories(downloadsDir)
+		}
+
+		def target = downloadsDir.resolve(source.getFileName())
+
+		// Copy file (replace if already exists)
+		Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING)
+
+		LogStories.logInfo("File copied to: ${target.toAbsolutePath()}")
+	}
 }

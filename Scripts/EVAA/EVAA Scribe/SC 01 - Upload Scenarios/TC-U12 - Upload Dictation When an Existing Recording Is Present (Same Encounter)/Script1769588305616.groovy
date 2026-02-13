@@ -32,7 +32,16 @@ VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(RecordFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false, false)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(RecordFilePath, FirstName, LastName, DOB, 
+    Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false, false)
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
-CustomKeywords.'steps.EVAASteps.UploadReRecordDictation'(UploadFilePath,  FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+def filePath = (RunConfiguration.getProjectDir() + '/Files/') + UploadFilePath
+
+CustomKeywords.'steps.CommonKeywords.copyFileToDownloads'(filePath)
+
+LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.UploadReRecordDictation'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+ 

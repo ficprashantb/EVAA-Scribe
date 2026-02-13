@@ -40,6 +40,7 @@ import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI2
 
+
 public class EVAASteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
@@ -1767,7 +1768,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def UploadReRecordDictation(String RecordFilePath, String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ) {
+	def UploadReRecordDictation(String fileName, String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ) {
 		LogStories.logInfo('----------------------Step AAL----------------------')
 
 		def wordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_LENGTH')
@@ -1810,13 +1811,12 @@ public class EVAASteps {
 
 		LogStories.logInfo('Clicked on Re-Record Button.')
 
-		def folderPath = RunConfiguration.getProjectDir() + '/Files'
-
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
 
-		LogStories.logInfo('File uploaded: ' + RecordFilePath)
+		def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
+		LogStories.logInfo('File uploaded: ' + folderPath)
 
-		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath, RecordFilePath)
+		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
 
 		LogStories.logInfo('Awaiting file upload...')
 

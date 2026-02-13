@@ -269,6 +269,7 @@ public class CommonStory {
 			'Glaucoma'				: 'GLAUCOMA_NOTES',
 			'Glaucoma Suspect'		: 'GLAUCOMA_SUSPECT_NOTES',
 			'High Risk Med'			: 'HIGH_RISK_MEDICATION_NOTES',
+			'High Risk Medication'	: 'HIGH_RISK_MEDICATION_NOTES',
 			'Macular Degen'			: 'MACULAR_DEGENERATION_NOTES',
 			'PVD'					: 'PVD_NOTES',
 			'Retinal Detach.'		: 'RETINAL_DETACHMENT_NOTES',

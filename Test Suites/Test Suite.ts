@@ -12,16 +12,22 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>77d91a45-3fb2-4780-9472-08fe4497d911</testSuiteGuid>
    <testCaseLink>
-      <guid>77924a0f-37c0-4ec8-aa14-cf7ae9839266</guid>
+      <guid>151b2534-b912-4fb2-8bf3-1db7ede54c9a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Generate SOAP Note by Uploading File (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U12 - Upload Dictation When an Existing Recording Is Present (Same Encounter)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>5de35d73-1e8e-401f-b428-8165348cf514</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>44e42dd3-7952-4e4c-838d-c8e8c9f63546</variableId>
       </variableLink>
       <variableLink>
          <testDataLinkId></testDataLinkId>
