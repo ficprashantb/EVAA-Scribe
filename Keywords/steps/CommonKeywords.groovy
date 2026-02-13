@@ -57,7 +57,7 @@ public class CommonKeywords {
 	}
 
 	@Keyword
-	def enterFilePathAndName(String folderPath, String fileName) {
+	def enterFilePathAndName2(String folderPath, String fileName) {
 		Robot robot = new Robot()
 
 		// Step 1: Copy folder path to clipboard
@@ -102,6 +102,31 @@ public class CommonKeywords {
 	}
 
 	@Keyword
+	def enterFilePathAndName(String folderPath, String fileName) {
+		Robot robot = new Robot()
+
+		robot.delay(1000)
+
+		folderPath.each { char c ->
+			typeChar(robot, c)
+		}
+
+		robot.delay(500)
+
+		robot.keyPress(KeyEvent.VK_ENTER)
+		robot.keyRelease(KeyEvent.VK_ENTER)
+		robot.delay(1000)
+
+		fileName.each { char c ->
+			typeChar(robot, c)
+		}
+
+		robot.keyPress(KeyEvent.VK_ENTER)
+		robot.keyRelease(KeyEvent.VK_ENTER)
+		robot.delay(1000)
+	}
+
+	@Keyword
 	def enterFilePathInFileNameInput(String fullFilePath) {
 		Robot robot = new Robot()
 
@@ -131,24 +156,38 @@ public class CommonKeywords {
 		robot.delay(1000)
 	}
 
-	// Helper method to type text character by character
-	private void typeText(Robot robot, String text) {
-		text.each { ch ->
-			int keyCode = KeyEvent.getExtendedKeyCodeForChar((int) ch)
-			if (keyCode != KeyEvent.VK_UNDEFINED) {
-				if (Character.isUpperCase(ch)) {
-					robot.keyPress(KeyEvent.VK_SHIFT)
-					robot.keyPress(keyCode)
-					robot.keyRelease(keyCode)
-					robot.keyRelease(KeyEvent.VK_SHIFT)
+	// Helper method
+	private void typeChar(Robot robot, char character) {
+		switch (character) {
+			case '\\': // backslash
+				robot.keyPress(KeyEvent.VK_BACK_SLASH)
+				robot.keyRelease(KeyEvent.VK_BACK_SLASH)
+				break
+			case '/': // forward slash
+				robot.keyPress(KeyEvent.VK_SLASH)
+				robot.keyRelease(KeyEvent.VK_SLASH)
+				break
+			case ':': // colon requires SHIFT + SEMICOLON
+				robot.keyPress(KeyEvent.VK_SHIFT)
+				robot.keyPress(KeyEvent.VK_SEMICOLON)
+				robot.keyRelease(KeyEvent.VK_SEMICOLON)
+				robot.keyRelease(KeyEvent.VK_SHIFT)
+				break
+			default:
+				int keyCode = KeyEvent.getExtendedKeyCodeForChar((int) character)
+				if (keyCode != KeyEvent.VK_UNDEFINED) {
+					if (Character.isUpperCase(character)) {
+						robot.keyPress(KeyEvent.VK_SHIFT)
+						robot.keyPress(keyCode)
+						robot.keyRelease(keyCode)
+						robot.keyRelease(KeyEvent.VK_SHIFT)
+					} else {
+						robot.keyPress(keyCode)
+						robot.keyRelease(keyCode)
+					}
 				} else {
-					robot.keyPress(keyCode)
-					robot.keyRelease(keyCode)
+					println "Unsupported char: ${character}"
 				}
-				robot.delay(30) // small delay between keystrokes
-			} else {
-				println "Skipping unsupported char: ${ch}"
-			}
 		}
 	}
 
@@ -216,5 +255,12 @@ public class CommonKeywords {
 		Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING)
 
 		LogStories.logInfo("File copied to: ${target.toAbsolutePath()}")
+
+		// Verify file presence
+		if (Files.exists(target)) {
+			LogStories.markPassed("✅ File is present in Downloads: ${target.fileName}")
+		} else {
+			LogStories.markFailed("❌ File not found in Downloads after copy: ${target.fileName}")
+		}
 	}
 }

@@ -72,11 +72,19 @@ public class UtilHelper {
 	 * Gets the text currently copied to the clipboard.
 	 */
 	static String getClipboardText() {
-		return retryOperation({
-			def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
-			def data = clipboard.getData(DataFlavor.stringFlavor)
-			return data?.toString()
-		})
+		for (int i = 0; i < 5; i++) {
+			WebUI.delay(1)
+			try {
+				def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
+				def contents = clipboard.getContents(null)
+				if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+					return contents.getTransferData(DataFlavor.stringFlavor).toString()
+				}
+			} catch (Exception e) {
+				// ignore and retry
+			}
+		}
+		return null
 	}
 
 	static void sendWindowsNotification(String title, String message) {
@@ -134,9 +142,9 @@ public class UtilHelper {
 		}
 
 		// Return labels in the desired sequence, only if they were found
-		
+
 		def resultData = desiredOrder.findAll { foundLabels.contains(it) }
-		
+
 		return resultData
 	}
 }

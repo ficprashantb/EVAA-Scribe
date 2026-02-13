@@ -35,30 +35,30 @@ public class LogStories {
 	}
 
 	static void logInfo(def text) {
-		KeywordUtil.logInfo(text)
+		KeywordUtil.logInfo("⏩ ${text}")
 	}
 
 	static void markPassed(def text) {
-		KeywordUtil.markPassed(text)
+		KeywordUtil.markPassed("✅ ${text}")
 	}
 
 	static void markError(def text) {
-		KeywordUtil.markError(text)
+		KeywordUtil.markError("❌ ${text}")
 	}
 
 	static void markErrorAndStop(def text) {
-		KeywordUtil.markErrorAndStop(text)
+		KeywordUtil.markErrorAndStop("❌ ${text}")
 	}
 
 	static void markFailed(def text) {
-		KeywordUtil.markFailed(text)
+		KeywordUtil.markFailed("❌ ${text}")
 	}
 
 	static void markFailedAndStop(def text) {
-		KeywordUtil.markFailedAndStop(text)
+		KeywordUtil.markFailedAndStop("❌ ${text}")
 	}
 
 	static void markWarning(def text) {
-		KeywordUtil.markWarning(text)
+		KeywordUtil.markWarning("⚠️ ${text}")
 	}
 }

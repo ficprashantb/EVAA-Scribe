@@ -58,3 +58,4 @@ assertStory.verifyMatch('SOAP Notes', actualSOAPNotes, expectedSOAPNotes)
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements'()
+

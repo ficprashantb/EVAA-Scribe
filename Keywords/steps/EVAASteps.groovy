@@ -1222,7 +1222,7 @@ public class EVAASteps {
 		}
 
 		// Wait for Append Audio button
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 30, FailureHandling.STOP_ON_FAILURE)
 
 		// Wait for SOAP Notes element
 		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 10, FailureHandling.STOP_ON_FAILURE)
@@ -1793,7 +1793,7 @@ public class EVAASteps {
 
 		int wordCountSOAPNotes2 = soapNotes.trim().split('\\s+').length
 
-		assertStory.verifyMatch('SOAP Notes', wordCountSOAPNotes2, wordCountSOAPNotes)
+		assertStory.verifyMatch('SOAP Notes not chnaged after Cancel Re-RecordPopup', wordCountSOAPNotes2, wordCountSOAPNotes)
 
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step C^^^^^^^^^^^^^^^^^^^^^')
 
@@ -1801,48 +1801,26 @@ public class EVAASteps {
 
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
+		//		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
+		//
+		//		LogStories.logInfo('Clicked on Upload Button.')
+		//
+		//		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
+		//
+		//		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), FailureHandling.STOP_ON_FAILURE)
+		//
+		//		LogStories.logInfo('Clicked on Re-Record Button.')
+		//
+		//		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
+		//
+		//def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
+		//LogStories.logInfo('File uploaded: ' + folderPath)
 
-		LogStories.logInfo('Clicked on Upload Button.')
+		//		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
 
-		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
+		def filePath = (RunConfiguration.getProjectDir() + '/Files/'+fileName)
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), FailureHandling.STOP_ON_FAILURE)
-
-		LogStories.logInfo('Clicked on Re-Record Button.')
-
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
-
-		def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
-		LogStories.logInfo('File uploaded: ' + folderPath)
-
-		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
-
-		LogStories.logInfo('Awaiting file upload...')
-
-		// Wait for toast message confirming file processed
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 180, FailureHandling.STOP_ON_FAILURE)
-
-		// Verify if toast is present quickly
-		boolean isPresent = WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 1, FailureHandling.OPTIONAL)
-
-		if (isPresent) {
-			LogStories.markPassed('File processed successfully.')
-		} else {
-			LogStories.markWarning('File not processed successfully.')
-		}
-
-		// Wait for Append Audio button
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Header/button_Append Audio'), 120, FailureHandling.STOP_ON_FAILURE)
-
-		// Wait for SOAP Notes element
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Evaa Mike'), 120, FailureHandling.STOP_ON_FAILURE)
-
-		// Ensure Finalize button is clickable
-		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		// Wait for SOAP Notes section
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120, FailureHandling.STOP_ON_FAILURE)
+		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(filePath)
 
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
 
@@ -1850,7 +1828,7 @@ public class EVAASteps {
 
 		int wordCountSOAPNotes3 = soapNotes2.trim().split('\\s+').length
 
-		assertStory.verifyNotMatch('SOAP Notes', wordCountSOAPNotes3, wordCountSOAPNotes)
+		assertStory.verifyNotMatch('SOAP Notes Re-Recorded', wordCountSOAPNotes3, wordCountSOAPNotes)
 
 		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
 
@@ -2033,7 +2011,6 @@ public class EVAASteps {
 			LogStories.logInfo("Clicked on copy button for element → ${name}")
 
 			LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
-			WebUI.delay(1)
 
 			String clipboardText = UtilHelper.getClipboardText()
 

@@ -37,11 +37,11 @@ CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'
 
 LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def filePath = (RunConfiguration.getProjectDir() + '/Files/') + UploadFilePath
-
-CustomKeywords.'steps.CommonKeywords.copyFileToDownloads'(filePath)
-
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+//def filePath = (RunConfiguration.getProjectDir() + '/Files/') + UploadFilePath
+//
+//CustomKeywords.'steps.CommonKeywords.copyFileToDownloads'(filePath)
+// 
+//LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.UploadReRecordDictation'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
  
