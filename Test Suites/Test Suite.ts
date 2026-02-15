@@ -12,7 +12,7 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>77d91a45-3fb2-4780-9472-08fe4497d911</testSuiteGuid>
    <testCaseLink>
-      <guid>5a687101-5f22-403f-a3e8-1f8c54630d0a</guid>
+      <guid>3b4e70c1-0045-4294-bf25-f1a507c0e836</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U12 - Upload Dictation When an Existing Recording Is Present on Encounter (Single Patient)</testCaseId>
@@ -85,7 +85,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3e1d9631-0fd2-48a2-9ce8-086ec16c3248</guid>
+      <guid>8329d0ed-f9ac-4fa5-b695-009b2f213a56</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U13 - Verify Copy All after Uploading File - Finalized (Single Patient)</testCaseId>
