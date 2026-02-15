@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-U12 - Upload Dictation When an Existing Recording Is Present (Same Encounter)</name>
+   <name>TC-U12 - Upload Dictation When an Existing Recording Is Present on Encounter (Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>

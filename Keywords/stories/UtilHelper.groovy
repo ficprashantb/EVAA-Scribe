@@ -72,8 +72,9 @@ public class UtilHelper {
 	 * Gets the text currently copied to the clipboard.
 	 */
 	static String getClipboardText() {
+		WebUI.delay(1)
 		for (int i = 0; i < 5; i++) {
-			WebUI.delay(1)
+			
 			try {
 				def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
 				def contents = clipboard.getContents(null)
