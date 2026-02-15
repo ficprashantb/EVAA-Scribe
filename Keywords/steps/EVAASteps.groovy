@@ -49,7 +49,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyPatientConsentReceived(String isReceived) {
-		LogStories.logInfo('----------------------Step AAF----------------------')
+		LogStories.log('----------------------Step AAF----------------------')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
 
@@ -68,7 +68,7 @@ public class EVAASteps {
 
 	@Keyword
 	def commonStepsForEVAA(String FirstName, LastName, String DOB, String FinalizedStatus = 'Pending', String MicStatus='Recording Not Started' ) {
-		LogStories.logInfo('----------------------Step AAE----------------------')
+		LogStories.log('----------------------Step AAE----------------------')
 
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
 
@@ -90,16 +90,16 @@ public class EVAASteps {
 
 		WebUI.delay(5)
 
-		LogStories.logInfo('----------------------Step F----------------------')
+		LogStories.log('----------------------Step F----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
-		LogStories.logInfo('----------------------Step G----------------------')
+		LogStories.log('----------------------Step G----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName,  DOB, FinalizedStatus, MicStatus)
 	}
 
 	@Keyword
 	def searchStringAndVerify2(String searchText) {
-		LogStories.logInfo('----------------------Step AAG----------------------')
+		LogStories.log('----------------------Step AAG----------------------')
 
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 30, FailureHandling.STOP_ON_FAILURE)
 
@@ -138,7 +138,7 @@ public class EVAASteps {
 
 	@Keyword
 	def searchStringAndVerify(String searchText) {
-		LogStories.logInfo('----------------------Step AAG----------------------')
+		LogStories.log('----------------------Step AAG----------------------')
 
 		// Switch once into the frame
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 15, FailureHandling.STOP_ON_FAILURE)
@@ -174,20 +174,20 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeAllDetails(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String SearchText= 'b', String FinalizedStatus = 'Pending', String MicStatus='Completed' ) {
-		LogStories.logInfo('----------------------Step AAD----------------------')
+		LogStories.log('----------------------Step AAD----------------------')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName,SearchText,FinalizedStatus,MicStatus)
 
-		LogStories.logInfo('----------------------Step M----------------------')
+		LogStories.log('----------------------Step M----------------------')
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 
-		LogStories.logInfo('----------------------Step N----------------------')
+		LogStories.log('----------------------Step N----------------------')
 		CustomKeywords.'steps.EVAASteps.searchStringAndVerify'(SearchText)
 	}
 
 	@Keyword
 	def verifyEVAAScribeDetails(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName ,String SearchText= 'b', String FinalizedStatus = 'Pending', String MicStatus='Completed') {
-		LogStories.logInfo('----------------------Step AAK----------------------')
+		LogStories.log('----------------------Step AAK----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
@@ -195,26 +195,26 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 20, FailureHandling.STOP_ON_FAILURE)
 
-		LogStories.logInfo('----------------------Step H----------------------')
+		LogStories.log('----------------------Step H----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
-		LogStories.logInfo('----------------------Step I----------------------')
+		LogStories.log('----------------------Step I----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-		LogStories.logInfo('----------------------Step J----------------------')
+		LogStories.log('----------------------Step J----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeSOAPNotesAndSpeakerNotes'(expectedPtName)
 
-		LogStories.logInfo('----------------------Step K----------------------')
+		LogStories.log('----------------------Step K----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB,FinalizedStatus , MicStatus)
 
-		LogStories.logInfo('----------------------Step L----------------------')
+		LogStories.log('----------------------Step L----------------------')
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Direct Dictation/Buttons/img_Send_to_MaximEyes'), 30, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo('Send to MaximEyes button visible.')
 	}
 
 	@Keyword
 	def unfinalizedDictationAfterFinalized(Boolean isExpandClose = false) {
-		LogStories.logInfo('----------------------Step O----------------------')
+		LogStories.log('----------------------Step O----------------------')
 		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
@@ -250,7 +250,7 @@ public class EVAASteps {
 			Boolean isExpandClose = true,
 			Boolean isSendToEHR = true) {
 
-		LogStories.logInfo('----------------------Step AAC----------------------')
+		LogStories.log('----------------------Step AAC----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
@@ -290,7 +290,7 @@ public class EVAASteps {
 		WebUI.delay(1)
 
 		if (isSendToEHR) {
-			LogStories.logInfo('----------------------Step P----------------------')
+			LogStories.log('----------------------Step P----------------------')
 			CustomKeywords.'steps.EVAASteps.sendToAllSOAPNotesToMaximEyes'(
 					FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, isExpandClose)
 		}
@@ -305,7 +305,7 @@ public class EVAASteps {
 			String Provider_LastName,
 			Boolean isExpandClose = true) {
 
-		LogStories.logInfo('----------------------Step AAB----------------------')
+		LogStories.log('----------------------Step AAB----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
@@ -333,19 +333,19 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(finalizedGreen, 20, FailureHandling.STOP_ON_FAILURE)
 
 		// Avoid fixed 10s delay, retry patient name instead
-		LogStories.logInfo('----------------------div_PatientName----------------------')
+		LogStories.log('----------------------div_PatientName----------------------')
 		navigateStory.retryAction {
 			WebUI.waitForElementVisible(patientNameObj, 30, FailureHandling.STOP_ON_FAILURE)
 		}
 
 		// Verify consent and details
-		LogStories.logInfo('----------------------Step Q----------------------')
+		LogStories.log('----------------------Step Q----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
-		LogStories.logInfo('----------------------Step R----------------------')
+		LogStories.log('----------------------Step R----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, 'Finalized', 'Completed')
 
-		LogStories.logInfo('----------------------Step S----------------------')
+		LogStories.log('----------------------Step S----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 		// Expand recording if needed
@@ -358,7 +358,7 @@ public class EVAASteps {
 
 	@Keyword
 	def finalizedAndSendIndividualElementsToMaximEyes(String FirstName, LastName, String DOB,String Provider_FirstName, String Provider_LastName, Boolean isFinalize = true, Boolean isVerifySOAPNote = true) {
-		LogStories.logInfo('----------------------Step AAA----------------------')
+		LogStories.log('----------------------Step AAA----------------------')
 
 		String expectedPtName = "$FirstName $LastName"
 
@@ -388,13 +388,13 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Finalized - Green'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		LogStories.logInfo('----------------------Step T----------------------')
+		LogStories.log('----------------------Step T----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
-		LogStories.logInfo('----------------------Step U----------------------')
+		LogStories.log('----------------------Step U----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName,  DOB, 'Finalized', 'Completed')
 
-		LogStories.logInfo('----------------------Step V----------------------')
+		LogStories.log('----------------------Step V----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeHeaderDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 
@@ -408,7 +408,7 @@ public class EVAASteps {
 		for (String name : elementStorageList) {
 			LogStories.logInfo("Element from Storage → ${name}")
 
-			LogStories.logInfo("============================Element Name - ${name}============================")
+			LogStories.log("============================Element Name - ${name}============================")
 
 			String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
 
@@ -450,13 +450,13 @@ public class EVAASteps {
 					WebUI.delay(2)
 				}
 
-				LogStories.logInfo('----------------------Step W----------------------')
+				LogStories.log('----------------------Step W----------------------')
 				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
-				LogStories.logInfo('----------------------Step X----------------------')
+				LogStories.log('----------------------Step X----------------------')
 				CustomKeywords.'steps.KW_EVAASteps.verifyIndividualSOAPNoteSentToMaximeyes'(name, true, isRefreshPresent)
 
-				LogStories.logInfo('----------------------Step Y----------------------')
+				LogStories.log('----------------------Step Y----------------------')
 				CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
 			}
 			else {
@@ -473,7 +473,7 @@ public class EVAASteps {
 			String Provider_FirstName,
 			String Provider_LastName) {
 
-		LogStories.logInfo('----------------------Step AA----------------------')
+		LogStories.log('----------------------Step AA----------------------')
 
 		WebUI.delay(5)
 
@@ -526,7 +526,7 @@ public class EVAASteps {
 
 	@Keyword
 	def getSOAPNotesAndSpeakerNotesWordCount(String expectedPtName) {
-		LogStories.logInfo('----------------------Step AB----------------------')
+		LogStories.log('----------------------Step AB----------------------')
 
 		// Cache objects once
 		TestObject soapNotesObj    = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes')
@@ -550,7 +550,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyAppendedSOAPNotesAndSpeakerNotes(String expectedPtName) {
-		LogStories.logInfo('----------------------Step AC----------------------')
+		LogStories.log('----------------------Step AC----------------------')
 
 		// Cache objects once
 		TestObject speakerPtNameObj   = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name')
@@ -604,7 +604,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyEVAAScribeSOAPNotesAndSpeakerNotes(String expectedPtName) {
-		LogStories.logInfo('----------------------Step AD----------------------')
+		LogStories.log('----------------------Step AD----------------------')
 
 		int wordMaxCount = 1
 		int maxCount = 1
@@ -648,13 +648,13 @@ public class EVAASteps {
 		int wordCountSpeakerNotes = speakerNotes.tokenize().size()
 		assertStory.verifyGreaterThanOrEqual("Speaker Dictation Total Words", wordCountSpeakerNotes, wordMaxCount)
 
-		LogStories.logInfo('----------------------Step AE----------------------')
+		LogStories.log('----------------------Step AE----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 	}
 
 	@Keyword
 	def verifySOAPNotesAndSpeakerNotesNotGenerated(String expectedPtName) {
-		LogStories.logInfo('----------------------Step AAJ----------------------')
+		LogStories.log('----------------------Step AAJ----------------------')
 
 		// Avoid fixed delay, rely on waitForElementVisible
 		TestObject ptNameObj = findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/Speaker Pt Name')
@@ -689,12 +689,12 @@ public class EVAASteps {
 		assertStory.verifyMatch("Speaker Dictation Total Words", speakerNotes,
 				"No transcript available. Upload an audio file to get started.")
 
-		LogStories.logInfo('----------------------Step AAJ Completed----------------------')
+		LogStories.log('----------------------Step AAJ Completed----------------------')
 	}
 
 	@Keyword
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus) {
-		LogStories.logInfo('----------------------Step AF----------------------')
+		LogStories.log('----------------------Step AF----------------------')
 
 		// Cache objects once
 		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
@@ -799,7 +799,7 @@ public class EVAASteps {
 
 	@Keyword
 	def getAndStoreEVAAScribeSOAPNote() {
-		LogStories.logInfo('----------------------Step AH----------------------')
+		LogStories.log('----------------------Step AH----------------------')
 
 		// Switch once into the frame
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
@@ -872,14 +872,14 @@ public class EVAASteps {
 
 	@Keyword
 	def getAndStoreEVAAScribeDirectDictationNote() {
-		LogStories.logInfo('----------------------Step AG----------------------')
+		LogStories.log('----------------------Step AG----------------------')
 
 		CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 	}
 
 	@Keyword
 	def getAndStoreEVAAScribeSOAPNote2() {
-		LogStories.logInfo('----------------------Step AH----------------------')
+		LogStories.log('----------------------Step AH----------------------')
 
 		WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
 
@@ -938,7 +938,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifySOAPNoteSentToMaximeyes() {
-		LogStories.logInfo('----------------------Step AI----------------------')
+		LogStories.log('----------------------Step AI----------------------')
 
 		for (key in  VariableStories.elementStorage) {
 			println "Key: ${key}"
@@ -949,7 +949,7 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByAppendPauseResumeStop(String FileTime, String RecordFilePath) {
-		LogStories.logInfo('----------------------Step AK----------------------')
+		LogStories.log('----------------------Step AK----------------------')
 
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
@@ -1031,7 +1031,7 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByRecordPauseResumeStop(String FileTime, String RecordFilePath) {
-		LogStories.logInfo('----------------------Step AL----------------------')
+		LogStories.log('----------------------Step AL----------------------')
 
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
@@ -1103,7 +1103,7 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByAppendStartStop(String FileTime, String RecordFilePath) {
-		LogStories.logInfo('----------------------Step AM----------------------')
+		LogStories.log('----------------------Step AM----------------------')
 
 		def fileTimeinSeconds = Integer.valueOf(FileTime)
 
@@ -1149,7 +1149,7 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByRecordStartStop(String FileTime, String UploadFilePath) {
-		LogStories.logInfo('----------------------Step AN----------------------')
+		LogStories.log('----------------------Step AN----------------------')
 
 		int fileTimeinSeconds = Integer.valueOf(FileTime)
 
@@ -1195,7 +1195,7 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByUploadingFile(String UploadFilePath) {
-		LogStories.logInfo('----------------------Step AO----------------------')
+		LogStories.log('----------------------Step AO----------------------')
 
 		// Log the file path
 		LogStories.logInfo("File Path: " + UploadFilePath)
@@ -1236,7 +1236,7 @@ public class EVAASteps {
 
 	@Keyword
 	def UploadingSOAPNoteFile(String UploadFilePath) {
-		LogStories.logInfo('----------------------Step AP----------------------')
+		LogStories.log('----------------------Step AP----------------------')
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
@@ -1250,14 +1250,14 @@ public class EVAASteps {
 
 	@Keyword
 	def generateSOAPNoteByUploadingFileAndSwitchPatient(String UploadFilePath) {
-		LogStories.logInfo('----------------------Step AQ----------------------')
+		LogStories.log('----------------------Step AQ----------------------')
 
 		UploadingSOAPNoteFile(UploadFilePath)
 	}
 
 	@Keyword
 	def verifySOAPNoteGenerateSucessfully() {
-		LogStories.logInfo('----------------------Step AR----------------------')
+		LogStories.log('----------------------Step AR----------------------')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/File processed successfully'), 150, FailureHandling.OPTIONAL)
 		LogStories.markPassed("File processed successfully")
@@ -1273,7 +1273,7 @@ public class EVAASteps {
 
 	@Keyword
 	def StartRecording_CreateNewEncounter_StopRecording(String recordFilePath, String FirstName, String LastName, String EncounterType, String ExamLocation, String Provider, String Technician ) {
-		LogStories.logInfo('----------------------Step AS----------------------')
+		LogStories.log('----------------------Step AS----------------------')
 
 		def fakeMic = new FakeMicStream(recordFilePath)
 
@@ -1337,7 +1337,7 @@ public class EVAASteps {
 
 	@Keyword
 	def StartRecording_CreateNewEncounterForOtherPatient_StopRecording(String recordFilePath, String FirstName, String LastName, String EncounterType, String ExamLocation, String Provider, String Technician ) {
-		LogStories.logInfo('----------------------Step AT----------------------')
+		LogStories.log('----------------------Step AT----------------------')
 
 		def fakeMic = new FakeMicStream(recordFilePath)
 
@@ -1411,7 +1411,7 @@ public class EVAASteps {
 
 	@Keyword
 	def directDictationByTypingOnElements() {
-		LogStories.logInfo('----------------------Step AU----------------------')
+		LogStories.log('----------------------Step AU----------------------')
 
 		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
 		int rowCount = dictationData.getRowNumbers()
@@ -1460,7 +1460,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyStoredDirectDictationOnEVAAScribe() {
-		LogStories.logInfo('----------------------Step AV----------------------')
+		LogStories.log('----------------------Step AV----------------------')
 
 		if (VariableStories.elementStorage.isEmpty()) {
 			LogStories.markWarning("No stored elements for verification")
@@ -1475,7 +1475,7 @@ public class EVAASteps {
 		try {
 			def elementStorageList = VariableStories.elementStorage
 			for (String name : elementStorageList) {
-				LogStories.logInfo("*************************Element from Storage → ${name}*************************")
+				LogStories.log("*************************Element from Storage → ${name}*************************")
 
 				TestObject sectionTO = CommonStory.verifyMapForDirectDictation.get(name)
 				if (!sectionTO) {
@@ -1515,7 +1515,7 @@ public class EVAASteps {
 
 	@Keyword
 	def directDictationByRecordStartStopOnElements(String UploadFilePath) {
-		LogStories.logInfo('----------------------Step AW----------------------')
+		LogStories.log('----------------------Step AW----------------------')
 
 		int index = 1;
 		int breakIndex = 2;
@@ -1619,7 +1619,7 @@ public class EVAASteps {
 
 	@Keyword
 	def verifyRecordedDirectDictationAddedOnEVAAScribe() {
-		LogStories.logInfo('----------------------Step AX----------------------')
+		LogStories.log('----------------------Step AX----------------------')
 
 		if (VariableStories.elementStorageForDirectDictation.isEmpty()) {
 			LogStories.markWarning("No stored elements for verification")
@@ -1678,7 +1678,7 @@ public class EVAASteps {
 
 	@Keyword
 	def TransferEncounterDataToSuperbill() {
-		LogStories.logInfo('----------------------Step AY----------------------')
+		LogStories.log('----------------------Step AY----------------------')
 
 		WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
 
@@ -1706,7 +1706,7 @@ public class EVAASteps {
 
 	@Keyword
 	def GenerateSOAPNoteByUploadingFileForSinglePatient(String UploadFilePath,String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ,String EncounterType, String ExamLocation,String Technician, Boolean isFinalize = true, Boolean isSendToEHR = true) {
-		LogStories.logInfo('----------------------Step AZ----------------------')
+		LogStories.log('----------------------Step AZ----------------------')
 
 		CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
 
@@ -1720,21 +1720,21 @@ public class EVAASteps {
 
 		LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
-		LogStories.logInfo('----------------------Step A----------------------')
+		LogStories.log('----------------------Step A----------------------')
 		CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
 
-		LogStories.logInfo('----------------------Step B----------------------')
+		LogStories.log('----------------------Step B----------------------')
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
-		LogStories.logInfo('----------------------Step C----------------------')
+		LogStories.log('----------------------Step C----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 		if(isFinalize) {
-			LogStories.logInfo('----------------------Step D----------------------')
+			LogStories.log('----------------------Step D----------------------')
 			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
 
 			if(isSendToEHR) {
-				LogStories.logInfo('----------------------Step E----------------------')
+				LogStories.log('----------------------Step E----------------------')
 				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
 			}
 		}
@@ -1742,7 +1742,7 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyReRecordPopup(String FirstName,String LastName ) {
-		LogStories.logInfo('----------------------Step AAM----------------------')
+		LogStories.log('----------------------Step AAM----------------------')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/h2_RecordingConflict'), 10, FailureHandling.STOP_ON_FAILURE)
 
@@ -1769,11 +1769,11 @@ public class EVAASteps {
 
 	@Keyword
 	def UploadReRecordDictation(String fileName, String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ) {
-		LogStories.logInfo('----------------------Step AAL----------------------')
+		LogStories.log('----------------------Step AAL----------------------')
 
 		def wordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_LENGTH')
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step A^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step A^^^^^^^^^^^^^^^^^^^^^')
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
 
@@ -1787,7 +1787,7 @@ public class EVAASteps {
 
 		WebUI.delay(2)
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step B^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step B^^^^^^^^^^^^^^^^^^^^^')
 
 		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
@@ -1795,11 +1795,11 @@ public class EVAASteps {
 
 		assertStory.verifyMatch('SOAP Notes not chnaged after Cancel Re-RecordPopup', wordCountSOAPNotes2, wordCountSOAPNotes)
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step C^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step C^^^^^^^^^^^^^^^^^^^^^')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
 
 		//		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
 		//
@@ -1811,7 +1811,7 @@ public class EVAASteps {
 		//
 		//		LogStories.logInfo('Clicked on Re-Record Button.')
 		//
-		//		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
+		//		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
 		//
 		//def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
 		//LogStories.logInfo('File uploaded: ' + folderPath)
@@ -1822,7 +1822,7 @@ public class EVAASteps {
 
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(filePath)
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
 
 		def soapNotes2 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
 
@@ -1830,14 +1830,14 @@ public class EVAASteps {
 
 		assertStory.verifyNotMatch('SOAP Notes Re-Recorded', wordCountSOAPNotes3, wordCountSOAPNotes)
 
-		LogStories.logInfo('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
 
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 	}
 
 	@Keyword
 	def ClickOnCopyAllButton() {
-		LogStories.logInfo("---------------------Click On Copy AllButton---------------------")
+		LogStories.log("---------------------Click On Copy AllButton---------------------")
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('The \'Copy All\' button is displayed.')
@@ -1854,7 +1854,7 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedAllSOAPNotes() {
-		LogStories.logInfo("---------------------Verify clicking Copy All copies data from all available elements---------------------")
+		LogStories.log("---------------------Verify clicking Copy All copies data from all available elements---------------------")
 
 		if (VariableStories.elementStorage.isEmpty()) {
 			LogStories.markWarning("No stored elements for verification")
@@ -1878,7 +1878,7 @@ public class EVAASteps {
 
 		for (String name : elementStorageList) {
 
-			LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+			LogStories.log("============================SOAP Note Element Name - ${name}============================")
 
 			def variableKey = CommonStory.sectionMapForStorageKey.get(name)
 			String storedData = VariableStories.getItem(variableKey)
@@ -1927,7 +1927,7 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements() {
-		LogStories.logInfo("---------------------Verify copied content follows the correct order of elements---------------------")
+		LogStories.log("---------------------Verify copied content follows the correct order of elements---------------------")
 
 		if (VariableStories.elementStorage.isEmpty()) {
 			LogStories.markWarning("No stored elements for verification")
@@ -1942,7 +1942,7 @@ public class EVAASteps {
 
 			List<String> clipboardTextList = UtilHelper.getSelectedLabels(clipboardText,moduleList)
 
-			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+			LogStories.log("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
 			String jsonWanted = JsonOutput.toJson(moduleList)
 			String jsonClipboard = JsonOutput.toJson(clipboardTextList)
 
@@ -1955,13 +1955,13 @@ public class EVAASteps {
 
 			LogStories.logInfo("Modified Module List: ${jsonWantedModified}")
 
-			LogStories.logInfo("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
+			LogStories.log("<<<<<<<<<<<<<<<<<<<<<<<<<List Data<<<<<<<<<<<<<<<<<<<<<<<<<")
 
 			// Equivalent index-based loop
 			for (int i = 0; i < moduleList.size(); i++) {
 				String name = moduleList.get(i)
 
-				LogStories.logInfo("============================SOAP Note Element Name - ${name}============================")
+				LogStories.log("============================SOAP Note Element Name - ${name}============================")
 
 				def expectedData = name.replaceAll("Review Of Systems - Brief", "Review Of Systems Brief").replaceAll("\\s{2,}", " ").trim()
 
@@ -1975,7 +1975,7 @@ public class EVAASteps {
 
 	@Keyword
 	def VerifyCopiedIndividualElementSOAPNotes() {
-		LogStories.logInfo("---------------------Verify clicking Copy All copies data from all available elements---------------------")
+		LogStories.log("---------------------Verify clicking Copy All copies data from all available elements---------------------")
 
 		if (VariableStories.elementStorage.isEmpty()) {
 			LogStories.markWarning("No stored elements for verification")
@@ -1988,7 +1988,7 @@ public class EVAASteps {
 
 		for (String name : elementStorageList) {
 
-			LogStories.logInfo("============================Copy SOAP Note Element Name - ${name}============================")
+			LogStories.log("============================Copy SOAP Note Element Name - ${name}============================")
 
 			String moduleName = CommonStory.copyMapForDirectDictation.get(name)
 
@@ -2010,7 +2010,7 @@ public class EVAASteps {
 			WebUI.click(sectionTO)
 			LogStories.logInfo("Clicked on copy button for element → ${name}")
 
-			LogStories.logInfo("**********************************Get Clipboard Text for element - ${name}**********************************")
+			LogStories.log("**********************************Get Clipboard Text for element - ${name}**********************************")
 
 			String clipboardText = UtilHelper.getClipboardText()
 
@@ -2022,9 +2022,9 @@ public class EVAASteps {
 			}
 
 			clipboardText = clipboardText.replaceAll("\\s{2,}", " ").trim()
-			LogStories.logInfo("***********************************************************************************************************")
+			LogStories.log("***********************************************************************************************************")
 
-			LogStories.logInfo("**********************************Verify Clipboard Text for element - ${name}**********************************")
+			LogStories.log("**********************************Verify Clipboard Text for element - ${name}**********************************")
 			def variableKey = CommonStory.sectionMapForStorageKey.get(name)
 			String storedData = VariableStories.getItem(variableKey)
 
@@ -2065,7 +2065,7 @@ public class EVAASteps {
 				}
 			}
 
-			LogStories.logInfo("***********************************************************************************************************")
+			LogStories.log("***********************************************************************************************************")
 		}
 	}
 

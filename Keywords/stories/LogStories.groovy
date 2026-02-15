@@ -37,6 +37,10 @@ public class LogStories {
 	static void logInfo(def text) {
 		KeywordUtil.logInfo("⏩ ${text}")
 	}
+	
+	static void log(def text) {
+		KeywordUtil.logInfo("${text}")
+	}
 
 	static void markPassed(def text) {
 		KeywordUtil.markPassed("✅ ${text}")

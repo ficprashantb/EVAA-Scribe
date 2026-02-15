@@ -30,20 +30,20 @@ VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 GlobalVariable.G_IS_LIMITED_ELEMENTS = true
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 
     Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, true, false)
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.ClickOnCopyAllButton'()
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.VerifyCopiedAllSOAPNotes'()
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 LogStories.logInfo('---------------------------Verify original element data remains unchanged after copying---------------------------')
 
@@ -55,7 +55,7 @@ def actualSOAPNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP No
 
 assertStory.verifyMatch('SOAP Notes', actualSOAPNotes, expectedSOAPNotes)
 
-LogStories.logInfo('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.VerifyCopiedSOAPNotesFollowsTheCorrectOrderOfElements'()
 
