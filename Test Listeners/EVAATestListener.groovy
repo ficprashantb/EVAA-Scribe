@@ -24,10 +24,10 @@ class EVAATestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
 
-//		PermissionManagerListener.enableBrowserPermissions()
+		//		PermissionManagerListener.enableBrowserPermissions()
 
 		WebUI.openBrowser('')
-		
+
 		String siteURL = GlobalVariable.EVAA_SiteURL
 		WebUI.navigateToUrl(siteURL)
 		LogStories.logInfo("Site URL: $siteURL")
@@ -55,7 +55,7 @@ class EVAATestListener {
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'()
 		}
 
-//		LogStories.sendNotification("${testCaseId} is completed.")
+		//		LogStories.sendNotification("${testCaseId} is completed.")
 
 		WebUI.closeBrowser()
 	}

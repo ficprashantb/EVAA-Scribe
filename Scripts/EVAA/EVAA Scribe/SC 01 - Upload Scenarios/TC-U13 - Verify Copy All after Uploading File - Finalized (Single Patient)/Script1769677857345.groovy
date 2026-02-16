@@ -32,8 +32,7 @@ GlobalVariable.G_IS_LIMITED_ELEMENTS = true
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 
-    Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, true, false)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, true, false)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 

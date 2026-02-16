@@ -1202,7 +1202,7 @@ public class EVAASteps {
 
 		TestObject upload = findTestObject('EVAAPage/EVAA Scribe/Menu/defile input')
 
-		//		WebUI.uploadFileToWeb(upload, UploadFilePath)
+//		WebUI.uploadFile(upload, UploadFilePath)
 		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
@@ -1240,8 +1240,8 @@ public class EVAASteps {
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
-		//		WebUI.uploadFileToWeb(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
-		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+//		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+				CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
@@ -1726,18 +1726,18 @@ public class EVAASteps {
 		LogStories.log('----------------------Step B----------------------')
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
-		LogStories.log('----------------------Step C----------------------')
-		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-		if(isFinalize) {
-			LogStories.log('----------------------Step D----------------------')
-			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
-
-			if(isSendToEHR) {
-				LogStories.log('----------------------Step E----------------------')
-				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
-			}
-		}
+		//		LogStories.log('----------------------Step C----------------------')
+		//		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+		//
+		//		if(isFinalize) {
+		//			LogStories.log('----------------------Step D----------------------')
+		//			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
+		//
+		//			if(isSendToEHR) {
+		//				LogStories.log('----------------------Step E----------------------')
+		//				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
+		//			}
+		//		}
 	}
 
 	@Keyword

@@ -70,6 +70,7 @@ public class PermissionManagerListener {
 				prefs.put("profile.default_content_setting_values.notifications", 1)
 				prefs.put("profile.default_content_setting_values.popups", 1)
 				prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
+				prefs.put("profile.default_content_setting_values.clipboard", 1)
 
 				options.setExperimentalOption("prefs", prefs)
 

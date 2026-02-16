@@ -19,8 +19,8 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.LogStories as LogStories 
-import stories.VariableStories as VariableStories 
+import stories.LogStories as LogStories
+import stories.VariableStories as VariableStories
 
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U11'
 
@@ -42,13 +42,13 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
+def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB)
+CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName, DOB)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -70,15 +70,17 @@ WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Error upl
 LogStories.markPassed('Error uploading file. Please try again.')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+
 CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expectedPtName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+
 CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 
-String FinalizedStatus = 'Pending' 
-String MicStatus='Recording Not Started'
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, FinalizedStatus, MicStatus) 
+String FinalizedStatus = 'Pending'
 
+String MicStatus = 'Recording Not Started'
 
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, FinalizedStatus, MicStatus)
