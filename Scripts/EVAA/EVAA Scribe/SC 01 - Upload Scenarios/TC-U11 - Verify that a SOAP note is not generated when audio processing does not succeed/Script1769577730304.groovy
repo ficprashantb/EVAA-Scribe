@@ -30,27 +30,14 @@ String expectedPtName = "$FirstName $LastName"
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
+    EncounterType, ExamLocation, Technician)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-String ProviderName = "$Provider_FirstName $Provider_LastName"
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
 
 def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName, DOB)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 // Log the file path
 LogStories.logInfo('File Path: ' + uploadFilePath)
@@ -69,15 +56,15 @@ WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Error upl
 
 LogStories.markPassed('Error uploading file. Please try again.')
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expectedPtName)
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 String FinalizedStatus = 'Pending'
 

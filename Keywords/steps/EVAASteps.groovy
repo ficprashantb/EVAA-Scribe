@@ -40,6 +40,9 @@ import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI2
 
+import org.testng.Assert
+import java.awt.Robot
+import java.awt.event.KeyEvent
 
 public class EVAASteps {
 	NavigateStory navigateStory = new NavigateStory()
@@ -1157,6 +1160,8 @@ public class EVAASteps {
 
 		def fakeMic = new FakeMicStream(UploadFilePath)
 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 10, FailureHandling.STOP_ON_FAILURE)
+
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
 
 		LogStories.logInfo('Clicked on Start Record Button')
@@ -1165,8 +1170,10 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
-		//		fakeMic.start()
-		//		LogStories.logInfo('Clicked on fakeMic Start Record Button')
+		CustomKeywords.'steps.CommonKeywords.handlePermissionPopups'(3) 
+		
+		fakeMic.start()
+		LogStories.logInfo('Clicked on fakeMic Start Record Button')
 
 		WebUI.delay(fileTimeinSeconds)
 
@@ -1174,8 +1181,8 @@ public class EVAASteps {
 
 		LogStories.logInfo('Clicked on Stop Record Button')
 
-		//		fakeMic.stop()
-		//		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
+		fakeMic.stop()
+		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
@@ -1202,7 +1209,7 @@ public class EVAASteps {
 
 		TestObject upload = findTestObject('EVAAPage/EVAA Scribe/Menu/defile input')
 
-//		WebUI.uploadFile(upload, UploadFilePath)
+		//		WebUI.uploadFile(upload, UploadFilePath)
 		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(upload, UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
@@ -1240,8 +1247,8 @@ public class EVAASteps {
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
-//		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
-				CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+		//		WebUI.uploadFile(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
+		CustomKeywords.'com.katalon.testcloud.FileExecutor.uploadFileToWeb'(findTestObject('EVAAPage/EVAA Scribe/Menu/defile input'), UploadFilePath)
 
 		LogStories.logInfo("File uploaded: " + UploadFilePath)
 
@@ -1703,41 +1710,50 @@ public class EVAASteps {
 		}
 	}
 
-
 	@Keyword
-	def GenerateSOAPNoteByUploadingFileForSinglePatient(String UploadFilePath,String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ,String EncounterType, String ExamLocation,String Technician, Boolean isFinalize = true, Boolean isSendToEHR = true) {
+	def MaximeyesLoginAndFindPatient(String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ,String EncounterType, String ExamLocation,String Technician, Boolean isLogin = true, Boolean isEncIdStore = true, Boolean isCommonSteps = true) {
 		LogStories.log('----------------------Step AZ----------------------')
 
-		CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+		if(isLogin) {
+			CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
+		}
 
 		CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 		String ProviderName = "$Provider_FirstName $Provider_LastName"
 
-		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician)
+		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, ProviderName, Technician,isEncIdStore )
 
+		if(isCommonSteps) {
+			LogStories.log('----------------------Step A----------------------')
+			CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
+		}
+	}
+
+	@Keyword
+	def GenerateSOAPNoteByUploadingFileForSinglePatient(String UploadFilePath,String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ,String EncounterType, String ExamLocation,String Technician, Boolean isFinalize = true, Boolean isSendToEHR = true) {
+		LogStories.log('----------------------Step AZ----------------------')
+
+		CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
+
+		LogStories.log('----------------------Step B----------------------')
 		def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
 
 		LogStories.logInfo("Upload File Path=> $uploadFilePath")
-
-		LogStories.log('----------------------Step A----------------------')
-		CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
-
-		LogStories.log('----------------------Step B----------------------')
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
-		//		LogStories.log('----------------------Step C----------------------')
-		//		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-		//
-		//		if(isFinalize) {
-		//			LogStories.log('----------------------Step D----------------------')
-		//			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
-		//
-		//			if(isSendToEHR) {
-		//				LogStories.log('----------------------Step E----------------------')
-		//				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
-		//			}
-		//		}
+		LogStories.log('----------------------Step C----------------------')
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+		if(isFinalize) {
+			LogStories.log('----------------------Step D----------------------')
+			CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, true, isSendToEHR)
+
+			if(isSendToEHR) {
+				LogStories.log('----------------------Step E----------------------')
+				CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
+			}
+		}
 	}
 
 	@Keyword

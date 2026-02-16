@@ -57,6 +57,17 @@ public class CommonKeywords {
 	}
 
 	@Keyword
+	def handlePermissionPopups(int tabCount) {
+		Robot robot = new Robot()
+		Thread.sleep(2000)
+
+		pressTabs(tabCount)
+
+		robot.keyPress(KeyEvent.VK_ENTER)
+		robot.keyRelease(KeyEvent.VK_ENTER)
+	}
+
+	@Keyword
 	def enterFilePathAndName2(String folderPath, String fileName) {
 		Robot robot = new Robot()
 

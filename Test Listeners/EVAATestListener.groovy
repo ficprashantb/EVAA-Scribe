@@ -8,6 +8,9 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
 import com.kms.katalon.core.annotation.BeforeTestCase
 import com.kms.katalon.core.annotation.BeforeTestSuite
+
+import org.openqa.selenium.remote.DesiredCapabilities
+
 import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
@@ -24,7 +27,8 @@ class EVAATestListener {
 		println testCaseContext.getTestCaseId()
 		println testCaseContext.getTestCaseVariables()
 
-		//		PermissionManagerListener.enableBrowserPermissions()
+		//		// Define capabilities before browser launch
+		//		Keywords_DesiredCapabilities.addDesiredCapabilities()
 
 		WebUI.openBrowser('')
 
