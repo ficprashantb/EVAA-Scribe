@@ -14,6 +14,7 @@ import com.kms.katalon.core.model.FailureHandling
 import com.kms.katalon.core.testcase.TestCase
 import com.kms.katalon.core.testdata.TestData
 import com.kms.katalon.core.testobject.TestObject
+import com.kms.katalon.core.testobject.ConditionType
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
@@ -33,6 +34,7 @@ import static org.monte.media.VideoFormatKeys.*
 
 import ScreenRecorder
 import org.apache.commons.lang.RandomStringUtils
+import org.openqa.selenium.Keys
 import java.awt.datatransfer.DataFlavor
 
 public class UtilHelper {
@@ -86,6 +88,75 @@ public class UtilHelper {
 			}
 		}
 		return null
+	} 
+	
+	/**
+	 * Gets text from the browser's clipboard (works locally and on Katalon Cloud).
+	 * Use after the test has performed a copy in the same browser (e.g. Ctrl+C, copy button).
+	 * Tries navigator.clipboard.readText() first; on Cloud that often fails, so falls back
+	 * to paste-into-temporary-textarea (Ctrl+V) which works in remote/headless.
+	 */
+	static String getBrowserClipboardText() {
+		WebUI.delay(1)
+		String fromApi = getBrowserClipboardTextViaApi()
+		if (fromApi != null) return fromApi
+		return getBrowserClipboardTextViaPaste()
+	}
+
+	/** Tries navigator.clipboard.readText() with async poll. Returns null if not available or denied. */
+	private static String getBrowserClipboardTextViaApi() {
+		for (int attempt = 0; attempt < 5; attempt++) {
+			try {
+				def startScript = '''
+					window.__clipboardResult = 'PENDING';
+					if (navigator.clipboard && navigator.clipboard.readText) {
+						navigator.clipboard.readText()
+							.then(function(t) { window.__clipboardResult = (t != null ? t : ''); })
+							.catch(function() { window.__clipboardResult = 'ERROR'; });
+					} else {
+						window.__clipboardResult = 'ERROR';
+					}
+				'''
+				WebUI.executeJavaScript(startScript, null)
+				for (int wait = 0; wait < 15; wait++) {
+					WebUI.delay(1)
+					def result = WebUI.executeJavaScript('return window.__clipboardResult;', null)
+					if (result == null || result == 'PENDING') continue
+					if (result == 'ERROR') break
+					return result.toString()
+				}
+			} catch (Exception e) { /* retry */ }
+			WebUI.delay(1)
+		}
+		return null
+	}
+
+	/** Fallback for Cloud: create temp textarea, focus it, paste (Ctrl+V), return value. */
+	private static String getBrowserClipboardTextViaPaste() {
+		def id = 'katalonClipboardPaste_' + System.currentTimeMillis()
+		try {
+			WebUI.executeJavaScript("""
+				var el = document.createElement('textarea');
+				el.id = '${id}';
+				el.setAttribute('readonly', '');
+				el.style.position = 'fixed';
+				el.style.left = '-9999px';
+				el.style.top = '0';
+				document.body.appendChild(el);
+				el.focus();
+			""", null)
+			WebUI.delay(1)
+			TestObject to = new TestObject().addProperty('id', ConditionType.EQUALS, id)
+			WebUI.click(to)
+			WebUI.delay(1)
+			WebUI.sendKeys(to, Keys.chord(Keys.CONTROL, 'v'))
+			WebUI.delay(1)
+			def value = WebUI.executeJavaScript("var e = document.getElementById('${id}'); var v = e ? e.value : ''; e && e.remove(); return v;", null)
+			return value != null ? value.toString() : null
+		} catch (Exception e) {
+			try { WebUI.executeJavaScript("var e = document.getElementById('${id}'); e && e.remove();", null) } catch (ignored) {}
+			return null
+		}
 	}
 
 	static void sendWindowsNotification(String title, String message) {
