@@ -70,15 +70,12 @@ public class UtilHelper {
 		return noSpecials.replaceAll("\\s+", " ").trim()
 	}
 
-	static String getClipboardText() {
-		boolean _isCloud = isCloud()
-		
-		if(_isCloud) {
+	static String getClipboardText() { 
+		 
 			return getBrowserClipboardText()
-		}
-		else {
-			return getToolkitClipboardText()
-		}
+		 
+//			return getToolkitClipboardText()
+		 
 	}
 
 	/**

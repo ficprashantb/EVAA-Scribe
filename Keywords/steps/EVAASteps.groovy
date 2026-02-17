@@ -1863,7 +1863,7 @@ public class EVAASteps {
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/button_Copy All'), FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Clicked on \'Copy All\' button.')
 
-		String clipboardText = UtilHelper.getClipboardText()
+		String clipboardText = UtilHelper.getBrowserClipboardText()
 		VariableStories.setItem("CLIPBOARD_TEXT",clipboardText)
 	}
 
