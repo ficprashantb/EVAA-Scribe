@@ -24,11 +24,26 @@ class EVAATestListener {
 	 */
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
-		println testCaseContext.getTestCaseId()
-		println testCaseContext.getTestCaseVariables()
+		// Full test case ID (includes folder path)
+		String fullId = testCaseContext.getTestCaseId()
 
-		//		// Define capabilities before browser launch
-		//		Keywords_DesiredCapabilities.addDesiredCapabilities()
+		// Get all variables as a Map
+		Map<String, Object> variables = testCaseContext.getTestCaseVariables()
+
+		String recordFilePath = variables.get("RecordFilePath")
+		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
+			GlobalVariable.G_FILE_NAME = recordFilePath 
+		} 
+		
+		GlobalVariable.G_FILE_NAME = recordFilePath
+
+		// Just the test case name (strip path)
+		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
+
+		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
+
+		// Define capabilities before browser launch
+		Keywords_DesiredCapabilities.addCapabilities()
 
 		WebUI.openBrowser('')
 
@@ -48,13 +63,15 @@ class EVAATestListener {
 	 */
 	@AfterTestCase
 	def afterTestCase(TestCaseContext testCaseContext) {
-		println testCaseContext.getTestCaseId()
-		println testCaseContext.getTestCaseStatus()
+		// Full test case ID (includes folder path)
+		String fullId = testCaseContext.getTestCaseId()
 
-		String testCaseId = testCaseContext.getTestCaseId()
+		// Just the test case name (strip path)
+		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
+
+		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Completed Test Case: " + testCaseName)
 
 		if (testCaseContext.getTestCaseStatus() != 'PASS') {
-			LogStories.logInfo("TestCase Name: $testCaseId")
 
 			CustomKeywords.'steps.CommonSteps.takeScreenshots'()
 		}

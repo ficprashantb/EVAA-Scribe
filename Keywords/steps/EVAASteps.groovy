@@ -1158,7 +1158,7 @@ public class EVAASteps {
 
 		LogStories.logInfo("File Path $UploadFilePath")
 
-		def fakeMic = new FakeMicStream(UploadFilePath)
+ 		def fakeMic = new FakeMicStream(UploadFilePath)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 10, FailureHandling.STOP_ON_FAILURE)
 
@@ -1170,8 +1170,8 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
-		fakeMic.start()
-		LogStories.logInfo('Clicked on fakeMic Start Record Button')
+ 		fakeMic.start()
+ 		LogStories.logInfo('Clicked on fakeMic Start Record Button')
 
 		WebUI.delay(fileTimeinSeconds)
 
@@ -1179,8 +1179,8 @@ public class EVAASteps {
 
 		LogStories.logInfo('Clicked on Stop Record Button')
 
-		fakeMic.stop()
-		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
+ 		fakeMic.stop()
+ 		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
@@ -1735,7 +1735,8 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
 
 		LogStories.log('----------------------Step B----------------------')
-		def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
+
+		def uploadFilePath = UtilHelper.getFilePath(UploadFilePath) 
 
 		LogStories.logInfo("Upload File Path=> $uploadFilePath")
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
@@ -1833,7 +1834,7 @@ public class EVAASteps {
 		 //		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
 		 */		
 
-		def filePath = (RunConfiguration.getProjectDir() + '/Files/'+fileName)
+		def filePath = UtilHelper.getFilePath(fileName)
 
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(filePath)
 

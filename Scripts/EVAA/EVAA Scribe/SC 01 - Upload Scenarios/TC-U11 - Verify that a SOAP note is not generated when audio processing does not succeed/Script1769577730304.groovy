@@ -19,7 +19,8 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.LogStories as LogStories
+import stories.LogStories
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U11'
@@ -35,7 +36,7 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+def uploadFilePath =  UtilHelper.getFilePath(UploadFilePath) 
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 

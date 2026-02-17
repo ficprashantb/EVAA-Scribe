@@ -19,7 +19,8 @@ import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.LogStories as LogStories
-import stories.NavigateStory as NavigateStory
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
 
@@ -52,7 +53,7 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/$UploadFilePath"
+def uploadFilePath =  UtilHelper.getFilePath(UploadFilePath) 
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 

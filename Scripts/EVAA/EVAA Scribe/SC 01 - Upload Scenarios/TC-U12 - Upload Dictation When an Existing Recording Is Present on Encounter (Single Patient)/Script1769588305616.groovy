@@ -21,7 +21,8 @@ import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.AssertStory as AssertStory
 import stories.ExceptionHelper as ExceptionHelper
 import stories.LogStories as LogStories
-import stories.NavigateStory as NavigateStory
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
 AssertStory assertStory = new AssertStory()
@@ -37,7 +38,7 @@ CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-//def filePath = (RunConfiguration.getProjectDir() + '/Files/') + UploadFilePath
+// def filePath =  UtilHelper.getFilePath(UploadFilePath) 
 //
 //CustomKeywords.'steps.CommonKeywords.copyFileToDownloads'(filePath)
 // 

@@ -18,7 +18,8 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.NavigateStory as NavigateStory
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R09'
@@ -31,7 +32,7 @@ CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/${RecordFilePath}"
+def recordFilePath = UtilHelper.getFilePath(RecordFilePath) 
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
@@ -43,7 +44,7 @@ CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName,
 
 //Direct Dictation By Record Start Stop
 
-def uploadFilePath = RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}"
+def uploadFilePath = UtilHelper.getFilePath(UploadFilePath) 
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 

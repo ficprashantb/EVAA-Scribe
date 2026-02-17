@@ -18,7 +18,8 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.NavigateStory as NavigateStory
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R01' 
@@ -27,7 +28,7 @@ VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/$RecordFilePath"
+def recordFilePath =  UtilHelper.getFilePath(RecordFilePath) 
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 

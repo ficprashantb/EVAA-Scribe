@@ -8,6 +8,7 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
+import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
@@ -55,6 +56,14 @@ public class UtilHelper {
 		return null
 	}
 
+	static String getFilePath(String fileName) {
+		def fileType = GlobalVariable.G_FILE_TYPE
+
+		String	filePath = RunConfiguration.getProjectDir() + "/Files/${fileType}/${fileName}.${fileType}"
+		
+		return filePath
+	}
+
 	static String randomString(int maxLen = 5) {
 		return RandomStringUtils.randomAlphanumeric(maxLen)
 	}
@@ -68,7 +77,7 @@ public class UtilHelper {
 		String noSpecials = input.replaceAll("[^a-zA-Z0-9 ]", "")
 		// Collapse multiple spaces into one and trim edges
 		return noSpecials.replaceAll("\\s+", " ").trim()
-	} 
+	}
 
 	/**
 	 * Gets the text currently copied to the clipboard.

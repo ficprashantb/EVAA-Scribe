@@ -19,7 +19,8 @@ import internal.GlobalVariable as GlobalVariable
 import steps.EVAASteps as EVAASteps
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.NavigateStory as NavigateStory
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
 NavigateStory navigateStory = new NavigateStory()
@@ -34,7 +35,7 @@ CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
 
 CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
 
-def recordFilePath = RunConfiguration.getProjectDir() + "/Files/${RecordFilePath}"
+def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 

@@ -30,77 +30,82 @@ import javazoom.jl.decoder.*
 
 public class FakeMicStream {
 
-    private String mp3Path
-    private Thread playThread
-    private volatile boolean isPaused = false
-    private volatile boolean isStopped = false
+	private String mp3Path
+	private Thread playThread
+	private volatile boolean isPaused = false
+	private volatile boolean isStopped = false
 
-    private int currentFrame = 0
-    private int totalFrames = Integer.MAX_VALUE
+	private int currentFrame = 0
+	private int totalFrames = Integer.MAX_VALUE
 
-    FakeMicStream(String mp3Path) {
-        this.mp3Path = mp3Path
-    }
+	private boolean isFakeMic = true
 
-    void start() {
-        playFrom(currentFrame)
-    }
+	FakeMicStream(String mp3Path) {
+		this.mp3Path = mp3Path
+		this.isFakeMic = GlobalVariable.G_IS_FAKE_MIC
+	}
 
-    void playFrom(int frame) {
+	void start() {
+		if(this.isFakeMic)
+			playFrom(currentFrame)
+	}
 
-        playThread = Thread.start {
+	void playFrom(int frame) {
 
-            try {
-                FileInputStream fis = new FileInputStream(mp3Path)
-                Bitstream bit = new Bitstream(fis)
-                Decoder decoder = new Decoder()
+		playThread = Thread.start {
 
-                AudioDevice device = FactoryRegistry.systemRegistry().createAudioDevice()
-                device.open(decoder)
+			try {
+				FileInputStream fis = new FileInputStream(mp3Path)
+				Bitstream bit = new Bitstream(fis)
+				Decoder decoder = new Decoder()
 
-                // Skip frames if resuming
-                for (int i = 0; i < frame; i++) {
-                    Header h = bit.readFrame()
-                    if (h == null) break
-                    bit.closeFrame()
-                }
+				AudioDevice device = FactoryRegistry.systemRegistry().createAudioDevice()
+				device.open(decoder)
 
-                while (!isStopped) {
+				// Skip frames if resuming
+				for (int i = 0; i < frame; i++) {
+					Header h = bit.readFrame()
+					if (h == null) break
+						bit.closeFrame()
+				}
 
-                    if (isPaused) {
-                        break
-                    }
+				while (!isStopped) {
 
-                    Header h = bit.readFrame()
-                    if (h == null) break
+					if (isPaused) {
+						break
+					}
 
-                    SampleBuffer output = decoder.decodeFrame(h, bit)
-                    device.write(output.getBuffer(), 0, output.getBufferLength())
+					Header h = bit.readFrame()
+					if (h == null) break
 
-                    currentFrame++
-                    bit.closeFrame()
-                }
+						SampleBuffer output = decoder.decodeFrame(h, bit)
+					device.write(output.getBuffer(), 0, output.getBufferLength())
 
-                device.close()
-                bit.close()
+					currentFrame++
+					bit.closeFrame()
+				}
 
-            } catch (Exception e) {
-                e.printStackTrace()
-            }
-        }
-    }
+				device.close()
+				bit.close()
+			} catch (Exception e) {
+				e.printStackTrace()
+			}
+		}
+	}
 
-    void pause() {
-        isPaused = true
-    }
+	void pause() {
+		isPaused = true
+	}
 
-    void resume() {
-        isPaused = false
-        playFrom(currentFrame)
-    }
+	void resume() {
+		if(this.isFakeMic) {
+			isPaused = false
+			playFrom(currentFrame)
+		}
+	}
 
-    void stop() {
-        isStopped = true
-        currentFrame = 0
-    }
+	void stop() {
+		isStopped = true
+		currentFrame = 0
+	}
 }
