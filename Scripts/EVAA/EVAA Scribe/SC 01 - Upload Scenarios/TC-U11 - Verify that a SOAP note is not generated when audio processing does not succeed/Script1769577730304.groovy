@@ -36,7 +36,7 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def uploadFilePath =  UtilHelper.getFilePath(UploadFilePath) 
+def uploadFilePath =  RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}" 
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
 
