@@ -63,7 +63,7 @@ WebUI.waitForElementVisible(findTestObject('OLD/EVAA/EVVA Virtual Assistance/inp
 
 // Read OTP
 //String otp = CustomKeywords.'OTPReader.readGmailOTP'(G_Host, G_EmailId, G_Password, G_From, G_Subject)
-String otp = CustomKeywords.'GetGmailOTP.getGmailOTP'(G_Host, G_EmailId, G_Password, G_From, G_Subject)
+String otp = CustomKeywords.'KW_GetGmailOTP.getGmailOTP'(G_Host, G_EmailId, G_Password, G_From, G_Subject)
 
 println("OTP found: $otp")
 

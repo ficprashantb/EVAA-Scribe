@@ -8,7 +8,7 @@ import javax.mail.search.FlagTerm
 import javax.mail.search.ReceivedDateTerm
 import javax.mail.search.ComparisonTerm
 
-public class GetGmailOTP {
+public class KW_GetGmailOTP {
 
 	def String getTextFromMessage(Message message) {
 		if (message.isMimeType("text/plain")) {
