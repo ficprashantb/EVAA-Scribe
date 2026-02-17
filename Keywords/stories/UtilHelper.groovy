@@ -70,31 +70,35 @@ public class UtilHelper {
 		return noSpecials.replaceAll("\\s+", " ").trim()
 	}
 
+	static String getClipboardText() {
+		boolean _isCloud = isCloud()
+		
+		if(_isCloud) {
+			return getBrowserClipboardText()
+		}
+		else {
+			return getToolkitClipboardText()
+		}
+	}
+
 	/**
 	 * Gets the text currently copied to the clipboard.
 	 */
-	static String getClipboardText() {
+	static String getToolkitClipboardText() {
 		WebUI.delay(1)
 
-		try {
-			String clipboardText = WebUI.executeJavaScript("return navigator.clipboard.readText()", null)
-			return clipboardText
-		} catch (Exception e) {
-			// ignore and retry
-		} 
+		for (int i = 0; i < 5; i++) {
 
-		//			for (int i = 0; i < 5; i++) {
-		//
-		//				try {
-		//					def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
-		//					def contents = clipboard.getContents(null)
-		//					if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-		//						return contents.getTransferData(DataFlavor.stringFlavor).toString()
-		//					}
-		//				} catch (Exception e) {
-		//					// ignore and retry
-		//				}
-		//			}
+			try {
+				def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
+				def contents = clipboard.getContents(null)
+				if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+					return contents.getTransferData(DataFlavor.stringFlavor).toString()
+				}
+			} catch (Exception e) {
+				// ignore and retry
+			}
+		}
 		return null
 	}
 
@@ -189,8 +193,9 @@ public class UtilHelper {
 	}
 
 	static boolean isCloud() {
-		return System.getenv("KATALON_CLOUD_URL") ||
-				System.getenv("TESTOPS_URL")
+		boolean _isCloud = System.getenv("KATALON_CLOUD_URL") || System.getenv("TESTOPS_URL")
+
+		return _isCloud
 	}
 
 	/**
