@@ -68,15 +68,7 @@ public class UtilHelper {
 		String noSpecials = input.replaceAll("[^a-zA-Z0-9 ]", "")
 		// Collapse multiple spaces into one and trim edges
 		return noSpecials.replaceAll("\\s+", " ").trim()
-	}
-
-	static String getClipboardText() { 
-		 
-			return getBrowserClipboardText()
-		 
-//			return getToolkitClipboardText()
-		 
-	}
+	} 
 
 	/**
 	 * Gets the text currently copied to the clipboard.
