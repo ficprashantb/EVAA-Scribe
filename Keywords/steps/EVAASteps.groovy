@@ -1170,8 +1170,6 @@ public class EVAASteps {
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
-		CustomKeywords.'steps.CommonKeywords.handlePermissionPopups'(3) 
-		
 		fakeMic.start()
 		LogStories.logInfo('Clicked on fakeMic Start Record Button')
 
@@ -1817,22 +1815,23 @@ public class EVAASteps {
 
 		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
 
-		//		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
-		//
-		//		LogStories.logInfo('Clicked on Upload Button.')
-		//
-		//		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
-		//
-		//		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), FailureHandling.STOP_ON_FAILURE)
-		//
-		//		LogStories.logInfo('Clicked on Re-Record Button.')
-		//
-		//		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
-		//
-		//def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
-		//LogStories.logInfo('File uploaded: ' + folderPath)
-
-		//		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
+		/*This is not working on Cloud
+		 //		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
+		 //
+		 //		LogStories.logInfo('Clicked on Upload Button.')
+		 //
+		 //		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
+		 //
+		 //		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record'), FailureHandling.STOP_ON_FAILURE)
+		 //
+		 //		LogStories.logInfo('Clicked on Re-Record Button.')
+		 //
+		 //		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step E^^^^^^^^^^^^^^^^^^^^^')
+		 //
+		 //def folderPath = CustomKeywords.'steps.CommonKeywords.getFilePathFromDownloads'()
+		 //LogStories.logInfo('File uploaded: ' + folderPath)
+		 //		CustomKeywords.'steps.CommonKeywords.enterFilePathAndName'(folderPath,fileName)
+		 */		
 
 		def filePath = (RunConfiguration.getProjectDir() + '/Files/'+fileName)
 

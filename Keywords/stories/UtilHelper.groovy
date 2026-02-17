@@ -75,21 +75,29 @@ public class UtilHelper {
 	 */
 	static String getClipboardText() {
 		WebUI.delay(1)
-		for (int i = 0; i < 5; i++) {
-			
-			try {
-				def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
-				def contents = clipboard.getContents(null)
-				if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
-					return contents.getTransferData(DataFlavor.stringFlavor).toString()
-				}
-			} catch (Exception e) {
-				// ignore and retry
-			}
-		}
+
+		try {
+			String clipboardText = WebUI.executeJavaScript("return navigator.clipboard.readText()", null)
+			return clipboardText
+		} catch (Exception e) {
+			// ignore and retry
+		} 
+
+		//			for (int i = 0; i < 5; i++) {
+		//
+		//				try {
+		//					def clipboard = Toolkit.getDefaultToolkit().getSystemClipboard()
+		//					def contents = clipboard.getContents(null)
+		//					if (contents != null && contents.isDataFlavorSupported(DataFlavor.stringFlavor)) {
+		//						return contents.getTransferData(DataFlavor.stringFlavor).toString()
+		//					}
+		//				} catch (Exception e) {
+		//					// ignore and retry
+		//				}
+		//			}
 		return null
-	} 
-	
+	}
+
 	/**
 	 * Gets text from the browser's clipboard (works locally and on Katalon Cloud).
 	 * Use after the test has performed a copy in the same browser (e.g. Ctrl+C, copy button).
@@ -122,10 +130,12 @@ public class UtilHelper {
 					WebUI.delay(1)
 					def result = WebUI.executeJavaScript('return window.__clipboardResult;', null)
 					if (result == null || result == 'PENDING') continue
-					if (result == 'ERROR') break
-					return result.toString()
+						if (result == 'ERROR') break
+						return result.toString()
 				}
-			} catch (Exception e) { /* retry */ }
+			} catch (Exception e) {
+				/* retry */
+			}
 			WebUI.delay(1)
 		}
 		return null
@@ -154,7 +164,9 @@ public class UtilHelper {
 			def value = WebUI.executeJavaScript("var e = document.getElementById('${id}'); var v = e ? e.value : ''; e && e.remove(); return v;", null)
 			return value != null ? value.toString() : null
 		} catch (Exception e) {
-			try { WebUI.executeJavaScript("var e = document.getElementById('${id}'); e && e.remove();", null) } catch (ignored) {}
+			try {
+				WebUI.executeJavaScript("var e = document.getElementById('${id}'); e && e.remove();", null)
+			} catch (ignored) {}
 			return null
 		}
 	}
