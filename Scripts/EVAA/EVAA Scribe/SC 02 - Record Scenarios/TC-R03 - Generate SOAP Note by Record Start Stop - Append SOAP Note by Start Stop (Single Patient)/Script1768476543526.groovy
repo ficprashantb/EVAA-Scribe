@@ -26,21 +26,15 @@ GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R03'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'( GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
-
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
-
-def recordFilePath = UtilHelper.getFilePath(RecordFilePath) 
+CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
+ 
+def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
 KeywordUtil.logInfo("Record File Path=> $recordFilePath")
 
 def uploadFilePath = UtilHelper.getFilePath(UploadFilePath)
 
 KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
 

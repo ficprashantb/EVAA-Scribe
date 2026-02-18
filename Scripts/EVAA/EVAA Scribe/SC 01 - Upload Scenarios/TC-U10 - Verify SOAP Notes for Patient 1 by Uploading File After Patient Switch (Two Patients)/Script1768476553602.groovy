@@ -55,7 +55,7 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 def uploadFilePath =  UtilHelper.getFilePath(UploadFilePath) 
 
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
@@ -85,7 +85,7 @@ navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') 
 
 String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 
-KeywordUtil.logInfo("Encounter Id=> $encounterId")
+LogStories.logInfo("Encounter Id=> $encounterId")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
 

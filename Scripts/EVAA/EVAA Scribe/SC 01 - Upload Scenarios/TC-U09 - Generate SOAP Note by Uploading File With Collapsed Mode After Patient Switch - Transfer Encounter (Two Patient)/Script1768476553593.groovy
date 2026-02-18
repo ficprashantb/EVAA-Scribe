@@ -85,7 +85,7 @@ navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') 
 
 String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 
-KeywordUtil.logInfo("Encounter Id=> $encounterId")
+LogStories.logInfo("Encounter Id=> $encounterId")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 

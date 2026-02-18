@@ -38,7 +38,7 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 def uploadFilePath =  RunConfiguration.getProjectDir() + "/Files/${UploadFilePath}" 
 
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
 // Log the file path
 LogStories.logInfo('File Path: ' + uploadFilePath)

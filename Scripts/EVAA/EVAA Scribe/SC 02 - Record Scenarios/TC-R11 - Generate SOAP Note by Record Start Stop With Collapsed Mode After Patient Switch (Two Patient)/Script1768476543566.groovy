@@ -8,7 +8,8 @@ import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as Cucumber
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling as FailureHandling
 import com.kms.katalon.core.testcase.TestCase as TestCase
-import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestData
+import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
@@ -41,17 +42,11 @@ def Provider_FirstName = patientData.getValue('Provider_FirstName', 1)
 
 def Provider_LastName = patientData.getValue('Provider_LastName', 1)
 
-CustomKeywords.'steps.CommonSteps.maximeyesLogin'(GlobalVariable.EVAA_UserName, GlobalVariable.EVAA_Password)
-
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
-
-CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName, LastName, EncounterType, ExamLocation, Provider, Technician)
+CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
 
 def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
-KeywordUtil.logInfo("Record File Path=> $recordFilePath")
-
-CustomKeywords.'steps.EVAASteps.commonStepsForEVAA'(FirstName, LastName,DOB )
+KeywordUtil.logInfo("Record File Path=> $recordFilePath") 
 
 CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounterForOtherPatient_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
     ExamLocation, Provider, Technician)

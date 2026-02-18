@@ -17,8 +17,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
-import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import org.openqa.selenium.Keys as Keys 
 import stories.LogStories as LogStories
 import stories.NavigateStory
 import stories.UtilHelper
@@ -37,7 +36,7 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
 def uploadFilePath = UtilHelper.getFilePath(UploadFilePath)
 
-KeywordUtil.logInfo("Upload File Path=> $uploadFilePath")
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
 CustomKeywords.'steps.EVAASteps.UploadingSOAPNoteFile'(uploadFilePath)
 
@@ -56,7 +55,7 @@ navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') 
 
 String encounterId = VariableStories.getItem('ENCOUNTER_ID')
 
-KeywordUtil.logInfo("Encounter Id=> $encounterId")
+LogStories.logInfo("Encounter Id=> $encounterId")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -90,11 +89,11 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 13~~~~~~~~~~~~~~~~~~~~~~')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
 
-LogStories.log('iframeContainer found')
+LogStories.logInfo('iframeContainer found')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
 
-KeywordUtil.logInfo('Expand Recording found')
+LogStories.logInfo('Expand Recording found')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 14~~~~~~~~~~~~~~~~~~~~~~')
 
