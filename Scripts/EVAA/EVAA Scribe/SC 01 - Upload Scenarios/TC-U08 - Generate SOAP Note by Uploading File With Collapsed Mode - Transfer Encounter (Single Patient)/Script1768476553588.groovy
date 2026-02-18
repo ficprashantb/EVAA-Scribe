@@ -90,7 +90,7 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 13~~~~~~~~~~~~~~~~~~~~~~')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
 
-KeywordUtil.log('iframeContainer found')
+LogStories.log('iframeContainer found')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
 
