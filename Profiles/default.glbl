@@ -41,7 +41,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'https://demoscribe278react.maximeyes.com/'</initValue>
+      <initValue>'https://demoscribe2710react.maximeyes.com/'</initValue>
       <name>EVAA_SiteURL</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
@@ -62,7 +62,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'27.8'</initValue>
+      <initValue>'27.10'</initValue>
       <name>EVAA_Build</name>
       <protected>false</protected>
       <valueType>STRING</valueType>
