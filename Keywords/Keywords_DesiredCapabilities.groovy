@@ -12,7 +12,7 @@ import org.openqa.selenium.edge.EdgeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.firefox.FirefoxProfile
-import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.configuration.RunConfiguration 
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -58,7 +58,7 @@ public class Keywords_DesiredCapabilities {
 		RunConfiguration.setWebDriverPreferencesProperty("args", args)
 	}
 
-	static void addCapabilities() {
+	static void addCapabilities() { 
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)

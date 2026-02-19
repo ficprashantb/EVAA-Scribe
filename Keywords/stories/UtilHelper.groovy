@@ -8,7 +8,8 @@ import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
 
 import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.checkpoint.Checkpoint
-import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
+import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
 import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling
@@ -56,11 +57,36 @@ public class UtilHelper {
 		return null
 	}
 
+	static void setGlobalVariables(TestCaseContext testCaseContext) {
+		// Get all variables as a Map
+		Map<String, Object> variables = testCaseContext.getTestCaseVariables()
+
+		String recordFilePath = variables.get("RecordFilePath")
+		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
+			GlobalVariable.G_FILE_NAME = recordFilePath
+		}
+
+		GlobalVariable.G_FILE_NAME = recordFilePath
+
+		// Full test case ID (includes folder path)
+		String fullId = testCaseContext.getTestCaseId()
+
+		// Just the test case name (strip path)
+		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
+
+		if(testCaseName.contains("TC-U")) {
+			GlobalVariable.G_FILE_TYPE = 'mp3'
+		}
+		else {
+			GlobalVariable.G_FILE_TYPE = 'wav'
+		}
+	}
+
 	static String getFilePath(String fileName) {
 		def fileType = GlobalVariable.G_FILE_TYPE
 
 		String	filePath = RunConfiguration.getProjectDir() + "/Files/${fileType}/${fileName}.${fileType}"
-		
+
 		return filePath
 	}
 

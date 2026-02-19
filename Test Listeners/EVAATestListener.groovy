@@ -27,21 +27,13 @@ class EVAATestListener {
 		// Full test case ID (includes folder path)
 		String fullId = testCaseContext.getTestCaseId()
 
-		// Get all variables as a Map
-		Map<String, Object> variables = testCaseContext.getTestCaseVariables()
-
-		String recordFilePath = variables.get("RecordFilePath")
-		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
-			GlobalVariable.G_FILE_NAME = recordFilePath 
-		} 
-		
-		GlobalVariable.G_FILE_NAME = recordFilePath
-
 		// Just the test case name (strip path)
 		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
 
 		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
 
+		UtilHelper.setGlobalVariables(testCaseContext) 
+		
 		// Define capabilities before browser launch
 		Keywords_DesiredCapabilities.addCapabilities()
 
