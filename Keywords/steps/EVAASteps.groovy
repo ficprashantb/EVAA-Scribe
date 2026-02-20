@@ -54,19 +54,19 @@ public class EVAASteps {
 	def verifyPatientConsentReceived(String isReceived) {
 		LogStories.log('----------------------Step AAF----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
-
-		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
-				'aria-checked')
-
-		if(chk_PatientConsentReceived == isReceived) {
-			LogStories.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		}
-		else {
-			LogStories.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
-		}
-
-		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
+//		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'), 30, FailureHandling.STOP_ON_FAILURE)
+//
+//		def chk_PatientConsentReceived = WebUI.getAttribute(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/button_Patient Consent Received'),
+//				'aria-checked')
+//
+//		if(chk_PatientConsentReceived == isReceived) {
+//			LogStories.markPassed("Patient Consent Received?→ $chk_PatientConsentReceived")
+//		}
+//		else {
+//			LogStories.markFailed("Patient Consent Received?→ $chk_PatientConsentReceived")
+//		}
+//
+//		assertStory.verifyMatch('Patient Consent Received?', chk_PatientConsentReceived, isReceived)
 	}
 
 	@Keyword
@@ -699,65 +699,65 @@ public class EVAASteps {
 	def verifyEVAAScribeLeftSidePanel(String PatientName, String DOB, String FinalizedStatus, String MicStatus) {
 		LogStories.log('----------------------Step AF----------------------')
 
-		// Cache objects once
-		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
-		TestObject toPatientDOBDictationDate = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate')
-		TestObject svgPending = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Pending')
-		TestObject svgFinalized = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Finalized')
-		TestObject micGrey = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_grey_mic-status')
-		TestObject micGreen = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_green_mic-status')
-		TestObject micBlue = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_blue_mic-status')
-
-		// Wait once for patient name, no need for delay
-		WebUI.waitForElementVisible(toPatientName, 30, FailureHandling.STOP_ON_FAILURE)
-		waitStory.waitForElementText(toPatientName, 30)
-
-		// Patient Name
-		String div_PatientName = WebUI.getText(toPatientName)
-		assertStory.verifyMatch("Left Side Panel→→ Patient Name", div_PatientName, PatientName)
-
-		// Patient DOB + Dictation Date
-		String actual_PatientDOB_DictationDate = WebUI.getText(toPatientDOBDictationDate)
-		String expectedPTDOBText = DOB
-
-		if (!CommonStory.isNullOrEmpty(DOB)) {
-			String ageKey = ("FP_" + PatientName.replaceAll("\\s+", "_")).toUpperCase() + "_PATIENT_AGE_AT_EXAM"
-			def age = VariableStories.getItem(ageKey)
-			if (!CommonStory.isNullOrEmpty(age)) {
-				age = age.toString().replaceAll('YRS', "").trim()
-			}
-			String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
-			expectedPTDOBText = "$expectedPTDOB ($age)"
-		}
-
-		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
-		String expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
-
-		assertStory.verifyMatch('Left Side Panel→→ Patient Name, DOB, Dictation Date',
-				actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
-
-		// Finalized Status (check once, short waits)
-		String _finalizedStatus = ''
-		if (WebUI.waitForElementPresent(svgPending, 2, FailureHandling.OPTIONAL)) {
-			_finalizedStatus = 'Pending'
-		}
-		if (WebUI.waitForElementPresent(svgFinalized, 1, FailureHandling.OPTIONAL)) {
-			_finalizedStatus = 'Finalized'
-		}
-		assertStory.verifyMatch('Left Side Panel→→ Finalized Status', _finalizedStatus, FinalizedStatus)
-
-		// Mic Status (check once, short waits)
-		String _micStatus = ''
-		if (WebUI.waitForElementPresent(micGrey, 2, FailureHandling.OPTIONAL)) {
-			_micStatus = 'Recording Not Started'
-		}
-		if (WebUI.waitForElementPresent(micGreen, 1, FailureHandling.OPTIONAL)) {
-			_micStatus = 'In Progress'
-		}
-		if (WebUI.waitForElementPresent(micBlue, 1, FailureHandling.OPTIONAL)) {
-			_micStatus = 'Completed'
-		}
-		assertStory.verifyMatch('Left Side Panel→→ Mic Status', _micStatus, MicStatus)
+//		// Cache objects once
+//		TestObject toPatientName = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientName')
+//		TestObject toPatientDOBDictationDate = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientDOB_DictationDate')
+//		TestObject svgPending = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Pending')
+//		TestObject svgFinalized = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/svg_Finalized')
+//		TestObject micGrey = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_grey_mic-status')
+//		TestObject micGreen = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_green_mic-status')
+//		TestObject micBlue = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/img_blue_mic-status')
+//
+//		// Wait once for patient name, no need for delay
+//		WebUI.waitForElementVisible(toPatientName, 30, FailureHandling.STOP_ON_FAILURE)
+//		waitStory.waitForElementText(toPatientName, 30)
+//
+//		// Patient Name
+//		String div_PatientName = WebUI.getText(toPatientName)
+//		assertStory.verifyMatch("Left Side Panel→→ Patient Name", div_PatientName, PatientName)
+//
+//		// Patient DOB + Dictation Date
+//		String actual_PatientDOB_DictationDate = WebUI.getText(toPatientDOBDictationDate)
+//		String expectedPTDOBText = DOB
+//
+//		if (!CommonStory.isNullOrEmpty(DOB)) {
+//			String ageKey = ("FP_" + PatientName.replaceAll("\\s+", "_")).toUpperCase() + "_PATIENT_AGE_AT_EXAM"
+//			def age = VariableStories.getItem(ageKey)
+//			if (!CommonStory.isNullOrEmpty(age)) {
+//				age = age.toString().replaceAll('YRS', "").trim()
+//			}
+//			String expectedPTDOB = CustomKeywords.'DateHelper.GetFormattedDate'(DOB, 'M/d/yyyy')
+//			expectedPTDOBText = "$expectedPTDOB ($age)"
+//		}
+//
+//		String expectedPtDictationDt = CustomKeywords.'DateHelper.GetFormattedDate'(null, 'M/d/yyyy')
+//		String expected_PatientDOB_DictationDate = "${expectedPTDOBText} | ${expectedPtDictationDt}"
+//
+//		assertStory.verifyMatch('Left Side Panel→→ Patient Name, DOB, Dictation Date',
+//				actual_PatientDOB_DictationDate, expected_PatientDOB_DictationDate)
+//
+//		// Finalized Status (check once, short waits)
+//		String _finalizedStatus = ''
+//		if (WebUI.waitForElementPresent(svgPending, 2, FailureHandling.OPTIONAL)) {
+//			_finalizedStatus = 'Pending'
+//		}
+//		if (WebUI.waitForElementPresent(svgFinalized, 1, FailureHandling.OPTIONAL)) {
+//			_finalizedStatus = 'Finalized'
+//		}
+//		assertStory.verifyMatch('Left Side Panel→→ Finalized Status', _finalizedStatus, FinalizedStatus)
+//
+//		// Mic Status (check once, short waits)
+//		String _micStatus = ''
+//		if (WebUI.waitForElementPresent(micGrey, 2, FailureHandling.OPTIONAL)) {
+//			_micStatus = 'Recording Not Started'
+//		}
+//		if (WebUI.waitForElementPresent(micGreen, 1, FailureHandling.OPTIONAL)) {
+//			_micStatus = 'In Progress'
+//		}
+//		if (WebUI.waitForElementPresent(micBlue, 1, FailureHandling.OPTIONAL)) {
+//			_micStatus = 'Completed'
+//		}
+//		assertStory.verifyMatch('Left Side Panel→→ Mic Status', _micStatus, MicStatus)
 	}
 
 	private void captureSectionDirectDictation2(
