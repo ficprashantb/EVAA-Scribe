@@ -30,17 +30,7 @@ class EVAATestListener {
 		// Define capabilities before browser launch
 		Keywords_DesiredCapabilities.addCapabilities()
 
-		WebUI.openBrowser('')
-
-		String siteURL = GlobalVariable.EVAA_SiteURL
-		WebUI.navigateToUrl(siteURL)
-		LogStories.logInfo("Site URL: $siteURL")
-
-		'Maximize the window'
-		//		WebUI.maximizeWindow()
-		WebUI.setViewPortSize(1920, 1080)
-
-		GlobalVariable.IS_ENCOUNTER_ID = false
+		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()
 	}
 
 	/*

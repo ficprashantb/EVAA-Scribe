@@ -38,6 +38,36 @@ public class CommonSteps {
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory()
 
+
+	@Keyword
+	def openEVAAScribeBrowser() {
+
+		WebUI.openBrowser('')
+
+		String siteURL = GlobalVariable.EVAA_SiteURL
+		WebUI.navigateToUrl(siteURL)
+		LogStories.logInfo("Site URL: $siteURL")
+
+		'Maximize the window'
+		String os = System.getProperty("os.name").toLowerCase()
+
+		if (os.contains("linux")) {
+			println("🌍 Platform: Linux")
+			WebUI.setViewPortSize(1920, 1080)
+			
+			RunConfiguration.setWebDriverPreferencesProperty("videoRecorder.format", "AVI")
+		} else if (os.contains("win")) {
+			println("🪟 Platform: Windows")
+			WebUI.maximizeWindow()
+		} else {
+			println("🍎 Platform: Mac")
+			WebUI.setViewPortSize(1920, 1080)
+		} 
+		
+		GlobalVariable.IS_ENCOUNTER_ID = false
+		
+	}
+
 	@Keyword
 	def takeScreenshots(String ssName = "") {
 
@@ -104,7 +134,7 @@ public class CommonSteps {
 	@Keyword
 	def findPatient(String lastName, String firstName) {
 		WebUI.click(findTestObject('PatientPage/Find Patients/FindPatient'))
-		LogStories.logInfo("Clicked on Find Patient") 
+		LogStories.logInfo("Clicked on Find Patient")
 
 		WebUI.setText(findTestObject('PatientPage/Find Patients/input_Find Patient_LastName'), lastName)
 
@@ -265,7 +295,7 @@ public class CommonSteps {
 		LogStories.logInfo('iframeContainer found')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 120, FailureHandling.STOP_ON_FAILURE)
-		LogStories.logInfo('Expand Recording found') 
+		LogStories.logInfo('Expand Recording found')
 
 		// Check if search box is present
 		boolean isSearchPresent = WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search_iFrame'), 5, FailureHandling.OPTIONAL)
@@ -295,7 +325,7 @@ public class CommonSteps {
 		if (isExpand) {
 			String ptName = VariableStories.getItem('FP_PATIENT_NAME')
 			TestObject header_PatientName = testObjectStory.header_PatientName(ptName)
-			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE) 
+			WebUI.waitForElementVisible(header_PatientName, 20, FailureHandling.STOP_ON_FAILURE)
 
 			Boolean IS_ENCOUNTER_ID = GlobalVariable.IS_ENCOUNTER_ID
 			if (IS_ENCOUNTER_ID) {
