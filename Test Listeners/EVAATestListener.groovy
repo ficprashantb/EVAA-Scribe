@@ -44,7 +44,8 @@ class EVAATestListener {
 		LogStories.logInfo("Site URL: $siteURL")
 
 		'Maximize the window'
-		WebUI.maximizeWindow()
+//		WebUI.maximizeWindow()
+		WebUI.setViewPortSize(1920, 1080)
 
 		GlobalVariable.IS_ENCOUNTER_ID = false
 	}
