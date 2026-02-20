@@ -73,6 +73,8 @@ public class UtilHelper {
 
 		// Just the test case name (strip path)
 		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
+		
+		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
 
 		if(testCaseName.contains("TC-U")) {
 			GlobalVariable.G_FILE_TYPE = 'mp3'

@@ -23,38 +23,18 @@ public class Keywords_DesiredCapabilities {
 	static void addDesiredCapabilities() {
 		// Define all capabilities before browser launch
 		DesiredCapabilities caps = new DesiredCapabilities()
-
-		// Preferences dictionary
-		Map<String, Object> prefs = new HashMap<>()
-		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
-		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
-		prefs.put("profile.default_content_setting_values.geolocation", 1)
-		prefs.put("profile.default_content_setting_values.notifications", 1)
-		prefs.put("profile.default_content_setting_values.popups", 1)
-		prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
-		prefs.put("profile.default_content_setting_values.mixed_script", 1)
-		prefs.put("profile.default_content_setting_values.media_stream", 1)
-
-		// Optional – Chrome will ignore this, but harmless
-		prefs.put("profile.default_content_setting_values.clipboard", 1)
-
+  
 		// Build a single args list (all entries must be pure java.lang.String, no GString)
-		List<String> args = new ArrayList<>()
-		args.add("--use-fake-ui-for-media-stream")
-		args.add("--disable-notifications")
-		// Clipboard / security workarounds
-		args.add("--disable-blink-features=BlockClipboardAPI")
-		args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
-
+		List<String> args = new ArrayList<>() 
 		// Fake audio device for media stream
 		String wavPath = UtilHelper.getFilePath("Cadence_Kingele_1")
+		args.add("--use-fake-ui-for-media-stream")
 		args.add("--use-fake-device-for-media-stream")
 		args.add("--no-sandbox")
 		args.add("--disable-dev-shm-usage")
 		args.add("--use-file-for-fake-audio-capture=" + wavPath)
 
-		// Apply to TestCloud run BEFORE browser launch
-		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
+		// Apply to TestCloud run BEFORE browser launch 
 		RunConfiguration.setWebDriverPreferencesProperty("args", args)
 	}
 

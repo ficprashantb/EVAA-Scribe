@@ -24,16 +24,9 @@ class EVAATestListener {
 	 */
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
-		// Full test case ID (includes folder path)
-		String fullId = testCaseContext.getTestCaseId()
 
-		// Just the test case name (strip path)
-		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
+		UtilHelper.setGlobalVariables(testCaseContext)
 
-		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
-
-		UtilHelper.setGlobalVariables(testCaseContext) 
-		
 		// Define capabilities before browser launch
 		Keywords_DesiredCapabilities.addCapabilities()
 
@@ -44,7 +37,7 @@ class EVAATestListener {
 		LogStories.logInfo("Site URL: $siteURL")
 
 		'Maximize the window'
-//		WebUI.maximizeWindow()
+		//		WebUI.maximizeWindow()
 		WebUI.setViewPortSize(1920, 1080)
 
 		GlobalVariable.IS_ENCOUNTER_ID = false
