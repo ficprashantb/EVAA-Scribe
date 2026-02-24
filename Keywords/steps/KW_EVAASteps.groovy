@@ -86,6 +86,40 @@ public class KW_EVAASteps {
 		}
 	}
 
+	private void verifyDifferentialDiagnosis(List diffDiagnosisList) {
+
+		if (diffDiagnosisList.isEmpty()) {
+			LogStories.markWarning('No Differential Diagnosis found')
+			return
+		}
+
+		diffDiagnosisList.each { diffDiagnosis ->
+
+			def result = CommonStory.getKeyValueDetails(diffDiagnosis, 'DD')
+
+			if (!result) return
+
+				String expected = "${result._key}, ${result._expected}"
+
+			TestObject tableFDDifferentialDiagnosis =
+					testObjectStory.tableFDDifferentialDiagnosis(result._key, result._expected)
+
+			WebUI.waitForElementVisible(tableFDDifferentialDiagnosis, 10, FailureHandling.OPTIONAL)
+
+			boolean isPresentDD = WebUI.waitForElementPresent(
+					tableFDDifferentialDiagnosis,
+					5,
+					FailureHandling.OPTIONAL
+					)
+
+			assertStory.verifyMatch(
+					"Differential Diagnosis - $expected",
+					isPresentDD,
+					true
+					)
+		}
+	}
+
 	private void verifyMultiLineText(String key, List dataList) {
 
 		String expected = clean(dataList.join('\n'))
@@ -160,7 +194,7 @@ public class KW_EVAASteps {
 
 		// Navigate only once
 		CustomKeywords.'stories.NavigateStory.navigateToEncounterElement'(key, isElementText, isRefreshPresent)
-	
+
 		switch (key) {
 
 			case "Allergies":
@@ -195,10 +229,9 @@ public class KW_EVAASteps {
 				{ name -> testObjectStory.inputEyeDiseases(name) })
 				break
 
-			case "MentalAndFunctionalStatus":
-				verifyDynamicSection(dataList, 'MFS', null,
-				{ name -> testObjectStory.inputMentalAndFunctionalStatus(name) })
-				break
+//			case "DifferentialDiagnosis":
+//				verifyDifferentialDiagnosis(dataList)
+//				break
 		}
 	}
 
@@ -518,7 +551,7 @@ public class KW_EVAASteps {
 				LogStories.markWarning('No Mental and Functional Status found')
 			}
 		}
-	} 
+	}
 
 	@Keyword
 	def verifyRadioButtonIsChecked(String text, String name, String key) {

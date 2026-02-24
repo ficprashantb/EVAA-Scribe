@@ -12,7 +12,7 @@ import org.openqa.selenium.edge.EdgeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.firefox.FirefoxProfile
-import com.kms.katalon.core.configuration.RunConfiguration 
+import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 
@@ -21,24 +21,19 @@ import org.openqa.selenium.WebDriver
 public class Keywords_DesiredCapabilities {
 
 	static void addDesiredCapabilities() {
-		// Define all capabilities before browser launch
-		DesiredCapabilities caps = new DesiredCapabilities()
-  
-		// Build a single args list (all entries must be pure java.lang.String, no GString)
-		List<String> args = new ArrayList<>() 
-		// Fake audio device for media stream
-		String wavPath = UtilHelper.getFilePath("Cadence_Kingele_1")
-		args.add("--use-fake-ui-for-media-stream")
-		args.add("--use-fake-device-for-media-stream")
-		args.add("--no-sandbox")
-		args.add("--disable-dev-shm-usage")
-		args.add("--use-file-for-fake-audio-capture=" + wavPath)
+		Map<String, Object> prefs = new HashMap<>()
+		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
+		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+		prefs.put("profile.default_content_setting_values.geolocation", 1)
+		prefs.put("profile.default_content_setting_values.notifications", 1)
+		prefs.put("profile.default_content_setting_values.popups", 1)
+		prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
+		prefs.put("profile.default_content_setting_values.clipboard", 1)
 
-		// Apply to TestCloud run BEFORE browser launch 
-		RunConfiguration.setWebDriverPreferencesProperty("args", args)
+		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
 	}
 
-	static void addCapabilities() { 
+	static void addCapabilities() {
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
@@ -53,27 +48,28 @@ public class Keywords_DesiredCapabilities {
 		// Optional – Chrome will ignore this, but harmless
 		prefs.put("profile.default_content_setting_values.clipboard", 1)
 
-		// Build a single args list (all entries must be pure java.lang.String, no GString)
-		List<String> args = new ArrayList<>()
-		args.add("--use-fake-ui-for-media-stream")
-		args.add("--disable-notifications")
-		// Clipboard / security workarounds
-		args.add("--disable-blink-features=BlockClipboardAPI")
-		args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
-
-		// Fake audio device for media stream
-		String wavPath = UtilHelper.getFilePath(GlobalVariable.G_FILE_NAME)
-		args.add("--use-fake-device-for-media-stream")
-		args.add("--no-sandbox")
-		args.add("--disable-dev-shm-usage")
-		args.add("--use-file-for-fake-audio-capture=" + wavPath)
-
-		// Apply to TestCloud / local run BEFORE browser launch.
-		// These are WebDriver preference properties, not legacy "desiredCapabilities",
-		// so they are W3C-compliant and won't trigger W3CCapabilityViolationException.
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
-		RunConfiguration.setWebDriverPreferencesProperty("args", args)
-	
+
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
+		if(!IS_FAKE_MIC) { 
+			// Build a single args list (all entries must be pure java.lang.String, no GString)
+			List<String> args = new ArrayList<>()
+			args.add("--use-fake-ui-for-media-stream")
+			args.add("--disable-notifications")
+			// Clipboard / security workarounds
+			args.add("--disable-blink-features=BlockClipboardAPI")
+			args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
+
+			// Fake audio device for media stream
+			String wavPath = UtilHelper.getFilePath(GlobalVariable.G_FILE_NAME)
+			args.add("--use-fake-device-for-media-stream")
+			args.add("--no-sandbox")
+			args.add("--disable-dev-shm-usage")
+			args.add("--use-file-for-fake-audio-capture=" + wavPath)
+
+			RunConfiguration.setWebDriverPreferencesProperty("args", args)
+		}
 	}
+	
 }
 

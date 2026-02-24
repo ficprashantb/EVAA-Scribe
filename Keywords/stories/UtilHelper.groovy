@@ -73,14 +73,16 @@ public class UtilHelper {
 
 		// Just the test case name (strip path)
 		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
-		
+
 		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
+
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
 
 		if(testCaseName.contains("TC-U")) {
 			GlobalVariable.G_FILE_TYPE = 'mp3'
 		}
-		else {
-			GlobalVariable.G_FILE_TYPE = 'wav'
+		else {  
+			GlobalVariable.G_FILE_TYPE = IS_FAKE_MIC ?  'mp3' : 'wav'
 		}
 	}
 
