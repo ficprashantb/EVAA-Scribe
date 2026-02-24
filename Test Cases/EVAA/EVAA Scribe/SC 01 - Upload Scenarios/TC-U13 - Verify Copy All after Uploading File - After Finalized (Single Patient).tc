@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description>MBT55982</description>
-   <name>TC-U13 - Verify Copy All after Uploading File - Finalized (Single Patient)</name>
+   <name>TC-U13 - Verify Copy All after Uploading File - After Finalized (Single Patient)</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>

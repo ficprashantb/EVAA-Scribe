@@ -97,4 +97,4 @@ LogStories.logInfo('Expand Recording found')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 14~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()()
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

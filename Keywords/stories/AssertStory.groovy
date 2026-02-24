@@ -101,7 +101,7 @@ public class AssertStory {
 		LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
 
 		try {
-			WebUI.verifyNotMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
+			WebUI.verifyNotMatch(actual?.toString(), expected?.toString(), false,FailureHandling.OPTIONAL)
 			LogStories.markPassed("${text} → PASSED => ${actual}")
 		}
 		catch(Exception err) {

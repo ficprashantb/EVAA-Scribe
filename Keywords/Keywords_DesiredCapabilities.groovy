@@ -34,6 +34,8 @@ public class Keywords_DesiredCapabilities {
 	}
 
 	static void addCapabilities() {
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
+
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
@@ -48,28 +50,26 @@ public class Keywords_DesiredCapabilities {
 		// Optional – Chrome will ignore this, but harmless
 		prefs.put("profile.default_content_setting_values.clipboard", 1)
 
+		// Build a single args list (all entries must be pure java.lang.String, no GString)
+		List<String> args = new ArrayList<>()
+		args.add("--use-fake-ui-for-media-stream")
+		args.add("--disable-notifications")
+		// Clipboard / security workarounds
+		args.add("--disable-blink-features=BlockClipboardAPI")
+		args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
+
+		// Fake audio device for media stream
+		String wavPath = UtilHelper.getFilePath(GlobalVariable.G_FILE_NAME)
+		args.add("--use-fake-device-for-media-stream")
+		args.add("--no-sandbox")
+		args.add("--disable-dev-shm-usage")
+		args.add("--use-file-for-fake-audio-capture=" + wavPath)
+
+		// Apply to TestCloud / local run BEFORE browser launch.
+		// These are WebDriver preference properties, not legacy "desiredCapabilities",
+		// so they are W3C-compliant and won't trigger W3CCapabilityViolationException.
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
-
-		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
-		if(!IS_FAKE_MIC) { 
-			// Build a single args list (all entries must be pure java.lang.String, no GString)
-			List<String> args = new ArrayList<>()
-			args.add("--use-fake-ui-for-media-stream")
-			args.add("--disable-notifications")
-			// Clipboard / security workarounds
-			args.add("--disable-blink-features=BlockClipboardAPI")
-			args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
-
-			// Fake audio device for media stream
-			String wavPath = UtilHelper.getFilePath(GlobalVariable.G_FILE_NAME)
-			args.add("--use-fake-device-for-media-stream")
-			args.add("--no-sandbox")
-			args.add("--disable-dev-shm-usage")
-			args.add("--use-file-for-fake-audio-capture=" + wavPath)
-
-			RunConfiguration.setWebDriverPreferencesProperty("args", args)
-		}
+		RunConfiguration.setWebDriverPreferencesProperty("args", args)
 	}
-	
 }
 
