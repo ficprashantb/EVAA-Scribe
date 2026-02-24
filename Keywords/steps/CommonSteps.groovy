@@ -55,7 +55,7 @@ public class CommonSteps {
 			println("🌍 Platform: Linux")
 			WebUI.setViewPortSize(1920, 1080)
 			
-			RunConfiguration.setWebDriverPreferencesProperty("videoRecorder.format", "AVI")
+//			RunConfiguration.setWebDriverPreferencesProperty("videoRecorder.format", "AVI")
 		} else if (os.contains("win")) {
 			println("🪟 Platform: Windows")
 			WebUI.maximizeWindow()
