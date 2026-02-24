@@ -12,10 +12,10 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>7367cb65-8c83-4914-89cf-a5ee78123ee2</testSuiteGuid>
    <testCaseLink>
-      <guid>b9c562b1-363d-4822-88c8-c9bfc2ecd554</guid>
+      <guid>54599881-d641-4557-a77f-dedcda855dd6</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R01 - Generate SOAP Note by Record Start Stop (Single Patient)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R02 - Generate SOAP Note by Record Pause Resume Stop (Single Patient)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
