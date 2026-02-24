@@ -20,7 +20,17 @@ import org.openqa.selenium.WebDriver
 
 public class Keywords_DesiredCapabilities {
 
-	static void addDesiredCapabilities() {
+	static void addCapabilities() {
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
+		if(IS_FAKE_MIC) {
+			Keywords_DesiredCapabilities.addWebDriverPreferencesProperty()
+		}
+		else {
+			Keywords_DesiredCapabilities.addLinuxWebDriverPreferencesProperty()
+		}
+	}
+
+	static void addWebDriverPreferencesProperty() {
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
 		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
@@ -37,7 +47,7 @@ public class Keywords_DesiredCapabilities {
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
 	}
 
-	static void addCapabilities() {
+	static void addLinuxWebDriverPreferencesProperty() {
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)

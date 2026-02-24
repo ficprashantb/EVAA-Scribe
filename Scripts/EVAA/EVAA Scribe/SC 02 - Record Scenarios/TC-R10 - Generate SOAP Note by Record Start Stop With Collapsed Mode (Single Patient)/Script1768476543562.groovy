@@ -18,7 +18,9 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import steps.EVAASteps as EVAASteps
 import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import com.kms.katalon.core.util.KeywordUtil
+
+import stories.LogStories
 import stories.NavigateStory
 import stories.UtilHelper
 import stories.VariableStories as VariableStories
@@ -28,30 +30,30 @@ NavigateStory navigateStory = new NavigateStory()
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R10'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
 
 def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
-KeywordUtil.logInfo("Record File Path=> $recordFilePath") 
-
+LogStories.logInfo("Record File Path=> $recordFilePath") 
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
     ExamLocation, Provider, Technician)
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
-
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
 
-KeywordUtil.logInfo('iframeContainer found')
+LogStories.logInfo('iframeContainer found')
 
 WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
 
-KeywordUtil.logInfo('Expand Recording found')
-
+LogStories.logInfo('Expand Recording found')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
