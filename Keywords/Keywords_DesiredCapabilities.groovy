@@ -21,21 +21,6 @@ import org.openqa.selenium.WebDriver
 public class Keywords_DesiredCapabilities {
 
 	static void addDesiredCapabilities() {
-		Map<String, Object> prefs = new HashMap<>()
-		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
-		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
-		prefs.put("profile.default_content_setting_values.geolocation", 1)
-		prefs.put("profile.default_content_setting_values.notifications", 1)
-		prefs.put("profile.default_content_setting_values.popups", 1)
-		prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
-		prefs.put("profile.default_content_setting_values.clipboard", 1)
-
-		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
-	}
-
-	static void addCapabilities() {
-		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
-
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
@@ -70,6 +55,44 @@ public class Keywords_DesiredCapabilities {
 		// so they are W3C-compliant and won't trigger W3CCapabilityViolationException.
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
 		RunConfiguration.setWebDriverPreferencesProperty("args", args)
+	}
+
+	static void addCapabilities() {
+		// Preferences dictionary
+		Map<String, Object> prefs = new HashMap<>()
+		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
+		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+		prefs.put("profile.default_content_setting_values.geolocation", 1)
+		prefs.put("profile.default_content_setting_values.notifications", 1)
+		prefs.put("profile.default_content_setting_values.popups", 1)
+		prefs.put("profile.default_content_setting_values.automatic_downloads", 1)
+		prefs.put("profile.default_content_setting_values.mixed_script", 1)
+		prefs.put("profile.default_content_setting_values.media_stream", 1)
+
+		// Optional – Chrome will ignore this, but harmless
+		prefs.put("profile.default_content_setting_values.clipboard", 1)
+
+		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
+
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
+		if(!IS_FAKE_MIC) {
+			// Build a single args list (all entries must be pure java.lang.String, no GString)
+			List<String> args = new ArrayList<>()
+			args.add("--use-fake-ui-for-media-stream")
+			args.add("--disable-notifications")
+			// Clipboard / security workarounds
+			args.add("--disable-blink-features=BlockClipboardAPI")
+			args.add("--unsafely-treat-insecure-origin-as-secure=" + GlobalVariable.EVAA_SiteURL.toString())
+
+			// Fake audio device for media stream
+			String wavPath = UtilHelper.getFilePath(GlobalVariable.G_FILE_NAME)
+			args.add("--use-fake-device-for-media-stream")
+			args.add("--no-sandbox")
+			args.add("--disable-dev-shm-usage")
+			args.add("--use-file-for-fake-audio-capture=" + wavPath)
+
+			RunConfiguration.setWebDriverPreferencesProperty("args", args)
+		}
 	}
 }
 
