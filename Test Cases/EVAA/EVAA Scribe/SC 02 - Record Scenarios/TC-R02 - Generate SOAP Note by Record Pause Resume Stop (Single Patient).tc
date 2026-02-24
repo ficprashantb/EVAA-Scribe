@@ -39,7 +39,7 @@
       <id>841cc6ee-6785-4e55-9ea5-669423ff0e2a</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
+         <value>2</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>

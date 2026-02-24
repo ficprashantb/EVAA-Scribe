@@ -27,21 +27,21 @@
    </testDataLinks>
    <testDataLinks>
       <combinationType>ONE</combinationType>
-      <id>86360cf9-c0b2-4012-a233-96b75ea73446</id>
-      <iterationEntity>
-         <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
-      </iterationEntity>
-      <testDataId>Data Files/PatientData</testDataId>
-   </testDataLinks>
-   <testDataLinks>
-      <combinationType>ONE</combinationType>
       <id>f26735a4-2069-4ae2-a0d7-fb3d5c143138</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
          <value>7</value>
       </iterationEntity>
       <testDataId>Data Files/FilesData</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
+      <id>86360cf9-c0b2-4012-a233-96b75ea73446</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>3</value>
+      </iterationEntity>
+      <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>
    <variableLinks>
       <testDataLinkId>f26735a4-2069-4ae2-a0d7-fb3d5c143138</testDataLinkId>

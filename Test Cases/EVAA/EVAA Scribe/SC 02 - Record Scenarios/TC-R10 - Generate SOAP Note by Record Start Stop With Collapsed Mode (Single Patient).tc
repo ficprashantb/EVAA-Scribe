@@ -29,7 +29,7 @@
       <id>3819c447-b95b-4aac-b62c-5ea3ddd80a02</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
+         <value>10</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>

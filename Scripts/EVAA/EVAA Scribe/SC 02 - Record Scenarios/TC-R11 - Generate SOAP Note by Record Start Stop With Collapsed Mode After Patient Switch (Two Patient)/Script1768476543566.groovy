@@ -29,19 +29,7 @@ NavigateStory navigateStory = new NavigateStory()
 GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R11'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
-
-TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
-
-def LastName = patientData.getValue('LastName', 1)
-
-def FirstName = patientData.getValue('FirstName', 1)
-
-def DOB = patientData.getValue('DOB', 1)
-
-def Provider_FirstName = patientData.getValue('Provider_FirstName', 1)
-
-def Provider_LastName = patientData.getValue('Provider_LastName', 1)
-
+ 
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician)
 
 def recordFilePath = UtilHelper.getFilePath(RecordFilePath)

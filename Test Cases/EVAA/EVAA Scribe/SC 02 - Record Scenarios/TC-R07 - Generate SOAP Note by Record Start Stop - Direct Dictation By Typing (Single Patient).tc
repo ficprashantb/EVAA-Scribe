@@ -21,7 +21,7 @@
       <id>24547d93-b369-4b56-a3d0-ba3cddf18958</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
-         <value>1</value>
+         <value>7</value>
       </iterationEntity>
       <testDataId>Data Files/PatientData</testDataId>
    </testDataLinks>

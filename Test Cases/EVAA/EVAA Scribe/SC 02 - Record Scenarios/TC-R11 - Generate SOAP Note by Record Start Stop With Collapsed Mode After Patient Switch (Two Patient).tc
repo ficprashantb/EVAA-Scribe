@@ -18,6 +18,15 @@
    <testCaseGuid>19298748-de87-4014-ab7e-f80ae899592c</testCaseGuid>
    <testDataLinks>
       <combinationType>ONE</combinationType>
+      <id>cf51eede-efca-4395-b4c4-518a1c317ff8</id>
+      <iterationEntity>
+         <iterationType>SPECIFIC</iterationType>
+         <value>11</value>
+      </iterationEntity>
+      <testDataId>Data Files/PatientData</testDataId>
+   </testDataLinks>
+   <testDataLinks>
+      <combinationType>ONE</combinationType>
       <id>4723d0ba-8e36-4c13-aee2-c44a6dcaa246</id>
       <iterationEntity>
          <iterationType>SPECIFIC</iterationType>
@@ -47,6 +56,18 @@
       <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
    </variableLinks>
    <variableLinks>
+      <testDataLinkId>cf51eede-efca-4395-b4c4-518a1c317ff8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>FirstName</value>
+      <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cf51eede-efca-4395-b4c4-518a1c317ff8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>LastName</value>
+      <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+   </variableLinks>
+   <variableLinks>
       <testDataLinkId>4723d0ba-8e36-4c13-aee2-c44a6dcaa246</testDataLinkId>
       <type>DATA_COLUMN</type>
       <value>EncounterType</value>
@@ -70,6 +91,24 @@
       <value>Technician</value>
       <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
    </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cf51eede-efca-4395-b4c4-518a1c317ff8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>Provider_FirstName</value>
+      <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cf51eede-efca-4395-b4c4-518a1c317ff8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>Provider_LastName</value>
+      <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+   </variableLinks>
+   <variableLinks>
+      <testDataLinkId>cf51eede-efca-4395-b4c4-518a1c317ff8</testDataLinkId>
+      <type>DATA_COLUMN</type>
+      <value>DOB</value>
+      <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
+   </variableLinks>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -83,6 +122,20 @@
       <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
       <masked>false</masked>
       <name>FileTime</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</id>
+      <masked>false</masked>
+      <name>FirstName</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</id>
+      <masked>false</masked>
+      <name>LastName</name>
    </variable>
    <variable>
       <defaultValue>''</defaultValue>
@@ -111,5 +164,26 @@
       <id>3f2d0945-f85a-4246-b528-10e8ed9c420e</id>
       <masked>false</masked>
       <name>Technician</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>2d22202a-9b4f-48d0-82cb-40becb36f1f2</id>
+      <masked>false</masked>
+      <name>Provider_FirstName</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>68f21ce3-24d1-410f-a076-50b606bc5ea5</id>
+      <masked>false</masked>
+      <name>Provider_LastName</name>
+   </variable>
+   <variable>
+      <defaultValue>''</defaultValue>
+      <description></description>
+      <id>a803f8ed-a09e-4d91-8fa4-df2db6f11855</id>
+      <masked>false</masked>
+      <name>DOB</name>
    </variable>
 </TestCaseEntity>
