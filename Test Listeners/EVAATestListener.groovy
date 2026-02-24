@@ -28,7 +28,13 @@ class EVAATestListener {
 		UtilHelper.setGlobalVariables(testCaseContext)
 
 		// Define capabilities before browser launch
-		Keywords_DesiredCapabilities.addCapabilities()
+		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
+		if(IS_FAKE_MIC) {
+			Keywords_DesiredCapabilities.addDesiredCapabilities()
+		}
+		else {
+			Keywords_DesiredCapabilities.addCapabilities()
+		}
 
 		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()
 	}
