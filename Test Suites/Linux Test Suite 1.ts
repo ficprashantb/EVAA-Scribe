@@ -12,76 +12,76 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>40e9c3bd-4eb4-47ad-8b64-10bae8b1be3e</testSuiteGuid>
    <testCaseLink>
-      <guid>bb018ff8-08fd-4f96-aee2-ab176bd5c0fc</guid>
+      <guid>f88ea0d8-1ca2-4ff9-804e-2d111974ddbf</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R01 - Generate SOAP Note by Record Start Stop (Single Patient)</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R02 - Generate SOAP Note by Record Pause Resume Stop (Single Patient)</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>true</usingDataBindingAtTestSuiteLevel>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
-      </variableLink>
-      <variableLink>
+      </variableLinks>
+      <variableLinks>
          <testDataLinkId></testDataLinkId>
          <type>DEFAULT</type>
          <value></value>
          <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
-      </variableLink>
+      </variableLinks>
    </testCaseLink>
 </TestSuiteEntity>
