@@ -578,6 +578,8 @@ public class EVAASteps {
 		assertStory.verifyMatch("Patient Dictation Date", ptDictationDt, expectedPtDictationDt)
 		LogStories.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
+		WebUI.waitForElementVisible(soapNotesObj, 10, FailureHandling.STOP_ON_FAILURE)
+		
 		// SOAP Notes
 		String soapNotes = WebUI.getText(soapNotesObj).trim()
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
@@ -632,6 +634,7 @@ public class EVAASteps {
 		assertStory.verifyMatch("Patient Dictation Date", ptDictationDt, expectedPtDictationDt)
 		LogStories.markPassed("Speaker Patient Dictation Date→ $ptDictationDt")
 
+		WebUI.waitForElementVisible(soapNotesObj, 10, FailureHandling.STOP_ON_FAILURE)
 		// SOAP Notes
 		def soapNotes = WebUI.getText(soapNotesObj)
 		LogStories.logInfo("SOAP Notes→ $soapNotes")
@@ -1368,15 +1371,18 @@ public class EVAASteps {
 
 		TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
 
-		def LastName2 = patientData.getValue('LastName', 2)
+		def LastName2 = patientData.getValue('LastName', 12)
 
-		def FirstName2 = patientData.getValue('FirstName', 2)
+		def FirstName2 = patientData.getValue('FirstName', 12)
 
 		//Find Patient 2
 		CustomKeywords.'steps.CommonSteps.findPatient'(LastName2, FirstName2)
 
 		CustomKeywords.'steps.CommonSteps.createNewEncounter'(FirstName2, LastName2, EncounterType, ExamLocation, Provider, Technician,
 				false)
+		
+		// Collapse Expand Recording Screen
+		CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
 
 		//Find patient 1
 		CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)

@@ -109,7 +109,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>true</initValue>
+      <initValue>false</initValue>
       <name>G_IS_FAKE_MIC</name>
       <protected>false</protected>
    </GlobalVariableEntity>
