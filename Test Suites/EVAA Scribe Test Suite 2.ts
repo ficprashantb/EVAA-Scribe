@@ -4,7 +4,7 @@
    <name>EVAA Scribe Test Suite 2</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <mailRecipient>ketann@first-insight.com;abhijeetd@first-insight.com;dhirajt@first-insight.com;karsonc@first-insight.com;akashs@first-insight.com;shreyac@first-insight.com;</mailRecipient>
+   <mailRecipient></mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>10</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
