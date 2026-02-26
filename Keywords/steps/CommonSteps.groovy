@@ -54,18 +54,17 @@ public class CommonSteps {
 		if (os.contains("linux")) {
 			println("🌍 Platform: Linux")
 			WebUI.setViewPortSize(1920, 1080)
-			
-//			RunConfiguration.setWebDriverPreferencesProperty("videoRecorder.format", "AVI")
+
+			//			RunConfiguration.setWebDriverPreferencesProperty("videoRecorder.format", "AVI")
 		} else if (os.contains("win")) {
 			println("🪟 Platform: Windows")
 			WebUI.maximizeWindow()
 		} else {
 			println("🍎 Platform: Mac")
 			WebUI.setViewPortSize(1920, 1080)
-		} 
-		
+		}
+
 		GlobalVariable.IS_ENCOUNTER_ID = false
-		
 	}
 
 	@Keyword
@@ -178,7 +177,7 @@ public class CommonSteps {
 	}
 
 	@Keyword
-	def createNewEncounter(String firstName,String lastName, String encounterType, String examLocation,String provider, String technician, Boolean isEncIdStore = true) {
+	def createNewEncounter2(String firstName,String lastName, String encounterType, String examLocation,String provider, String technician, Boolean isEncIdStore = true) {
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Encounters_dropdown-toggle menu-large rec_046ac3'))
 
 		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Actions_Encounters  Add New Encounter'))
@@ -235,6 +234,52 @@ public class CommonSteps {
 			VariableStories.setItem(encIdKey, encId)
 
 			VariableStories.setItem("ENCOUNTER_ID", encId)
+		}
+	}
+
+	@Keyword
+	def createNewEncounter(String firstName, String lastName,
+			String encounterType, String examLocation,
+			String provider, String technician,
+			Boolean isEncIdStore = true) {
+
+		// Open encounter creation
+		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Encounters_dropdown-toggle menu-large rec_046ac3'))
+		WebUI.click(findTestObject('EncounterPage/Add New Encounter/a_Actions_Encounters  Add New Encounter'))
+		LogStories.logInfo("Opened Add New Encounter popup.")
+
+		// Fill encounter details
+		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_Encounter Type_EncounterTypeID'), encounterType, true)
+		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_PracticeLocationID'), examLocation, true)
+		WebUI.delay(3)
+		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_ProviderId'), provider, true)
+		WebUI.selectOptionByLabel(findTestObject('EncounterPage/Add New Encounter/select_Technician_NewPE_TechnicianID'), technician, true)
+		LogStories.logInfo("Details entered: Type=$encounterType, Location=$examLocation, Provider=$provider, Technician=$technician")
+
+		// Save encounter
+		WebUI.click(findTestObject('EncounterPage/Add New Encounter/btnSaveNewPEPopup'))
+		LogStories.logInfo("Clicked Create.")
+
+		// Handle optional confirmation
+		if (WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), 5, FailureHandling.OPTIONAL)) {
+			WebUI.click(findTestObject('EncounterPage/Add New Encounter/input_Confirmation_btnCreateANewEncounter'), FailureHandling.OPTIONAL)
+			LogStories.logInfo("Confirmed Create New Encounter.")
+		}
+
+		// Verify patient header
+		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30)
+		String patientName = WebUI.getText(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'))
+		WebUI.verifyMatch(patientName, "${firstName} ${lastName}", true)
+		LogStories.markPassed("Encounter saved successfully.")
+
+		// Store Encounter ID if required
+		if (isEncIdStore) {
+			String encId = WebUI.getText(findTestObject('EncounterPage/Header/EncounterId'))
+			String key = "ENC_${firstName}_${lastName}".toUpperCase() + "_ENCOUNTER_ID"
+
+			VariableStories.setItem(key, encId)
+			VariableStories.setItem("ENCOUNTER_ID", encId)
+			LogStories.logInfo("Encounter ID stored under keys: $key and ENCOUNTER_ID")
 		}
 	}
 
