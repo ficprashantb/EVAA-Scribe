@@ -45,26 +45,6 @@ LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-//LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
-//
-//CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
-//
-//LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
-//
-//navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
-//
-//String encounterId = VariableStories.getItem('ENCOUNTER_ID')
-//
-//LogStories.logInfo("Encounter Id=> $encounterId")
-//
-//CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-//
-//LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
-//
-//CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-//
-//LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
-
 //Direct Dictation By Record Start Stop
 def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
