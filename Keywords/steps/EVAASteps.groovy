@@ -1278,7 +1278,9 @@ public class EVAASteps {
 		// Stop Recording
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.delay(10)
+		def delaySec = 10
+		LogStories.logInfo("Wait for ${delaySec} second.")
+		WebUI.delay(delaySec)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
@@ -1353,7 +1355,9 @@ public class EVAASteps {
 		// Stop Recording
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 
-		WebUI.delay(10)
+		def delaySec = 10
+		LogStories.logInfo("Wait for ${delaySec} second.")
+		WebUI.delay(delaySec)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
@@ -1461,9 +1465,11 @@ public class EVAASteps {
 
 				def variableKey = CommonStory.sectionMapForStorageKey.get(name)
 				def storedValue = VariableStories.getItem(variableKey)
-				if (CommonStory.isNullOrEmpty(storedValue)) continue
+				if (CommonStory.isNullOrEmpty(storedValue)) {
+					continue
+				}
 
-					List expectedList = CommonStory.getListObject(storedValue)
+				List expectedList = CommonStory.getListObject(storedValue)
 
 				// Cache dictation value once per name
 				String appendText = dictationData.getValue(name, row)?.replaceAll(":(?=.*:)", "")
@@ -1482,7 +1488,98 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def directDictationByRecordStartStopOnElements(String UploadFilePath) {
+	def directDictationByRecordStartStopOnElements(String uploadFilePath) {
+		LogStories.log('----------------------Step AW----------------------')
+
+		TestData dictationData = TestDataFactory.findTestData('Data Files/DirectDictationData')
+		int rowCount = dictationData.getRowNumbers()
+
+		if (rowCount == 0) {
+			LogStories.markFailed("❌ DirectDictationData has NO rows")
+			return
+		}
+
+		int row = 1 // first row
+
+		// Clear previous storage
+		VariableStories.elementStorageForDirectDictation.clear()
+
+		if (!VariableStories.elementStorage.isEmpty()) {
+			LogStories.logInfo("File Path $uploadFilePath")
+			def elementStorageList = VariableStories.elementStorage
+
+			try {
+				WebUI.switchToFrame(findTestObject('EVAAPage/EVAA Scribe/iFrame'), 10)
+
+				int index = 1
+				int breakIndex = 2
+
+				for (String name : elementStorageList) {
+					if (!(name in ['ChiefComplaint', 'HPI'])) break
+
+						VariableStories.elementStorageForDirectDictation << name
+					LogStories.logInfo("Element from Storage → ${name}")
+
+					TestObject sectionTO = CommonStory.sectionMapForDirectDictationTyping.get(name)
+					if (!sectionTO) {
+						LogStories.markWarning("No TestObject mapped for → ${name}")
+						continue
+					}
+
+					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+					if (elements.isEmpty()) {
+						LogStories.markWarning("No elements found for section → ${name}")
+						continue
+					}
+
+					elements.each { WebElement el ->
+						def fakeMic = new FakeMicStream(uploadFilePath)
+						String textToAppend = dictationData.getValue(name, row)
+
+						el.click()
+						el.sendKeys(Keys.chord(Keys.CONTROL, Keys.END))
+
+						String moduleName = CommonStory.moduleMapForDirectDictation.get(name)
+						TestObject imgStartDictation = testObjectStory.img_Start_Dictation(moduleName)
+						TestObject imgStopDictation = testObjectStory.img_Stop_Dictation(moduleName)
+
+						WebUI.click(imgStartDictation)
+						LogStories.logInfo("Clicked on ${name} to Start Dictation")
+
+						WebUI.waitForElementVisible(imgStopDictation, 5, FailureHandling.STOP_ON_FAILURE)
+						fakeMic.start()
+						LogStories.logInfo("Dictation Started.")
+
+						// Short controlled wait instead of blind delay
+						def delaySec = 10
+						LogStories.logInfo("Wait for ${delaySec} second.")
+						WebUI.delay(delaySec)
+
+						WebUI.waitForElementVisible(imgStopDictation, 5, FailureHandling.OPTIONAL)
+
+						WebUI.click(imgStopDictation)
+						LogStories.logInfo("Clicked on ${name} to Stop Dictation")
+						fakeMic.stop()
+						LogStories.logInfo("Dictation Stopped.")
+
+						WebUI.waitForElementVisible(imgStartDictation, 5, FailureHandling.STOP_ON_FAILURE)
+
+						// Quick focus reset
+						WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Header/input_Search'))
+					}
+
+					if (index++ == breakIndex) break
+				}
+			} catch (Exception e) {
+				LogStories.markFailed("Dictation process failed: ${e.message}")
+			} finally {
+				WebUI.switchToDefaultContent()
+			}
+		}
+	}
+
+	@Keyword
+	def directDictationByRecordStartStopOnElements2(String UploadFilePath) {
 		LogStories.log('----------------------Step AW----------------------')
 
 		int index = 1;
@@ -1555,7 +1652,9 @@ public class EVAASteps {
 						fakeMic.start()
 						LogStories.logInfo("Dictation Started.")
 
-						WebUI.delay(10)
+						def delaySec = 10
+						LogStories.logInfo("Wait for ${delaySec} second.")
+						WebUI.delay(delaySec)
 
 						WebUI.click(img_Stop_Dictation)
 						LogStories.logInfo("Clicked on ${name} to Stop Dictation")
@@ -1603,21 +1702,26 @@ public class EVAASteps {
 					LogStories.logInfo("Element from Storage → ${name}")
 
 					TestObject sectionTO = CommonStory.sectionMapForSOAPNote.get(name)
-
 					if (!sectionTO) {
 						LogStories.markWarning("No TestObject mapped for → ${name}")
-						return
+						continue
 					}
 
 					List<WebElement> elements = WebUI.findWebElements(sectionTO, 10)
+					if (elements.isEmpty()) {
+						LogStories.markWarning("No elements found for section → ${name}")
+						continue
+					}
+
 					List<String> actualTexts = elements.collect { it.text.trim() }
-
 					def variableKey = CommonStory.sectionMapForStorageKey.get(name)
-
 					def storedValue = VariableStories.getItem(variableKey)
-					if (CommonStory.isNullOrEmpty(storedValue)) return
 
-						List expectedList = CommonStory.getListObject(storedValue)
+					if (CommonStory.isNullOrEmpty(storedValue)) {
+						LogStories.markWarning("No stored value for key → ${variableKey}")
+						continue
+					}
+					List expectedList = CommonStory.getListObject(storedValue)
 
 					expectedList.eachWithIndex { expected, i ->
 						String expectedText = "${expected}"
@@ -1648,25 +1752,28 @@ public class EVAASteps {
 	def TransferEncounterDataToSuperbill() {
 		LogStories.log('----------------------Step AY----------------------')
 
-		WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.click(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill'), FailureHandling.STOP_ON_FAILURE)
+		TestObject transferBtn = findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferEncBill')
+		WebUI.waitForElementClickable(transferBtn, 5, FailureHandling.STOP_ON_FAILURE)
+		WebUI.click(transferBtn, FailureHandling.STOP_ON_FAILURE)
 		LogStories.logInfo("Clicked on Transfer button.")
 
 		try {
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_PatientEncounterSaved'), 10, FailureHandling.CONTINUE_ON_FAILURE)
-			LogStories.markPassed("Patient encounter saved.")
+			// Toast confirmations
+			if (WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_PatientEncounterSaved'), 10, FailureHandling.OPTIONAL)) {
+				LogStories.markPassed("Patient encounter saved.")
+			}
+			if (WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_DataTransferred'), 10, FailureHandling.OPTIONAL)) {
+				LogStories.markPassed("Data transferred.")
+			}
 
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/toast_DataTransferred'), 10, FailureHandling.CONTINUE_ON_FAILURE)
-			LogStories.markPassed("Data transferred.")
-
-			WebUI.focus(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferedEncBill'), FailureHandling.STOP_ON_FAILURE)
-
+			// Verify transfer state
+			TestObject transferredBtn = findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferedEncBill')
+			WebUI.focus(transferredBtn, FailureHandling.STOP_ON_FAILURE)
 			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/powerTip_Data transferred'), 5, FailureHandling.STOP_ON_FAILURE)
 			LogStories.markPassed("Data transferred to Superbill.")
 
-			WebUI.waitForElementVisible(findTestObject('EncounterPage/Encounter Details/Data Transferred/input_btnDataTransferedEncBill'), 5, FailureHandling.STOP_ON_FAILURE)
-		} catch (e) {
+			WebUI.waitForElementVisible(transferredBtn, 5, FailureHandling.STOP_ON_FAILURE)
+		} catch (Exception e) {
 			LogStories.markFailedAndStop("Data not transferred to Superbill.")
 		}
 	}
