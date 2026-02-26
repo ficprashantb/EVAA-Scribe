@@ -71,7 +71,6 @@ def FirstName2 = patientData.getValue('FirstName', 2)
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
 //Find Patient 2
-
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName2,LastName2,  DOB, Provider_FirstName, Provider_LastName ,EncounterType, ExamLocation,Technician, false, false, false)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')

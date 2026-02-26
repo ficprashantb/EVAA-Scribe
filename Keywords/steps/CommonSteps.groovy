@@ -38,7 +38,6 @@ public class CommonSteps {
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory()
 
-
 	@Keyword
 	def openEVAAScribeBrowser() {
 
