@@ -1115,36 +1115,53 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def generateSOAPNoteByRecordStartStop(String fileTime, String uploadFilePath) {
+	def RecordStartStop(String fileTime, String uploadFilePath, boolean isReRecord = false) {
 		LogStories.log('----------------------Step AN----------------------')
 
-		int fileTimeinSeconds = Integer.valueOf(fileTime)
-
-		LogStories.logInfo("File Path $uploadFilePath")
+		int fileTimeInSeconds = Integer.valueOf(fileTime)
+		LogStories.logInfo("File Path: $uploadFilePath")
 
 		def fakeMic = new FakeMicStream(uploadFilePath)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'), 10, FailureHandling.STOP_ON_FAILURE)
-
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record'))
-
+		// Start recording
+		TestObject recordBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record')
+		WebUI.waitForElementClickable(recordBtn, 10, FailureHandling.STOP_ON_FAILURE)
+		WebUI.click(recordBtn)
 		LogStories.logInfo('Clicked on Start Record Button')
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+		// Handle re-record if applicable
+		if (isReRecord) {
+			TestObject reRecordBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/button_Re-Record')
+			WebUI.waitForElementClickable(reRecordBtn, 5, FailureHandling.STOP_ON_FAILURE)
+			LogStories.markPassed("Re-Record button displayed.")
+			WebUI.click(reRecordBtn)
+			LogStories.logInfo("Clicked on Re-Record button.")
+		}
 
+		// Wait for stop button and record time
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
+		// Start fake mic stream
 		fakeMic.start()
-		LogStories.logInfo('Clicked on fakeMic Start Record Button')
+		LogStories.logInfo("FakeMic recording started.")
 
-		WebUI.delay(fileTimeinSeconds)
+		// Controlled wait for file duration
+		WebUI.delay(fileTimeInSeconds)
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
-
-		LogStories.logInfo('Clicked on Stop Record Button')
+		// Stop recording
+		TestObject stopBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop')
+		WebUI.click(stopBtn)
+		LogStories.logInfo("Clicked on Stop Record Button")
 
 		fakeMic.stop()
-		LogStories.logInfo('Clicked on fakeMic Stop Record Button')
+		LogStories.logInfo("FakeMic recording stopped.")
+	}
+
+	@Keyword
+	def generateSOAPNoteByRecordStartStop(String fileTime, String uploadFilePath, boolean isReRecord = false) {
+
+		CustomKeywords.'steps.EVAASteps.RecordStartStop'(fileTime, uploadFilePath, isReRecord)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.OPTIONAL)
 		LogStories.markPassed("Generating SOAP Notes")
@@ -1890,6 +1907,58 @@ public class EVAASteps {
 		LogStories.logInfo("Re-Upload File Path=> $filePath")
 
 		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(filePath)
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
+
+		def soapNotes2 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
+
+		int wordCountSOAPNotes3 = soapNotes2.trim().split('\\s+').length
+
+		assertStory.verifyNotMatch('SOAP Notes Re-Recorded', wordCountSOAPNotes3, wordCountSOAPNotes)
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step G^^^^^^^^^^^^^^^^^^^^^')
+
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+	}
+
+	@Keyword
+	def RecordReRecordDictation(String fileTime, String fileName, String FirstName,String LastName,  String DOB, String Provider_FirstName, String Provider_LastName ) {
+		LogStories.log('----------------------Step AAL----------------------')
+
+		def wordCountSOAPNotes = VariableStories.getItem('SOAP_NOTE_LENGTH')
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step A^^^^^^^^^^^^^^^^^^^^^')
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Upload'), FailureHandling.STOP_ON_FAILURE)
+
+		LogStories.logInfo('Clicked on Upload Button.')
+
+		CustomKeywords.'steps.EVAASteps.VerifyReRecordPopup'(FirstName, LastName)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Cancel'), FailureHandling.STOP_ON_FAILURE)
+
+		LogStories.logInfo('Clicked on Cancel Button.')
+
+		WebUI.delay(2)
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step B^^^^^^^^^^^^^^^^^^^^^')
+
+		def soapNotes = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'))
+
+		int wordCountSOAPNotes2 = soapNotes.trim().split('\\s+').length
+
+		assertStory.verifyMatch('SOAP Notes not chnaged after Cancel Re-RecordPopup', wordCountSOAPNotes2, wordCountSOAPNotes)
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step C^^^^^^^^^^^^^^^^^^^^^')
+
+		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step D^^^^^^^^^^^^^^^^^^^^^')
+
+		def filePath = UtilHelper.getFilePath(fileName)
+		LogStories.logInfo("Re-Upload File Path=> $filePath")
+
+		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(fileTime, filePath,true) 
 
 		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
 

@@ -65,6 +65,11 @@ public class UtilHelper {
 		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
 			GlobalVariable.G_FILE_NAME = recordFilePath
 		}
+		
+		recordFilePath = variables.get("UploadFilePath")
+		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
+			GlobalVariable.G_FILE_NAME = recordFilePath
+		}
 
 		GlobalVariable.G_FILE_NAME = recordFilePath
 
