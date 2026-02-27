@@ -23,40 +23,44 @@ import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R02'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R07'
 
-VariableStories.clearItem(GlobalVariable.EVAA_SC_NO) 
+VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
     EncounterType, ExamLocation, Technician)
 
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
+
+def uploadFilePath = UtilHelper.getFilePath(RecordFilePath)
+
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
+
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
+
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
-
-def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
-
-LogStories.logInfo("Record File Path=> $recordFilePath")
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    false, false)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+//*********************************** Append Audio **************************************************************//
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+
+def recordFilePath = UtilHelper.getFilePath(UploadFilePath)
+
+LogStories.logInfo("Record File Path=> $recordFilePath")
+
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendPauseResumeStop'(FileTime, recordFilePath)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

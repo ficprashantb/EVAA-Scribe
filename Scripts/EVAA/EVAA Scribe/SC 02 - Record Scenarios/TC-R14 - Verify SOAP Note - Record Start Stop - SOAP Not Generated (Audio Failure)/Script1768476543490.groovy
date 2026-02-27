@@ -23,9 +23,9 @@ import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R02'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R014'
 
-VariableStories.clearItem(GlobalVariable.EVAA_SC_NO) 
+VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -38,25 +38,29 @@ def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
 LogStories.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+CustomKeywords.'steps.EVAASteps.RecordStartStop'(FileTime, recordFilePath)
+
+LogStories.logInfo('Awaiting file upload...')
+
+// Wait for toast message confirming file processed
+WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Error uploading file. Please try again'), 60, FailureHandling.STOP_ON_FAILURE)
+
+LogStories.markPassed('Error uploading file. Please try again.')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    false, false)
+String expectedPtName = "$FirstName $LastName"
+
+CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expectedPtName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
+CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+String FinalizedStatus = 'Pending'
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+String MicStatus = 'Recording Not Started'
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, FinalizedStatus, MicStatus)

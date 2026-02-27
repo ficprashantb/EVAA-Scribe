@@ -154,7 +154,7 @@ public class CommonSteps {
 
 		String expectedPtName = "${firstName} ${lastName}"
 
-		WebUI.verifyMatch(PatientName, expectedPtName, true)
+		assertStory.verifyMatch("Patient Name", PatientName, expectedPtName)
 
 		LogStories.markPassed("Patient Name: $expectedPtName")
 
@@ -216,7 +216,7 @@ public class CommonSteps {
 
 		String expected = "${firstName} ${lastName}"
 
-		WebUI.verifyMatch(PatientName, expected, true)
+		assertStory.verifyMatch("Patient Name", PatientName, expected)
 
 		LogStories.markPassed('Encounter Saved Suceesfully.')
 
@@ -266,9 +266,12 @@ public class CommonSteps {
 		}
 
 		// Verify patient header
-		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30)
+		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30, FailureHandling.STOP_ON_FAILURE)
 		String patientName = WebUI.getText(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'))
-		WebUI.verifyMatch(patientName, "${firstName} ${lastName}", true)
+		
+		String expected = "${firstName} ${lastName}"
+		
+		assertStory.verifyMatch("Patient Name",patientName, expected)
 		LogStories.markPassed("Encounter saved successfully.")
 
 		// Store Encounter ID if required

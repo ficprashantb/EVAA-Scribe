@@ -16,6 +16,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
+import steps.EVAASteps as EVAASteps
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
 import stories.LogStories as LogStories
@@ -23,40 +24,52 @@ import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R02'
+NavigateStory navigateStory = new NavigateStory()
 
-VariableStories.clearItem(GlobalVariable.EVAA_SC_NO) 
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R12'
+
+VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
     EncounterType, ExamLocation, Technician)
 
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
-
 def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
 LogStories.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
+    ExamLocation, Provider, Technician)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    false, false)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
+CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+CustomKeywords.'steps.EVAASteps.TransferEncounterDataToSuperbill'()
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/iframeContainer'), 60, FailureHandling.STOP_ON_FAILURE)
+
+LogStories.logInfo('iframeContainer found')
+
+WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/Expand Recording'), 10, FailureHandling.STOP_ON_FAILURE)
+
+LogStories.logInfo('Expand Recording found')
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 8~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

@@ -23,10 +23,10 @@ import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R02'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R05'
 
-VariableStories.clearItem(GlobalVariable.EVAA_SC_NO) 
-
+VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
+ 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
 CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
@@ -34,20 +34,24 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
+def recordFilePath = UtilHelper.getFilePath(UploadFilePath)
 
 LogStories.logInfo("Record File Path=> $recordFilePath")
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+def uploadFilePath = UtilHelper.getFilePath(RecordFilePath)
+
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
+
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, uploadFilePath)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    false, false)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
+//*********************************** Append Audio **************************************************************//
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendStartStop'(FileTime, recordFilePath)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 

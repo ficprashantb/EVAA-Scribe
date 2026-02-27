@@ -15,7 +15,7 @@
       <guid>38bdf629-f645-48d5-9d25-5543e1d40dd5</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R09 - Verify SOAP Note - Upload - Dictation Record Start Stop - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R10 - Verify SOAP Note - Upload - Dictation Record Start Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -94,7 +94,7 @@
       <guid>feef0b87-5b1e-4dc8-84a8-2c6a895a013e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R10 - Verify SOAP Note - Record Start Stop - Dictation Record Start Stop - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R11 - Verify SOAP Note - Record Start Stop - Dictation Record Start Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

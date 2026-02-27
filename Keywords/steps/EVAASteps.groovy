@@ -996,12 +996,17 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def generateSOAPNoteByRecordPauseResumeStop(String fileTime, String recordFilePath) {
+	def generateSOAPNoteByRecordPauseResumeStop(String fileTime, String recordFilePath, Boolean isResume = true) {
 		LogStories.log('----------------------Step AL----------------------')
 
 		int fileTimeInSeconds = Integer.valueOf(fileTime)
 		int pauseTimeInSeconds = 20
 		int resumeTimeInSeconds = 10
+
+		if(!isResume) {
+			pauseTimeInSeconds = fileTimeInSeconds - 5
+		}
+
 		int remainingTime = fileTimeInSeconds - pauseTimeInSeconds
 
 		LogStories.logInfo("File Path $recordFilePath")
@@ -1031,20 +1036,22 @@ public class EVAASteps {
 
 		WebUI.delay(resumeTimeInSeconds)
 
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'),10, FailureHandling.STOP_ON_FAILURE)
+		if(isResume) {
+			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'),10, FailureHandling.STOP_ON_FAILURE)
 
-		fakeMic.resume()
+			fakeMic.resume()
 
-		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
-		LogStories.logInfo('Clicked on Resume Button')
+			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
+			LogStories.logInfo('Clicked on Resume Button')
 
-		//		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
+			//		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
+			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 10, FailureHandling.OPTIONAL)
+			WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 10, FailureHandling.OPTIONAL)
 
-		WebUI.delay(remainingTime)
+			WebUI.delay(remainingTime)
+		}
 
 		fakeMic.stop()
 
@@ -1066,6 +1073,12 @@ public class EVAASteps {
 		WebUI.waitForElementClickable(findTestObject('EVAAPage/EVAA Scribe/Finalize'), 30)
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/SOAP Notes/SOAP Notes'), 120)
+	}
+
+	@Keyword
+	def generateSOAPNoteByRecordPauseStop(String fileTime, String recordFilePath) {
+
+		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordPauseResumeStop'(fileTime, recordFilePath,false)
 	}
 
 	@Keyword
@@ -1958,7 +1971,7 @@ public class EVAASteps {
 		def filePath = UtilHelper.getFilePath(fileName)
 		LogStories.logInfo("Re-Upload File Path=> $filePath")
 
-		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(fileTime, filePath,true) 
+		CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(fileTime, filePath,true)
 
 		LogStories.log('^^^^^^^^^^^^^^^^^^^^^Step F^^^^^^^^^^^^^^^^^^^^^')
 

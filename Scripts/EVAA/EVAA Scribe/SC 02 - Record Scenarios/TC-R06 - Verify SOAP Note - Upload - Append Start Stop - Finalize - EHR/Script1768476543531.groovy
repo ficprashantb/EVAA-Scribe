@@ -17,13 +17,14 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
-import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.LogStories as LogStories
+import com.kms.katalon.core.util.KeywordUtil
+
+import stories.LogStories
 import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R02'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R06'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO) 
 
@@ -34,20 +35,24 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
+def uploadFilePath = UtilHelper.getFilePath(RecordFilePath)
 
-LogStories.logInfo("Record File Path=> $recordFilePath")
+LogStories.logInfo("Upload File Path=> $uploadFilePath")
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByUploadingFile'(uploadFilePath)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    false, false)
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
+//*********************************** Append Audio **************************************************************//
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.unfinalizedDictationAfterFinalized'(false)
+def recordFilePath = UtilHelper.getFilePath(UploadFilePath)
+
+LogStories.logInfo("Record File Path=> $recordFilePath")
+
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByAppendStartStop'(FileTime, recordFilePath)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
