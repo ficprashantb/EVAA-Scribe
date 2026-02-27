@@ -417,7 +417,7 @@
       <guid>179a6767-ce49-4cbf-a361-569f44b05400</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR (All)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -484,7 +484,7 @@
       <guid>b9030652-660e-45b7-b8f1-e5c17578f631</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Note - Upload (Collapsed Mode) - Finalize - EHR (All) - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Note - Upload (Collapsed Mode) - Finalize - EHR - Transfer Encounter</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -551,7 +551,7 @@
       <guid>90cca631-856e-4d06-abe7-79b51513ae68</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U09 - Verify SOAP Note - Upload (Collapsed Mode - Patient Switch) - Finalize - EHR (All) - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U09 - Verify SOAP Note - Upload (Collapsed Mode - Patient Switch) - Finalize - EHR - Transfer Encounter</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -588,7 +588,7 @@
       <guid>0abe0235-62cf-47b1-9857-8807aeb9f8ab</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U10 - Verify SOAP Note - Upload (Patient Switch) - Finalize - EHR (All)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U10 - Verify SOAP Note - Upload (Patient Switch) - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

@@ -12,7 +12,7 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>f7650022-17fa-47e3-9a1d-aae719d58bce</testSuiteGuid>
    <testCaseLink>
-      <guid>b6c5efa0-80dd-4566-b069-d436a71cf956</guid>
+      <guid>11005207-e219-4b6c-bbec-85ff86ed8545</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Verify SOAP Note - Upload - Finalize - EHR</testCaseId>
@@ -79,7 +79,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>dbc19108-22b3-47d5-a60f-677d949349f2</guid>
+      <guid>c6a6c927-6dd3-41aa-b471-42ef54d74d58</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Verify SOAP Note - Upload - Finalize - EHR - Unfinalize - Finalize - EHR</testCaseId>
@@ -146,7 +146,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>09e236cb-d729-4590-88ef-7126a1845d18</guid>
+      <guid>f886abc5-cb26-4f92-9ddc-1adb09f5da3e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR (Individual - All)</testCaseId>
@@ -213,7 +213,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>7217e8da-a030-49e0-aba4-25fa439627d4</guid>
+      <guid>b853096f-9e55-4efb-b759-06ac308b024c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Verify SOAP Note - Upload - Finalize - EHR (Individual - All)</testCaseId>
@@ -280,7 +280,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b855778c-9117-4561-b267-fffc8cf2bba9</guid>
+      <guid>5f04f888-68dc-4a0b-b7c2-4a18421205cb</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U05 - Verify SOAP Note - Upload - Finalize - Dictation By Typing - EHR (Individual)</testCaseId>
@@ -347,7 +347,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>177013e1-d43e-49d3-b397-ced530e1294b</guid>
+      <guid>fd66dba7-f0e2-4efd-8af4-85da645143ec</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U06 - Verify SOAP Note - Upload - Finalize - EHR (Individual)</testCaseId>
@@ -414,10 +414,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3da8cc2e-bec2-44cb-bb70-6cb785b2d089</guid>
+      <guid>3efc9e51-5b6b-43d7-8443-9d15c2c0270b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR (All)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -481,10 +481,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>7c84e125-b510-4ed4-bdcb-96f7190fff7f</guid>
+      <guid>9c344ba0-25b2-4c54-89fb-b360a5de2d9f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Note - Upload (Collapsed Mode) - Finalize - EHR (All) - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Note - Upload (Collapsed Mode) - Finalize - EHR - Transfer Encounter</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -548,10 +548,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f29780ec-eb30-421e-a0f5-c1f04f54dc94</guid>
+      <guid>e5467599-0edc-46b8-95a2-0d8981191de9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U09 - Verify SOAP Note - Upload (Collapsed Mode - Patient Switch) - Finalize - EHR (All) - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U09 - Verify SOAP Note - Upload (Collapsed Mode - Patient Switch) - Finalize - EHR - Transfer Encounter</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -585,10 +585,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>cce0f2cd-daf8-4177-b29b-d729c044365a</guid>
+      <guid>89808d59-a247-47ec-a8d4-c991bc0fcc8a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U10 - Verify SOAP Note - Upload (Patient Switch) - Finalize - EHR (All)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U10 - Verify SOAP Note - Upload (Patient Switch) - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -622,7 +622,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>0c263ec5-7d14-4db8-8ee4-562625839965</guid>
+      <guid>b7395e0d-3cf0-437b-8865-f6c6cee3138a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U11 - Verify SOAP Note - Upload - SOAP Not Generated (Audio Failure)</testCaseId>
@@ -689,7 +689,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>59798a7d-c34d-4d22-bf1f-8db265f6d92c</guid>
+      <guid>3eb77799-00f0-4ee4-94d7-16d2d2db1ff4</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U12 - Verify SOAP Note - Upload - Existing Recording - Re-Record</testCaseId>
@@ -762,7 +762,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c98b1302-c4f3-4491-87eb-c59e0bda4734</guid>
+      <guid>9707b373-589d-449f-8074-c5b1a8f6cf52</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U13 - Verify SOAP Note - Upload - Copy All - Finalize</testCaseId>
@@ -829,7 +829,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>1fffbd5c-703d-4e43-aaf9-d93620e31721</guid>
+      <guid>f380f1ff-436c-4cae-9c5a-bb30449f3a6b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U14 - Verify SOAP Note - Upload - Dictation By Typing - Copy All - Finalize</testCaseId>
@@ -896,7 +896,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f92e1a53-3513-43c9-87f1-5fefc14c2a31</guid>
+      <guid>ce57d8df-9637-4ca1-bb38-aed57d45e20f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U15 - Verify SOAP Note - Upload - Copy Individual - Before Finalize</testCaseId>
@@ -963,7 +963,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d7bfaf35-84ee-413f-b1e2-e2ea1fbac723</guid>
+      <guid>2598f938-ebe6-4a0b-974e-f80294ed8b88</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U16 - Verify SOAP Note - Upload - Dictation By Typing - Copy Individual - Before Finalize</testCaseId>

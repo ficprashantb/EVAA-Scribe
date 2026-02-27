@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-R12 - Verify SOAP Note - Record Start Stop (Collapsed Mode - Patient Switch) - Finalize - EHR (All)</name>
+   <name>TC-R12 - Verify SOAP Note - Record Start (Collapsed Mode - Patient Switch) - Stop - Finalize - EHR - Transfer Encounter</name>
    <tag></tag>
    <integratedEntity>
       <productName>TESTOPS</productName>
