@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>File processed successfully</name>
+   <name>Microphone access blocked</name>
    <tag></tag>
-   <elementGuidId>9220122c-7b03-4c6b-83b4-67a883574b36</elementGuidId>
+   <elementGuidId>7c46c2f0-e786-4a8d-9054-d370d4256526</elementGuidId>
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[text()[normalize-space() = &quot;File processed successfully&quot;]]</value>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[text()[normalize-space() = &quot;File processed successfully&quot;]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>CSS</key>
@@ -32,16 +32,16 @@
       <matchCondition>contains</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>File processed successfully</value>
-      <webElementGuid>a3a3358d-2503-4625-88fd-6371b55f28c9</webElementGuid>
+      <value>Microphone access blocked. Enable permission in browser settings.</value>
+      <webElementGuid>66ccdb1c-7217-41d7-9e8f-27e994a995e0</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;File processed successfully&quot;]]</value>
-      <webElementGuid>7e0743a3-f4ff-4099-b484-9630d9427455</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>9fde547c-384c-45d8-b674-8951a253d424</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -49,22 +49,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>41215cd2-d2c0-499c-8717-8c18bc929763</webElementGuid>
+      <webElementGuid>8e6671e4-d22e-4288-8b3e-e2b8e9517049</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;File processed successfully&quot;]]</value>
-      <webElementGuid>1c78b5c3-9516-438f-b994-1898738ffb3a</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>a67942f3-9676-4b7d-9319-4b63e6413a88</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;File processed successfully&quot;]]</value>
-      <webElementGuid>5bea5260-5de6-4534-9ca1-943dc0f9c925</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>211430b4-9916-45ed-ae90-35813b816814</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

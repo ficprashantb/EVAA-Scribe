@@ -98,6 +98,11 @@ public class EVAASteps {
 
 		LogStories.log('----------------------Step G----------------------')
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, finalizedStatus, micStatus)
+
+		// Transcript check
+		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available')
+		Boolean isVisible = WebUI.waitForElementVisible(transcriptMsg, 5, FailureHandling.OPTIONAL)
+		assertStory.verifyMatch("'No transcript available' is displayed", isVisible, true)
 	}
 
 	@Keyword
@@ -1139,6 +1144,7 @@ public class EVAASteps {
 		// Start recording
 		TestObject recordBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record')
 		WebUI.waitForElementClickable(recordBtn, 10, FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('Record audio button is visible and clickable.')
 		WebUI.click(recordBtn)
 		LogStories.logInfo('Clicked on Start Record Button')
 
@@ -1153,6 +1159,7 @@ public class EVAASteps {
 
 		// Wait for stop button and record time
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('Stop button is visible immediately after clicking the Record button.')
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
 
 		// Start fake mic stream
@@ -1169,6 +1176,9 @@ public class EVAASteps {
 
 		fakeMic.stop()
 		LogStories.logInfo("FakeMic recording stopped.")
+
+		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
+		LogStories.markPassed('Stop button is not visible before clicking the Stop Record button.')
 	}
 
 	@Keyword

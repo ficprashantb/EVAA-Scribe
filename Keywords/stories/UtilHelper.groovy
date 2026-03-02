@@ -57,7 +57,7 @@ public class UtilHelper {
 		return null
 	}
 
-	static void setGlobalVariables(TestCaseContext testCaseContext) {
+	static void setGlobalVariables(TestCaseContext testCaseContext, String testCaseName) {
 		// Get all variables as a Map
 		Map<String, Object> variables = testCaseContext.getTestCaseVariables()
 
@@ -71,15 +71,9 @@ public class UtilHelper {
 			GlobalVariable.G_FILE_NAME = recordFilePath
 		}
 
-		GlobalVariable.G_FILE_NAME = recordFilePath
+		GlobalVariable.G_FILE_NAME = recordFilePath 
 
-		// Full test case ID (includes folder path)
-		String fullId = testCaseContext.getTestCaseId()
-
-		// Just the test case name (strip path)
-		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
-
-		LogStories.logInfo("➡️➡️➡️➡️➡️➡️➡️➡️➡️ Running Test Case: " + testCaseName)
+		
 
 		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
 

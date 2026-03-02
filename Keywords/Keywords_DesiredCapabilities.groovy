@@ -20,20 +20,25 @@ import org.openqa.selenium.WebDriver
 
 public class Keywords_DesiredCapabilities {
 
-	static void addCapabilities() {
+	static void addCapabilities(Boolean isMicAllow = true) {
 		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
 		if(IS_FAKE_MIC) {
-			Keywords_DesiredCapabilities.addWebDriverPreferencesProperty()
+			Keywords_DesiredCapabilities.addWebDriverPreferencesProperty(isMicAllow)
 		}
 		else {
-			Keywords_DesiredCapabilities.addLinuxWebDriverPreferencesProperty()
+			Keywords_DesiredCapabilities.addLinuxWebDriverPreferencesProperty(isMicAllow)
 		}
 	}
 
-	static void addWebDriverPreferencesProperty() {
+	static void addWebDriverPreferencesProperty(Boolean isMicAllow = true) {
+
+		def value =	isMicAllow? 2 : 1
+
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
-		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+
+		prefs.put("profile.default_content_setting_values.media_stream_mic", value)
+
 		prefs.put("profile.default_content_setting_values.geolocation", 1)
 		prefs.put("profile.default_content_setting_values.notifications", 1)
 		prefs.put("profile.default_content_setting_values.popups", 1)
@@ -47,11 +52,13 @@ public class Keywords_DesiredCapabilities {
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
 	}
 
-	static void addLinuxWebDriverPreferencesProperty() {
+	static void addLinuxWebDriverPreferencesProperty(Boolean isMicAllow = true) {
+		def value =	isMicAllow? 2 : 1
+		
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
-		prefs.put("profile.default_content_setting_values.media_stream_mic", 1)
+		prefs.put("profile.default_content_setting_values.media_stream_mic", value)
 		prefs.put("profile.default_content_setting_values.geolocation", 1)
 		prefs.put("profile.default_content_setting_values.notifications", 1)
 		prefs.put("profile.default_content_setting_values.popups", 1)

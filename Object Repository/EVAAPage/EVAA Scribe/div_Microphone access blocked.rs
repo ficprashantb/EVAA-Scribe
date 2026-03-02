@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_Microphone access blocked</name>
+   <tag></tag>
+   <elementGuidId>72fa5f33-c383-45b2-ba93-ea40a71dbd2e</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value></value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>div</value>
+      <webElementGuid>e9a57ba8-f4d0-48f0-87ed-593245e60a7b</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>1</value>
+      <webElementGuid>30aa95d2-9417-4eed-8cf7-29ffe5c77453</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tabindex</name>
+      <type>Main</type>
+      <value>0</value>
+      <webElementGuid>c0b3fef3-574e-4912-8267-371580ea6e61</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>data-in</name>
+      <type>Main</type>
+      <value>true</value>
+      <webElementGuid>e39bbf0f-1a16-40e6-8f51-0fe10c3c9673</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>Toastify__toast Toastify__toast-theme--colored Toastify__toast--error Toastify__toast--close-on-click</value>
+      <webElementGuid>be6fe770-4fb1-4b73-bd70-73e91e3fb791</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>role</name>
+      <type>Main</type>
+      <value>alert</value>
+      <webElementGuid>8af0d790-e28e-49e9-8f6b-68005c054abc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>text</name>
+      <type>Main</type>
+      <value>Microphone access blocked. Enable permission in browser settings.</value>
+      <webElementGuid>464b6ea6-f5d3-4ccc-afc6-4d039938c2cd</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-d000f3a456ddefb21d0d1d8af1b5fa8b</value>
+      <webElementGuid>c5bdcd15-8d6b-4d0b-8141-c61bca5c904e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>1b3b9d32-cffb-46de-87a0-91a0a2f518bc</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>12f5c82b-ca86-4f7f-9a2c-6cf4e431ebe8</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>6fec8b57-a73b-44a5-8718-4da005f03b3c</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+      <webElementGuid>bd74a03b-802c-4460-bc32-104f50f55db1</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
