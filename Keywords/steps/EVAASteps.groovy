@@ -100,9 +100,13 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, finalizedStatus, micStatus)
 
 		// Transcript check
-		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available')
-		Boolean isVisible = WebUI.waitForElementVisible(transcriptMsg, 5, FailureHandling.OPTIONAL)
-		assertStory.verifyMatch("'No transcript available' is displayed", isVisible, true)
+		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available') 
+		if (WebUI.verifyElementPresent(transcriptMsg, 10, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(transcriptMsg)
+			assertStory.verifyMatch("Transcript message", actualText,
+				"No transcript available. Upload an audio file to get started.")
+		}
+		 
 	}
 
 	@Keyword

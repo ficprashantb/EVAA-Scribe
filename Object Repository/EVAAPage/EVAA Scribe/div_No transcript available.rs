@@ -6,19 +6,23 @@
    <elementGuidId>cc34e129-bcc3-4481-b7b6-f4a78e452a7c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-[inherit] ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-center ')]</value>
+         <key>CSS</key>
+         <value></value>
       </entry>
       <entry>
-         <key>CSS</key>
-         <value>.rounded-\[inherit\] .text-center</value>
+         <key>BASIC</key>
+         <value>//div[text()[normalize-space() = &quot;No transcript available. Upload an audio file to get started.&quot;]]</value>
+      </entry>
+      <entry>
+         <key>XPATH</key>
+         <value>//div[text()[normalize-space() = &quot;No transcript available. Upload an audio file to get started.&quot;]]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;No transcript available. Upload an audio file to get started.&quot;i</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>5e60497b-ef15-430e-a7bf-d84e4579378f</webElementGuid>
+      <webElementGuid>adcd9f99-d0c5-4592-8e00-0177d322b476</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,15 +41,15 @@
       <name>class</name>
       <type>Main</type>
       <value>p-4 text-center text-gray-500</value>
-      <webElementGuid>ed8f39e7-1a45-4f66-bb61-69e2ea803b56</webElementGuid>
+      <webElementGuid>025f5449-d111-49df-9494-cf6836d43a79</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
       <value>No transcript available. Upload an audio file to get started.</value>
-      <webElementGuid>8b64c35a-859c-4537-8671-e1134e1a18bd</webElementGuid>
+      <webElementGuid>a746ac5c-fb81-4ba7-bc50-6d09c11184b2</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,30 +57,38 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-21d0db0f19ca31ccb10dd45df68ae390</value>
-      <webElementGuid>602267b7-341d-49bc-8041-c2798d845eb7</webElementGuid>
+      <webElementGuid>7d484157-f0c8-4264-9fac-c17da254e86b</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-[inherit] ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-center ')]</value>
-      <webElementGuid>a6ca100d-fcf9-42f1-b089-3d3d2b7560ac</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;No transcript available. Upload an audio file to get started.&quot;]]</value>
+      <webElementGuid>a3ff86c4-7be6-4f6d-9e49-f647457eff93</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>05a5f08b-268e-40fd-b589-ff14e3ef01a5</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' rounded-[inherit] ')]//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' text-center ')]</value>
-      <webElementGuid>c1e90ea3-79d3-4094-9a91-f1f87bf8eac2</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;No transcript available. Upload an audio file to get started.&quot;]]</value>
+      <webElementGuid>0c1a9ec1-6c3c-41ee-ac45-1529ac8bf0d0</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[(text() = 'No transcript available. Upload an audio file to get started.' or . = 'No transcript available. Upload an audio file to get started.')]</value>
-      <webElementGuid>068dc028-bdd5-4771-8633-e85baf149d6c</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;No transcript available. Upload an audio file to get started.&quot;]]</value>
+      <webElementGuid>67f2d4f2-ca6e-43e5-b225-abec148dddd1</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
