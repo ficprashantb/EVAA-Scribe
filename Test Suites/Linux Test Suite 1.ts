@@ -12,10 +12,10 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>40e9c3bd-4eb4-47ad-8b64-10bae8b1be3e</testSuiteGuid>
    <testCaseLink>
-      <guid>79ea1736-7bcd-4f46-81db-efa71028e451</guid>
+      <guid>1b513ac9-ad45-4eb6-9ac5-75fdd1275419</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R17 - Verify SOAP Note - Microphone Permission</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R01 - Verify SOAP Note - Record Start Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

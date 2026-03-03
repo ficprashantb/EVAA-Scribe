@@ -34,7 +34,7 @@ class EVAATestListener {
 
 		Boolean isMicAllow = testCaseName.contains("TC-R17")
 		// Define capabilities before browser launch
-		Keywords_DesiredCapabilities.addCapabilities(isMicAllow)
+		Keywords_DesiredCapabilities.addCapabilities()
 
 		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()
 	}

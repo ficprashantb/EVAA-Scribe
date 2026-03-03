@@ -1165,6 +1165,12 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Stop button is visible immediately after clicking the Record button.')
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
+		 
+		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_Live transcription in progress')
+		if (WebUI.verifyElementPresent(transcriptMsg, 5, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(transcriptMsg)
+			assertStory.verifyMatch("Live Transcription", actualText,"Live transcription in progress. SOAP notes will appear after recording.")
+		}
 
 		// Start fake mic stream
 		fakeMic.start()
@@ -1183,6 +1189,12 @@ public class EVAASteps {
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Stop button is not visible before clicking the Stop Record button.')
+		 
+		TestObject processingAudio = findTestObject('EVAAPage/EVAA Scribe/div_Processing audio')
+		if (WebUI.verifyElementPresent(processingAudio, 5, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(processingAudio)
+			assertStory.verifyMatch("Processing Audio", actualText,"Processing audio...")
+		}
 	}
 
 	@Keyword

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_Processing audio</name>
+   <name>div_Live transcription in progress</name>
    <tag></tag>
-   <elementGuidId>304c7b47-38af-461c-a9ec-761a3ee6773a</elementGuidId>
+   <elementGuidId>2cb31377-b017-4924-bbc6-483b1672aae5</elementGuidId>
    <selectorCollection>
       <entry>
          <key>CSS</key>
-         <value>.rounded-\[inherit\] div.text-center</value>
+         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//*[(text() = 'Processing audio...' or . = 'Processing audio...') and @ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']</value>
+         <value>//div[text()[normalize-space() = &quot;Live transcription in progress. SOAP notes will appear after recording.&quot;]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[text()[normalize-space() = &quot;Processing audio...&quot;]]</value>
+         <value>//div[text()[normalize-space() = &quot;Live transcription in progress. SOAP notes will appear after recording.&quot;]]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value>internal:text=&quot;Processing audio...&quot;i</value>
+         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,39 +33,39 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>d1679c74-b5d2-4a44-903a-cd02e0038d51</webElementGuid>
+      <webElementGuid>93674bc0-fd83-44ec-9f68-17759e582e4e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>class</name>
       <type>Main</type>
-      <value>py-4  text-center</value>
-      <webElementGuid>4cb4d297-9c50-471f-84f9-5d4bf8214baa</webElementGuid>
+      <value>p-4 text-center text-gray-500</value>
+      <webElementGuid>c3ace703-aada-4e0d-b2db-04608a9446d6</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Processing audio...</value>
-      <webElementGuid>33483a21-e0bf-428c-8460-340d1a9b3828</webElementGuid>
+      <value>Live transcription in progress. SOAP notes will appear after recording.</value>
+      <webElementGuid>f216c224-f9e8-44e2-b244-75e4cb45b79a</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>parent</name>
       <type>Main</type>
-      <value>md5.v1-52ad5e0e5b99850673250d6d9b68bed9</value>
-      <webElementGuid>ec480c39-d42e-42df-995d-153ba4302a8c</webElementGuid>
+      <value>md5.v1-21d0db0f19ca31ccb10dd45df68ae390</value>
+      <webElementGuid>857ea57e-01b8-4671-85e9-1a72a2afad6d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Processing audio...&quot;]]</value>
-      <webElementGuid>b7f42b44-2541-412e-b2fa-a14144a6dc2b</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Live transcription in progress. SOAP notes will appear after recording.&quot;]]</value>
+      <webElementGuid>4382e341-cb3b-4305-a807-7fd998b02ba5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -73,22 +73,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>721a5308-456d-4b2f-a7b2-a0061333a032</webElementGuid>
+      <webElementGuid>dc024e8f-a60e-4c03-b15d-6bb4122f979a</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Processing audio...&quot;]]</value>
-      <webElementGuid>073949fe-5c8f-4f07-a504-3217dff87cab</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Live transcription in progress. SOAP notes will appear after recording.&quot;]]</value>
+      <webElementGuid>256eec49-bd7e-4479-b0d8-7a9964780ada</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Processing audio...&quot;]]</value>
-      <webElementGuid>ae5d1674-270b-4e70-a458-5ea6c98a24a6</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Live transcription in progress. SOAP notes will appear after recording.&quot;]]</value>
+      <webElementGuid>cff13229-2d81-4e85-a1d1-ac72f5164e90</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
