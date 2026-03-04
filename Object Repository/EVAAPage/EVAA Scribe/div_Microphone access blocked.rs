@@ -7,22 +7,20 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings&quot;]]</value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
+         <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings&quot;]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>div</value>
-      <webElementGuid>e9a57ba8-f4d0-48f0-87ed-593245e60a7b</webElementGuid>
+      <webElementGuid>62d06640-e1a8-4ff6-8e19-4e333000b1e5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +39,7 @@
       <name>id</name>
       <type>Main</type>
       <value>1</value>
-      <webElementGuid>30aa95d2-9417-4eed-8cf7-29ffe5c77453</webElementGuid>
+      <webElementGuid>99d1f110-e815-411d-8281-a718738801e5</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +47,7 @@
       <name>tabindex</name>
       <type>Main</type>
       <value>0</value>
-      <webElementGuid>c0b3fef3-574e-4912-8267-371580ea6e61</webElementGuid>
+      <webElementGuid>ae7983d5-20e9-4ba5-aa36-a0e8b57e4aca</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,7 +55,7 @@
       <name>data-in</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>e39bbf0f-1a16-40e6-8f51-0fe10c3c9673</webElementGuid>
+      <webElementGuid>0a839231-2621-49a6-a4bd-ea1bc70c678e</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -65,7 +63,7 @@
       <name>class</name>
       <type>Main</type>
       <value>Toastify__toast Toastify__toast-theme--colored Toastify__toast--error Toastify__toast--close-on-click</value>
-      <webElementGuid>be6fe770-4fb1-4b73-bd70-73e91e3fb791</webElementGuid>
+      <webElementGuid>64376ab1-a719-45f5-8469-47c5f890d2ae</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -73,15 +71,15 @@
       <name>role</name>
       <type>Main</type>
       <value>alert</value>
-      <webElementGuid>8af0d790-e28e-49e9-8f6b-68005c054abc</webElementGuid>
+      <webElementGuid>0c427fc6-fb48-4794-887f-9f1ad121b68d</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>text</name>
       <type>Main</type>
-      <value>Microphone access blocked. Enable permission in browser settings.</value>
-      <webElementGuid>464b6ea6-f5d3-4ccc-afc6-4d039938c2cd</webElementGuid>
+      <value>Microphone access blocked. Enable permission in browser settings</value>
+      <webElementGuid>02dd2f0f-a5f6-49df-b0c8-f6ea5400b816</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -89,15 +87,15 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-d000f3a456ddefb21d0d1d8af1b5fa8b</value>
-      <webElementGuid>c5bdcd15-8d6b-4d0b-8141-c61bca5c904e</webElementGuid>
+      <webElementGuid>e6c28ded-e9cf-459a-b3d4-a5f3ba944702</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
-      <webElementGuid>1b3b9d32-cffb-46de-87a0-91a0a2f518bc</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings&quot;]]</value>
+      <webElementGuid>c0a6d555-dd67-413b-b922-2908475e369f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -105,22 +103,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>12f5c82b-ca86-4f7f-9a2c-6cf4e431ebe8</webElementGuid>
+      <webElementGuid>b74dc730-9f78-4bba-a8a7-9dc8464e10b3</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
-      <webElementGuid>6fec8b57-a73b-44a5-8718-4da005f03b3c</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings&quot;]]</value>
+      <webElementGuid>af71bea4-7e39-4d01-8d9b-323080c742e9</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings.&quot;]]</value>
-      <webElementGuid>bd74a03b-802c-4460-bc32-104f50f55db1</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Microphone access blocked. Enable permission in browser settings&quot;]]</value>
+      <webElementGuid>0e0242e8-b32f-4589-88dd-53b0319c290c</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

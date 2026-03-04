@@ -30,13 +30,37 @@ import stories.TestObjectStory
 import stories.UtilHelper
 
 import com.kms.katalon.core.configuration.RunConfiguration
+import com.kms.katalon.core.context.TestCaseContext
+
 import org.openqa.selenium.chrome.ChromeOptions
 import com.kms.katalon.core.webui.driver.DriverFactory
+
 
 public class CommonSteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
 	AssertStory assertStory = new AssertStory()
+
+	@Keyword
+	def beforeTestCaseKeyword(TestCaseContext  testCaseContext) {
+		// Extract test case name directly without storing fullId
+		String testCaseName = testCaseContext.getTestCaseId().replaceAll(".*/", "")
+
+		UtilHelper.setGlobalVariables(testCaseContext,testCaseName)
+
+		// Use a direct boolean check instead of string conversion
+		Boolean isMicAllow = testCaseName.contains("TC-R19") ? false : true 
+		if(isMicAllow) {
+			// Define capabilities before browser launch
+			CustomKeywords.'Keywords_DesiredCapabilities.addCapabilities'()
+		}
+		else {
+			CustomKeywords.'Keywords_DesiredCapabilities.blockMicrophoneAccess'()
+		} 
+
+		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()
+	}
+
 
 	@Keyword
 	def openEVAAScribeBrowser() {
@@ -228,8 +252,6 @@ public class CommonSteps {
 			String encId = WebUI.getText(findTestObject('EncounterPage/Header/EncounterId'))
 			VariableStories.setItem(encIdKey, encId)
 
-			VariableStories.setItem("ENCOUNTER_ID", encId)
-
 			VariableStories.setItem(encIdKey, encId)
 
 			VariableStories.setItem("ENCOUNTER_ID", encId)
@@ -268,9 +290,9 @@ public class CommonSteps {
 		// Verify patient header
 		WebUI.waitForElementVisible(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'), 30, FailureHandling.STOP_ON_FAILURE)
 		String patientName = WebUI.getText(findTestObject('EncounterPage/Add New Encounter/EncounterPatientHeader'))
-		
+
 		String expected = "${firstName} ${lastName}"
-		
+
 		assertStory.verifyMatch("Patient Name",patientName, expected)
 		LogStories.markPassed("Encounter saved successfully.")
 

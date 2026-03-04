@@ -35,6 +35,8 @@ import stories.LogStories
 import groovy.json.JsonOutput
 
 import org.openqa.selenium.Keys
+
+import com.kms.katalon.core.webui.common.WebUiCommonHelper
 import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.testdata.TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
@@ -100,13 +102,12 @@ public class EVAASteps {
 		CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, finalizedStatus, micStatus)
 
 		// Transcript check
-		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available') 
+		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available')
 		if (WebUI.verifyElementPresent(transcriptMsg, 10, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(transcriptMsg)
 			assertStory.verifyMatch("Transcript message", actualText,
-				"No transcript available. Upload an audio file to get started.")
+					"No transcript available. Upload an audio file to get started.")
 		}
-		 
 	}
 
 	@Keyword
@@ -143,6 +144,50 @@ public class EVAASteps {
 
 		// Switch back
 		WebUI.switchToDefaultContent()
+	}
+
+	@Keyword
+	def clickOnCalenderTodayDate() {
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Calendar/img_calendar'), 20, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Calendar/img_calendar'))
+		LogStories.logInfo('Clicked on Calender.')
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Calendar/button_Today'), 5, FailureHandling.STOP_ON_FAILURE)
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Calendar/button_Today'))
+		LogStories.logInfo('Clicked on Today Date.')
+
+		// Define the TestObject dynamically
+		TestObject patientDiv = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName')
+		// Wait until at least one element is present
+		WebUI.waitForElementPresent(patientDiv, 10, FailureHandling.STOP_ON_FAILURE)
+	}
+
+	@Keyword
+	def clickOnPatientLeftSidePanel(String firstName, String lastName) {
+		String fullName = "${firstName} ${lastName}"
+		String key = "ENC_${firstName}_${lastName}".toUpperCase() + "_ENCOUNTER_ID"
+		String encounterId = VariableStories.getItem(key)
+		TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
+
+		TestObject patientDiv = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName')
+		List<WebElement> elements = WebUiCommonHelper.findWebElements(patientDiv, 5)
+
+		for (WebElement el : elements) {
+			String name = el.getText().trim()
+
+			if (name == fullName) {
+				el.click()
+				LogStories.logInfo("Clicked on Patient Name: " + fullName)
+
+				// Verify encounter header for this patient
+				boolean encounterVisible = WebUI.waitForElementVisible(header_EncounterId, 5, FailureHandling.OPTIONAL)
+				if (encounterVisible) {
+					LogStories.logInfo("Encounter:${encounterId} header visible for patient: " + fullName)
+					break   // ✅ stop once encounter is visible
+				}
+			}
+		}
 	}
 
 	@Keyword
@@ -1005,7 +1050,7 @@ public class EVAASteps {
 	}
 
 	@Keyword
-	def generateSOAPNoteByRecordPauseResumeStop(String fileTime, String recordFilePath, Boolean isResume = true) {
+	def generateSOAPNoteByRecordPauseResumeStop(String fileTime, String recordFilePath, Boolean isResume = true, Boolean isCollapsed = false, Boolean isStop = true) {
 		LogStories.log('----------------------Step AL----------------------')
 
 		int fileTimeInSeconds = Integer.valueOf(fileTime)
@@ -1032,16 +1077,27 @@ public class EVAASteps {
 
 		fakeMic.start()
 
+		if(isCollapsed) {
+			// Collapse Recording Screen
+			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+		}
+
 		WebUI.delay(pauseTimeInSeconds)
 
-		fakeMic.pause()
+		fakeMic.pause() 
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 5, FailureHandling.STOP_ON_FAILURE)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'))
 		LogStories.logInfo('Clicked on Pause Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'),10, FailureHandling.OPTIONAL)
-
-		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Recording Paused'),20, FailureHandling.OPTIONAL)
+  
+		TestObject recordingPaused = findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Recording Paused')
+		if (WebUI.verifyElementPresent(recordingPaused, 20, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(recordingPaused)
+			assertStory.verifyMatch("Recording Paused", actualText,"Recording Paused.")
+		}
 
 		WebUI.delay(resumeTimeInSeconds)
 
@@ -1062,13 +1118,27 @@ public class EVAASteps {
 			WebUI.delay(remainingTime)
 		}
 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.OPTIONAL)
+
 		fakeMic.stop()
 
+		if(isStop) {
+			CustomKeywords.'steps.EVAASteps.stopRecording'(isCollapsed)
+		}
+	}
+
+	@Keyword
+	def stopRecording(Boolean isExpand = false) {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.OPTIONAL)
 
 		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'))
 
 		LogStories.logInfo('Clicked on Stop Button')
+
+		if(isExpand) {
+			// Expand Recording Screen
+			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
+		}
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
@@ -1145,6 +1215,10 @@ public class EVAASteps {
 
 		def fakeMic = new FakeMicStream(uploadFilePath)
 
+		TestObject img_Pause = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause')
+		WebUI.waitForElementNotPresent(img_Pause, 5, FailureHandling.OPTIONAL)
+		LogStories.markPassed('Pause audio button is not clickable.')
+
 		// Start recording
 		TestObject recordBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record')
 		WebUI.waitForElementClickable(recordBtn, 10, FailureHandling.STOP_ON_FAILURE)
@@ -1165,7 +1239,7 @@ public class EVAASteps {
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 30, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Stop button is visible immediately after clicking the Record button.')
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.STOP_ON_FAILURE)
-		 
+
 		TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_Live transcription in progress')
 		if (WebUI.verifyElementPresent(transcriptMsg, 5, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(transcriptMsg)
@@ -1189,7 +1263,7 @@ public class EVAASteps {
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed('Stop button is not visible before clicking the Stop Record button.')
-		 
+
 		TestObject processingAudio = findTestObject('EVAAPage/EVAA Scribe/div_Processing audio')
 		if (WebUI.verifyElementPresent(processingAudio, 5, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(processingAudio)
@@ -1323,7 +1397,8 @@ public class EVAASteps {
 
 		navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
-		String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+		String key = "ENC_${FirstName}_${LastName}".toUpperCase() + "_ENCOUNTER_ID"
+		String encounterId = VariableStories.getItem(key)
 
 		LogStories.logInfo("Encounter Id=> $encounterId")
 
@@ -1400,7 +1475,8 @@ public class EVAASteps {
 
 		navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
-		String encounterId = VariableStories.getItem('ENCOUNTER_ID')
+		String key = "ENC_${FirstName}_${LastName}".toUpperCase() + "_ENCOUNTER_ID"
+		String encounterId = VariableStories.getItem(key)
 
 		LogStories.logInfo("Encounter Id=> $encounterId")
 

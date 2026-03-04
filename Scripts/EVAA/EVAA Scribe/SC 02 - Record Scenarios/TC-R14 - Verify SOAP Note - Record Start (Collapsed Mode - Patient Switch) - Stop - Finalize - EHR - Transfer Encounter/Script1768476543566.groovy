@@ -9,6 +9,7 @@ import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
 import com.kms.katalon.core.model.FailureHandling as FailureHandling
 import com.kms.katalon.core.testcase.TestCase as TestCase
 import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testdata.TestDataFactory as TestDataFactory
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
@@ -26,7 +27,7 @@ import stories.VariableStories as VariableStories
 
 NavigateStory navigateStory = new NavigateStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R12'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R14'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -41,8 +42,8 @@ LogStories.logInfo("Record File Path=> $recordFilePath")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounter_StopRecording'(recordFilePath, FirstName, LastName, EncounterType, 
-    ExamLocation, Provider, Technician)
+CustomKeywords.'steps.EVAASteps.StartRecording_CreateNewEncounterForOtherPatient_StopRecording'(recordFilePath, FirstName, 
+    LastName, EncounterType, ExamLocation, Provider, Technician)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 

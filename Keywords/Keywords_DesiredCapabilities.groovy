@@ -12,6 +12,8 @@ import org.openqa.selenium.edge.EdgeOptions
 import org.openqa.selenium.firefox.FirefoxDriver
 import org.openqa.selenium.firefox.FirefoxOptions
 import org.openqa.selenium.firefox.FirefoxProfile
+
+import com.kms.katalon.core.annotation.Keyword
 import com.kms.katalon.core.configuration.RunConfiguration
 import org.openqa.selenium.remote.DesiredCapabilities
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -20,17 +22,28 @@ import org.openqa.selenium.WebDriver
 
 public class Keywords_DesiredCapabilities {
 
-	static void addCapabilities() {
+	@Keyword
+	def addCapabilities() {
 		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
 		if(IS_FAKE_MIC) {
-			Keywords_DesiredCapabilities.addWebDriverPreferencesProperty()
+			CustomKeywords.'Keywords_DesiredCapabilities.addWebDriverPreferencesProperty'() 
 		}
 		else {
-			Keywords_DesiredCapabilities.addLinuxWebDriverPreferencesProperty()
+			CustomKeywords.'Keywords_DesiredCapabilities.addLinuxWebDriverPreferencesProperty'()
 		}
 	}
 
-	static void addWebDriverPreferencesProperty() { 
+	@Keyword
+	def blockMicrophoneAccess() {
+		Map<String, Object> prefs = new HashMap<>()
+
+		prefs.put("profile.default_content_setting_values.media_stream_mic", 2)
+
+		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
+	}
+
+	@Keyword
+	def addWebDriverPreferencesProperty() {
 
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)
@@ -50,7 +63,8 @@ public class Keywords_DesiredCapabilities {
 		RunConfiguration.setWebDriverPreferencesProperty("prefs", prefs)
 	}
 
-	static void addLinuxWebDriverPreferencesProperty() {	
+	@Keyword
+	def addLinuxWebDriverPreferencesProperty() {
 		// Preferences dictionary
 		Map<String, Object> prefs = new HashMap<>()
 		prefs.put("profile.default_content_setting_values.media_stream_camera", 1)

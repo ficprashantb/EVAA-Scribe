@@ -65,22 +65,21 @@ public class UtilHelper {
 		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
 			GlobalVariable.G_FILE_NAME = recordFilePath
 		}
-		
-		recordFilePath = variables.get("UploadFilePath")
-		if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
-			GlobalVariable.G_FILE_NAME = recordFilePath
+		else {
+			recordFilePath = variables.get("UploadFilePath")
+			if (recordFilePath != null && !recordFilePath.trim().isEmpty()) {
+				GlobalVariable.G_FILE_NAME = recordFilePath
+			}
 		}
 
-		GlobalVariable.G_FILE_NAME = recordFilePath 
-
-		
+		GlobalVariable.G_FILE_NAME = recordFilePath
 
 		Boolean IS_FAKE_MIC = GlobalVariable.G_IS_FAKE_MIC
 
 		if(testCaseName.contains("TC-U")) {
 			GlobalVariable.G_FILE_TYPE = 'mp3'
 		}
-		else {  
+		else {
 			GlobalVariable.G_FILE_TYPE = IS_FAKE_MIC ?  'mp3' : 'wav'
 		}
 	}

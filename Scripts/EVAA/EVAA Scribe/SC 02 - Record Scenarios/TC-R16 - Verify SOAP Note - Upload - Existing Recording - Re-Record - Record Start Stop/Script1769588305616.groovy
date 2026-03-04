@@ -18,33 +18,25 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
+import stories.AssertStory as AssertStory
+import stories.ExceptionHelper as ExceptionHelper
 import stories.LogStories as LogStories
-import stories.NavigateStory as NavigateStory
-import stories.UtilHelper as UtilHelper
+import stories.NavigateStory
+import stories.UtilHelper
 import stories.VariableStories as VariableStories
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R016'
+AssertStory assertStory = new AssertStory()
+
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U16'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
-    EncounterType, ExamLocation, Technician)
+CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 
+    Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false, false)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-def recordFilePath = UtilHelper.getFilePath(UploadFilePath)
-
-LogStories.logInfo("Record File Path=> $recordFilePath")
-
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordStartStop'(FileTime, recordFilePath)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.RecordReRecordDictation'(FileTime, UploadFilePath, FirstName, LastName, DOB, Provider_FirstName, 
-    Provider_LastName)
+CustomKeywords.'steps.EVAASteps.RecordReRecordDictation'(FileTime,RecordFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+ 

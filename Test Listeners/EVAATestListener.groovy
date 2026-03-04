@@ -24,19 +24,7 @@ class EVAATestListener {
 	 */
 	@BeforeTestCase
 	def beforeTestCase(TestCaseContext testCaseContext) {
-		// Full test case ID (includes folder path)
-		String fullId = testCaseContext.getTestCaseId()
-
-		// Just the test case name (strip path)
-		String testCaseName = fullId.substring(fullId.lastIndexOf("/") + 1)
-		
-		UtilHelper.setGlobalVariables(testCaseContext,testCaseName)
-
-		Boolean isMicAllow = testCaseName.contains("TC-R17")
-		// Define capabilities before browser launch
-		Keywords_DesiredCapabilities.addCapabilities()
-
-		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()
+		CustomKeywords.'steps.CommonSteps.beforeTestCaseKeyword'(testCaseContext)
 	}
 
 	/*

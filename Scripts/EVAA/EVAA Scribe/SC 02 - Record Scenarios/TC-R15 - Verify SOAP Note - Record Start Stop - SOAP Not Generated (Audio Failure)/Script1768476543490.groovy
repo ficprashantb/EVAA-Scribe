@@ -18,25 +18,49 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.AssertStory as AssertStory
-import stories.ExceptionHelper as ExceptionHelper
 import stories.LogStories as LogStories
-import stories.NavigateStory
-import stories.UtilHelper
+import stories.NavigateStory as NavigateStory
+import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-AssertStory assertStory = new AssertStory()
-
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_U15'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R015'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 1~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.GenerateSOAPNoteByUploadingFileForSinglePatient'(UploadFilePath, FirstName, LastName, DOB, 
-    Provider_FirstName, Provider_LastName, EncounterType, ExamLocation, Technician, false, false)
+CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName, 
+    EncounterType, ExamLocation, Technician)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.RecordReRecordDictation'(FileTime,RecordFilePath, FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
- 
+def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
+
+LogStories.logInfo("Record File Path=> $recordFilePath")
+
+CustomKeywords.'steps.EVAASteps.RecordStartStop'(FileTime, recordFilePath)
+
+LogStories.logInfo('Awaiting file upload...')
+
+// Wait for toast message confirming file processed
+WebUI.waitForElementPresent(findTestObject('EVAAPage/EVAA Scribe/Toast/Error uploading file. Please try again'), 60, FailureHandling.STOP_ON_FAILURE)
+
+LogStories.markPassed('Error uploading file. Please try again.')
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+
+String expectedPtName = "$FirstName $LastName"
+
+CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expectedPtName)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
+
+String FinalizedStatus = 'Pending'
+
+String MicStatus = 'Recording Not Started'
+
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeLeftSidePanel'(expectedPtName, DOB, FinalizedStatus, MicStatus)

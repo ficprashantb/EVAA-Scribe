@@ -26,7 +26,7 @@ import stories.VariableStories as VariableStories
 
 AssertStory assertStory = new AssertStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R017'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R019'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -48,8 +48,14 @@ WebUI.click(recordBtn)
 
 LogStories.logInfo('Clicked on Start Record Button')
 
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
+
 TestObject microphoneAccess = findTestObject('EVAAPage/EVAA Scribe/div_Microphone access blocked')
 
-Boolean isVisible = WebUI.waitForElementVisible(microphoneAccess, 10, FailureHandling.OPTIONAL)
+if (WebUI.verifyElementPresent(microphoneAccess, 20, FailureHandling.OPTIONAL)) {
+    String actualText = WebUI.getText(microphoneAccess)
 
-assertStory.verifyMatch('Microphone access blocked. Enable permission in browser settings.', isVisible, true)
+    assertStory.verifyMatch('Microphone Access', actualText, 'Microphone access blocked. Enable permission in browser settings')
+} else {
+    LogStories.markFailedAndStop('Microphone access enabled.')
+}

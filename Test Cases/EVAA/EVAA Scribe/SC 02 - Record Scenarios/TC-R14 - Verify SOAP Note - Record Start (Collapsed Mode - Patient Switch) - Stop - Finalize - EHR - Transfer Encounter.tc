@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-R04 - Verify SOAP Note - Record Pause Stop - Finalize - EHR</name>
+   <name>TC-R14 - Verify SOAP Note - Record Start (Collapsed Mode - Patient Switch) - Stop - Finalize - EHR - Transfer Encounter</name>
    <tag></tag>
+   <integratedEntity>
+      <productName>TESTOPS</productName>
+      <properties>
+         <entry>
+            <key>integratedValue</key>
+            <value>{&quot;author&quot;:null,&quot;status&quot;:&quot;PUBLISHED&quot;,&quot;assignee&quot;:&quot;prashantb@first-insight.com&quot;,&quot;linkedTestCaseIds&quot;:[],&quot;customFields&quot;:{&quot;customField&quot;:[{&quot;key&quot;:&quot;featureArea&quot;,&quot;value&quot;:[]},{&quot;key&quot;:&quot;testType&quot;,&quot;value&quot;:[]}]},&quot;priority&quot;:&quot;MEDIUM&quot;,&quot;automationStatus&quot;:null}</value>
+         </entry>
+      </properties>
+      <type>TESTCASE</type>
+   </integratedEntity>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>dc73fb0d-7f4a-41f7-90e4-3a274c537c1d</testCaseGuid>
+   <testCaseGuid>19298748-de87-4014-ab7e-f80ae899592c</testCaseGuid>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -14,7 +24,7 @@
       <name>RecordFilePath</name>
    </variable>
    <variable>
-      <defaultValue>32</defaultValue>
+      <defaultValue>35</defaultValue>
       <description></description>
       <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
       <masked>false</masked>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-R04 - Verify SOAP Note - Record Pause Stop - Finalize - EHR</name>
+   <name>TC-R12 - Verify SOAP Note - Record Start (Collapsed Mode) - Pause - Resume - Stop - Finalize - EHR</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>
-   <testCaseGuid>dc73fb0d-7f4a-41f7-90e4-3a274c537c1d</testCaseGuid>
+   <testCaseGuid>597fa364-17fa-4dfd-af6b-f29ec9d43aa2</testCaseGuid>
    <variable>
       <defaultValue>''</defaultValue>
       <description></description>
@@ -14,7 +14,7 @@
       <name>RecordFilePath</name>
    </variable>
    <variable>
-      <defaultValue>32</defaultValue>
+      <defaultValue>35</defaultValue>
       <description></description>
       <id>f929c4c3-6283-4618-85b5-470c907a04f8</id>
       <masked>false</masked>
