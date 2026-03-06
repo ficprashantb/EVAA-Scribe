@@ -130,8 +130,15 @@ public class KW_EVAASteps {
 
 		String actual = getValue(obj)
 
-		// Remove numbering
-		actual = actual?.replaceAll(/(?m)^\d+\.\s*/, '')
+		// One-pass: remove numbering and normalize newlines
+		actual = actual?.replaceAll(/(?m)^\d+\)\s*|\r?\n+/, ' ')
+				.replaceAll(/\s{2,}/, ' ')
+				.trim()
+
+		// One-pass: remove numbering and normalize newlines
+		expected = expected?.replaceAll(/(?m)^\d+\)\s*|\r?\n+/, ' ')
+				.replaceAll(/\s{2,}/, ' ')
+				.trim()
 
 		assertStory.verifyMatch(key, actual, expected)
 	}
@@ -229,9 +236,9 @@ public class KW_EVAASteps {
 				{ name -> testObjectStory.inputEyeDiseases(name) })
 				break
 
-//			case "DifferentialDiagnosis":
-//				verifyDifferentialDiagnosis(dataList)
-//				break
+			//			case "DifferentialDiagnosis":
+			//				verifyDifferentialDiagnosis(dataList)
+			//				break
 		}
 	}
 

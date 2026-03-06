@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>div_PatientWithName_Index</name>
+   <tag></tag>
+   <elementGuidId>a4ec148a-e279-493a-9bc7-c4ba63099537</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>(//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'])[${index}]</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>(//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'])[${index}][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>(//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'])[${index}]</value>
+      <webElementGuid>29906e9f-179d-40c2-a123-2bf2c2dead32</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>52c97a99-eb00-4108-923c-f35a083f2097</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>(//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'])[${index}]</value>
+      <webElementGuid>c9c66f76-e163-485b-bf70-6906813059dc</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>(//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'])[${index}]</value>
+      <webElementGuid>9f0e742d-69c1-4ba1-975f-a049c2b3e336</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>

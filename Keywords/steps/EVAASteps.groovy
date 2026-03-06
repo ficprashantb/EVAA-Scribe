@@ -182,9 +182,9 @@ public class EVAASteps {
 		def cnt = elements.size()
 		
 		for (int i = 0; i < elements.size(); i++) {
-			WebElement el = elements.get(i)
+			TestObject patientByNameIndex = testObjectStory.div_PatientWithName_Index(fullName, i+1)
  
-			el.click()
+			WebUI.jsClick(patientByNameIndex)
 			LogStories.logInfo("Clicked patient: ${fullName}")
 
 			if (WebUI.waitForElementVisible(header_EncounterId, 3, FailureHandling.OPTIONAL)) {
@@ -1146,10 +1146,16 @@ public class EVAASteps {
 		if(isExpand) {
 			// Expand Recording Screen
 			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-		}
+		} 
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
+		
+		TestObject processingAudio = findTestObject('EVAAPage/EVAA Scribe/div_Processing audio')
+		if (WebUI.verifyElementPresent(processingAudio, 5, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(processingAudio)
+			assertStory.verifyMatch("Processing Audio", actualText,"Processing audio...")
+		}
 
 		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 5, FailureHandling.OPTIONAL)
 

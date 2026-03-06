@@ -136,4 +136,12 @@ public class TestObjectStory {
 				[('fullName') : fullName]
 				)
 	} 
+	
+	TestObject div_PatientWithName_Index(String fullName, int index) {
+		return findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName_Index',
+				[('fullName') : fullName, ('index') : index]
+				)
+	}
+	
+	
 }
