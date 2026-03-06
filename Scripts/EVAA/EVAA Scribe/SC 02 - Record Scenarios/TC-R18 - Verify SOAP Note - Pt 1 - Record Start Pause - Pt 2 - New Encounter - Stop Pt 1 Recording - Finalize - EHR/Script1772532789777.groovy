@@ -24,7 +24,7 @@ LogStories.logInfo("Record File Path=> $recordFilePath")
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordPauseResumeStop'(FileTime, recordFilePath, false, false, false)
+//CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordPauseResumeStop'(FileTime, recordFilePath, false, false, false)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
@@ -59,7 +59,7 @@ CustomKeywords.'steps.EVAASteps.clickOnPatientLeftSidePanel'(FirstName, LastName
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 9~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.stopRecording'()
+//CustomKeywords.'steps.EVAASteps.stopRecording'()
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
 

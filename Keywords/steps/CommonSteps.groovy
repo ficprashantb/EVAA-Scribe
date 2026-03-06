@@ -52,10 +52,10 @@ public class CommonSteps {
 		Boolean isMicAllow = testCaseName.contains("TC-R19") ? false : true 
 		if(isMicAllow) {
 			// Define capabilities before browser launch
-			CustomKeywords.'Keywords_DesiredCapabilities.addCapabilities'()
+			CustomKeywords.'steps.Keywords_DesiredCapabilities.addCapabilities'()
 		}
 		else {
-			CustomKeywords.'Keywords_DesiredCapabilities.blockMicrophoneAccess'()
+			CustomKeywords.'steps.Keywords_DesiredCapabilities.blockMicrophoneAccess'()
 		} 
 
 		CustomKeywords.'steps.CommonSteps.openEVAAScribeBrowser'()

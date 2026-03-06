@@ -171,16 +171,20 @@ public class EVAASteps {
 		TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
 
 		// Dynamic locator for patient
-		TestObject patientByName = testObjectStory.div_PatientWithName(fullName) 
+		TestObject patientByName = testObjectStory.div_PatientWithName(fullName)
 		List<WebElement> elements = WebUI.findWebElements(patientByName, 5)
 
 		if (elements.size() == 0) {
 			LogStories.markWarning("Patient not found: ${fullName}")
 			return
 		}
-
-		for (WebElement el : elements) {
-			WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(el))
+		 
+		def cnt = elements.size()
+		
+		for (int i = 0; i < elements.size(); i++) {
+			WebElement el = elements.get(i)
+ 
+			el.click()
 			LogStories.logInfo("Clicked patient: ${fullName}")
 
 			if (WebUI.waitForElementVisible(header_EncounterId, 3, FailureHandling.OPTIONAL)) {
