@@ -63,36 +63,34 @@ CustomKeywords.'steps.EVAASteps.stopRecording'()
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 10~~~~~~~~~~~~~~~~~~~~~~')
 
-// Collapse Recording Screen
-CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+CustomKeywords.'steps.EVAASteps.getAndStoreEVAAScribeSOAPNote'()
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 11~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 12~~~~~~~~~~~~~~~~~~~~~~')
+
+// Collapse Recording Screen
+CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(false)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 13~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.CommonSteps.findPatient'(LastName, FirstName)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 14~~~~~~~~~~~~~~~~~~~~~~')
 
 NavigateStory navigateStory = new NavigateStory()
 
 navigateStory.ClickMegaMenuItems([('TopMenuOption') : 'Encounters', ('SubItem') : 'Encounter Hx'])
 
-String key = "ENC_${FirstName}_${LastName}".toUpperCase() + "_ENCOUNTER_ID"
+String key = "ENC_$FirstName_$LastName".toUpperCase() + '_ENCOUNTER_ID'
+
 String encounterId = VariableStories.getItem(key)
 
 LogStories.logInfo("Encounter Id=> $encounterId")
 
 CustomKeywords.'steps.CommonSteps.findEncounterByEncounterId'(encounterId)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 13~~~~~~~~~~~~~~~~~~~~~~')
-
-// Expand Recording Screen
-CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-
-CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
-
-LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 14~~~~~~~~~~~~~~~~~~~~~~')
-
-CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 15~~~~~~~~~~~~~~~~~~~~~~')
 

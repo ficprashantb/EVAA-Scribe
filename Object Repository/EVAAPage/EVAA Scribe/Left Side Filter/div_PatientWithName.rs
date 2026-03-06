@@ -3,29 +3,24 @@
    <description></description>
    <name>div_PatientWithName</name>
    <tag></tag>
-   <elementGuidId>a7edf50f-eef6-4dd5-9b17-da61fc81e5e3</elementGuidId>
+   <elementGuidId>3622dfa6-5134-4efc-8c0b-df224a00958a</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>IMAGE</key>
-      </entry>
-      <entry>
-         <key>BASIC</key>
-         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+         <key>XPATH</key>
+         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}']</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
+         <key>BASIC</key>
+         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}'][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -35,8 +30,8 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
-      <webElementGuid>96f035c6-72d4-4ed4-b592-4c008be21d21</webElementGuid>
+      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}']</value>
+      <webElementGuid>2521e1fd-1606-4ca5-88e4-862a7e305f63</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -44,14 +39,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>7b83eee5-b963-4e16-9813-c67056f7d233</webElementGuid>
+      <webElementGuid>edf44f61-ec55-4443-a502-49dc7beaa149</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
-      <webElementGuid>517e5240-2836-4a2f-a8f9-7b5f7e32af6c</webElementGuid>
+      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}']</value>
+      <webElementGuid>e80dc833-f287-4b8d-9436-6b57eec2b8f6</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][normalize-space(text())='${fullName}']</value>
+      <webElementGuid>59a959d2-fc83-4566-bade-c7090a2f5b53</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

@@ -55,7 +55,7 @@
    </GlobalVariableEntity>
    <GlobalVariableEntity>
       <description></description>
-      <initValue>'Automation@2026'</initValue>
+      <initValue>'Automation@2027'</initValue>
       <name>EVAA_Password</name>
       <protected>false</protected>
       <valueType>STRING</valueType>

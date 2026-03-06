@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <WebElementEntity>
    <description></description>
-   <name>div_PatientName</name>
+   <name>div_PatientNameList</name>
    <tag></tag>
-   <elementGuidId>b6be6e7f-e82f-4b9b-ac9f-4dacb6651746</elementGuidId>
+   <elementGuidId>a7edf50f-eef6-4dd5-9b17-da61fc81e5e3</elementGuidId>
    <selectorCollection>
       <entry>
          <key>BASIC</key>
-         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']//div[contains(@class,'PatientNameList')][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>IMAGE</key>
       </entry>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']//div[contains(@class,'PatientNameList')]</value>
+         <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -34,8 +33,8 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']//div[contains(@class,'PatientNameList')]</value>
-      <webElementGuid>2ee96725-bae8-4e03-b962-cf70b2405153</webElementGuid>
+      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
+      <webElementGuid>96f035c6-72d4-4ed4-b592-4c008be21d21</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -43,14 +42,14 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>28f53417-bd8e-45af-8128-07c93d836cfa</webElementGuid>
+      <webElementGuid>7b83eee5-b963-4e16-9813-c67056f7d233</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']//div[contains(@class,'PatientNameList')]</value>
-      <webElementGuid>8aa74408-905c-43d3-b40c-beda714d0e78</webElementGuid>
+      <value>//div[starts-with(@id,'patient-name')][contains(@class,'PatientNameList')]</value>
+      <webElementGuid>517e5240-2836-4a2f-a8f9-7b5f7e32af6c</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

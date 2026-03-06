@@ -158,7 +158,7 @@ public class EVAASteps {
 		LogStories.logInfo('Clicked on Today Date.')
 
 		// Define the TestObject dynamically
-		TestObject patientDiv = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName')
+		TestObject patientDiv = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientNameList')
 		// Wait until at least one element is present
 		WebUI.waitForElementPresent(patientDiv, 10, FailureHandling.STOP_ON_FAILURE)
 	}
@@ -170,24 +170,25 @@ public class EVAASteps {
 		String encounterId = VariableStories.getItem(key)
 		TestObject header_EncounterId = testObjectStory.header_EncounterId(encounterId)
 
-		TestObject patientDiv = findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName')
-		List<WebElement> elements = WebUiCommonHelper.findWebElements(patientDiv, 5)
+		// Dynamic locator for patient
+		TestObject patientByName = testObjectStory.div_PatientWithName(fullName) 
+		List<WebElement> elements = WebUI.findWebElements(patientByName, 5)
+
+		if (elements.size() == 0) {
+			LogStories.markWarning("Patient not found: ${fullName}")
+			return
+		}
 
 		for (WebElement el : elements) {
-			String name = el.getText().trim()
+			WebUI.executeJavaScript("arguments[0].click()", Arrays.asList(el))
+			LogStories.logInfo("Clicked patient: ${fullName}")
 
-			if (name == fullName) {
-				el.click()
-				LogStories.logInfo("Clicked on Patient Name: " + fullName)
-
-				// Verify encounter header for this patient
-				boolean encounterVisible = WebUI.waitForElementVisible(header_EncounterId, 5, FailureHandling.OPTIONAL)
-				if (encounterVisible) {
-					LogStories.logInfo("Encounter:${encounterId} header visible for patient: " + fullName)
-					break   // ✅ stop once encounter is visible
-				}
+			if (WebUI.waitForElementVisible(header_EncounterId, 3, FailureHandling.OPTIONAL)) {
+				LogStories.logInfo("Encounter ${encounterId} visible for ${fullName}")
+				return
 			}
 		}
+		LogStories.markWarning("Encounter not found after clicking patient: ${fullName}")
 	}
 
 	@Keyword
@@ -1084,7 +1085,7 @@ public class EVAASteps {
 
 		WebUI.delay(pauseTimeInSeconds)
 
-		fakeMic.pause() 
+		fakeMic.pause()
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 5, FailureHandling.STOP_ON_FAILURE)
 
@@ -1092,16 +1093,16 @@ public class EVAASteps {
 		LogStories.logInfo('Clicked on Pause Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'),10, FailureHandling.OPTIONAL)
-  
+
 		TestObject recordingPaused = findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Recording Paused')
-		if (WebUI.verifyElementPresent(recordingPaused, 20, FailureHandling.OPTIONAL)) {
+		if (WebUI.verifyElementPresent(recordingPaused, 60, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(recordingPaused)
 			assertStory.verifyMatch("Recording Paused", actualText,"Recording Paused.")
 		}
 
-		WebUI.delay(resumeTimeInSeconds)
-
 		if(isResume) {
+			WebUI.delay(resumeTimeInSeconds)
+
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'),10, FailureHandling.STOP_ON_FAILURE)
 
 			fakeMic.resume()
@@ -1123,6 +1124,9 @@ public class EVAASteps {
 		fakeMic.stop()
 
 		if(isStop) {
+
+			WebUI.delay(resumeTimeInSeconds)
+
 			CustomKeywords.'steps.EVAASteps.stopRecording'(isCollapsed)
 		}
 	}

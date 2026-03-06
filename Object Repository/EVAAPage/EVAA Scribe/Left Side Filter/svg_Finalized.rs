@@ -7,22 +7,20 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')][position() = 1]</value>
+         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
          <key>BASIC</key>
-         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')][position() = 1][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
+         <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
    </selectorCollection>
-   <selectorMethod>BASIC</selectorMethod>
+   <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -32,8 +30,8 @@
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')][position() = 1]</value>
-      <webElementGuid>095269ee-9aff-44ba-8698-ebe84a662d00</webElementGuid>
+      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')]</value>
+      <webElementGuid>aff48065-27a3-48e4-a9bb-a072513fd475</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -41,14 +39,14 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>ad72f25b-1d9e-49a9-86b8-19ddf41aa1b6</webElementGuid>
+      <webElementGuid>242c2e92-5592-48e7-bdec-172eee0f66ad</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')][position() = 1]</value>
-      <webElementGuid>d41edf3c-822e-4d49-ba78-d5b84deb8954</webElementGuid>
+      <value>//div[@class='items-center px-1 cursor-pointer border-b border-plum-600 bg-[#d6d6d4]']/div//*[local-name()='svg' and contains(@class,'fill-green')]</value>
+      <webElementGuid>2397fbb0-a77f-4f7d-a2f8-a486e859dd37</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

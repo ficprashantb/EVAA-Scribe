@@ -6,16 +6,16 @@
    <elementGuidId>806e46e6-859c-4dcd-91b7-bce06a7b0c93</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>XPATH</key>
-         <value>//div[(contains(text(), 'Recording Paused.') or contains(., 'Recording Paused.'))]</value>
+         <key>BASIC</key>
+         <value>//div[text()[normalize-space() = &quot;Recording Paused.&quot;]][count(. | //*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']) = count(//*[@ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame'])]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value></value>
       </entry>
       <entry>
-         <key>BASIC</key>
-         <value>//*[(contains(text(), 'Recording Paused.') or contains(., 'Recording Paused.')) and @ref_element = 'Object Repository/EVAAPage/EVAA Scribe/iFrame']</value>
+         <key>XPATH</key>
+         <value>//div[text()[normalize-space() = &quot;Recording Paused.&quot;]]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,75 +29,19 @@
    <useRalativeImagePath>true</useRalativeImagePath>
    <webElementProperties>
       <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>tag</name>
-      <type>Main</type>
-      <value>div</value>
-      <webElementGuid>3c4b1ecc-3504-4293-b2f5-1620b663719c</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>id</name>
-      <type>Main</type>
-      <value>2</value>
-      <webElementGuid>9501977d-b51d-46a6-b879-4625c1939797</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>tabindex</name>
-      <type>Main</type>
-      <value>0</value>
-      <webElementGuid>f69589b8-6c01-4e5d-9474-9dab564a7ab9</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>data-in</name>
-      <type>Main</type>
-      <value>true</value>
-      <webElementGuid>1fb90eae-f1b9-446d-bcb5-3d17348d6052</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>class</name>
-      <type>Main</type>
-      <value>Toastify__toast Toastify__toast-theme--colored Toastify__toast--success Toastify__toast--close-on-click</value>
-      <webElementGuid>23c7099e-1307-4cb7-a1ae-a96c998f87ab</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>role</name>
-      <type>Main</type>
-      <value>alert</value>
-      <webElementGuid>c66292bc-8687-463a-863c-75a707fcd645</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>true</isSelected>
       <matchCondition>contains</matchCondition>
       <name>text</name>
       <type>Main</type>
       <value>Recording Paused.</value>
-      <webElementGuid>da416058-7bee-4397-a16d-49687c1ea839</webElementGuid>
+      <webElementGuid>8a4c40ee-472a-4880-b9b5-488bec22e328</webElementGuid>
    </webElementProperties>
    <webElementProperties>
-      <isSelected>false</isSelected>
-      <matchCondition>equals</matchCondition>
-      <name>parent</name>
-      <type>Main</type>
-      <value>md5.v1-d000f3a456ddefb21d0d1d8af1b5fa8b</value>
-      <webElementGuid>10fc6c7a-6c4a-4cfc-bce0-b2c1346a3b05</webElementGuid>
-   </webElementProperties>
-   <webElementProperties>
-      <isSelected>false</isSelected>
+      <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[@class and contains(concat(' ', normalize-space(@class), ' '), ' Toastify__toast ')]</value>
-      <webElementGuid>0893aca4-29f9-432b-822c-7d986060132e</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Recording Paused.&quot;]]</value>
+      <webElementGuid>c94bcabb-c6ac-40c7-9ea0-d0b850a6f45f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
@@ -105,22 +49,22 @@
       <name>ref_element</name>
       <type>Main</type>
       <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
-      <webElementGuid>9adbc667-b3ed-474e-8949-bae9ea9ee01c</webElementGuid>
+      <webElementGuid>9eb224fb-e708-4860-b7aa-1ab9de129cfc</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[(contains(text(), 'Recording Paused.') or contains(., 'Recording Paused.'))]</value>
-      <webElementGuid>61bda339-860a-4775-bb0a-673d58524a75</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Recording Paused.&quot;]]</value>
+      <webElementGuid>a65131a1-680b-41cd-a423-8c4cc7188f7d</webElementGuid>
    </webElementXpaths>
    <webElementXpaths>
       <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:customAttributes</name>
       <type>Main</type>
-      <value>//div[(contains(text(), 'Recording Paused.') or contains(., 'Recording Paused.'))]</value>
-      <webElementGuid>9f0907a4-7729-479b-b0e0-d1fa7eea01ed</webElementGuid>
+      <value>//div[text()[normalize-space() = &quot;Recording Paused.&quot;]]</value>
+      <webElementGuid>c797c691-c7dd-4049-9f6b-4f1a3bcaf783</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
