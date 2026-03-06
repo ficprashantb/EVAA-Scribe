@@ -178,12 +178,12 @@ public class EVAASteps {
 			LogStories.markWarning("Patient not found: ${fullName}")
 			return
 		}
-		 
+
 		def cnt = elements.size()
-		
+
 		for (int i = 0; i < elements.size(); i++) {
 			TestObject patientByNameIndex = testObjectStory.div_PatientWithName_Index(fullName, i+1)
- 
+
 			WebUI.jsClick(patientByNameIndex)
 			LogStories.logInfo("Clicked patient: ${fullName}")
 
@@ -1146,11 +1146,11 @@ public class EVAASteps {
 		if(isExpand) {
 			// Expand Recording Screen
 			CustomKeywords.'steps.CommonSteps.clickOnExpandRecording'(true)
-		} 
+		}
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Toast/Generating SOAP Notes'), 10, FailureHandling.STOP_ON_FAILURE)
 		LogStories.markPassed("Generating SOAP Notes")
-		
+
 		TestObject processingAudio = findTestObject('EVAAPage/EVAA Scribe/div_Processing audio')
 		if (WebUI.verifyElementPresent(processingAudio, 5, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(processingAudio)
