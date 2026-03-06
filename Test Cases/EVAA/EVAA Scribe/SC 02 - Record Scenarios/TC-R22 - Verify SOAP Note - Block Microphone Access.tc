@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <TestCaseEntity>
    <description></description>
-   <name>TC-R19 - Verify SOAP Note - Block Microphone Access</name>
+   <name>TC-R22 - Verify SOAP Note - Block Microphone Access</name>
    <tag></tag>
    <comment></comment>
    <recordOption>OTHER</recordOption>

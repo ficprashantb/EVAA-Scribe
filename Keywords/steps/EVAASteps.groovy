@@ -1114,7 +1114,7 @@ public class EVAASteps {
 			WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'))
 			LogStories.logInfo('Clicked on Resume Button')
 
-			//		WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
+			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
 
 			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
 
@@ -1133,6 +1133,30 @@ public class EVAASteps {
 
 			CustomKeywords.'steps.EVAASteps.stopRecording'(isCollapsed)
 		}
+	}
+	
+	@Keyword
+	def pauseRecording() {
+		LogStories.log('----------------------Step AL----------------------')
+
+		int resumeTimeInSeconds = 10
+
+		WebUI.delay(resumeTimeInSeconds)
+ 
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'), 5, FailureHandling.STOP_ON_FAILURE)
+
+		WebUI.click(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Pause'))
+		LogStories.logInfo('Clicked on Pause Button')
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'),10, FailureHandling.OPTIONAL)
+
+		TestObject recordingPaused = findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Merged Recording Paused')
+		if (WebUI.verifyElementPresent(recordingPaused, 60, FailureHandling.OPTIONAL)) {
+			String actualText = WebUI.getText(recordingPaused)
+			assertStory.verifyMatch("Merged Recording Paused", actualText,"Merged Recording Paused.")
+		}			
+
+		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/img_Stop'), 10, FailureHandling.OPTIONAL) 
 	}
 
 	@Keyword

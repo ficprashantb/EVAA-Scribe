@@ -18,15 +18,12 @@ import com.kms.katalon.core.configuration.RunConfiguration as RunConfiguration
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 import com.kms.katalon.core.util.KeywordUtil as KeywordUtil
-import stories.AssertStory as AssertStory
 import stories.LogStories as LogStories
 import stories.NavigateStory as NavigateStory
 import stories.UtilHelper as UtilHelper
 import stories.VariableStories as VariableStories
 
-AssertStory assertStory = new AssertStory()
-
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R019'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R19'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -37,25 +34,28 @@ CustomKeywords.'steps.EVAASteps.MaximeyesLoginAndFindPatient'(FirstName, LastNam
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 2~~~~~~~~~~~~~~~~~~~~~~')
 
-// Start recording
-TestObject recordBtn = findTestObject('EVAAPage/EVAA Scribe/Menu/img_Record')
+def recordFilePath = UtilHelper.getFilePath(RecordFilePath)
 
-WebUI.waitForElementClickable(recordBtn, 10, FailureHandling.STOP_ON_FAILURE)
+LogStories.logInfo("Record File Path=> $recordFilePath")
 
-LogStories.markPassed('Record audio button is visible and clickable.')
-
-WebUI.click(recordBtn)
-
-LogStories.logInfo('Clicked on Start Record Button')
+CustomKeywords.'steps.EVAASteps.generateSOAPNoteByRecordPauseResumeStop'(FileTime, recordFilePath, true, false, false)
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 3~~~~~~~~~~~~~~~~~~~~~~')
 
-TestObject microphoneAccess = findTestObject('EVAAPage/EVAA Scribe/div_Microphone access blocked')
+CustomKeywords.'steps.EVAASteps.pauseRecording'()
 
-if (WebUI.verifyElementPresent(microphoneAccess, 20, FailureHandling.OPTIONAL)) {
-    String actualText = WebUI.getText(microphoneAccess)
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 4~~~~~~~~~~~~~~~~~~~~~~')
 
-    assertStory.verifyMatch('Microphone Access', actualText, 'Microphone access blocked. Enable permission in browser settings')
-} else {
-    LogStories.markFailedAndStop('Microphone access enabled.')
-}
+CustomKeywords.'steps.EVAASteps.stopRecording'()
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.verifyEVAAScribeAllDetails'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.finalizedAndSendToMaximEyes'(FirstName, LastName, DOB, Provider_FirstName, Provider_LastName)
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
+
+CustomKeywords.'steps.EVAASteps.verifySOAPNoteSentToMaximeyes'()

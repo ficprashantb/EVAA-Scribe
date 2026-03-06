@@ -49,7 +49,7 @@ public class CommonSteps {
 		UtilHelper.setGlobalVariables(testCaseContext,testCaseName)
 
 		// Use a direct boolean check instead of string conversion
-		Boolean isMicAllow = testCaseName.contains("TC-R19") ? false : true 
+		Boolean isMicAllow = testCaseName.contains("Block Microphone Access") ? false : true 
 		if(isMicAllow) {
 			// Define capabilities before browser launch
 			CustomKeywords.'steps.Keywords_DesiredCapabilities.addCapabilities'()
