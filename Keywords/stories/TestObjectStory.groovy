@@ -135,8 +135,5 @@ public class TestObjectStory {
 		return findTestObject('EVAAPage/EVAA Scribe/Left Side Filter/div_PatientWithName',
 				[('fullName') : fullName]
 				)
-	}
-	
-	EVAAPage/EVAA Scribe/Left Side Filter
-	
+	} 
 }
