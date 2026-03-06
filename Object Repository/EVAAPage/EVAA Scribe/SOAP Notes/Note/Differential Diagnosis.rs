@@ -7,11 +7,15 @@
    <selectorCollection>
       <entry>
          <key>XPATH</key>
-         <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li[@contenteditable = 'true']</value>
+         <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li//span[starts-with(@id,&quot;assessment-diffdiag-item-text&quot;)]</value>
       </entry>
       <entry>
          <key>CSS</key>
          <value>div:nth-child(1) > .list-decimal li[contenteditable=&quot;true&quot;]</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li//span[starts-with(@id,&quot;assessment-diffdiag-item-text&quot;)]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
@@ -29,7 +33,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>li</value>
-      <webElementGuid>448c8a0c-2f0d-4c31-848d-9f86718b71ba</webElementGuid>
+      <webElementGuid>83af089e-14be-421c-b7c4-1cd8785df487</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -37,7 +41,7 @@
       <name>contenteditable</name>
       <type>Main</type>
       <value>true</value>
-      <webElementGuid>95673a17-8546-4238-923b-e36474d00426</webElementGuid>
+      <webElementGuid>9b5c00c9-5718-4fde-9bf2-dba5f09fc927</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -45,7 +49,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>197c5dab-f329-42c5-a6dc-31670d4046e3</webElementGuid>
+      <webElementGuid>3946d528-0527-45ca-9a0c-014c0cce10de</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -53,22 +57,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-7d99f27c268c397fe2d3465dc0d742f1</value>
-      <webElementGuid>c8ef45c2-eb7c-418f-9c4e-f4dba56dd92f</webElementGuid>
+      <webElementGuid>4f4746e0-67a2-460b-a921-17a42e5e7d72</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//*[(name() = 'div') and (position() = 1)]/*[@class and contains(concat(' ', normalize-space(@class), ' '), ' list-decimal ')]//li[@contenteditable = 'true']</value>
-      <webElementGuid>71e0d801-34ca-4577-97db-2fb051c0de6e</webElementGuid>
+      <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li//span[starts-with(@id,&quot;assessment-diffdiag-item-text&quot;)]</value>
+      <webElementGuid>7b2685bc-4811-4fc4-a3e4-145767b29869</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li[@contenteditable = 'true']</value>
-      <webElementGuid>769e8618-108b-40c8-9a67-3736be28fa7a</webElementGuid>
+      <value>//div[*/span[text()='Differential Diagnosis:']]/following-sibling::ol//li//span[starts-with(@id,&quot;assessment-diffdiag-item-text&quot;)]</value>
+      <webElementGuid>77501be2-acd0-41a2-b66c-a9e9d8e9935f</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

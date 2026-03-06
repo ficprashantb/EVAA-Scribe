@@ -6,23 +6,21 @@
    <elementGuidId>31d8ba22-8581-4833-8da0-22b9d957cad7</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li/span</value>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Assessment&quot;)]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li/span</value>
+         <key>BASIC</key>
+         <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Assessment&quot;)]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>li</value>
-      <webElementGuid>5acc47a1-02fb-4f2c-9ec8-0ebaaee6b4d7</webElementGuid>
+      <webElementGuid>d4f85797-aaa3-4b6f-8bb1-b919953e773f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>81c1acc9-724a-4534-81b1-2f1c0e4458b4</webElementGuid>
+      <webElementGuid>a91a71b0-8524-4e19-a639-4f57b40cd4d9</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +47,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Patient takes Pataday daily for allergies.</value>
-      <webElementGuid>b311d017-63b4-4fa8-9950-da114c6f44b8</webElementGuid>
+      <webElementGuid>7d0702d9-0ea7-4c75-a7cf-2a08c171b869</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,22 +55,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-2d0cdfb8001b6174b4e689baf125df12</value>
-      <webElementGuid>438c5b41-a011-4c3e-bb6d-b742608ebbc8</webElementGuid>
+      <webElementGuid>2b7caa31-8772-44f9-97b7-97178eb0ba25</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li/span</value>
-      <webElementGuid>a13b0ba7-1f5f-4a0f-8708-0f738fb77914</webElementGuid>
+      <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Assessment&quot;)]</value>
+      <webElementGuid>748d2c7c-2fbb-4e63-9899-c0cb0f79d381</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li/span</value>
-      <webElementGuid>2efd79d6-0f40-4765-a9c3-12451cc19570</webElementGuid>
+      <value>//div[*/span[text()='Assessments:' or text()='Assessment:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Assessment&quot;)]</value>
+      <webElementGuid>67987140-0659-4290-ba6c-bff99a0f6dc6</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>

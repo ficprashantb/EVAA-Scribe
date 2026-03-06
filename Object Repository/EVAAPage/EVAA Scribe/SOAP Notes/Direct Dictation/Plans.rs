@@ -6,23 +6,21 @@
    <elementGuidId>03adbe8e-6fc6-4098-9258-5a38469ab62c</elementGuidId>
    <selectorCollection>
       <entry>
-         <key>BASIC</key>
-         <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li/span</value>
+         <key>XPATH</key>
+         <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Plan&quot;)]</value>
       </entry>
       <entry>
          <key>CSS</key>
-         <value></value>
       </entry>
       <entry>
-         <key>XPATH</key>
-         <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li/span</value>
+         <key>BASIC</key>
+         <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Plan&quot;)]</value>
       </entry>
    </selectorCollection>
    <selectorMethod>XPATH</selectorMethod>
    <smartLocatorCollection>
       <entry>
          <key>SMART_LOCATOR</key>
-         <value></value>
       </entry>
    </smartLocatorCollection>
    <smartLocatorEnabled>false</smartLocatorEnabled>
@@ -33,7 +31,7 @@
       <name>tag</name>
       <type>Main</type>
       <value>li</value>
-      <webElementGuid>0e8ab3a6-7b9a-498c-a870-b225fa3a4698</webElementGuid>
+      <webElementGuid>7077d7de-633a-4288-97b3-14cf8dea531f</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -41,7 +39,7 @@
       <name>class</name>
       <type>Main</type>
       <value>text-sm text-black</value>
-      <webElementGuid>5961fae9-89f2-4cff-9b57-2b10a6e1b154</webElementGuid>
+      <webElementGuid>18ee4101-6a5e-43d6-bcef-620e15904c33</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -49,7 +47,7 @@
       <name>text</name>
       <type>Main</type>
       <value>Patient takes Pataday daily for allergies.</value>
-      <webElementGuid>8ccc8554-ed30-46b3-a3fd-fc7eb75efc31</webElementGuid>
+      <webElementGuid>5de93116-75db-409e-bd13-7c25f6d96617</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>false</isSelected>
@@ -57,22 +55,22 @@
       <name>parent</name>
       <type>Main</type>
       <value>md5.v1-2d0cdfb8001b6174b4e689baf125df12</value>
-      <webElementGuid>9c97d591-3fc1-4697-b3b7-5fdba1d1c468</webElementGuid>
+      <webElementGuid>dce561ec-2d65-4a37-9843-42d5d337c528</webElementGuid>
    </webElementProperties>
    <webElementProperties>
       <isSelected>true</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li/span</value>
-      <webElementGuid>8eb629ab-08c4-4fab-8047-d0b218ee4df0</webElementGuid>
+      <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Plan&quot;)]</value>
+      <webElementGuid>dfae386e-a432-4708-a6ea-25f3f9df4674</webElementGuid>
    </webElementProperties>
    <webElementXpaths>
-      <isSelected>true</isSelected>
+      <isSelected>false</isSelected>
       <matchCondition>equals</matchCondition>
       <name>xpath:attributes</name>
       <type>Main</type>
-      <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li/span</value>
-      <webElementGuid>edbda26f-0760-4067-9efe-d332d3ddc446</webElementGuid>
+      <value>//div[*/span[text()='Plans:' or text()='Plan:']]/following-sibling::*[self::ol or self::div]//li//span[contains(@data-path,&quot;note.Plan&quot;)]</value>
+      <webElementGuid>d0a1a97e-1549-46f9-a0c1-58686120361d</webElementGuid>
    </webElementXpaths>
 </WebElementEntity>
