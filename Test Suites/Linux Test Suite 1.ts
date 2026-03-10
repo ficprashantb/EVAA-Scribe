@@ -12,10 +12,10 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>40e9c3bd-4eb4-47ad-8b64-10bae8b1be3e</testSuiteGuid>
    <testCaseLink>
-      <guid>50d6cac3-008d-4173-984d-c0cad4f5ae4c</guid>
+      <guid>e2fb9cfa-23f3-4cf4-b0c2-e05caf605c83</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R19 - Verify SOAP Note - Record Pause - Resume - Pause Stop - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R14 - Verify SOAP Note - Pt 1 - Record Start Pause - Pt 2 - New Encounter - Stop Pt 1 Recording - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>

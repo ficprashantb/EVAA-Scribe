@@ -12,7 +12,7 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>bd647229-7117-4652-bbe0-7018676f4409</testSuiteGuid>
    <testCaseLink>
-      <guid>8da3e31e-aec0-493f-9fe1-11c8a3244b68</guid>
+      <guid>19827761-40cc-411d-91bb-45d468b78af8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R01 - Verify SOAP Note - Record Start Stop - Finalize - EHR</testCaseId>
@@ -85,7 +85,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3b3d1129-e8be-430a-9d07-9137dfbcd069</guid>
+      <guid>d975624d-f35e-414f-b348-6336a2019606</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R02 - Verify SOAP Note - Record Start Stop - Finalize - Unfinalize - Finalize - EHR</testCaseId>
@@ -158,7 +158,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d25c1b59-9d99-4d7c-97ed-10f506589883</guid>
+      <guid>8947ac3e-6da5-498e-880d-7ed226ced655</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R03 - Verify SOAP Note - Record Pause Resume Stop - Finalize - EHR</testCaseId>
@@ -231,7 +231,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e9112c1e-857d-4315-881f-ab6a21a922b1</guid>
+      <guid>64b6a7ac-7b86-47cc-8012-fe2dffec3fe4</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R04 - Verify SOAP Note - Record Pause Stop - Finalize - EHR</testCaseId>
@@ -304,326 +304,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>0dea2fe1-3520-401d-85e7-a27ba546cf42</guid>
+      <guid>a2b1d2e4-ecd6-4150-8455-44077e5a7b1d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R05 - Verify SOAP Note - Record Start Stop - Append Start Stop - Finalize - EHR</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>43af1de5-528c-4634-8207-da29f7729ad4</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R06 - Verify SOAP Note - Upload - Append Start Stop - Finalize - EHR</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>b275d45e-f105-4265-b8d5-c4bc361eaa43</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R07 - Verify SOAP Note - Record Start Stop - Append Pause Resume Stop - Finalize - EHR</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>9d2b7b08-8042-465b-a0bf-683b1c35b071</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R08 - Verify SOAP Note - Upload - Append Pause Resume Stop - Finalize - EHR</testCaseId>
-      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>5dbcd699-c1d1-456f-827c-26126108e409</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
-      </variableLink>
-   </testCaseLink>
-   <testCaseLink>
-      <guid>698c4227-6e2f-4490-a980-24b8a8b022af</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R09 - Verify SOAP Note - Record Start Stop - Dictation By Typing - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R05 - Verify SOAP Note - Record Start Stop - Dictation By Typing - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -693,10 +377,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>840e4e4e-1c9b-46f5-ae76-1fb427b3823e</guid>
+      <guid>751e585c-9ec7-4d22-a6ee-58e222bcedaa</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R10 - Verify SOAP Note - Upload - Dictation Record Start Stop - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R06 - Verify SOAP Note - Upload - Dictation Record Start Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -772,10 +456,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>16aa0594-3924-404e-8525-b46870656af8</guid>
+      <guid>9d7b3590-650f-4132-a25b-2ba8a9978d6f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R11 - Verify SOAP Note - Record Start Stop - Dictation Record Start Stop - Finalize - EHR</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R07 - Verify SOAP Note - Record Start Stop - Dictation Record Start Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -851,10 +535,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>16569c27-eddd-4097-9c63-006bfb9fb852</guid>
+      <guid>97bccac3-cab2-423a-bcbc-4440b96014a1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R13 - Verify SOAP Note - Record Start (Collapsed Mode) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R08 - Verify SOAP Note - Record Start (Collapsed Mode) - Pause - Resume - Stop - Finalize - EHR</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -924,10 +608,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>80c50d7d-eb37-45a8-a76f-b81b66cc6052</guid>
+      <guid>fc328deb-c3ce-4109-895c-446dae21eb62</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R14 - Verify SOAP Note - Record Start (Collapsed Mode - Patient Switch) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R09 - Verify SOAP Note - Record Start (Collapsed Mode) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -997,10 +681,83 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>5433b489-7b6a-48e5-9224-91625f5e7126</guid>
+      <guid>4cd9c130-c3d6-40ed-9a43-ace7a78b70d0</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R15 - Verify SOAP Note - Record Start Stop - SOAP Not Generated (Audio Failure)</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R10 - Verify SOAP Note - Record Start (Collapsed Mode - Patient Switch) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>3fa33edc-2e9d-473f-8c3e-03d7e1322000</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R11 - Verify SOAP Note - Record Start Stop - SOAP Not Generated (Audio Failure)</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -1070,10 +827,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>ccc71125-503a-4930-83f7-16f6e3e268f5</guid>
+      <guid>7ac2dd5f-e7dc-4d39-967e-eace7f66e32c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R16 - Verify SOAP Note - Upload - Existing Recording - Re-Record - Record Start Stop</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R12 - Verify SOAP Note - Upload - Existing Recording - Re-Record - Record Start Stop</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -1149,10 +906,10 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>5704e0ce-6609-437f-88dc-d2e884abd191</guid>
+      <guid>2851a471-32d3-4a18-934a-8cb97f1db726</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
-      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R17 - Verify SOAP Note - Record Start Stop - Existing Recording - Re-Record - Record Start Stop</testCaseId>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R13 - Verify SOAP Note - Record Start Stop - Existing Recording - Re-Record - Record Start Stop</testCaseId>
       <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
       <variableLink>
          <testDataLinkId></testDataLinkId>
@@ -1219,6 +976,225 @@
          <type>DEFAULT</type>
          <value></value>
          <variableId>9c3df8f3-0e86-4d6a-acd5-94994fbbb2a3</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>1c22b7b9-f3a7-49e4-946d-bcc1aece22db</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R14 - Verify SOAP Note - Pt 1 - Record Start Pause - Pt 2 - New Encounter - Stop Pt 1 Recording - Finalize - EHR</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>e5526b31-7fa2-4e4e-a936-5be90e83abe9</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R15 - Verify SOAP Note - Record Pause - Resume - Pause Stop - Finalize - EHR</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
+      </variableLink>
+   </testCaseLink>
+   <testCaseLink>
+      <guid>794aa5e3-46d1-46e2-884d-caca9d5671fd</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R16 - Verify SOAP Note - Block Microphone Access</testCaseId>
+      <usingDataBindingAtTestSuiteLevel>false</usingDataBindingAtTestSuiteLevel>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>719430ad-d6d7-47cc-87d2-185b5f9bbd7b</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>f929c4c3-6283-4618-85b5-470c907a04f8</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>61bf7b3a-4e6d-44c3-8f92-fad0b0d5e609</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2b835151-49d1-4bd1-ab1b-f32f44eb1e43</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>37f750fe-f9dd-47de-8602-430d2f335856</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>8206d901-ab87-4be2-9861-b05e82cf9a45</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>cbff29aa-5450-4b44-a625-e56ff906be47</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>3f2d0945-f85a-4246-b528-10e8ed9c420e</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>2d22202a-9b4f-48d0-82cb-40becb36f1f2</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>68f21ce3-24d1-410f-a076-50b606bc5ea5</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId></testDataLinkId>
+         <type>DEFAULT</type>
+         <value></value>
+         <variableId>a803f8ed-a09e-4d91-8fa4-df2db6f11855</variableId>
       </variableLink>
    </testCaseLink>
 </TestSuiteEntity>

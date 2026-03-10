@@ -1495,9 +1495,9 @@ public class EVAASteps {
 
 		TestData patientData = TestDataFactory.findTestData('Data Files/PatientData')
 
-		def LastName2 = patientData.getValue('LastName', 12)
+		def LastName2 = patientData.getValue('LastName', 9)
 
-		def FirstName2 = patientData.getValue('FirstName', 12)
+		def FirstName2 = patientData.getValue('FirstName', 9)
 
 		//Find Patient 2
 		CustomKeywords.'steps.CommonSteps.findPatient'(LastName2, FirstName2)
