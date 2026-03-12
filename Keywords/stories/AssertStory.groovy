@@ -127,6 +127,51 @@ public class AssertStory {
 		}
 	}
 
+	def toSeconds = { timeStr ->
+		def parts = timeStr.split(":")*.toInteger()
+
+		if (parts.size() == 3) {
+			return parts[0]*3600 + parts[1]*60 + parts[2]
+		} else {
+			return parts[0]*60 + parts[1]
+		}
+	}
+
+	def verifyRecordingTimeGreaterThan(String text, String recordingTime1, String recordingTime2) {
+		recordingTime1 = recordingTime1.replaceAll("(?i)PAUSED", "").replaceAll("\\s+", " ").trim()
+		recordingTime2 = recordingTime2.replaceAll("(?i)PAUSED", "").replaceAll("\\s+", " ").trim()
+
+		def time1Seconds = toSeconds(recordingTime1)
+		def time2Seconds = toSeconds(recordingTime2)
+
+		verifyGreaterThan(text,time1Seconds,time2Seconds)
+	}
+
+	def verifyRecordingTimeNotMatch(String text, String recordingTime1) {
+		recordingTime1 = recordingTime1.replaceAll("(?i)PAUSED", "").replaceAll("\\s+", " ").trim()
+
+		def time1Seconds = toSeconds(recordingTime1)
+		time1Seconds = time1Seconds == "00:00"?"0":time1Seconds;
+
+		verifyNotMatch(text,recordingTime1,"0")
+	}
+
+	def verifyRecordingTimeMatch (String text, String recordingTime1, String recordingTime2) {
+		String actual = recordingTime1.replaceAll("(?i)PAUSED", "").replaceAll("\\s+", " ").trim()
+		String expected = recordingTime2.replaceAll("(?i)PAUSED", "").replaceAll("\\s+", " ").trim()
+
+		LogStories.logInfo("${text} → Actual: ${actual} | Expected: ${expected}")
+
+		try {
+			WebUI.verifyMatch(actual?.toString(), expected?.toString(), false,FailureHandling.CONTINUE_ON_FAILURE)
+			LogStories.markPassed("${text} → PASSED => ${actual}")
+		}
+		catch(Exception err) {
+			LogStories.markFailed("${text} FAILED → Actual: ${actual} | Expected: ${expected}")
+			throw err
+		}
+	}
+
 	def verifyGreaterThanOrEqual(String text, def actual, def expected) {
 
 		// normalise values to numbers

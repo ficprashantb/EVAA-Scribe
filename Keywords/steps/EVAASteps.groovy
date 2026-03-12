@@ -1097,13 +1097,24 @@ public class EVAASteps {
 		LogStories.logInfo('Clicked on Pause Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'),10, FailureHandling.OPTIONAL)
+		
+		String recordingTime1 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'))
+		
+		VariableStories.setItem("RECORDING_TIME1", recordingTime1) 
+		
+		WebUI.delay(2)
+		
+		String recordingTime2 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'))
 
 		TestObject recordingPaused = findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Recording Paused')
 		if (WebUI.verifyElementPresent(recordingPaused, 60, FailureHandling.OPTIONAL)) {
 			String actualText = WebUI.getText(recordingPaused)
 			assertStory.verifyMatch("Recording Paused", actualText,"Recording Paused.")
-		}
-
+		} 
+		
+		assertStory.verifyRecordingTimeMatch("The timer immediately stops when the Pause button is clicked", recordingTime1, recordingTime2)
+		assertStory.verifyRecordingTimeGreaterThan("The timer does not display incorrect or negative time values", recordingTime1, "00:00") 
+		 
 		if(isResume) {
 			WebUI.delay(resumeTimeInSeconds)
 
@@ -1115,6 +1126,17 @@ public class EVAASteps {
 			LogStories.logInfo('Clicked on Resume Button')
 
 			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'), 10, FailureHandling.OPTIONAL)
+			
+			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'), 2, FailureHandling.OPTIONAL)
+			
+			String recordingTime3 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'))
+			
+			def recordingTime4 = VariableStories.getItem("RECORDING_TIME1")
+			
+			assertStory.verifyRecordingTimeNotMatch("The timer is not reset when it is paused and then resumed.", recordingTime3) 
+			
+			//Commented for MBT#56527
+//			assertStory.verifyRecordingTimeGreaterThan("After the recording is resumed, the timer properly picks up from the time it was on pause.", recordingTime3, recordingTime4)
 
 			WebUI.waitForElementNotPresent(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'), 10, FailureHandling.OPTIONAL)
 
@@ -1149,6 +1171,12 @@ public class EVAASteps {
 		LogStories.logInfo('Clicked on Pause Button')
 
 		WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/div_PAUSED_txt'),10, FailureHandling.OPTIONAL)
+		
+		String recordingTime1 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/Menu/div_RecordTime'))
+		
+		def recordingTime2 = VariableStories.getItem("RECORDING_TIME1")
+		
+		assertStory.verifyRecordingTimeGreaterThan("Record Time", recordingTime1, recordingTime2)
 
 		TestObject recordingPaused = findTestObject('EVAAPage/EVAA Scribe/Toast/toast_Merged Recording Paused')
 		if (WebUI.verifyElementPresent(recordingPaused, 60, FailureHandling.OPTIONAL)) {
