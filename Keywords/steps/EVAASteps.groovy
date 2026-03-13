@@ -49,7 +49,7 @@ import java.awt.event.KeyEvent
 public class EVAASteps {
 	NavigateStory navigateStory = new NavigateStory()
 	TestObjectStory testObjectStory = new TestObjectStory()
-	AssertStory assertStory = new AssertStory();
+	AssertStory assertStory = new AssertStory()
 	WaitStory waitStory = new WaitStory()
 
 	@Keyword

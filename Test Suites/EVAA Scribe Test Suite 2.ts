@@ -12,7 +12,7 @@
    <rerunImmediately>true</rerunImmediately>
    <testSuiteGuid>bd647229-7117-4652-bbe0-7018676f4409</testSuiteGuid>
    <testCaseLink>
-      <guid>19827761-40cc-411d-91bb-45d468b78af8</guid>
+      <guid>38beb160-e980-43c3-b5d5-ef5ff29f584d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R01 - Verify SOAP Note - Record Start Stop - Finalize - EHR</testCaseId>
@@ -85,7 +85,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>d975624d-f35e-414f-b348-6336a2019606</guid>
+      <guid>0a506704-ec5d-4715-93e7-97fd9920017d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R02 - Verify SOAP Note - Record Start Stop - Finalize - Unfinalize - Finalize - EHR</testCaseId>
@@ -158,7 +158,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>8947ac3e-6da5-498e-880d-7ed226ced655</guid>
+      <guid>6f6fa6c9-b7e8-49c4-9ced-88a5392aea3c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R03 - Verify SOAP Note - Record Pause Resume Stop - Finalize - EHR</testCaseId>
@@ -231,7 +231,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>64b6a7ac-7b86-47cc-8012-fe2dffec3fe4</guid>
+      <guid>41b2b35f-280f-48e5-9e57-f7da6060c588</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R04 - Verify SOAP Note - Record Pause Stop - Finalize - EHR</testCaseId>
@@ -304,7 +304,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>a2b1d2e4-ecd6-4150-8455-44077e5a7b1d</guid>
+      <guid>8ca630b2-f742-44a5-834d-732b0e1306d9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R05 - Verify SOAP Note - Record Start Stop - Dictation By Typing - Finalize - EHR</testCaseId>
@@ -377,7 +377,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>751e585c-9ec7-4d22-a6ee-58e222bcedaa</guid>
+      <guid>6e65a17b-5cc6-41ae-8766-4c2fb294359a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R06 - Verify SOAP Note - Upload - Dictation Record Start Stop - Finalize - EHR</testCaseId>
@@ -456,7 +456,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>9d7b3590-650f-4132-a25b-2ba8a9978d6f</guid>
+      <guid>524f9b34-2cc0-4493-be99-fd0c4ef8044a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R07 - Verify SOAP Note - Record Start Stop - Dictation Record Start Stop - Finalize - EHR</testCaseId>
@@ -535,7 +535,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>97bccac3-cab2-423a-bcbc-4440b96014a1</guid>
+      <guid>f9b4579c-a186-422f-b668-0a04e3b5a0c7</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R08 - Verify SOAP Note - Record Start (Collapsed Mode) - Pause - Resume - Stop - Finalize - EHR</testCaseId>
@@ -608,7 +608,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>fc328deb-c3ce-4109-895c-446dae21eb62</guid>
+      <guid>7c7c9877-368a-4bcf-85f9-3839e3c2ff3f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R09 - Verify SOAP Note - Record Start (Collapsed Mode) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
@@ -681,7 +681,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>4cd9c130-c3d6-40ed-9a43-ace7a78b70d0</guid>
+      <guid>6e5be3d7-dfdf-4ae2-be15-44aca02df32f</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R10 - Verify SOAP Note - Record Start (Collapsed Mode - Patient Switch) - Stop - Finalize - EHR - Transfer Encounter</testCaseId>
@@ -754,7 +754,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3fa33edc-2e9d-473f-8c3e-03d7e1322000</guid>
+      <guid>fd4e1a88-dced-4046-a3b0-5c8473296466</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R11 - Verify SOAP Note - Record Start Stop - SOAP Not Generated (Audio Failure)</testCaseId>
@@ -827,7 +827,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>7ac2dd5f-e7dc-4d39-967e-eace7f66e32c</guid>
+      <guid>dbc90afe-bd1d-4854-96fc-6c6f669efa40</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R12 - Verify SOAP Note - Upload - Existing Recording - Re-Record - Record Start Stop</testCaseId>
@@ -906,7 +906,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>2851a471-32d3-4a18-934a-8cb97f1db726</guid>
+      <guid>659fd876-a5f4-49eb-9b6a-a5fe6d34dd3d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R13 - Verify SOAP Note - Record Start Stop - Existing Recording - Re-Record - Record Start Stop</testCaseId>
@@ -979,7 +979,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>1c22b7b9-f3a7-49e4-946d-bcc1aece22db</guid>
+      <guid>73cbff3e-47a1-499e-9f00-d583d1a723fc</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R14 - Verify SOAP Note - Pt 1 - Record Start Pause - Pt 2 - New Encounter - Stop Pt 1 Recording - Finalize - EHR</testCaseId>
@@ -1052,7 +1052,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e5526b31-7fa2-4e4e-a936-5be90e83abe9</guid>
+      <guid>9d7d0efa-61a2-4ee4-b541-8a3ef378b064</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R15 - Verify SOAP Note - Record Pause - Resume - Pause Stop - Finalize - EHR</testCaseId>
@@ -1125,7 +1125,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>794aa5e3-46d1-46e2-884d-caca9d5671fd</guid>
+      <guid>345556e8-f87c-409f-8000-320a8acb064a</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 02 - Record Scenarios/TC-R16 - Verify SOAP Note - Block Microphone Access</testCaseId>

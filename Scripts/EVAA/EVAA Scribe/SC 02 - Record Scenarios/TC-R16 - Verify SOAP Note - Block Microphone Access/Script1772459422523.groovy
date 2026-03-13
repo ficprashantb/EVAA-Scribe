@@ -26,7 +26,7 @@ import stories.VariableStories as VariableStories
 
 AssertStory assertStory = new AssertStory()
 
-GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R022'
+GlobalVariable.EVAA_SC_NO = 'EVAA_SCRIBE_TC_R016'
 
 VariableStories.clearItem(GlobalVariable.EVAA_SC_NO)
 
@@ -68,9 +68,20 @@ CustomKeywords.'steps.EVAASteps.verifySOAPNotesAndSpeakerNotesNotGenerated'(expe
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 5~~~~~~~~~~~~~~~~~~~~~~')
 
-CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('false')
+CustomKeywords.'steps.EVAASteps.verifyPatientConsentReceived'('true')
 
 LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 6~~~~~~~~~~~~~~~~~~~~~~')
+
+// Transcript check
+TestObject transcriptMsg = findTestObject('EVAAPage/EVAA Scribe/div_No transcript available')
+
+if (WebUI.verifyElementPresent(transcriptMsg, 10, FailureHandling.OPTIONAL)) {
+    String actualText = WebUI.getText(transcriptMsg)
+
+    assertStory.verifyMatch('Transcript message', actualText, 'No transcript available. Upload an audio file to get started.')
+}
+
+LogStories.log('~~~~~~~~~~~~~~~~~~~~~~Step 7~~~~~~~~~~~~~~~~~~~~~~')
 
 String FinalizedStatus = 'Pending'
 
