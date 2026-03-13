@@ -1117,10 +1117,22 @@ public class EVAASteps {
 
 		assertStory.verifyTimerIsValid(recordingTime2)
 
+		String liveTranscription1 = ""
+
+		if(!isCollapsed) {
+			liveTranscription1 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/p_live-transcription-text'))
+		}
+
 		if(isResume) {
 			WebUI.delay(resumeTimeInSeconds)
 
 			WebUI.waitForElementVisible(findTestObject('EVAAPage/EVAA Scribe/Menu/button_Resume'),10, FailureHandling.STOP_ON_FAILURE)
+
+			if(!isCollapsed) {
+				String liveTranscription2 = WebUI.getText(findTestObject('EVAAPage/EVAA Scribe/p_live-transcription-text'))
+
+				assertStory.verifyMatch("No audio is captured during paused state", liveTranscription1 , "" )
+			}
 
 			fakeMic.resume()
 
@@ -2391,7 +2403,7 @@ public class EVAASteps {
 			LogStories.log("***********************************************************************************************************")
 		}
 	}
-	
+
 	@Keyword
 	def GetLimitedElementList(def elementStorageList) {
 		Boolean IS_LIMITED_ELEMENTS = GlobalVariable.G_IS_LIMITED_ELEMENTS
@@ -2402,6 +2414,5 @@ public class EVAASteps {
 		}
 
 		return elementStorageList
-	} 
-	
+	}
 }

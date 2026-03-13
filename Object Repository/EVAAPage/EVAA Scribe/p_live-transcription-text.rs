@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<WebElementEntity>
+   <description></description>
+   <name>p_live-transcription-text</name>
+   <tag></tag>
+   <elementGuidId>d1de857b-d484-4143-8f54-5f1a6fe818a9</elementGuidId>
+   <selectorCollection>
+      <entry>
+         <key>XPATH</key>
+         <value>//*[@id = 'live-transcription-text']</value>
+      </entry>
+      <entry>
+         <key>BASIC</key>
+         <value>//*[@id = 'live-transcription-text']</value>
+      </entry>
+      <entry>
+         <key>CSS</key>
+         <value>#live-transcription-text</value>
+      </entry>
+   </selectorCollection>
+   <selectorMethod>XPATH</selectorMethod>
+   <smartLocatorCollection>
+      <entry>
+         <key>SMART_LOCATOR</key>
+         <value></value>
+      </entry>
+   </smartLocatorCollection>
+   <smartLocatorEnabled>false</smartLocatorEnabled>
+   <useRalativeImagePath>true</useRalativeImagePath>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>tag</name>
+      <type>Main</type>
+      <value>p</value>
+      <webElementGuid>c5457f5a-5e2c-4c81-920b-b7c161519c09</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>id</name>
+      <type>Main</type>
+      <value>live-transcription-text</value>
+      <webElementGuid>fd689a5d-3ba6-4546-8ccb-5b57068b4b6e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>class</name>
+      <type>Main</type>
+      <value>text-base text-medical-text-primary leading-relaxed</value>
+      <webElementGuid>28d91506-cc63-4537-8cde-4b63010b4239</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>parent</name>
+      <type>Main</type>
+      <value>md5.v1-ee0b90f9276978f86110c99a249990f2</value>
+      <webElementGuid>7f421402-2fcf-4fda-9990-911ebebe953a</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath</name>
+      <type>Main</type>
+      <value>//*[@id = 'live-transcription-text']</value>
+      <webElementGuid>14ab36a8-155e-4c3f-bd96-bce3a092639e</webElementGuid>
+   </webElementProperties>
+   <webElementProperties>
+      <isSelected>true</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>ref_element</name>
+      <type>Main</type>
+      <value>Object Repository/EVAAPage/EVAA Scribe/iFrame</value>
+      <webElementGuid>48128215-d8eb-434f-9e84-f2567bd245e0</webElementGuid>
+   </webElementProperties>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:attributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'live-transcription-text']</value>
+      <webElementGuid>4326d13f-d767-4c96-8c5e-82f867b201c1</webElementGuid>
+   </webElementXpaths>
+   <webElementXpaths>
+      <isSelected>false</isSelected>
+      <matchCondition>equals</matchCondition>
+      <name>xpath:customAttributes</name>
+      <type>Main</type>
+      <value>//*[@id = 'live-transcription-text']</value>
+      <webElementGuid>7eb80668-e128-4695-97d2-98634fc14552</webElementGuid>
+   </webElementXpaths>
+</WebElementEntity>
