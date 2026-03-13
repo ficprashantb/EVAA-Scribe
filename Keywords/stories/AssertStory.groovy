@@ -205,4 +205,12 @@ public class AssertStory {
 			throw err
 		}
 	}
+
+	def verifyTimerIsValid(String timerText) { 
+		LogStories.logInfo("Timer Value: " + timerText)
+		
+		assert !(timerText.contains("-") || timerText.contains("NaN") || timerText.contains("--")) : LogStories.markFailed("❌ Invalid timer value: ${timerText}")
+		
+		LogStories.markPassed("✅ Timer is valid: ${timerText}") 
+	}
 }
