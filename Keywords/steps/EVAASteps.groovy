@@ -1690,7 +1690,7 @@ public class EVAASteps {
 				expectedList.eachWithIndex { expected, i ->
 					String expectedText = "${expected} ${appendText}".replaceAll(":(?=.*:)", "")
 					String actualText = "${actualTexts[i]}".replaceAll(":(?=.*:)", "")
-
+					  
 					assertStory.verifyMatch("Direct Dictation→→ ${name}", actualText, expectedText)
 				}
 			}
