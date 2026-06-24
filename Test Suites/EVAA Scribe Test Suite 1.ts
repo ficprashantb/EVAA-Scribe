@@ -4,15 +4,15 @@
    <name>EVAA Scribe Test Suite 1</name>
    <tag></tag>
    <isRerun>false</isRerun>
-   <mailRecipient>ketann@first-insight.com;abhijeetd@first-insight.com;dhirajt@first-insight.com;karsonc@first-insight.com;akashs@first-insight.com;shreyac@first-insight.com;</mailRecipient>
+   <mailRecipient>abhijeetd@first-insight.com;shreyac@first-insight.com;akashs@first-insight.com;dhirajt@first-insight.com;karsonc@first-insight.com;ketann@first-insight.com;</mailRecipient>
    <numberOfRerun>0</numberOfRerun>
    <pageLoadTimeout>10</pageLoadTimeout>
    <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>true</rerunImmediately>
-   <testSuiteGuid>f7650022-17fa-47e3-9a1d-aae719d58bce</testSuiteGuid>
+   <testSuiteGuid>d5be201a-1d61-4857-aea8-419329564581</testSuiteGuid>
    <testCaseLink>
-      <guid>11005207-e219-4b6c-bbec-85ff86ed8545</guid>
+      <guid>e11782e0-45a3-410f-8423-0d8c8d9d31f5</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U01 - Verify SOAP Note - Upload - Finalize - EHR</testCaseId>
@@ -79,7 +79,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>c6a6c927-6dd3-41aa-b471-42ef54d74d58</guid>
+      <guid>92e6aabf-35eb-4e32-8bcf-021791797ce2</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U02 - Verify SOAP Note - Upload - Finalize - EHR - Unfinalize - Finalize - EHR</testCaseId>
@@ -146,7 +146,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f886abc5-cb26-4f92-9ddc-1adb09f5da3e</guid>
+      <guid>a54df02b-5032-4ef5-9e4d-78f93f9e1d13</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U03 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR (Individual - All)</testCaseId>
@@ -213,7 +213,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b853096f-9e55-4efb-b759-06ac308b024c</guid>
+      <guid>8eaffd33-80f0-4446-9d33-980d58e2dbcc</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U04 - Verify SOAP Note - Upload - Finalize - EHR (Individual - All)</testCaseId>
@@ -280,7 +280,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>5f04f888-68dc-4a0b-b7c2-4a18421205cb</guid>
+      <guid>8975372d-2aff-4f04-bab8-7311d4ee66f9</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U05 - Verify SOAP Note - Upload - Finalize - Dictation By Typing - EHR (Individual)</testCaseId>
@@ -347,7 +347,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>fd66dba7-f0e2-4efd-8af4-85da645143ec</guid>
+      <guid>c3c3848b-6fbe-4c90-bd0b-f28a4e90ae4d</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U06 - Verify SOAP Note - Upload - Finalize - EHR (Individual)</testCaseId>
@@ -414,7 +414,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3efc9e51-5b6b-43d7-8443-9d15c2c0270b</guid>
+      <guid>4e8eef7e-c1dc-49c5-b327-bbf19f5cbd41</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U07 - Verify SOAP Note - Upload - Dictation By Typing - Finalize - EHR</testCaseId>
@@ -481,7 +481,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>9c344ba0-25b2-4c54-89fb-b360a5de2d9f</guid>
+      <guid>1fef9033-a290-4ed5-b1b9-023ad37367bc</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U08 - Verify SOAP Note - Upload (Collapsed Mode) - Finalize - EHR - Transfer Encounter</testCaseId>
@@ -548,7 +548,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>e5467599-0edc-46b8-95a2-0d8981191de9</guid>
+      <guid>f3300a1b-4472-42a1-a60d-df9e6ce16f6e</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U09 - Verify SOAP Note - Upload (Collapsed Mode - Patient Switch) - Finalize - EHR - Transfer Encounter</testCaseId>
@@ -585,7 +585,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>89808d59-a247-47ec-a8d4-c991bc0fcc8a</guid>
+      <guid>be43e78e-23bd-468d-a79c-560452a7e40c</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U10 - Verify SOAP Note - Upload (Patient Switch) - Finalize - EHR</testCaseId>
@@ -622,7 +622,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>b7395e0d-3cf0-437b-8865-f6c6cee3138a</guid>
+      <guid>4970612e-a66c-40f5-957e-c2851dc25803</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U11 - Verify SOAP Note - Upload - SOAP Not Generated (Audio Failure)</testCaseId>
@@ -689,7 +689,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>3eb77799-00f0-4ee4-94d7-16d2d2db1ff4</guid>
+      <guid>2655d21d-c1f4-48cc-9cae-50e20e63ce0b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U12 - Verify SOAP Note - Upload - Existing Recording - Re-Record</testCaseId>
@@ -762,7 +762,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>9707b373-589d-449f-8074-c5b1a8f6cf52</guid>
+      <guid>366883a5-00e3-417f-812f-c067cb5592b8</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U13 - Verify SOAP Note - Upload - Copy All - Finalize</testCaseId>
@@ -829,7 +829,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>f380f1ff-436c-4cae-9c5a-bb30449f3a6b</guid>
+      <guid>2c689b5f-d89d-4d55-b09d-c1b4100b2ac1</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U14 - Verify SOAP Note - Upload - Dictation By Typing - Copy All - Finalize</testCaseId>
@@ -896,7 +896,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>ce57d8df-9637-4ca1-bb38-aed57d45e20f</guid>
+      <guid>2b76cd4b-ea68-4fd4-bffc-a76ff5be6a1b</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U15 - Verify SOAP Note - Upload - Copy Individual - Before Finalize</testCaseId>
@@ -963,7 +963,7 @@
       </variableLink>
    </testCaseLink>
    <testCaseLink>
-      <guid>2598f938-ebe6-4a0b-974e-f80294ed8b88</guid>
+      <guid>733cbb82-be50-4f10-8222-0febc90a5db6</guid>
       <isReuseDriver>false</isReuseDriver>
       <isRun>true</isRun>
       <testCaseId>Test Cases/EVAA/EVAA Scribe/SC 01 - Upload Scenarios/TC-U16 - Verify SOAP Note - Upload - Dictation By Typing - Copy Individual - Before Finalize</testCaseId>
